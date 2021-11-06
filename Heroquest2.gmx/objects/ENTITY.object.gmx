@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>OBJECT</parentName>
+  <parentName>OBSTACLE</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -30,13 +30,10 @@ event_inherited();
 
 depth = DEPTHS.normal;
 
-MOVING = false;
-
-mySpeed = 4;
-myPath  = path_add();
-
-isoSprite = spr_none;
-selectable = false;
+MOVING      = false;
+myPath      = path_add();
+isoSprite   = spr_none;
+selectable  = false;
 
 column      = getColumnFromX(x);
 row         = getRowFromY(y);
@@ -58,6 +55,28 @@ else
         +"# but we encountered something there already!
         #value:" +string(ds_grid_get(grid, column, row)), true);
 }
+
+
+
+/// default stats
+type    = ENEMY;
+name    = "Nameless";
+sex     = SEXES.none;
+hp      = 1;
+mp      = 0;
+move    = 0;
+attack  = 1;
+defence = 0;
+weapon  = 0;
+offhand = 0;
+amulet  = 0;
+armour  = 0;
+ring1   = 0;
+ring1   = 0;
+hair    = 0;
+face    = 0;
+skin    = 0;
+
 </string>
           </argument>
         </arguments>

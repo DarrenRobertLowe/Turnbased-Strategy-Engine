@@ -54,10 +54,6 @@ menu[2] = "SKILL";
 menu[3] = "SEARCH";
 menu[4] = "FORAGE";
 menu[5] = "CANCEL";
-
-
-// temporary
-Movement = 3;
 </string>
           </argument>
         </arguments>

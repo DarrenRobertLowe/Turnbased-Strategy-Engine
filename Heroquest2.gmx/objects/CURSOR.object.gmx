@@ -132,9 +132,6 @@ if (MODE == MODES.free) {
     if (global.controls_ok) {
         global.controls_ok = 0;                                 // this stops the button from repeating every step
         
-        
-        //targetHero = getGridHERO(grid, column, row);
-        
         var unit = ds_grid_get(grid, column, row);
         
         if !is_undefined(unit)
@@ -144,7 +141,7 @@ if (MODE == MODES.free) {
         {
             targetHero = unit;
         }
-
+        
         show_debug_message("targetHero = " +string(targetHero));
         
         
@@ -196,13 +193,15 @@ if (MODE == MODES.objectMenu) {
 if (MODE == MODES.moving) {
     cursor_move();  // cursor can move freely arounnd the grid, just not select outside of the range.
     
-    Movement = selected.Movement;
+    move = selected.move;
     myPath   = selected.myPath;
     
     if (pathShown == false) {
         show_movement_range();
         pathShown = true;
     }
+    
+    
     
     if (global.controls_ok) {
         if (instance_position(x, y, obj_MovementPanel)) {
@@ -245,6 +244,8 @@ if (MODE == MODES.skills) {
 // WAITING
 if (MODE == MODES.waiting) {
         // do nothing.
+        draw_set_alpha(0.3);
+        mp_grid_draw(global.pathGrid);
 }
 
 // FINISHING

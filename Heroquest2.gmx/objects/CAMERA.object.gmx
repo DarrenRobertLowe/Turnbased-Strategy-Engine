@@ -90,25 +90,27 @@ view_yview[0] = (y - (view_hview[0]/2));//(global.OFFSET_Y + ((column + row) * g
             <kind>1</kind>
             <string>/// draw the grid
 
-draw_set_color(c_black);
-var xMin = gridOffsetX;
-var xMax = (gridOffsetX + (gridWidth * tileWidth));
-var yMin = gridOffsetY;
-var yMax = (gridOffsetY + (gridHeight * tileHeight));
-
-
-for(var xx = 0; xx&lt;=gridWidth; xx++)
+if (global.isometricView == false)
 {
-    var xxx = (gridOffsetX + (xx * tileWidth));
-    draw_line(xxx, yMin, xxx, yMax);
+    draw_set_color(c_black);
+    var xMin = gridOffsetX;
+    var xMax = (gridOffsetX + (gridWidth * tileWidth));
+    var yMin = gridOffsetY;
+    var yMax = (gridOffsetY + (gridHeight * tileHeight));
     
-    for(var yy = 0; yy&lt;=gridHeight; yy++)
+    
+    for(var xx = 0; xx&lt;=gridWidth; xx++)
     {
-        var yyy = (gridOffsetY + (yy * tileHeight));
-        draw_line(xMin, yyy, xMax, yyy);
+        var xxx = (gridOffsetX + (xx * tileWidth));
+        draw_line(xxx, yMin, xxx, yMax);
+        
+        for(var yy = 0; yy&lt;=gridHeight; yy++)
+        {
+            var yyy = (gridOffsetY + (yy * tileHeight));
+            draw_line(xMin, yyy, xMax, yyy);
+        }
     }
 }
-
 </string>
           </argument>
         </arguments>

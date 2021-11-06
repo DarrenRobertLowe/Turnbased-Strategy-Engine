@@ -8,6 +8,7 @@
   <sprites name="sprites">
     <sprites name="Cartesian">
       <sprite>sprites\spr_cart_unit</sprite>
+      <sprite>sprites\spr_cart_enemy</sprite>
       <sprite>sprites\spr_walker</sprite>
       <sprite>sprites\spr_cart_cursor</sprite>
       <sprite>sprites\spr_cart_ColourTiles</sprite>
@@ -90,6 +91,12 @@
       <script>scripts\spawnHero.gml</script>
       <script>scripts\getHeroStats.gml</script>
     </scripts>
+    <script>scripts\notes_Spell_Types_and_Elements.gml</script>
+    <script>scripts\note_Effects.gml</script>
+    <script>scripts\notes_Elemental_Weaknesses_And_Effects.gml</script>
+    <script>scripts\notes_Elemental_Weaknesses_And_Strengths.gml</script>
+    <script>scripts\notes_Height_Advantage.gml</script>
+    <script>scripts\notes_Spell_Schools_and_Elements.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu</font>
@@ -98,11 +105,11 @@
     <object>objects\MASTER</object>
     <object>objects\CAMERA</object>
     <object>objects\OBJECT</object>
-    <object>objects\ENTITY</object>
     <object>objects\OBSTACLE</object>
+    <object>objects\ENTITY</object>
     <object>objects\LEVEL</object>
     <object>objects\HERO</object>
-    <object>objects\GOAL</object>
+    <object>objects\ENEMY</object>
     <objects name="Menu and Movement">
       <object>objects\CURSOR</object>
       <object>objects\obj_MovementPanel</object>

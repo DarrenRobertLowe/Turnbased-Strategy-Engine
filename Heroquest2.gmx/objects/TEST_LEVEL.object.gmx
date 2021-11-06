@@ -29,8 +29,9 @@
 depth = DEPTHS.ground;
 
 instance_create(0, 0, FLOOR_DRAWER);
-spawn(9, 8, GOAL);
+spawn(9, 8, ENEMY);
 var hero = spawnHero(5, 5, 0);
+
 
 
 instance_create(hero.x, hero.y, CURSOR);

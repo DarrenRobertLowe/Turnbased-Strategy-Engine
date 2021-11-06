@@ -37,5 +37,6 @@ if (move = DIRECTION.west) {
 }
 
 
+
 move = "";
 

@@ -18,3 +18,5 @@ with(hero)
 {
     event_user(TRIGGER.getStats); // get stats
 }
+
+return hero;
