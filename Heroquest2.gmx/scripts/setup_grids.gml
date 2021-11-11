@@ -3,15 +3,15 @@ global.gridWidth        = argument0;
 global.gridHeight       = argument1;
 
 
-global.tileWidth        = 32;
-global.tileHeight       = 32;
-global.isometricTileWidth   = 64;
-global.isometricTileHeight  = 32;
+global.tileWidth            = 32;
+global.tileHeight           = 32;
+global.isometricTileWidth   = 32;
+global.isometricTileHeight  = 16;
 
 var tw = global.tileWidth;
 var th = global.tileHeight;
-global.GRID_OFFSET_X = (tw * 3);
-global.GRID_OFFSET_Y = (th * 3);
+global.GRID_OFFSET_X = (global.isometricTileWidth  * 10); // (global.gridWidth/2));
+global.GRID_OFFSET_Y = (global.isometricTileHeight * 10); // (global.gridHeight/2));
 
 
 global.halfTileWidth  = (tw/2);

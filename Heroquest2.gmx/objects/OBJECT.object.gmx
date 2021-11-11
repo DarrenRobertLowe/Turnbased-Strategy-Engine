@@ -26,9 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>/// ALL OBJECTS
+image_speed = 0;
+
 deglobalizeGridVars();
 
-depth = DEPTHS.sky;
+depth = DEPTH.sky;
 
 </string>
           </argument>

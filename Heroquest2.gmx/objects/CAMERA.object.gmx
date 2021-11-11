@@ -3,11 +3,37 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>10000</depth>
+  <depth>1</depth>
   <persistent>0</persistent>
   <parentName>OBJECT</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///setup views, set depth
+event_inherited();
+setup_views();
+depth = DEPTH.menu;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -26,20 +52,25 @@
           <argument>
             <kind>1</kind>
             <string>/// position the camera
+row         = CURSOR.row;
+column      = CURSOR.column;
+var view    = VIEWS.combat;
 
-/*      POSITION CAMERA     */
 
 //ISOMETRIC
-if (global.isometricView) {
-    row     = CURSOR.row;
-    column  = CURSOR.column;
-    x = gridOffsetX + ( (column-row) * isometricTileWidth )
-    y = gridOffsetY + ( (column+row) * isometricTileHeight) - (CURSOR.z)     
+if (global.isometricView) {  
+    x = getXFromColumn(column);
+    y = getYFromRow(row);
+    view_xview[view] = (x - global.GRID_OFFSET_X);
+    view_yview[view] = (y - global.GRID_OFFSET_Y);
 }
 else {
-    // CARTESIAN
-    x = CURSOR.x
-    y = CURSOR.y
+// CARTESIAN
+    x = CURSOR.x;
+    y = CURSOR.y;
+    
+    view_xview[view] = (x);
+    view_yview[view] = (y);
 }
 </string>
           </argument>
@@ -47,31 +78,6 @@ else {
       </action>
     </event>
     <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Draw everything
-view_xview[0] = (x - (view_wview[0]/2));//(global.OFFSET_X + ((column - row) * global.iso_tileWidth));
-view_yview[0] = (y - (view_hview[0]/2));//(global.OFFSET_Y + ((column + row) * global.iso_tileHeight));
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -134,7 +140,7 @@ if (global.isometricView == false)
           <argument>
             <kind>1</kind>
             <string>/// CHANGE VIEW
-global.isometricView = !global.isometricView
+global.isometricView = !global.isometricView;
 </string>
           </argument>
         </arguments>

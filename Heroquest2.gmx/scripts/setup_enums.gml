@@ -2,9 +2,9 @@
 
 enum DIRECTION {
     north,
+    west,
     south,
-    east,
-    west
+    east
 }
 
 enum MODES {
@@ -48,7 +48,9 @@ enum HEROSTATS { // see add_new_hero()
     length  // KEEP AT BOTTOM! used to count the number of possible stats
 }
 
-enum DEPTHS {
+enum DEPTH {
+    menu,
+    fx,
     sky,
     normal,
     ground
@@ -56,4 +58,8 @@ enum DEPTHS {
 
 enum TRIGGER {
     getStats
+}
+
+enum VIEWS {
+    combat
 }

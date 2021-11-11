@@ -26,7 +26,14 @@
           <argument>
             <kind>1</kind>
             <string>/// Setup for all level types
+setup_views();
 global.TURN = 0;
+
+room_width  = ((global.gridWidth  * global.isometricTileWidth) + (global.GRID_OFFSET_X*2));
+room_height = ((global.gridHeight * global.isometricTileHeight) + (global.GRID_OFFSET_Y*2));
+
+show_debug_message("room width is "+string(room_width));
+show_debug_message("room height is "+string(room_height));
 </string>
           </argument>
         </arguments>

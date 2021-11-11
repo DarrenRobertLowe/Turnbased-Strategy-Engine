@@ -1,7 +1,8 @@
-///spawnHero(column, row, global.heroStats index);
+///spawnHero(column, row, global.heroStats index, facing);
 var column    = argument0;
 var row       = argument1;
 var index     = argument2;
+var facing    = faceDirection(argument3);
 var heroStats = global.heroStats;
 
 var obj  = ds_grid_get(heroStats, index, HEROSTATS.type);

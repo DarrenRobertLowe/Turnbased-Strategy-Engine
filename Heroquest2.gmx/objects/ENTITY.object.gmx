@@ -28,18 +28,25 @@
             <string>/// OBJECTS THAT CAN BE PLACED ON THE GRID
 event_inherited();
 
-depth = DEPTHS.normal;
+depth = DEPTH.normal;
 
 MOVING      = false;
 myPath      = path_add();
 isoSprite   = spr_none;
 selectable  = false;
+xprev       = x;
+yprev       = y;
+facing      = faceDirection(4); // face a random direction
 
 column      = getColumnFromX(x);
 row         = getRowFromY(y);
 isoX        = getIsometricX(column, row);
 isoY        = getIsometricY(column, row);
+alpha       = 1;
 
+setup_animations();
+update_sprite();
+animate();
 
 if (ds_grid_get(grid, column, row) == -1)
 {
@@ -72,11 +79,14 @@ offhand = 0;
 amulet  = 0;
 armour  = 0;
 ring1   = 0;
-ring1   = 0;
+ring2   = 0;
 hair    = 0;
 face    = 0;
 skin    = 0;
 
+
+// DEBUG
+prevDir     = -1;
 </string>
           </argument>
         </arguments>
@@ -100,6 +110,7 @@ skin    = 0;
           <argument>
             <kind>1</kind>
             <string>/// pathfinding
+MOVING = true;
 goto_Square(targetColumn, targetRow);
 </string>
           </argument>
@@ -124,39 +135,58 @@ goto_Square(targetColumn, targetRow);
           <argument>
             <kind>1</kind>
             <string>/// ANIMATE IF WALKING
-
 event_inherited();
 
-set_sprite_animated();
 
 
 // ANIMATE IF WALKING
-if (path_position &lt; 1) {
-    draw_path_ext();
-    //depth = -((row*2) + column); // keeps depth correct but breaks animation wtf.
-    if (image_index &lt; sprite_get_number(isoSprite)) {
-        image_index += global.animationSpeed;//delta(animationSpeed);
-        path_speed  = global.OPTIONS_MOVEMENT_SPEED;//delta(global.OPTIONS_MOVEMENT_SPEED);
-    } else {
-        image_index = 0;
-    }
-} else {
-    image_index = 0; 
+if (global.isometricView)
+{
+    animate();
 }
 
 
 // MOVEMENT
 if (MOVING) {
+    get_direction();
+    path_speed = global.OPTIONS_MOVEMENT_SPEED;
     CURSOR.MODE = MODES.waiting;                        // make cursor wait while we move
-    getCellFromCoordsPrecise(x,y);                      // getCellFromCoordsPrecise(x, y);
+    //getCellFromCoordsPrecise(x,y);                    // getCellFromCoordsPrecise(x, y);
     
+    // finish moving
     if (path_position &gt;= 1) {
         getCellFromCoords(x,y);
         CURSOR.MODE = MODES.free;                       // return control to the cursor
-        MOVING = 0;                                     // turn off movement
+        MOVING = false;                                 // turn off movement
         updateGrid(id, sourceColumn, sourceRow, targetColumn, targetRow);   // empty old coords and add id to new position.
+        show_message("finished moving");
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="77">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// update xprev and yprev
+xprev = xprevious;
+yprev = yprevious;
 </string>
           </argument>
         </arguments>
@@ -179,36 +209,46 @@ if (MOVING) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// draw path and animation
+            <string>/// animation
 event_inherited();
 
+
 // cartesian view
-if !(global.isometricView)
-{
+if !(global.isometricView) {
     draw_self();
-    
-    // draw path
-    draw_set_color(c_red);
-    draw_path(myPath, x, y, true);
 }
-else // isometric view
+else
 {
-    var index = 0;
-    draw_sprite(isoSprite, index, getIsometricX(column, row), getIsometricY(column, row));
-    
+    // isometric view
     if  (path_position &gt; 0)
     and (path_position &lt; 1)
     {
-        // animate and update sprite position
+        draw_sprite_ext(isoSprite, image_index, getIsometricX(column, row), getIsometricY(column, row)-(tileHeight/2), image_xscale, image_yscale, 0, c_white, alpha); // -(tileHeight/2) is a bit of a hack to get the sprite to be drawn in the correct place while walking
         column = getColumnFromXPrecise(x);
         row = getRowFromYPrecise(y);
     }
+    else draw_sprite(isoSprite, image_index, getIsometricX(column, row), getIsometricY(column, row));
+    
+    
+    // DEBUG
+    if (global.DEBUG)
+    {
+        draw_set_color(c_green);
+        draw_text(
+                getIsometricX(column, row),
+                getIsometricY(column, row),
+                "facing:"+string(getFacingAsString(facing))+
+                "#direction:"+string(direction)+
+                "#image index:"+string(image_index)
+                );
+    }
 }
 
+
 /*
-if !place_snapped(global.tileWidth, global.tileHeight)
+if !place_snapped(tileWidth, tileHeight)
 {
-    move_snap(global.tileWidth, global.tileHeight)
+    move_snap(tileWidth, tileHeight)
 }
 */
 </string>

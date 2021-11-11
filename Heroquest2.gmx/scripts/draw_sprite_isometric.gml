@@ -1,5 +1,5 @@
-/** draw_sprite_isometric(sprite_index,image_index,column,row,alpha)
- * 
+/// draw_sprite_isometric(sprite_index,image_index,column,row,alpha)
+/** 
  * argument0 = sprite_index
  * argument1 = image_index
  * argument2 = column

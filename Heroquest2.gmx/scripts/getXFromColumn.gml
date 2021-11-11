@@ -1,4 +1,4 @@
-/// get_x_from_column(column number)
+/// getXFromColumn(column number)
 /* returns INT
  *
  * converts a column number into an x co-ordinate

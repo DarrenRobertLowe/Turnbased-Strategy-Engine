@@ -25,12 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// start the map
-depth = DEPTHS.ground;
+            <string>/// start the map
+event_inherited();
+
+depth = DEPTH.ground;
 
 instance_create(0, 0, FLOOR_DRAWER);
-spawn(9, 8, ENEMY);
-var hero = spawnHero(5, 5, 0);
+spawn(9, 8, ENEMY, 4);
+var hero = spawnHero(5, 5, 0, 4);
 
 
 

@@ -76,6 +76,7 @@ keepVisible = true;
             <string>/// draw GUI elements (menu, cursor, etc)
 event_inherited();
 
+
 if (MODE == MODES.objectMenu) {
     draw_menu();
     draw_menuCursor();
@@ -182,9 +183,9 @@ if (MODE == MODES.objectMenu) {
             MODE = MODES.moving;
         }
         
-        if (selected.menu[menuPosition] == "ATTACK")then MODE = MODES.attacking;
-        if (selected.menu[menuPosition] == "SKILL") then MODE = MODES.skills;
-        if (selected.menu[menuPosition] == "EXIT")  then cursorMenuCancel();
+        if (selected.menu[menuPosition] == "ATTACK")    then MODE = MODES.attacking;
+        if (selected.menu[menuPosition] == "SKILL")     then MODE = MODES.skills;
+        if (selected.menu[menuPosition] == "CANCEL")    then cursorMenuCancel();
     }
 }
 
@@ -213,7 +214,6 @@ if (MODE == MODES.moving) {
                 selected.sourceRow      = selected.row;     // needed for update_Grid()
                 selected.targetColumn   = column;           // set the target column for the unit
                 selected.targetRow      = row;              // set the target row for the unit
-                selected.MOVING         = true;             // tell the unit that it is moving
                 selected.alarm[0]       = 1;                // tell the unit to start moving
                 MODE = MODES.waiting;                       // wait while unit has finished moving
                 }
@@ -243,9 +243,9 @@ if (MODE == MODES.skills) {
 
 // WAITING
 if (MODE == MODES.waiting) {
-        // do nothing.
-        draw_set_alpha(0.3);
-        mp_grid_draw(global.pathGrid);
+    // do nothing.
+    //draw_set_alpha(0.3);
+    //mp_grid_draw(global.pathGrid);
 }
 
 // FINISHING

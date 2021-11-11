@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
-depth = DEPTHS.ground;
+            <string>/// inherit and set depth
+event_inherited();
+depth = DEPTH.ground;
 </string>
           </argument>
         </arguments>
@@ -49,13 +50,24 @@ depth = DEPTHS.ground;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// DRAW THE FLOOR
-for(column=0; column &lt; gridWidth-1; column++) {
-    for(row=0; row &lt; gridHeight-1; row++) {
+            <string>/// draw the floor
+for(column=0; column &lt; gridWidth; column++) {
+    for(row=0; row &lt; gridHeight; row++) {
     
-        // cartesian
-        if (global.isometricView == 0)
+        
+        if (global.isometricView)
         {
+            // isometric
+            draw_sprite_isometric(
+                spr_Floor
+                ,ds_grid_get(global.FLOOR_GRID, column, row)
+                ,column
+                ,row
+                ,1);
+        }
+        else
+        {
+            // cartesian
             draw_sprite_ext(
                 spr_cart_floor
                 ,0
@@ -66,18 +78,7 @@ for(column=0; column &lt; gridWidth-1; column++) {
                 ,0
                 ,c_white
                 ,1);
-        }
-        else
-        {
-            // isometric
-            /*
-            draw_sprite_isometric(
-                spr_Floor
-                ,ds_grid_get(global.FLOOR_GRID, column, row)
-                ,column
-                ,row
-                ,1);
-                */
+            
         }
     }
 }

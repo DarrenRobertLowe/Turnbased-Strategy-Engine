@@ -16,11 +16,11 @@
       <sprite>sprites\spr_goal</sprite>
     </sprites>
     <sprites name="Isometric">
-      <sprite>sprites\spr_none</sprite>
       <sprite>sprites\spr_cursor</sprite>
       <sprite>sprites\spr_ColourTiles</sprite>
-      <sprite>sprites\anim_archer</sprite>
       <sprite>sprites\spr_Floor</sprite>
+      <sprite>sprites\spr_none</sprite>
+      <sprite>sprites\anim_archer</sprite>
     </sprites>
     <sprites name="Menu">
       <sprite>sprites\spr_menuCursor</sprite>
@@ -29,6 +29,14 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
+    <scripts name="Notes">
+      <script>scripts\notes_Spell_Types_and_Elements.gml</script>
+      <script>scripts\note_Effects.gml</script>
+      <script>scripts\notes_Elemental_Weaknesses_And_Effects.gml</script>
+      <script>scripts\notes_Elemental_Weaknesses_And_Strengths.gml</script>
+      <script>scripts\notes_Height_Advantage.gml</script>
+      <script>scripts\notes_Spell_Schools_and_Elements.gml</script>
+    </scripts>
     <scripts name="Setup">
       <script>scripts\setup_enums.gml</script>
       <script>scripts\setup_grids.gml</script>
@@ -36,6 +44,8 @@
       <script>scripts\setup_gui.gml</script>
       <script>scripts\setup_controls.gml</script>
       <script>scripts\setup_heroes.gml</script>
+      <script>scripts\setup_views.gml</script>
+      <script>scripts\setup_animations.gml</script>
     </scripts>
     <scripts name="Calculations">
       <script>scripts\getCellCenterY.gml</script>
@@ -80,7 +90,7 @@
     <scripts name="Pathfinding">
       <script>scripts\goto_Square.gml</script>
       <script>scripts\draw_path_ext.gml</script>
-      <script>scripts\set_sprite_animated.gml</script>
+      <script>scripts\get_direction.gml</script>
       <script>scripts\removeInstanceFromGrid.gml</script>
       <script>scripts\addInstanceToGrid.gml</script>
       <script>scripts\updateGrid.gml</script>
@@ -91,31 +101,32 @@
       <script>scripts\spawnHero.gml</script>
       <script>scripts\getHeroStats.gml</script>
     </scripts>
-    <script>scripts\notes_Spell_Types_and_Elements.gml</script>
-    <script>scripts\note_Effects.gml</script>
-    <script>scripts\notes_Elemental_Weaknesses_And_Effects.gml</script>
-    <script>scripts\notes_Elemental_Weaknesses_And_Strengths.gml</script>
-    <script>scripts\notes_Height_Advantage.gml</script>
-    <script>scripts\notes_Spell_Schools_and_Elements.gml</script>
+    <script>scripts\animate.gml</script>
+    <script>scripts\isMoving.gml</script>
+    <script>scripts\facingNorthWest.gml</script>
+    <script>scripts\facingSouthEast.gml</script>
+    <script>scripts\faceDirection.gml</script>
+    <script>scripts\getFacingAsString.gml</script>
+    <script>scripts\update_sprite.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu</font>
   </fonts>
   <objects name="objects">
     <object>objects\MASTER</object>
-    <object>objects\CAMERA</object>
     <object>objects\OBJECT</object>
+    <object>objects\CAMERA</object>
     <object>objects\OBSTACLE</object>
     <object>objects\ENTITY</object>
-    <object>objects\LEVEL</object>
     <object>objects\HERO</object>
     <object>objects\ENEMY</object>
-    <objects name="Menu and Movement">
+    <objects name="Cursor and Movement">
       <object>objects\CURSOR</object>
       <object>objects\obj_MovementPanel</object>
     </objects>
     <object>objects\FLOOR_DRAWER</object>
     <objects name="Levels">
+      <object>objects\LEVEL</object>
       <object>objects\TEST_LEVEL</object>
     </objects>
   </objects>

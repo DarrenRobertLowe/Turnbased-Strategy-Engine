@@ -1,4 +1,4 @@
-/// get_y_from_row(row number)
+/// getYFromRow(row number)
 /* returns INT
  *
  * converts a row number into a y co-ordinate
