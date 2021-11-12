@@ -6,4 +6,4 @@
 
 var row = argument0;
 
-return (global.GRID_OFFSET_Y + (row * global.tileHeight) + (global.halfTileHeight));
+return (global.GRID_OFFSET_Y + (row * global.tileHeight));// + (global.halfTileHeight));

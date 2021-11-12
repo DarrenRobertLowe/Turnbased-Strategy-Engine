@@ -98,21 +98,24 @@ else {
 
 if (global.isometricView == false)
 {
+    var offsetX = gridOffsetX ;//- halfTileWidth;
+    var offsetY = gridOffsetY ;//- halfTileHeight;
+    
     draw_set_color(c_black);
-    var xMin = gridOffsetX;
-    var xMax = (gridOffsetX + (gridWidth * tileWidth));
-    var yMin = gridOffsetY;
-    var yMax = (gridOffsetY + (gridHeight * tileHeight));
+    var xMin = offsetX;
+    var xMax = (offsetX + (gridWidth * tileWidth));
+    var yMin = offsetY;
+    var yMax = (offsetY + (gridHeight * tileHeight));
     
     
     for(var xx = 0; xx&lt;=gridWidth; xx++)
     {
-        var xxx = (gridOffsetX + (xx * tileWidth));
+        var xxx = (offsetX + (xx * tileWidth));
         draw_line(xxx, yMin, xxx, yMax);
         
         for(var yy = 0; yy&lt;=gridHeight; yy++)
         {
-            var yyy = (gridOffsetY + (yy * tileHeight));
+            var yyy = (offsetY + (yy * tileHeight));
             draw_line(xMin, yyy, xMax, yyy);
         }
     }

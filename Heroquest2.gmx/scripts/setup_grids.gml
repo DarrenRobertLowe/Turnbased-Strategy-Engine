@@ -7,6 +7,8 @@ global.tileWidth            = 32;
 global.tileHeight           = 32;
 global.isometricTileWidth   = 32;
 global.isometricTileHeight  = 16;
+global.cellSize             = global.tileWidth;
+
 
 var tw = global.tileWidth;
 var th = global.tileHeight;

@@ -67,7 +67,7 @@ for (i=0; i <= totalColumns; i++) {
             ,goaly
             ,0              // Allow diagonals?
         ) // check that it's within our movement range
-        and (path_get_length(myPath) <= (move * tileWidth)) {
+        and (path_get_length(myPath) <= (move * cellSize)) {
             
             var targX = (gridOffsetX + (targetColumn * tileWidth));
             var targY = (gridOffsetY + (targetRow * tileHeight));
@@ -82,7 +82,7 @@ for (i=0; i <= totalColumns; i++) {
                     then panel.unitHeight = (selected.z/global.PIXELS_PER_HEIGHT);
                 else panel.unitHeight = 0;*/
             
-            ds_grid_set(movementGrid, targetRow, targetColumn, obj_MovementPanel);
+            ds_grid_set(movementGrid, targetColumn, targetRow, obj_MovementPanel);
         }
         else
         {

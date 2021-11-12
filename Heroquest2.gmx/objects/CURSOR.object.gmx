@@ -195,7 +195,7 @@ if (MODE == MODES.moving) {
     cursor_move();  // cursor can move freely arounnd the grid, just not select outside of the range.
     
     move = selected.move;
-    myPath   = selected.myPath;
+    myPath = selected.myPath;
     
     if (pathShown == false) {
         show_movement_range();
@@ -203,10 +203,11 @@ if (MODE == MODES.moving) {
     }
     
     
-    
+
     if (global.controls_ok) {
-        if (instance_position(x, y, obj_MovementPanel)) {
-            panel = instance_position(x, y, obj_MovementPanel);
+    show_debug_message("movement grid cell ("+string(column)+":"+string(row)+") contains: "+string(ds_grid_get(movementGrid,column,row)));
+        if (ds_grid_get(movementGrid, column, row) == obj_MovementPanel) { //(instance_position(x, y, obj_MovementPanel)) {
+            panel = ds_grid_get(movementGrid, column, row);   //instance_position(x, y, obj_MovementPanel);
             
             if (panel.allowMove == true) {                  // if the panel is not red (blocked)
                 pathShown = false;

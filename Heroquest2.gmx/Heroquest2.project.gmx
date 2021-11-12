@@ -9,11 +9,9 @@
     <sprites name="Cartesian">
       <sprite>sprites\spr_cart_unit</sprite>
       <sprite>sprites\spr_cart_enemy</sprite>
-      <sprite>sprites\spr_walker</sprite>
       <sprite>sprites\spr_cart_cursor</sprite>
       <sprite>sprites\spr_cart_ColourTiles</sprite>
       <sprite>sprites\spr_cart_floor</sprite>
-      <sprite>sprites\spr_goal</sprite>
     </sprites>
     <sprites name="Isometric">
       <sprite>sprites\spr_cursor</sprite>
@@ -108,6 +106,7 @@
     <script>scripts\faceDirection.gml</script>
     <script>scripts\getFacingAsString.gml</script>
     <script>scripts\update_sprite.gml</script>
+    <script>scripts\draw_collision_mask.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu</font>

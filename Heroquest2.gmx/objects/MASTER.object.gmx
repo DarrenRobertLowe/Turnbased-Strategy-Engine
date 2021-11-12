@@ -44,7 +44,7 @@ global.heroesList = ds_list_create();
 
 // OPTIONS
 global.OPTIONS_CURSOR_MEMORY = true;
-global.OPTIONS_MOVEMENT_SPEED = 3;
+global.OPTIONS_MOVEMENT_SPEED = 4;
 global.animationSpeed  = (global.OPTIONS_MOVEMENT_SPEED / 8);//0.3;
 global.resolutionWidth = 800;
 global.resolutionHeight = 600;

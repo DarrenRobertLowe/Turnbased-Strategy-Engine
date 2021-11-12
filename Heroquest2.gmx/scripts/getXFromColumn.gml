@@ -7,4 +7,4 @@
 
 var column = argument0;
 
-return (global.GRID_OFFSET_X + (column * global.tileWidth) + (global.halfTileWidth));
+return (global.GRID_OFFSET_X + (column * global.tileWidth));// + (global.halfTileWidth));

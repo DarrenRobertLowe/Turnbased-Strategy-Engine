@@ -28,6 +28,8 @@
             <string>/// OBJECTS THAT CAN BE PLACED ON THE GRID
 event_inherited();
 
+//sprite_collision_mask(sprite_index, false, 2, 2, 2, sprite_width-2, sprite_height-2, 1, 0);
+
 depth = DEPTH.normal;
 
 MOVING      = false;
@@ -37,6 +39,7 @@ selectable  = false;
 xprev       = x;
 yprev       = y;
 facing      = faceDirection(4); // face a random direction
+keepVisible = true;
 
 column      = getColumnFromX(x);
 row         = getRowFromY(y);
@@ -151,7 +154,7 @@ if (MOVING) {
     get_direction();
     path_speed = global.OPTIONS_MOVEMENT_SPEED;
     CURSOR.MODE = MODES.waiting;                        // make cursor wait while we move
-    //getCellFromCoordsPrecise(x,y);                    // getCellFromCoordsPrecise(x, y);
+    getCellFromCoordsPrecise(x,y);                    // getCellFromCoordsPrecise(x, y);
     
     // finish moving
     if (path_position &gt;= 1) {
@@ -209,13 +212,18 @@ yprev = yprevious;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// animation
+            <string>/// draw self and animation
 event_inherited();
 
 
 // cartesian view
 if !(global.isometricView) {
-    draw_self();
+    draw_set_alpha(1);
+    draw_self_ext();
+    draw_path_ext();
+    draw_collision_mask();
+    draw_set_alpha(0.25);
+    mp_grid_draw(global.pathGrid);
 }
 else
 {
@@ -223,11 +231,12 @@ else
     if  (path_position &gt; 0)
     and (path_position &lt; 1)
     {
-        draw_sprite_ext(isoSprite, image_index, getIsometricX(column, row), getIsometricY(column, row)-(tileHeight/2), image_xscale, image_yscale, 0, c_white, alpha); // -(tileHeight/2) is a bit of a hack to get the sprite to be drawn in the correct place while walking
+        draw_self_ext();
+        //draw_sprite_ext(isoSprite, image_index, getIsometricX(column, row), getIsometricY(column, row)-(tileHeight/2), image_xscale, image_yscale, 0, c_white, alpha); // -(tileHeight/2) is a bit of a hack to get the sprite to be drawn in the correct place while walking
         column = getColumnFromXPrecise(x);
         row = getRowFromYPrecise(y);
     }
-    else draw_sprite(isoSprite, image_index, getIsometricX(column, row), getIsometricY(column, row));
+    else draw_self_ext();//draw_sprite(isoSprite, image_index, getIsometricX(column, row), getIsometricY(column, row));
     
     
     // DEBUG

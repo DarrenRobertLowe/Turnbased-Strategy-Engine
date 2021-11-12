@@ -1,6 +1,7 @@
 /// deglobalizeGridVars();
 tileWidth   = global.tileWidth;
 tileHeight  = global.tileHeight;
+cellSize    = global.cellSize;
 gridWidth   = global.gridWidth;
 gridHeight  = global.gridHeight;
 gridOffsetX = global.GRID_OFFSET_X;
