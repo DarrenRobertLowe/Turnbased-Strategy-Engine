@@ -11,7 +11,7 @@ else {
     alpha = 1;
     var hue = c_white;
     var transparencyAlpha = global.transparencyAlpha;
-
+    
     
     /* ground height consideration, not going to be this easy
     objList = ds_grid_get(GRID,column,row);

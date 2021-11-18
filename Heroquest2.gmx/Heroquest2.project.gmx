@@ -19,6 +19,8 @@
       <sprite>sprites\spr_Floor</sprite>
       <sprite>sprites\spr_none</sprite>
       <sprite>sprites\anim_archer</sprite>
+      <sprite>sprites\anim_archer_north</sprite>
+      <sprite>sprites\anim_archer_south</sprite>
     </sprites>
     <sprites name="Menu">
       <sprite>sprites\spr_menuCursor</sprite>
@@ -107,6 +109,8 @@
     <script>scripts\getFacingAsString.gml</script>
     <script>scripts\update_sprite.gml</script>
     <script>scripts\draw_collision_mask.gml</script>
+    <script>scripts\animate_alt.gml</script>
+    <script>scripts\activate_options.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu</font>
@@ -119,11 +123,11 @@
     <object>objects\ENTITY</object>
     <object>objects\HERO</object>
     <object>objects\ENEMY</object>
+    <object>objects\FLOOR_DRAWER</object>
     <objects name="Cursor and Movement">
       <object>objects\CURSOR</object>
       <object>objects\obj_MovementPanel</object>
     </objects>
-    <object>objects\FLOOR_DRAWER</object>
     <objects name="Levels">
       <object>objects\LEVEL</object>
       <object>objects\TEST_LEVEL</object>

@@ -4,7 +4,8 @@ enum DIRECTION {
     north,
     west,
     south,
-    east
+    east,
+    none
 }
 
 enum MODES {

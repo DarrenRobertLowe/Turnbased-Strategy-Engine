@@ -1,6 +1,6 @@
 ///draw_mask()
 draw_set_color(c_yellow);
-draw_set_alpha(.4);
+draw_set_alpha(1);
 
 draw_rectangle(
     (x -sprite_xoffset) + sprite_get_bbox_left(sprite_index),

@@ -38,22 +38,29 @@ setup_heroes();
 
 
 /// INIT
-global.isometricView = false;
-global.transparencyAlpha = 0.25;
-global.heroesList = ds_list_create();
+global.isometricView        = false;
+global.transparencyAlpha    = 0.25;
+global.heroesList           = ds_list_create();
+
 
 // OPTIONS
-global.OPTIONS_CURSOR_MEMORY = true;
-global.OPTIONS_MOVEMENT_SPEED = 4;
-global.animationSpeed  = (global.OPTIONS_MOVEMENT_SPEED / 8);//0.3;
-global.resolutionWidth = 800;
+global.OPTIONS_TARGET_FPS        = 120;
+global.OPTIONS_CURSOR_MEMORY     = true;
+
+global.OPTIONS_ANIMATION_SPEED   = 1;       // something like 0.5 -&gt; 2;
+default_animationFramesPerSecond = 6;
+
+global.OPTIONS_MOVEMENT_SPEED    = 1;       // something like 0.5 -&gt; 2;
+default_pixelsPerSecond          = 120;     // how fast a character moves across cells
+
+global.resolutionWidth  = 800;
 global.resolutionHeight = 600;
+
+activate_options();
 
 
 // DEBUG
-global.animationID = 0;
-
-// TESTING
+global.currentFrame = 0;
 room_goto(level_Test);
 
 </string>

@@ -43,6 +43,5 @@
     <frame index="20">images\anim_archer_20.png</frame>
     <frame index="21">images\anim_archer_21.png</frame>
     <frame index="22">images\anim_archer_22.png</frame>
-    <frame index="23">images\anim_archer_23.png</frame>
   </frames>
 </sprite>

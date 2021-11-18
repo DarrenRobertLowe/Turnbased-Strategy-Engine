@@ -22,7 +22,7 @@ if (validCell(targetColumn, targetRow))
     if (mp_grid_path(global.pathGrid, myPath, x+offset, y+offset, targetX +offset, targetY +offset, false))
     {
         path_shift(myPath, -offset, -offset);
-        path_start(myPath, global.OPTIONS_MOVEMENT_SPEED, path_action_stop, true);
+        path_start(myPath, global.movementSpeed, path_action_stop, true);
     }
 }
 else show_debug_message("Invald target cell! Abandoning move!");

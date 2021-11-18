@@ -28,9 +28,15 @@
             <string>/// OBJECTS THAT CAN BE PLACED ON THE GRID
 event_inherited();
 
-//sprite_collision_mask(sprite_index, false, 2, 2, 2, sprite_width-2, sprite_height-2, 1, 0);
+sprite_collision_mask(sprite_index, false, 2, 2, 2, sprite_width-2, sprite_height-2, 1, 0);
 
 depth = DEPTH.normal;
+
+
+northSprite = anim_archer_north;
+southSprite = anim_archer_south;
+direction   = 0;
+facing      = DIRECTION.east;
 
 MOVING      = false;
 myPath      = path_add();
@@ -38,7 +44,7 @@ isoSprite   = spr_none;
 selectable  = false;
 xprev       = x;
 yprev       = y;
-facing      = faceDirection(4); // face a random direction
+//facing      = faceDirection(4); // face a random direction
 keepVisible = true;
 
 column      = getColumnFromX(x);
@@ -49,7 +55,7 @@ alpha       = 1;
 
 setup_animations();
 update_sprite();
-animate();
+animate_alt();
 
 if (ds_grid_get(grid, column, row) == -1)
 {
@@ -114,6 +120,7 @@ prevDir     = -1;
             <kind>1</kind>
             <string>/// pathfinding
 MOVING = true;
+global.TIMETOWALK=0;
 goto_Square(targetColumn, targetRow);
 </string>
           </argument>
@@ -140,21 +147,25 @@ goto_Square(targetColumn, targetRow);
             <string>/// ANIMATE IF WALKING
 event_inherited();
 
-
-
+image_index += global.animationSpeed;
+update_sprite();
 // ANIMATE IF WALKING
 if (global.isometricView)
 {
-    animate();
+    //animate();
+    animate_alt();
 }
 
 
 // MOVEMENT
 if (MOVING) {
+    show_debug_message("Current frame is "+string(global.currentFrame));
+    show_debug_message("MOVING = "+string(MOVING));
+    global.TIMETOWALK++;
     get_direction();
-    path_speed = global.OPTIONS_MOVEMENT_SPEED;
+    //path_speed = global.OPTIONS_MOVEMENT_SPEED;   // if using delta time you probably need to update it here
     CURSOR.MODE = MODES.waiting;                        // make cursor wait while we move
-    getCellFromCoordsPrecise(x,y);                    // getCellFromCoordsPrecise(x, y);
+    getCellFromCoordsPrecise(x,y);                      // getCellFromCoordsPrecise(x, y);
     
     // finish moving
     if (path_position &gt;= 1) {
@@ -163,6 +174,7 @@ if (MOVING) {
         MOVING = false;                                 // turn off movement
         updateGrid(id, sourceColumn, sourceRow, targetColumn, targetRow);   // empty old coords and add id to new position.
         show_message("finished moving");
+        show_message("Took "+string(global.TIMETOWALK));
     }
 }
 </string>
@@ -216,7 +228,7 @@ yprev = yprevious;
 event_inherited();
 
 
-// cartesian view
+// CARTESIAN view
 if !(global.isometricView) {
     draw_set_alpha(1);
     draw_self_ext();
@@ -225,23 +237,23 @@ if !(global.isometricView) {
     draw_set_alpha(0.25);
     mp_grid_draw(global.pathGrid);
 }
-else
+else // ISOMETRIC view
 {
-    // isometric view
     if  (path_position &gt; 0)
     and (path_position &lt; 1)
     {
-        draw_self_ext();
         //draw_sprite_ext(isoSprite, image_index, getIsometricX(column, row), getIsometricY(column, row)-(tileHeight/2), image_xscale, image_yscale, 0, c_white, alpha); // -(tileHeight/2) is a bit of a hack to get the sprite to be drawn in the correct place while walking
-        column = getColumnFromXPrecise(x);
-        row = getRowFromYPrecise(y);
+        column  = getColumnFromXPrecise(x);
+        row     = getRowFromYPrecise(y);
     }
-    else draw_self_ext();//draw_sprite(isoSprite, image_index, getIsometricX(column, row), getIsometricY(column, row));
+    //else draw_self_ext();//draw_sprite(isoSprite, image_index, getIsometricX(column, row), getIsometricY(column, row));
+    draw_self_ext();
+    
+    
     
     
     // DEBUG
-    if (global.DEBUG)
-    {
+    if (global.DEBUG) {
         draw_set_color(c_green);
         draw_text(
                 getIsometricX(column, row),
