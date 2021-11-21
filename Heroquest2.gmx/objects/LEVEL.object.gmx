@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// Setup for all level types
 setup_views();
-room_speed = global.OPTIONS_TARGET_FPS;
+
 global.TURN = 0;
 
 room_width  = ((global.gridWidth  * global.isometricTileWidth) + (global.GRID_OFFSET_X*2));
@@ -35,6 +35,10 @@ room_height = ((global.gridHeight * global.isometricTileHeight) + (global.GRID_O
 
 show_debug_message("room width is "+string(room_width));
 show_debug_message("room height is "+string(room_height));
+
+
+view_wview = global.options_ResolutionWidth;
+view_hview = global.options_ResolutionHeight;
 </string>
           </argument>
         </arguments>

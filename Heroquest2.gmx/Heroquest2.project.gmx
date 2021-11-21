@@ -19,8 +19,8 @@
       <sprite>sprites\spr_Floor</sprite>
       <sprite>sprites\spr_none</sprite>
       <sprite>sprites\anim_archer</sprite>
-      <sprite>sprites\anim_archer_north</sprite>
-      <sprite>sprites\anim_archer_south</sprite>
+      <sprite>sprites\DEPRECATEDanim_archer_north</sprite>
+      <sprite>sprites\DEPRECATEDanim_archer_south</sprite>
     </sprites>
     <sprites name="Menu">
       <sprite>sprites\spr_menuCursor</sprite>
@@ -46,6 +46,7 @@
       <script>scripts\setup_heroes.gml</script>
       <script>scripts\setup_views.gml</script>
       <script>scripts\setup_animations.gml</script>
+      <script>scripts\setup_delta.gml</script>
     </scripts>
     <scripts name="Calculations">
       <script>scripts\getCellCenterY.gml</script>
@@ -101,7 +102,6 @@
       <script>scripts\spawnHero.gml</script>
       <script>scripts\getHeroStats.gml</script>
     </scripts>
-    <script>scripts\animate.gml</script>
     <script>scripts\isMoving.gml</script>
     <script>scripts\facingNorthWest.gml</script>
     <script>scripts\facingSouthEast.gml</script>
@@ -109,8 +109,11 @@
     <script>scripts\getFacingAsString.gml</script>
     <script>scripts\update_sprite.gml</script>
     <script>scripts\draw_collision_mask.gml</script>
-    <script>scripts\animate_alt.gml</script>
-    <script>scripts\activate_options.gml</script>
+    <script>scripts\animate.gml</script>
+    <script>scripts\load_options.gml</script>
+    <script>scripts\recalculate_values.gml</script>
+    <script>scripts\delta.gml</script>
+    <script>scripts\deglobalizeVars.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu</font>

@@ -21,8 +21,11 @@ if (validCell(targetColumn, targetRow))
 {
     if (mp_grid_path(global.pathGrid, myPath, x+offset, y+offset, targetX +offset, targetY +offset, false))
     {
+        var spd = delta(global.movementSpeed);
+        show_debug_message("global.delta_multiplier is "+string(global.delta_multiplier));
         path_shift(myPath, -offset, -offset);
-        path_start(myPath, global.movementSpeed, path_action_stop, true);
+        path_start(myPath, spd, path_action_stop, true);
+        show_debug_message("path speed set to "+string(spd));
     }
 }
 else show_debug_message("Invald target cell! Abandoning move!");

@@ -22,17 +22,3 @@ if (dir <= (270+45) && dir >= (270-45)) {
 
 
 update_sprite();
-
-
-
-
-
-/* 
-//DEBUG
-//show_debug_message("get_direction() says direction is "+string(direction));
-if (direction != prevDir)
-{
-    show_message("Direction is now "+string(direction));
-    prevDir = direction;
-}
-*/

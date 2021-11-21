@@ -53,7 +53,7 @@ else {
     
     draw_sprite_ext(
          isoSprite
-        ,image_index
+        ,floor(imageIndex)
         ,getIsometricX(column, row)
         ,getIsometricY(column, row) //getIsometricY(column, row, height)
         ,image_xscale

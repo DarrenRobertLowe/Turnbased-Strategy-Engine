@@ -39,7 +39,7 @@ column      = getColumnFromX(x);
 row         = getRowFromY(y);
 getCoordsFromCell();
 
-
+imageIndex = 0;
 isoSprite = spr_cursor;         // actual in-game sprite
 move = "";                      // used to move the cursor north, south, east or west.
 pathShown = false;              // used to display/hide movement tiles.
@@ -157,7 +157,7 @@ if (MODE == MODES.free) {
                 
                 getMenuValues(selected);
                 
-                if (global.OPTIONS_CURSOR_MEMORY) {
+                if (global.options_CursorMemory) {
                     menuPosition = selected.menuPosition;     // Use the objects cursor memory?
                 }
                 else {

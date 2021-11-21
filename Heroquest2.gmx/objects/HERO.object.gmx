@@ -30,9 +30,9 @@ event_inherited();
 
 
 // INITIALIZING
-isoSprite = anim_archer;
-selectable = true;      // can this object be selected by the cursor?
-menuPosition = 0;       // last position of menu cursor.
+isoSprite       = anim_archer;
+selectable      = true;      // can this object be selected by the cursor?
+menuPosition    = 0;       // last position of menu cursor.
 
 //update_Grid();                    // makes old grid square null and fills new location with id. This is required.
 next_column = column;               // used in unit movement.

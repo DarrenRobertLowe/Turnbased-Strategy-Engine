@@ -25,44 +25,76 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// SETUP
-global.DEBUG = true;
+            <string>/// INIT
+global.DEBUG                = true;
+global.isometricView        = false;
+global.transparencyAlpha    = 0.25;
+global.heroesList           = ds_list_create();
+global.million              = 1000000;
+
+
+/// SETUP
 randomize();
 setup_enums();
 global.pathGrid = mp_grid_create(0, 0, 0, 0, 0, 0); // we need to initialize this here so we can call "setup_grids()" when starting new maps.
 setup_grids(10,10);
-deglobalizeGridVars();
+deglobalizeVars();
 setup_controls();
 setup_gui();
 setup_heroes();
 
 
-/// INIT
-global.isometricView        = false;
-global.transparencyAlpha    = 0.25;
-global.heroesList           = ds_list_create();
-
 
 // OPTIONS
-global.OPTIONS_TARGET_FPS        = 120;
-global.OPTIONS_CURSOR_MEMORY     = true;
+// (these are defaults but are properly loaded in via load_options())
+global.useDeltaTime                 = true;
+global.options_CursorMemory         = true;
+global.options_TargetFPS            = 60; //60; //120;
+global.options_AntialiasingAmount   = 0;
+global.options_VSync                = 0;
+global.options_ResolutionWidth      = 800;
+global.options_ResolutionHeight     = 600;
+global.options_GameSpeed            = 1;    // allows the user to slowdown or speedup gameplay
 
-global.OPTIONS_ANIMATION_SPEED   = 1;       // something like 0.5 -&gt; 2;
-default_animationFramesPerSecond = 6;
 
-global.OPTIONS_MOVEMENT_SPEED    = 1;       // something like 0.5 -&gt; 2;
-default_pixelsPerSecond          = 120;     // how fast a character moves across cells
+default_animationFramesPerSecond    = 12;
+default_cellsWalkedPerSecond        = 3;
+default_pixelsPerSecond             = (global.isometricTileWidth * default_cellsWalkedPerSecond);
 
-global.resolutionWidth  = 800;
-global.resolutionHeight = 600;
 
-activate_options();
+load_options();
+recalculate_values();
 
 
 // DEBUG
 global.currentFrame = 0;
 room_goto(level_Test);
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// KEEP DELTA TIME
+global.actual_delta = (delta_time / million);
+global.delta_multiplier = (global.actual_delta / global.target_delta);
 </string>
           </argument>
         </arguments>

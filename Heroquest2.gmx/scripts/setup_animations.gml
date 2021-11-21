@@ -1,24 +1,38 @@
 /// setup_animations()
-var frames = 5;
-
-// northwest
-animation_stand_north_start     = 0;
-animation_stand_north_end       = (animation_stand_north_start + frames);
-animation_walk_north_start      = (animation_stand_north_end + 1);
-animation_walk_north_end        = (animation_walk_north_start + frames);
-
-animationCount = 12;   // used to quickly swap between north and south facing sprites (see animate() )
 
 
-// southeast
-animation_stand_south_start     = 12;//(animationCount + 1);
-animation_stand_south_end       = 17;//(animation_stand_south_start + frames);
-animation_walk_south_start      = 18;//(animation_stand_south_end + 1);
-animation_walk_south_end        = 23;//(animation_walk_south_start + frames);
+// stand
+animation_stand_start   = 0;
+animation_stand_end     = 5;
+
+// walk
+animation_walk_start    = 6;
+animation_walk_end      = 11;
+
+// melee
+animation_melee_start   = 12;
+animation_melee_end     = 15;
+
+// slash
+animation_slash_start   = 16;
+animation_slash_end     = 19;
+
+// heavy
+animation_heavy_start   = 20;
+animation_heavy_end     = 23;
+
+// bow
+animation_bow_start     = 24;
+animation_bow_end       = 27;
+
+// use
+animation_use_start     = 28;
+animation_use_end       = 28;
+
+// hurt
+animation_hurt_start    = 29;
+animation_hurt_end      = 29;
 
 
-
-animation_stand_start = 0;
-animation_stand_end  = 5;
-animation_walk_start = 6;
-animation_walk_end = 11;
+// north facing sprites
+animationCount = (animation_hurt_end + 1); // used to quickly swap between north and south facing sprites (see animate() )

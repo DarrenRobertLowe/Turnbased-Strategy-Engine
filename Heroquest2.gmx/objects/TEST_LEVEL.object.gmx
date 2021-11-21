@@ -28,6 +28,18 @@
             <string>/// start the map
 event_inherited();
 
+/*
+if !(global.useDeltaTime)
+{
+    if (room_speed != global.options_TargetFPS)
+    {
+        show_debug_message("Room speed was not correct! Creating new room with target FPS.");
+        room_speed = global.options_TargetFPS;
+        var newRoom = room_duplicate(room);
+    }
+}
+*/
+
 depth = DEPTH.ground;
 
 instance_create(0, 0, FLOOR_DRAWER);
