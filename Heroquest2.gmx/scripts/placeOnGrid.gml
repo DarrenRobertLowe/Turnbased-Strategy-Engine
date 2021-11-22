@@ -1,14 +1,15 @@
 /// placeOnGrid(grid, column, row, id)
-var grid = argument0;
-var column = argument1;
-var row = argument2;
+var grid     = argument0;
+var column   = argument1;
+var row      = argument2;
 var instance = argument3;
+
 
 if (ds_grid_get(grid, column, row) == -1)
 {
     ds_grid_set(grid, column, row, instance);
 }
-else 
+else
 {
     show_error(
         "Grid cell already occupied! #

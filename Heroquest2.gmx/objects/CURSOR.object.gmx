@@ -98,6 +98,10 @@ check_controls();
 if (MODE == MODES.free) {
     cursor_move();
     
+    if (global.controls_cancel) {
+        resetCursor();
+    }
+    
     // SELECT AN OBJECT ON MAP
     if (global.controls_ok) {
         global.controls_ok = 0;                                 // this stops the button from repeating every step
@@ -141,6 +145,8 @@ if (MODE == MODES.free) {
 // CHARACTER MENU
 if (MODE == MODES.objectMenu) {
     menu_cursor_controls();
+    show_debug_message("menuPosition: "+string(menuPosition));
+    show_debug_message("menu item: "+string(selected.menu[menuPosition]));
     
     if (global.controls_ok) {
         global.controls_ok = 0; // prevent instant repeats
@@ -154,7 +160,15 @@ if (MODE == MODES.objectMenu) {
         
         if (selected.menu[menuPosition] == "ATTACK")    then MODE = MODES.attacking;
         if (selected.menu[menuPosition] == "SKILL")     then MODE = MODES.skills;
-        if (selected.menu[menuPosition] == "CANCEL")    then cursorMenuCancel();
+
+        if (selected.menu[menuPosition] == "CANCEL") {
+            resetCursor();
+        }
+        
+        if (selected.menu[menuPosition] == "END TURN") {
+            nextTurn(); 
+            resetCursor();
+        }
     }
 }
 

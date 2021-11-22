@@ -54,7 +54,7 @@
       <script>scripts\load_options.gml</script>
       <script>scripts\recalculate_values.gml</script>
     </scripts>
-    <scripts name="Calculations">
+    <scripts name="Math">
       <script>scripts\getCellCenterY.gml</script>
       <script>scripts\getIsometricX.gml</script>
       <script>scripts\getIsometricY.gml</script>
@@ -69,11 +69,9 @@
       <script>scripts\getCoordsFromCell.gml</script>
       <script>scripts\getCellFromCoordsPrecise.gml</script>
       <script>scripts\getCellFromCoords.gml</script>
-      <script>scripts\blockingVisibility.gml</script>
-      <script>scripts\DEPRECATAD_blockingVisibility.gml</script>
     </scripts>
     <scripts name="Drawing">
-      <script>scripts\draw_self_isometric.gml</script>
+      <script>scripts\DEPRECATEDdraw_self_isometric.gml</script>
       <script>scripts\draw_self_ext.gml</script>
       <script>scripts\draw_menu.gml</script>
       <script>scripts\draw_menuCursor.gml</script>
@@ -82,6 +80,7 @@
       <script>scripts\delta.gml</script>
       <script>scripts\update_sprite.gml</script>
       <script>scripts\animate.gml</script>
+      <script>scripts\get_z.gml</script>
     </scripts>
     <scripts name="Cursor">
       <script>scripts\check_controls.gml</script>
@@ -89,7 +88,6 @@
       <script>scripts\teleportToCell.gml</script>
       <script>scripts\getGridHERO_list.gml</script>
       <script>scripts\getMenuValues.gml</script>
-      <script>scripts\cursorMenuCancel.gml</script>
       <script>scripts\menu_cursor_controls.gml</script>
       <script>scripts\show_movement_range.gml</script>
       <script>scripts\moveInstant.gml</script>
@@ -123,8 +121,18 @@
       <script>scripts\faceDirection.gml</script>
       <script>scripts\facingSouthEast.gml</script>
       <script>scripts\getFacingAsString.gml</script>
-      <script>scripts\DEPRECATED_isMoving.gml</script>
+      <script>scripts\blockingVisibility.gml</script>
     </scripts>
+    <scripts name="Game Logic">
+      <script>scripts\addToTurnList.gml</script>
+      <script>scripts\sortTurnList.gml</script>
+      <scripts name="Game Calculations">
+        <script>scripts\calculate_initiative.gml</script>
+      </scripts>
+    </scripts>
+    <script>scripts\nextTurn.gml</script>
+    <script>scripts\moveToCurrentUnit.gml</script>
+    <script>scripts\resetCursor.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu</font>
@@ -134,6 +142,7 @@
     <object>objects\OBJECT</object>
     <object>objects\CAMERA</object>
     <object>objects\CURSOR</object>
+    <object>objects\GRID_OBJECT</object>
     <object>objects\OBSTACLE</object>
     <object>objects\obj_MovementPanel</object>
     <object>objects\ENTITY</object>
@@ -141,11 +150,12 @@
     <object>objects\ENEMY</object>
     <object>objects\FLOOR_DRAWER</object>
     <object>objects\WALL</object>
+    <object>objects\PLATFORM</object>
+    <object>objects\STEP</object>
     <objects name="Levels">
       <object>objects\LEVEL</object>
       <object>objects\TEST_LEVEL</object>
     </objects>
-    <object>objects\STEP</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\initial</room>

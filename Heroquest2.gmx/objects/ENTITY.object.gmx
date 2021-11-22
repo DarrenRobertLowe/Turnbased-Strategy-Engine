@@ -25,30 +25,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// HEROES, ENEMIES, LIVING CREATURES, etc.
+            <string>/// BASICALLY ANYTHING ON THE TURNLIST
 event_inherited();
 
-/// default stats
-type    = ENEMY;
-name    = "Nameless";
-sex     = SEXES.none;
-hp      = 1;
-mp      = 0;
-move    = 0;
-attack  = 1;
-defence = 0;
-weapon  = 0;
-offhand = 0;
-amulet  = 0;
-armour  = 0;
-ring1   = 0;
-ring2   = 0;
-hair    = 0;
-face    = 0;
-skin    = 0;
 
-// DEBUG
-//prevDir = -1;
+/// default stats
+type        = ENEMY;
+name        = "Nameless";
+sex         = SEXES.none;
+hp          = 1;
+mp          = 0;
+move        = 0;
+initiative  = 1;
+attack      = 1;
+defence     = 0;
+weapon      = 0;
+offhand     = 0;
+amulet      = 0;
+armour      = 0;
+ring1       = 0;
+ring2       = 0;
+hair        = 0;
+face        = 0;
+skin        = 0;
 </string>
           </argument>
         </arguments>
@@ -111,6 +110,7 @@ if (global.isometricView)
 
 // MOVEMENT
 if (MOVING) {
+    get_z();
     path_speed = delta(global.movementSpeed);   // if using delta time you probably need to update it here
     CURSOR.MODE = MODES.waiting;                // make cursor wait while we move
     getCellFromCoordsPrecise(x,y);              // getCellFromCoordsPrecise(x, y);

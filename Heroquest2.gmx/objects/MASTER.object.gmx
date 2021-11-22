@@ -31,7 +31,8 @@ global.isometricView        = false;
 global.transparencyAlpha    = 0.5;
 global.heroesList           = ds_list_create();
 global.million              = 1000000;
-
+global.z_offset             = 8;                    // used to make units appears on top of platforms correctly
+global.TURNLIST             = ds_list_create();
 
 /// SETUP
 randomize();
@@ -99,6 +100,62 @@ room_goto(level_Test);
             <string>/// KEEP DELTA TIME
 global.actual_delta = (delta_time / million);
 global.delta_multiplier = (global.actual_delta / global.target_delta);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="109">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Double game speed ON/OFF
+
+if (global.options_GameSpeed &lt;= 1)
+then global.options_GameSpeed = 2;
+else global.options_GameSpeed = 1;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="107">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Slow game speed ON/OFF
+
+if (global.options_GameSpeed &gt;= 1)
+then global.options_GameSpeed = 0.25;
+else global.options_GameSpeed = 1;
+
 </string>
           </argument>
         </arguments>

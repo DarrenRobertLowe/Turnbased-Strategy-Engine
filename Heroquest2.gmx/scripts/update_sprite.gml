@@ -1,25 +1,29 @@
 ///update_sprite();
+/* NOTE: imageMirror works the same as image_xscale
+ * We had to add our own variable because mirroring sprites
+ * with image_xscale causes the bounding box to move! 
+*/
 
 switch(direction)
 {
     case 0:
         facing = DIRECTION.east;
-        image_xscale = -1;  // mirror the sprite
+        imageMirror = -1;  // mirror the sprite
         break;
         
     case 90:
         facing = DIRECTION.north;
-        image_xscale = -1;  // mirror the sprite
+        imageMirror = -1;  // mirror the sprite
         break;
         
     case 180:
         facing = DIRECTION.west;
-        image_xscale = 1;  // de-mirror the sprite
+        imageMirror = 1;  // don't mirror the sprite
         break;
         
     case 270:
         facing = DIRECTION.south;
-        image_xscale = 1;  // de-mirror the sprite
+        imageMirror = 1;  // don't mirror the sprite
         break;
     
     default:

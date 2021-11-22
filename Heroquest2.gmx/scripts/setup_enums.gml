@@ -30,11 +30,12 @@ enum SEXES {
 
 enum HEROSTATS { // see add_new_hero()
     type,
-    sex,
     name,
+    sex,
     hp,
     mp,
     move,
+    initiative,
     attack,
     defence,
     weapon,
@@ -46,7 +47,7 @@ enum HEROSTATS { // see add_new_hero()
     hair,
     face,
     skin,
-    length  // KEEP AT BOTTOM! used to count the number of possible stats
+    length  // KEEP AT BOTTOM! used to count the number of stat entries
 }
 
 enum DEPTH {

@@ -22,6 +22,6 @@ if (global.controls_right) {
 }
 
 if (global.controls_cancel) {
-    cursorMenuCancel();
+    resetCursor();
     global.controls_cancel = 0;
 }

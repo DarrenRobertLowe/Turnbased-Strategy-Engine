@@ -7,16 +7,6 @@ if !(global.isometricView) {
 
 // ISOMETRIC VIEW
 else {
-    // take ground height into consideration
-    var z = 0;
-    var floorObj = ds_grid_get(floorGrid, column, row);
-    
-    if  (floorObj > 0)
-    and (instance_exists(floorObj)) {
-        z = floorObj.height;
-    }
-    
-    
     // should we go transparent?
     alpha = 1;
     var currentUnit = global.TURN;
@@ -42,8 +32,8 @@ else {
          isoSprite
         ,floor(imageIndex)
         ,getIsometricX(column, row)
-        ,getIsometricY(column, row) //+z
-        ,image_xscale
+        ,getIsometricY(column, row) - (z)
+        ,imageMirror
         ,image_yscale
         ,0
         ,hue

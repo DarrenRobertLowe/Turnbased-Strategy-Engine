@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>OBJECT</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,27 +25,44 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// ALL OBJECTS
-image_speed = 0;
-image_index = 0;
+            <string>/// ANY OBJECTS ON THE MAIN GRIDS
+
+event_inherited();
+
+//sprite_collision_mask(sprite_index, false, 2, 2, 2, sprite_width-2, sprite_height-2, 1, 0);
+
+depth       = DEPTH.normal;
+direction   = 0;
+facing      = DIRECTION.east;
+MOVING      = false;
+myPath      = path_add();
 isoSprite   = spr_none;
-imageIndex  = 0;    // image_index for iso sprites (this is needed to prevent Game Maker setting the image_index to zero)
-transparencyAlpha = global.transparencyAlpha;
-hue = c_white;
-z = 0;
-imageMirror = 1;   // replaces image_xscale because image_xscale moves the bounding box
+selectable  = false;
+xprev       = x;
+yprev       = y;
+heightUnits = 1;
+height      = 0;
+keepVisible = false;
+floorCollisionList = ds_list_create();
+
+setup_animations();
+update_sprite();
+
+alpha       = 1;
+column      = getColumnFromX(x);
+row         = getRowFromY(y);
+isoX        = getIsometricX(column, row);
+isoY        = getIsometricY(column, row);
 
 
-deglobalizeVars();
-
-depth = DEPTH.sky;
-
+pathfindingIgnoreList = ds_list_create();
+ds_list_add(pathfindingIgnoreList, id);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -62,8 +79,22 @@ depth = DEPTH.sky;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// depth sorting
-depth = -(y + x + z);
+            <string>/// draw self and animation
+event_inherited();
+
+draw_self_ext();
+
+// CARTESIAN view
+if !(global.isometricView) {
+    draw_set_alpha(1);
+    draw_path_ext();
+    draw_collision_mask();
+    draw_set_alpha(0.25);
+    mp_grid_draw(global.pathGrid);
+}
+else // ISOMETRIC view
+{
+}
 </string>
           </argument>
         </arguments>

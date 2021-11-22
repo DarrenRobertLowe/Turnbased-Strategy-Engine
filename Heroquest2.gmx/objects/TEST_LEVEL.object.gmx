@@ -43,9 +43,18 @@ if !(global.useDeltaTime)
 depth = DEPTH.ground;
 
 instance_create(0, 0, FLOOR_DRAWER);
-//spawn(9, 8, ENEMY, 4);
-var hero = spawnHero(5, 5, 0, 4);
 
+
+spawn(8, 8, STEP, 0);
+
+
+
+
+//spawn(9, 8, ENEMY, 4);
+var hero  = spawnHero(5, 5, 0, 4, true);
+var hero2 = spawnHero(5, 6, 1, 4, true);
+var hero3 = spawnHero(6, 7, 2, 4, true);
+var hero4 = spawnHero(6, 6, 3, 4, true);
 
 instance_create(hero.x, hero.y, CURSOR);
 instance_create(hero.x, hero.y, CAMERA);
@@ -56,7 +65,6 @@ spawn(3, 4, WALL, 4);
 spawn(3, 3, WALL, 4);
 spawn(3, 1, WALL, 4);
 
-global.TURN = hero.id;
 </string>
           </argument>
         </arguments>
