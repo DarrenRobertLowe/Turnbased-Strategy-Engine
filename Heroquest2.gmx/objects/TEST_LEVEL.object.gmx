@@ -50,6 +50,12 @@ var hero = spawnHero(5, 5, 0, 4);
 instance_create(hero.x, hero.y, CURSOR);
 instance_create(hero.x, hero.y, CAMERA);
 
+spawn(1, 5, WALL, 4);
+spawn(3, 5, WALL, 4);
+spawn(3, 4, WALL, 4);
+spawn(3, 3, WALL, 4);
+spawn(3, 1, WALL, 4);
+
 global.TURN = hero.id;
 </string>
           </argument>

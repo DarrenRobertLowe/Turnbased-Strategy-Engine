@@ -31,28 +31,21 @@ event_inherited();
 
 // INITIALIZING
 isoSprite       = anim_archer;
-selectable      = true;      // can this object be selected by the cursor?
-menuPosition    = 0;       // last position of menu cursor.
+selectable      = true;             // can this object be selected by the cursor?
+menuPosition    = 0;                // last position of menu cursor.
 
 //update_Grid();                    // makes old grid square null and fills new location with id. This is required.
 next_column = column;               // used in unit movement.
-next_row = row;                     // used in unit movement.
+next_row    = row;                  // used in unit movement.
 cart_sprite = sprite_index;         // for cartesian drawing (debugging)
-//iso_sprite = Fighter_Animations;    // actual sprite
-//iso_image_index = 0;
-/*north_sprite = Archer_Walk_North;
-west_sprite = Archer_Walk_North;
-south_sprite = Archer_Walk_South;
-east_sprite = Archer_Walk_South;
-*/
+
 
 // COMMAND LIST
 menu[0] = "MOVE";
 menu[1] = "ATTACK";
 menu[2] = "SKILL";
 menu[3] = "SEARCH";
-menu[4] = "FORAGE";
-menu[5] = "CANCEL";
+menu[4] = "CANCEL";
 </string>
           </argument>
         </arguments>

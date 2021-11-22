@@ -28,7 +28,7 @@
             <string>/// INIT
 global.DEBUG                = true;
 global.isometricView        = false;
-global.transparencyAlpha    = 0.25;
+global.transparencyAlpha    = 0.5;
 global.heroesList           = ds_list_create();
 global.million              = 1000000;
 
@@ -67,9 +67,13 @@ recalculate_values();
 
 
 // DEBUG
-global.currentFrame = 0;
-room_goto(level_Test);
+if (global.DEBUG)
+{
+    global.currentFrame = 0;
+    show_debug_overlay(true);
+}
 
+room_goto(level_Test);
 </string>
           </argument>
         </arguments>

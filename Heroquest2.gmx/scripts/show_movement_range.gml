@@ -2,12 +2,12 @@
 
 ds_grid_clear(movementGrid,-1); // allows for proper move calculation over tall terrain.
 
-mp_grid_clear_all(global.pathGrid);
+gridpath_set_collisions(global.pathGrid, OBSTACLE, selected.pathfindingIgnoreList);
 
 
 // CHECKS THE GRID FOR OBJECTS AND MARKS THEIR COORDS AS PROHIBITED
-mp_grid_add_instances(global.pathGrid, ENEMY, false);   // Add all OBSTACLE objects
-mp_grid_clear_cell(global.pathGrid, column, row);      // Except our own cell, which is free.
+//mp_grid_add_instances(global.pathGrid, OBSTACLE, false);   // Add all OBSTACLE objects
+//mp_grid_clear_cell(global.pathGrid, column, row);      // Except our own cell, which is free.
 
 /* // uncomment for Disgaea style platform jumping
 // CHECKS EACH PLATFORM OBJECT TO SEE IF IT CAN BE REACHED.

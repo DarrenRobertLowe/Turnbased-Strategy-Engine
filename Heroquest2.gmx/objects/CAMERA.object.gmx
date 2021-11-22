@@ -98,8 +98,8 @@ else {
 
 if (global.isometricView == false)
 {
-    var offsetX = gridOffsetX ;//- halfTileWidth;
-    var offsetY = gridOffsetY ;//- halfTileHeight;
+    var offsetX = gridOffsetX -1;
+    var offsetY = gridOffsetY -1;
     
     draw_set_color(c_black);
     var xMin = offsetX;

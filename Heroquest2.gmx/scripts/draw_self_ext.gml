@@ -1,4 +1,4 @@
-///draw_self_ext();
+/// draw_self_ext();
 
 // CARTESIAN VIEW
 if !(global.isometricView) {
@@ -7,55 +7,42 @@ if !(global.isometricView) {
 
 // ISOMETRIC VIEW
 else {
-    var currentUnit = global.TURN;
-    alpha = 1;
-    var hue = c_white;
-    var transparencyAlpha = global.transparencyAlpha;
+    // take ground height into consideration
+    var z = 0;
+    var floorObj = ds_grid_get(floorGrid, column, row);
     
-    
-    /* ground height consideration, not going to be this easy
-    objList = ds_grid_get(GRID,column,row);
-    size = objList.size;
-    
-    var height = 0; 
-    
-    for(i=0; i<size; i++)
-    {
-        obj = ds_list_find_value(objList, i);
-        
-        if !is_undefined(obj)
-        and instance_exists(obj)
-        {
-            if obj.height > height
-            then height = obj.height;
-        }
+    if  (floorObj > 0)
+    and (instance_exists(floorObj)) {
+        z = floorObj.height;
     }
-    */
-
     
-    if (keepVisible == false)
-    {
-        if (blockingVisibility(id, CURSOR))
-        {
+    
+    // should we go transparent?
+    alpha = 1;
+    var currentUnit = global.TURN;
+    
+    if (keepVisible == false) {
+        if (blockingVisibility(id, CURSOR)) {
             alpha = transparencyAlpha;
         }
         
-        if  (currentUnit != id)
-        and (currentUnit.keepVisible == true)
-        {
-            if (blockingVisibility(id, currentUnit))
-            {
-                alpha = transparencyAlpha;
-            }
+        if (currentUnit != id) {
+            //if (currentUnit.keepVisible == true)
+            //or (currentUnit.MOVING == true) {
+                if (blockingVisibility(id, currentUnit)) {
+                    alpha = transparencyAlpha;
+                }
+            //}
         }
     }
     
     
+    // draw the sprite
     draw_sprite_ext(
          isoSprite
         ,floor(imageIndex)
         ,getIsometricX(column, row)
-        ,getIsometricY(column, row) //getIsometricY(column, row, height)
+        ,getIsometricY(column, row) //+z
         ,image_xscale
         ,image_yscale
         ,0
@@ -63,5 +50,3 @@ else {
         ,alpha
         );
 }
-
-

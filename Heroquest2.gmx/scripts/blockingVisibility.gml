@@ -6,39 +6,48 @@
 var a = argument0;
 var b = argument1;
 
+var aX = getXFromColumn(a.column);
+var aY = getYFromRow(a.row);
+var bX = getXFromColumn(b.column);
+var bY = getYFromRow(b.row);
+
+var aCol = getColumnFromX(aX);
+var aRow = getRowFromY(aY);
+var bCol = getColumnFromX(bX);
+var bRow = getRowFromY(bY);
 
 if  (instance_exists(argument0))
 and (instance_exists(argument1))
 and (heightUnits > 1)
 {
-    if  ( a.column == (b.column))
-    and ( a.row == (b.row))
-    {  
-        hue = c_yellow;
-        return true;
-    }
-    
-    
-    if  ( a.column == (b.column + 1))
-    and ( a.row == (b.row + 1))
+    if  ( aCol == bCol)
+    and ( aRow == bRow)
     {  
         return true;
     }
     
-    if  ( a.column == (b.column))
-    and ( a.row == (b.row + 1))
+    
+    
+    if  ( aCol == (b.column + 1))
+    and ( aRow == (bRow + 1))
     {  
         return true;
     }
     
-    if  ( a.column == (b.column + 1))
-    and ( a.row == (b.row))
+    if  ( aCol == bCol)
+    and ( aRow == (bRow + 1))
     {  
         return true;
     }
     
-    if  ( a.column == (b.column + 2))
-    and ( a.row == (b.row +1))
+    if  ( aCol == (b.column + 1))
+    and ( aRow == (bRow))
+    {  
+        return true;
+    }
+    
+    if  ( aCol == (b.column + 2))
+    and ( aRow == (bRow +1))
     {  
         return true;
     }

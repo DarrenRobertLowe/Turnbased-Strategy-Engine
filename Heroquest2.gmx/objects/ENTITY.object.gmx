@@ -25,57 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// OBJECTS THAT CAN BE PLACED ON THE GRID
+            <string>/// HEROES, ENEMIES, LIVING CREATURES, etc.
 event_inherited();
-
-sprite_collision_mask(sprite_index, false, 2, 2, 2, sprite_width-2, sprite_height-2, 1, 0);
-
-depth = DEPTH.normal;
-
-//northSprite = anim_archer_north;
-//southSprite = anim_archer_south;
-northSprite = anim_archer;
-southSprite = anim_archer;
-
-direction   = 0;
-facing      = DIRECTION.east;
-
-MOVING      = false;
-myPath      = path_add();
-isoSprite   = spr_none;
-selectable  = false;
-xprev       = x;
-yprev       = y;
-//facing      = faceDirection(4); // face a random direction
-keepVisible = true;
-heightUnits = 1;
-
-column      = getColumnFromX(x);
-row         = getRowFromY(y);
-isoX        = getIsometricX(column, row);
-isoY        = getIsometricY(column, row);
-alpha       = 1;
-
-setup_animations();
-update_sprite();
-//animate();
-
-if (ds_grid_get(grid, column, row) == -1)
-{
-    ds_grid_set(grid, column, row, id);
-}
-else 
-{
-    show_error(
-        "Grid cell already occupied! #
-        Error: attempted to create object "+string(object_get_name(object_index))
-        +", id:" + string(id)
-        +" at position : " + string(column) + ":" +string(row)
-        +"# but we encountered something there already!
-        #value:" +string(ds_grid_get(grid, column, row)), true);
-}
-
-
 
 /// default stats
 type    = ENEMY;
@@ -96,9 +47,8 @@ hair    = 0;
 face    = 0;
 skin    = 0;
 
-
 // DEBUG
-prevDir     = -1;
+//prevDir = -1;
 </string>
           </argument>
         </arguments>
@@ -123,7 +73,6 @@ prevDir     = -1;
             <kind>1</kind>
             <string>/// pathfinding
 MOVING = true;
-global.TIMETOWALK = current_time;
 goto_Square(targetColumn, targetRow);
 </string>
           </argument>
@@ -174,16 +123,12 @@ if (MOVING) {
         CURSOR.MODE = MODES.free;               // return control to the cursor
         MOVING = false;                         // turn off movement
         updateGrid(id, sourceColumn, sourceRow, targetColumn, targetRow);   // empty old coords and add id to new position.
-        
-        // debugging
-        /*
-        if (global.DEBUG)
-        {
-            show_message("Took "+string(current_time - global.TIMETOWALK));
-        }
-        */
     }
 }
+
+
+// prevent occupation of mulitple grid cells that can happen on rare occasions
+snap_to_grid(column, row);
 </string>
           </argument>
         </arguments>
@@ -209,62 +154,6 @@ if (MOVING) {
             <string>/// update xprev and yprev
 xprev = xprevious;
 yprev = yprevious;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// draw self and animation
-event_inherited();
-
-
-draw_self_ext();
-
-
-// CARTESIAN view
-if !(global.isometricView) {
-    draw_set_alpha(1);
-    draw_path_ext();
-    draw_collision_mask();
-    draw_set_alpha(0.25);
-    mp_grid_draw(global.pathGrid);
-}
-else // ISOMETRIC view
-{
-    /*
-    // DEBUG
-    if (global.DEBUG) {
-        draw_set_color(c_black);
-        draw_text(
-                getIsometricX(column, row),
-                getIsometricY(column, row),
-                "facing:"+string(getFacingAsString(facing))+
-                "#direction:"+string(direction)+
-                "#image index:"+string(image_index)+
-                "#room speed is:"+string(room_speed)+
-                "#fps_real is:"+string(fps_real)+
-                "#fps is:"+string(fps)
-                );
-    }
-    */
-}
 </string>
           </argument>
         </arguments>
