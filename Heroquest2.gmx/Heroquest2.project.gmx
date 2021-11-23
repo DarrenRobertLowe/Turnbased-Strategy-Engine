@@ -21,8 +21,7 @@
       <sprite>sprites\spr_Floor</sprite>
       <sprite>sprites\spr_none</sprite>
       <sprite>sprites\anim_archer</sprite>
-      <sprite>sprites\DEPRECATEDanim_archer_north</sprite>
-      <sprite>sprites\DEPRECATEDanim_archer_south</sprite>
+      <sprite>sprites\anim_fighter</sprite>
       <sprite>sprites\spr_wall</sprite>
       <sprite>sprites\spr_step</sprite>
     </sprites>
@@ -133,6 +132,11 @@
     <script>scripts\nextTurn.gml</script>
     <script>scripts\moveToCurrentUnit.gml</script>
     <script>scripts\resetCursor.gml</script>
+    <script>scripts\build.gml</script>
+    <script>scripts\AI_check_getScared.gml</script>
+    <script>scripts\hpInDanger.gml</script>
+    <script>scripts\setup_combat_rules.gml</script>
+    <script>scripts\roll.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu</font>
@@ -156,6 +160,7 @@
       <object>objects\LEVEL</object>
       <object>objects\TEST_LEVEL</object>
     </objects>
+    <object>objects\NPC</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\initial</room>

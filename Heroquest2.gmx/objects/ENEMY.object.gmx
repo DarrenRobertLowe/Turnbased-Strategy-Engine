@@ -5,9 +5,113 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>ENTITY</parentName>
+  <parentName>NPC</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events/>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// inherit and set sprite
+event_inherited();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (global.TURN == id)
+{
+    /// Decide what action to take
+    
+    
+    // Are we scared?
+    if (AI_getsScared == true)
+    {
+        AI_isScared = AI_check_getScared(); // calculation to see if we're scared because of low hp
+    }
+    
+    // keep outside of above check so we can cast fear spells, etc.
+    if (AI_isScared == true)
+    {
+        /// RUN AWAY!
+        // create a path that's furthest from any enemy
+        // not sure how we'll work that out.
+    }
+    else // enemy not scared
+    {
+        // iterate through the opponents to find the target enemy
+        if (preferredTarget == AI_TARGET_CHOICES.lowestHP)
+        {
+            var size = ds_list_size(global.heroesList);
+            
+            for(i=0; i&lt;size; i++) {
+                
+            }
+        }
+            
+            
+            // MOVE
+            // check if a preferredTarget is within movement range
+                // move towards them if so
+            // if not, check if an alternative enemy is in range
+                // move towards them if so
+            
+            // if no enemy is within range, try to find a preferredTarget
+                // move towards them
+            // if none exists, find the closest alternative target
+                // move towards them
+            
+            
+            // Check our attack possibilities, e.g. melee, ranged, spell?
+            
+            // check if a preferredTarget is within attack range
+                // attack them
+            // if not, check if an alternative enemy is in range
+                // attack them
+        }
+        
+    }
+    
+    
+    
+    
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>

@@ -145,29 +145,39 @@ if (MODE == MODES.free) {
 // CHARACTER MENU
 if (MODE == MODES.objectMenu) {
     menu_cursor_controls();
-    show_debug_message("menuPosition: "+string(menuPosition));
-    show_debug_message("menu item: "+string(selected.menu[menuPosition]));
     
     if (global.controls_ok) {
         global.controls_ok = 0; // prevent instant repeats
         
-        // MOVE
-        if (selected.menu[menuPosition] == "MOVE") {  
-            sourceColumn = column;
-            sourceRow = row;
-            MODE = MODES.moving;
-        }
-        
-        if (selected.menu[menuPosition] == "ATTACK")    then MODE = MODES.attacking;
-        if (selected.menu[menuPosition] == "SKILL")     then MODE = MODES.skills;
-
-        if (selected.menu[menuPosition] == "CANCEL") {
-            resetCursor();
-        }
-        
-        if (selected.menu[menuPosition] == "END TURN") {
-            nextTurn(); 
-            resetCursor();
+        switch (selected.menu[menuPosition])
+        {
+            case "MOVE":
+                sourceColumn = column;
+                sourceRow = row;
+                MODE = MODES.moving;
+            break;
+            
+            case "ATTACK":
+                //MODE = MODES.attacking;
+            break;
+            
+            case "SKILL":
+                //MODE = MODES.skills;
+            break;
+            
+            case "SEARCH":
+                //MODE = MODES.search;
+            break;
+            
+            case "END TURN":
+                nextTurn(); 
+                resetCursor();
+            break;
+            
+            case "CANCEL":
+                resetCursor();
+            break;
+            
         }
     }
 }

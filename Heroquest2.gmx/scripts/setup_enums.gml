@@ -28,7 +28,7 @@ enum SEXES {
 }
 
 
-enum HEROSTATS { // see add_new_hero()
+enum HEROSTATS { // also see: add_new_hero(), getHeroStats()
     type,
     name,
     sex,
@@ -36,6 +36,7 @@ enum HEROSTATS { // see add_new_hero()
     mp,
     move,
     initiative,
+    fortitude,  // mental strength against fear, etc.
     attack,
     defence,
     weapon,
@@ -64,4 +65,14 @@ enum TRIGGER {
 
 enum VIEWS {
     combat
+}
+
+
+enum AI_TARGET_CHOICES {
+    closest,
+    lowestHP,
+    strongest,
+    helpless,
+    ranged,
+    magical
 }

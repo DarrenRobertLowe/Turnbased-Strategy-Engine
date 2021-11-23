@@ -34,11 +34,6 @@ isoSprite       = anim_archer;
 selectable      = true;             // can this object be selected by the cursor?
 menuPosition    = 0;                // last position of menu cursor.
 
-//update_Grid();                    // makes old grid square null and fills new location with id. This is required.
-next_column = column;               // used in unit movement.
-next_row    = row;                  // used in unit movement.
-cart_sprite = sprite_index;         // for cartesian drawing (debugging)
-
 
 // COMMAND LIST
 menu[0] = "MOVE";

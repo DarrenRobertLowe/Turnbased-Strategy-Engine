@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>ENTITY</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,50 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Setup for all level types
-setup_views();
+            <string>/// UNITS NOT UNDER THE PLAYER'S CONTROL
+event_inherited();
 
-global.TURN = 0;
-
-room_width  = ((global.gridWidth  * global.isometricTileWidth) + (global.GRID_OFFSET_X*2));
-room_height = ((global.gridHeight * global.isometricTileHeight) + (global.GRID_OFFSET_Y*2));
-
-show_debug_message("room width is "+string(room_width));
-show_debug_message("room height is "+string(room_height));
+isoSprite       = anim_fighter;
+selectable      = false;            // can this object be selected by the cursor?
+preferredTarget = noone;
 
 
-view_wview = global.options_ResolutionWidth;
-view_hview = global.options_ResolutionHeight;
+// AI
+preferredTarget = AI_TARGET_CHOICES.lowestHP;
+AI_getsScared   = true;
+AI_isScared     = false;
 
-// set timer for turns to start(needed because heros
-// have to loads stats before they can be sorted
-
-alarm[0] = 10;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// SORT AND START TURNS
-sortTurnList();
-nextTurn();
 </string>
           </argument>
         </arguments>

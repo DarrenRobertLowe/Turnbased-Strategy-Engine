@@ -43,7 +43,7 @@ deglobalizeVars();
 setup_controls();
 setup_gui();
 setup_heroes();
-
+setup_combat_rules();
 
 
 // OPTIONS
