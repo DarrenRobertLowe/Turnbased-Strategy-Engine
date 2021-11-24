@@ -34,6 +34,7 @@ global.million              = 1000000;
 global.z_offset             = 8;                    // used to make units appears on top of platforms correctly
 global.TURNLIST             = ds_list_create();
 
+
 /// SETUP
 randomize();
 setup_enums();

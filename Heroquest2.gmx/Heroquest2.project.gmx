@@ -104,6 +104,9 @@
       <script>scripts\addInstanceToGrid.gml</script>
       <script>scripts\updateGrid.gml</script>
       <script>scripts\gridpath_set_collisions.gml</script>
+      <script>scripts\reset_pathfindingIgnoreList.gml</script>
+      <script>scripts\extractColumnFromListOfCells.gml</script>
+      <script>scripts\extractRowFromListOfCells.gml</script>
     </scripts>
     <scripts name="Units">
       <script>scripts\add_new_hero.gml</script>
@@ -112,6 +115,7 @@
       <script>scripts\getHeroStats.gml</script>
     </scripts>
     <scripts name="Grid">
+      <script>scripts\build.gml</script>
       <script>scripts\snap_to_grid.gml</script>
       <script>scripts\placeOnGrid.gml</script>
     </scripts>
@@ -121,22 +125,31 @@
       <script>scripts\facingSouthEast.gml</script>
       <script>scripts\getFacingAsString.gml</script>
       <script>scripts\blockingVisibility.gml</script>
+      <script>scripts\hpInDanger.gml</script>
     </scripts>
     <scripts name="Game Logic">
+      <script>scripts\roll.gml</script>
+      <script>scripts\setup_combat_rules.gml</script>
       <script>scripts\addToTurnList.gml</script>
       <script>scripts\sortTurnList.gml</script>
+      <script>scripts\sortTargetsByHelplessness.gml</script>
       <scripts name="Game Calculations">
         <script>scripts\calculate_initiative.gml</script>
       </scripts>
+      <script>scripts\nextTurn.gml</script>
     </scripts>
-    <script>scripts\nextTurn.gml</script>
-    <script>scripts\moveToCurrentUnit.gml</script>
-    <script>scripts\resetCursor.gml</script>
-    <script>scripts\build.gml</script>
-    <script>scripts\AI_check_getScared.gml</script>
-    <script>scripts\hpInDanger.gml</script>
-    <script>scripts\setup_combat_rules.gml</script>
-    <script>scripts\roll.gml</script>
+    <scripts name="AI">
+      <script>scripts\sortTargetsAdjacentCellsByClosest.gml</script>
+      <script>scripts\sortTargetsByLowestHP.gml</script>
+      <script>scripts\AI_check_getScared.gml</script>
+    </scripts>
+    <scripts name="Cursor">
+      <script>scripts\moveToCurrentUnit.gml</script>
+      <script>scripts\resetCursor.gml</script>
+    </scripts>
+    <script>scripts\endTurn.gml</script>
+    <script>scripts\getPath.gml</script>
+    <script>scripts\NPC_AI.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu</font>

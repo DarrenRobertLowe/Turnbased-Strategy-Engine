@@ -8,7 +8,7 @@ global.tileHeight           = 32;
 global.isometricTileWidth   = 32;
 global.isometricTileHeight  = 16;
 global.cellSize             = global.tileWidth;
-
+global.pathfindingOffset   = (global.cellSize / 2);
 
 var tw = global.tileWidth;
 var th = global.tileHeight;

@@ -10,6 +10,7 @@ gridWidth   = global.gridWidth;
 gridHeight  = global.gridHeight;
 gridOffsetX = global.GRID_OFFSET_X;
 gridOffsetY = global.GRID_OFFSET_Y;
+pathfindingOffset = global.pathfindingOffset;
 isometricTileWidth  = global.isometricTileWidth;
 isometricTileHeight = global.isometricTileHeight;
 

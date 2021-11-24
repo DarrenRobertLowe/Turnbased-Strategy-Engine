@@ -28,6 +28,11 @@
             <string>/// BASICALLY ANYTHING ON THE TURNLIST
 event_inherited();
 
+team            = TEAMS.neutral;
+listOfTargets   = ds_list_create();
+listOfCells     = ds_list_create(); // cells adjacent to targets
+ailments        = ds_list_create();
+walkedThisTurn  = false;
 
 /// default stats
 type        = ENEMY;

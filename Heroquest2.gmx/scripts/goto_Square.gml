@@ -15,7 +15,7 @@ var targetX = getXFromColumn(targetColumn); // getCellCenterX(getXFromColumn(tar
 var targetY = getYFromRow(targetRow);       // getCellCenterY(getYFromRow(targetRow));
 
 
-var offset = (cellSize / 2);
+var offset = global.pathfindingOffset;
 
 if (validCell(targetColumn, targetRow))
 {

@@ -1,0 +1,4 @@
+///endTurn();
+
+nextTurn();
+walkedThisTurn = false;

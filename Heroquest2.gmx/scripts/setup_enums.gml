@@ -76,3 +76,10 @@ enum AI_TARGET_CHOICES {
     ranged,
     magical
 }
+
+
+enum TEAMS {
+    good,
+    evil,
+    neutral
+}

@@ -1,19 +1,21 @@
 ///sortTurnList();
 
 var list = global.TURNLIST;
-var size = ds_list_size(list);
 var unit = -1;
 var spd  = 0;
-var best = -10000;
+var best = -1;
 
-for(var i=0; i<size; i++)
+for(var i=0; i<ds_list_size(list); i++)
 {
     unit = ds_list_find_value(list, i);
     
-    if (instance_exists(unit)) {
+    if (instance_exists(unit))
+    {
         spd = calculate_initiative(unit);
         
-        if (spd > best) {
+        if (spd > best) 
+        or (best == -1)
+        {
             ds_list_delete(list, i);
             ds_list_insert(list, 0, unit);
             best = spd;

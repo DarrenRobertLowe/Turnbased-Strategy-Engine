@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>/// inherit and set sprite
 event_inherited();
+
+team = TEAMS.evil;
+
 </string>
           </argument>
         </arguments>
@@ -49,63 +52,10 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.TURN == id)
-{
-    /// Decide what action to take
-    
-    
-    // Are we scared?
-    if (AI_getsScared == true)
-    {
-        AI_isScared = AI_check_getScared(); // calculation to see if we're scared because of low hp
-    }
-    
-    // keep outside of above check so we can cast fear spells, etc.
-    if (AI_isScared == true)
-    {
-        /// RUN AWAY!
-        // create a path that's furthest from any enemy
-        // not sure how we'll work that out.
-    }
-    else // enemy not scared
-    {
-        // iterate through the opponents to find the target enemy
-        if (preferredTarget == AI_TARGET_CHOICES.lowestHP)
-        {
-            var size = ds_list_size(global.heroesList);
-            
-            for(i=0; i&lt;size; i++) {
-                
-            }
-        }
-            
-            
-            // MOVE
-            // check if a preferredTarget is within movement range
-                // move towards them if so
-            // if not, check if an alternative enemy is in range
-                // move towards them if so
-            
-            // if no enemy is within range, try to find a preferredTarget
-                // move towards them
-            // if none exists, find the closest alternative target
-                // move towards them
-            
-            
-            // Check our attack possibilities, e.g. melee, ranged, spell?
-            
-            // check if a preferredTarget is within attack range
-                // attack them
-            // if not, check if an alternative enemy is in range
-                // attack them
-        }
-        
-    }
-    
-    
-    
-    
-}
+            <string>/// ENEMY AI
+event_inherited();
+NPC_AI();
+
 </string>
           </argument>
         </arguments>
