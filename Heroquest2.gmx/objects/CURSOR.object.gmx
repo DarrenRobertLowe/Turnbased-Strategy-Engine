@@ -152,8 +152,6 @@ if (MODE == MODES.objectMenu) {
         switch (selected.menu[menuPosition])
         {
             case "MOVE":
-                sourceColumn = column;
-                sourceRow = row;
                 MODE = MODES.moving;
             break;
             
@@ -217,7 +215,7 @@ if (MODE == MODES.moving) {
     
     if (global.controls_cancel) {
         pathShown = false;
-        teleportToCell(id, sourceColumn, sourceRow);
+        teleportToCell(id, selected.sourceColumn, selected.sourceRow);
         MODE = MODES.objectMenu;
     }
 }

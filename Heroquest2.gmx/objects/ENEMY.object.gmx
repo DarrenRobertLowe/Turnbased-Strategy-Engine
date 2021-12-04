@@ -54,8 +54,7 @@ team = TEAMS.evil;
             <kind>1</kind>
             <string>/// ENEMY AI
 event_inherited();
-NPC_AI();
-
+NPC_AI()
 </string>
           </argument>
         </arguments>

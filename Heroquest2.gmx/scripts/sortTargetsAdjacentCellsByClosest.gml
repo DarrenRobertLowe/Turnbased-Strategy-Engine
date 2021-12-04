@@ -123,7 +123,7 @@ var cell = -1;
 for(var i=0; i<ds_list_size(listOfCells); i++)
 {
     //show_debug_message("phase 4");
-    
+    show_debug_message("i = "+string(i));
     cell = ds_list_find_value(listOfCells, i);
     
     
@@ -137,10 +137,11 @@ for(var i=0; i<ds_list_size(listOfCells); i++)
     
     if (pathLength > 0)
     {
-        if (path_get_length(pathLength) < best)
+        if (pathLength < best)
         or (best == defaultBest)
         {
-            show_debug_message("phase 5");
+            show_debug_message("phase 5: best is "+string(best));
+            show_debug_message("list size is "+string(ds_list_size(listOfCells)));
             ds_list_delete(listOfCells, i);             // remove entry from position
             ds_list_insert(listOfCells, 0, cell);       // add it to the top of the listOfCells
             best = pathLength;
@@ -148,6 +149,15 @@ for(var i=0; i<ds_list_size(listOfCells); i++)
         }
     }
 }
+
+
+/// debug
+for (var i=0; i<ds_list_size(listOfCells); i++)
+{
+    var val = ds_list_find_value(listOfCells, i);
+    show_debug_message("listOfCells index "+string(i)+" = " +string(val));
+}
+
 
 
 return listOfCells;

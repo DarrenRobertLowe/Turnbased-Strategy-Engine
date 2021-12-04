@@ -76,7 +76,7 @@ skin        = 0;
           <argument>
             <kind>1</kind>
             <string>/// pathfinding
-MOVING = true;
+//MOVING = true;
 goto_Square(targetColumn, targetRow);
 </string>
           </argument>

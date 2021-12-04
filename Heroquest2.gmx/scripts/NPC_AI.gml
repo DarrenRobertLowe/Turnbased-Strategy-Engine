@@ -50,50 +50,39 @@ if (global.TURN == id)
             // Melee?
             if (AI_AttackType == "Melee") // probably base this on the weapon
             {
+                // can we attack anyone? // check adjacent cells for an enemy // attack them // no enemy? Let's move...
                 show_debug_message("We're planning a melee attack");
-                // can we attack anyone?
-                // check adjacent cells for an enemy
-                // attack them
-                // no enemy? Let's move...
                 
                 
-                // try to move towards a target we can attack
-                /*
-                if (preferredTarget = AI_TARGET_CHOICES.lowestHP)
+                var includeDiagonals = false;               // if we're a spear user, includeDiagonals = true because we can attack diagonally
+                
+                listOfCells = sortTargetsAdjacentCellsByClosest(listOfTargets, true, false);
+                
+                
+                if (ds_list_size(listOfCells) > 0)
                 {
-                    sortTargetsByLowestHP(listOfTargets);
+                    var index       = ds_list_find_value(listOfCells, 0);
+                    targetColumn    = extractColumnFromListOfCells(listOfCells, index);
+                    targetRow       = extractRowFromListOfCells(listOfCells, index);
                     
-                    if (ds_list_size(listOfTargets) > 0)
+                    
+                    // validate target cell
+                    if (validCell(targetColumn, targetRow))
                     {
-                        target = ds_list_find_value(listOfTargets,0);
-                    }
-                }
-                
-                if (preferredTarget = AI_TARGET_CHOICES.helpless)
-                {
-                    sortTargetsByHelplessness(listOfTargets);
-                }
-                */
-                
-                //if (target = -1)
-                //{
-                    var includeDiagonals = false;   // if we're a spear user, includeDiagonals = true;
-                    
-                    listOfCells = sortTargetsAdjacentCellsByClosest(listOfTargets, true, false);
-                    
-                    if (ds_list_size(listOfCells) > 0)
-                        var cell = ds_list_find_value(listOfCells, 0);
-                        targetColumn = extractColumnFromListOfCells(listOfCells, cell);
-                        targetRow = extractRowFromListOfCells(listOfCells, cell);
-                        
                         walkedThisTurn = true;
                         goto_Square(targetColumn, targetRow);
                     }
-                    else
-                    {
-                        endTurn();
+                    else // invalid target 
+                    { 
+                        show_error("Error in NPC_AI()# Target cell is outside of the world!", false);
                     }
-                //}
+                }
+                else
+                {
+                    show_debug_message("Couldn't find a target cell to walk to.");
+                    endTurn();
+                }
+            }
         //} // not scared
     } // walkedThisTurn == false
     else
