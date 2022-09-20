@@ -30,7 +30,6 @@ global.DEBUG                = true;
 global.isometricView        = false;
 global.transparencyAlpha    = 0.5;
 global.heroesList           = ds_list_create();
-global.million              = 1000000;
 global.z_offset             = 8;                    // used to make units appears on top of platforms correctly
 global.TURNLIST             = ds_list_create();
 
@@ -42,10 +41,11 @@ global.pathGrid = mp_grid_create(0, 0, 0, 0, 0, 0); // we need to initialize thi
 setup_grids(10,10);
 deglobalizeVars();
 setup_controls();
+setup_options();
 setup_gui();
-setup_heroes();
 setup_combat_rules();
-
+setup_default_stats();
+setup_heroes();
 
 // OPTIONS
 // (these are defaults but are properly loaded in via load_options())
@@ -99,7 +99,7 @@ room_goto(level_Test);
           <argument>
             <kind>1</kind>
             <string>/// KEEP DELTA TIME
-global.actual_delta = (delta_time / million);
+global.actual_delta = (delta_time / MILLION);
 global.delta_multiplier = (global.actual_delta / global.target_delta);
 </string>
           </argument>

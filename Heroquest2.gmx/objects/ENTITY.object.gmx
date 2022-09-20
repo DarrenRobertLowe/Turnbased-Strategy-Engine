@@ -32,27 +32,13 @@ team            = TEAMS.neutral;
 listOfTargets   = ds_list_create();
 listOfCells     = ds_list_create(); // cells adjacent to targets
 ailments        = ds_list_create();
-walkedThisTurn  = false;
+movedThisTurn   = false;
 
-/// default stats
-type        = ENEMY;
-name        = "Nameless";
-sex         = SEXES.none;
-hp          = 1;
-mp          = 0;
-move        = 0;
-initiative  = 0;
-attack      = 1;
-defence     = 0;
-weapon      = 0;
-offhand     = 0;
-amulet      = 0;
-armour      = 0;
-ring1       = 0;
-ring2       = 0;
-hair        = 0;
-face        = 0;
-skin        = 0;
+
+// set hp = hpBase, mp = mpBase, etc.
+getBaseStats(0);
+
+canDie      = true;
 </string>
           </argument>
         </arguments>
@@ -125,7 +111,7 @@ if (MOVING) {
     if (path_position &gt;= 1) {
         get_direction();
         getCellFromCoords(x,y);
-        CURSOR.MODE = MODES.free;               // return control to the cursor
+        CURSOR.MODE = MODES.finishing;//free;               // return control to the cursor
         MOVING = false;                         // turn off movement
         updateGrid(id, sourceColumn, sourceRow, targetColumn, targetRow);   // empty old coords and add id to new position.
     }

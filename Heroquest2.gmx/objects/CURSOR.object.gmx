@@ -185,7 +185,7 @@ if (MODE == MODES.objectMenu) {
 if (MODE == MODES.moving) {
     cursor_move();  // cursor can move freely arounnd the grid, just not select outside of the range.
     
-    move    = selected.move;
+    //move    = selected.move;
     myPath  = selected.myPath;
     
     if (pathShown == false) {
@@ -217,6 +217,7 @@ if (MODE == MODES.moving) {
         pathShown = false;
         teleportToCell(id, selected.sourceColumn, selected.sourceRow);
         MODE = MODES.objectMenu;
+        resetCursor();
     }
 }
 
@@ -248,9 +249,9 @@ if (MODE == MODES.finishing) {
             selected.menuPosition = menuPosition;     // remember the cursor position
         }
         pathShown = false;
-        selected  = 0;
+        selected  = -1;
+        targetHero = -1;
         MODE = MODES.free;
-        
         //ds_grid_destroy(global.MOVE_GRID);
 }
 </string>

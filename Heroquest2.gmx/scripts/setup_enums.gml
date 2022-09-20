@@ -21,35 +21,28 @@ enum MODES {
 }
 
 
-enum SEXES {
+enum sexes {
     none,
     male,
     female
 }
 
-
-enum HEROSTATS { // also see: add_new_hero(), getHeroStats()
+enum stats {
     type,
     name,
-    sex,
-    hp,
-    mp,
-    move,
-    initiative,
-    fortitude,  // mental strength against fear, etc.
-    attack,
-    defence,
+    hpBase,
+    mpBase,
+    moveBase,
+    initiativeBase,
+    fortitudeBase,
+    attackBase,
+    defenceBase,
     weapon,
     offhand,
     armour,
-    amulet,
-    ring1,
-    ring2,
-    hair,
-    face,
-    skin,
-    length  // KEEP AT BOTTOM! used to count the number of stat entries
+    length // KEEP AT BOTTOM, USED TO GET THE NUMBER OF STATS
 }
+
 
 enum DEPTH {
     menu,
@@ -76,6 +69,8 @@ enum AI_TARGET_CHOICES {
     ranged,
     magical
 }
+
+
 
 
 enum TEAMS {

@@ -24,9 +24,11 @@ if (preferredTarget = AI_TARGET_CHOICES.helpless)
                 if (ailment == "Paralysis")
                 or (ailment == "Sleep")
                 {
-                    return target;
+                    return unit;
                 }
             }
         }
     }
+    
+    return -1;
 }

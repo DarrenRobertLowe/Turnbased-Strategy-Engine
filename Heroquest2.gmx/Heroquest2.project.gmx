@@ -52,6 +52,9 @@
       <script>scripts\deglobalizeVars.gml</script>
       <script>scripts\load_options.gml</script>
       <script>scripts\recalculate_values.gml</script>
+      <script>scripts\setup_statsGrid.gml</script>
+      <script>scripts\setup_default_stats.gml</script>
+      <script>scripts\setup_options.gml</script>
     </scripts>
     <scripts name="Math">
       <script>scripts\getCellCenterY.gml</script>
@@ -68,6 +71,18 @@
       <script>scripts\getCoordsFromCell.gml</script>
       <script>scripts\getCellFromCoordsPrecise.gml</script>
       <script>scripts\getCellFromCoords.gml</script>
+      <scripts name="Pathfinding">
+        <script>scripts\goto_Square.gml</script>
+        <script>scripts\draw_path_ext.gml</script>
+        <script>scripts\get_direction.gml</script>
+        <script>scripts\removeInstanceFromGrid.gml</script>
+        <script>scripts\addInstanceToGrid.gml</script>
+        <script>scripts\updateGrid.gml</script>
+        <script>scripts\gridpath_set_collisions.gml</script>
+        <script>scripts\reset_pathfindingIgnoreList.gml</script>
+        <script>scripts\extractColumnFromListOfCells.gml</script>
+        <script>scripts\extractRowFromListOfCells.gml</script>
+      </scripts>
     </scripts>
     <scripts name="Drawing">
       <script>scripts\DEPRECATEDdraw_self_isometric.gml</script>
@@ -96,23 +111,12 @@
       <script>scripts\log.gml</script>
       <script>scripts\draw_collision_mask.gml</script>
     </scripts>
-    <scripts name="Pathfinding">
-      <script>scripts\goto_Square.gml</script>
-      <script>scripts\draw_path_ext.gml</script>
-      <script>scripts\get_direction.gml</script>
-      <script>scripts\removeInstanceFromGrid.gml</script>
-      <script>scripts\addInstanceToGrid.gml</script>
-      <script>scripts\updateGrid.gml</script>
-      <script>scripts\gridpath_set_collisions.gml</script>
-      <script>scripts\reset_pathfindingIgnoreList.gml</script>
-      <script>scripts\extractColumnFromListOfCells.gml</script>
-      <script>scripts\extractRowFromListOfCells.gml</script>
-    </scripts>
     <scripts name="Units">
-      <script>scripts\add_new_hero.gml</script>
+      <script>scripts\add_new_unit_to_stats.gml</script>
       <script>scripts\spawn.gml</script>
-      <script>scripts\spawnHero.gml</script>
-      <script>scripts\getHeroStats.gml</script>
+      <script>scripts\spawnUnit.gml</script>
+      <script>scripts\getBaseStats.gml</script>
+      <script>scripts\set_stats_index_to_default.gml</script>
     </scripts>
     <scripts name="Grid">
       <script>scripts\build.gml</script>
@@ -174,6 +178,7 @@
       <object>objects\TEST_LEVEL</object>
     </objects>
     <object>objects\NPC</object>
+    <object>objects\GUI</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\initial</room>

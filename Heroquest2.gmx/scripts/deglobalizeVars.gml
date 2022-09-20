@@ -1,6 +1,6 @@
 /// deglobalizeVars();
 z_offset = global.z_offset;
-million  = global.million;
+//million  = global.million;
 
 // GRID VARS
 tileWidth   = global.tileWidth;

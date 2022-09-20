@@ -14,14 +14,11 @@ ds_list_add(global.heroesList, hero);
 hero.statsIndex = index;
 
 
-with(hero)
-{
-    getHeroStats(statsIndex);
-    //event_user(TRIGGER.getStats); // get stats
+with(hero) {
+    getHeroStats(statsIndex); // sets the baseline stats for this hero.
 }
 
-if (addToTurns)
-{
+if (addToTurns) {
     addToTurnList(hero);
 }
 

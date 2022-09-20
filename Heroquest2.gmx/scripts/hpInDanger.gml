@@ -6,7 +6,7 @@ var unit = argument0;
 if (AI_getsScared == false) then return false;
 
 
-if (unit.hp < (unit.hpMax * global.hpDangerPercentage))
+if (unit.hp < (unit.hpBase * global.hpDangerPercentage))
 {
     return true;
 }

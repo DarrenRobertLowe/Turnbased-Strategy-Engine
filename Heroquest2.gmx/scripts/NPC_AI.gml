@@ -2,7 +2,7 @@
 
 if (global.TURN == id)
 {
-    if  (walkedThisTurn == false)
+    if  (movedThisTurn == false)
     and (MOVING == false)
     {
         show_debug_message("we're decided what to do...");
@@ -69,7 +69,7 @@ if (global.TURN == id)
                     // validate target cell
                     if (validCell(targetColumn, targetRow))
                     {
-                        walkedThisTurn = true;
+                        movedThisTurn = true;
                         goto_Square(targetColumn, targetRow);
                     }
                     else // invalid target 
@@ -84,7 +84,7 @@ if (global.TURN == id)
                 }
             }
         //} // not scared
-    } // walkedThisTurn == false
+    } // movedThisTurn == false
     else
     {
         endTurn();

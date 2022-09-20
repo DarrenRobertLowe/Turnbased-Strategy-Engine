@@ -5,10 +5,10 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>LEVEL</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,45 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// start the map
-event_inherited();
-
-/*
-if !(global.useDeltaTime)
-{
-    if (room_speed != global.options_TargetFPS)
-    {
-        show_debug_message("Room speed was not correct! Creating new room with target FPS.");
-        room_speed = global.options_TargetFPS;
-        var newRoom = room_duplicate(room);
-    }
-}
-*/
-
-depth = DEPTH.ground;
-
-instance_create(0, 0, FLOOR_DRAWER);
-
-
-build(8, 8, STEP, 4);
-
-
-
-
-//spawn(9, 8, ENEMY, 4);
-var hero  = spawnUnit(5, 5, 1, 4, true);
-
-var enemy = spawn(9, 9, ENEMY, 4, true);
-
-instance_create(enemy.x, enemy.y, CURSOR);
-instance_create(enemy.x, enemy.y, CAMERA);
-
-build(1, 5, WALL, 4);
-build(3, 5, WALL, 4);
-build(3, 4, WALL, 4);
-build(3, 3, WALL, 4);
-build(3, 1, WALL, 4);
-
+            <string>draw_text(10,10,"Current Turn: " + ds_list_find_value(global.TURNLIST,0));
 </string>
           </argument>
         </arguments>
