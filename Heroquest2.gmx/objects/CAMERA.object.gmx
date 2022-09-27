@@ -29,6 +29,8 @@
 event_inherited();
 setup_views();
 depth = DEPTH.menu;
+target = CURSOR;
+cameraSpeed = .1;   // percentage of the distance to the cursor covered per step
 </string>
           </argument>
         </arguments>
@@ -52,25 +54,38 @@ depth = DEPTH.menu;
           <argument>
             <kind>1</kind>
             <string>/// position the camera
-row         = CURSOR.row;
-column      = CURSOR.column;
 var view    = VIEWS.combat;
+var targetX = target.x;
+var targetY = target.y;
+
+var column  = getColumnFromXPrecise(x);
+var row     = getRowFromYPrecise(y);
+
+var isoX = getIsometricXFromCell(column, row);
+var isoY = getIsometricYFromCell(column, row);
 
 
 //ISOMETRIC
-if (global.isometricView) {  
-    x = getXFromColumn(column);
-    y = getYFromRow(row);
-    view_xview[view] = (x - global.GRID_OFFSET_X);
-    view_yview[view] = (y - global.GRID_OFFSET_Y);
+if (global.isometricView) {
+    if (global.OPTIONS_INSTANT_CAMERA) {
+        x = targetX;
+        y = targetY;
+    } else {
+         var dist = point_distance(x, y, targetX, targetY);
+         var spd  = delta(dist * cameraSpeed);
+         move_towards_point(targetX, targetY, spd);
+    }
+    
+    view_xview[view] = (isoX - global.GRID_OFFSET_X);
+    view_yview[view] = (isoY - global.GRID_OFFSET_Y);
 }
 else {
-// CARTESIAN
-    x = CURSOR.x;
-    y = CURSOR.y;
+    // CARTESIAN
+    x = targetX;
+    y = targetY;
     
-    view_xview[view] = (x);
-    view_yview[view] = (y);
+    view_xview[view] = (x - global.GRID_OFFSET_X);
+    view_yview[view] = (y - global.GRID_OFFSET_Y);
 }
 </string>
           </argument>

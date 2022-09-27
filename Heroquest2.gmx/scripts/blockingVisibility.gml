@@ -53,4 +53,4 @@ and (heightUnits > 1)
     }
 }
 
-return false
+return false;

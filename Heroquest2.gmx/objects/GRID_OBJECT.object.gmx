@@ -51,8 +51,8 @@ update_sprite();
 alpha       = 1;
 column      = getColumnFromX(x);
 row         = getRowFromY(y);
-isoX        = getIsometricX(column, row);
-isoY        = getIsometricY(column, row);
+isoX        = getIsometricXFromCell(column, row);
+isoY        = getIsometricYFromCell(column, row);
 
 
 pathfindingIgnoreList = ds_list_create();

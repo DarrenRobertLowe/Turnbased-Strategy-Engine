@@ -9,6 +9,7 @@ var frameScale = (1 / global.options_TargetFPS);
 global.movementSpeed  = ((frameScale * default_pixelsPerSecond)           * global.options_GameSpeed);
 global.animationSpeed = ((frameScale * default_animationFramesPerSecond)  * global.options_GameSpeed);
 
+
 setup_delta();
 
 

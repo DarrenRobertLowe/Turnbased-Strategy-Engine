@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>/// INIT
+setup_global_variables();
 global.DEBUG                = true;
 global.isometricView        = false;
 global.transparencyAlpha    = 0.5;
@@ -38,7 +39,7 @@ global.TURNLIST             = ds_list_create();
 randomize();
 setup_enums();
 global.pathGrid = mp_grid_create(0, 0, 0, 0, 0, 0); // we need to initialize this here so we can call "setup_grids()" when starting new maps.
-setup_grids(10,10);
+setup_grids(30,30);
 deglobalizeVars();
 setup_controls();
 setup_options();

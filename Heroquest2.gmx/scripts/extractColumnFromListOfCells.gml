@@ -6,9 +6,7 @@
  */
 var list    = argument0;
 var index   = argument1;
-
-
-
+debug   = false;
 
 var str = ds_list_find_value(list, index);
 
@@ -17,7 +15,7 @@ if !(is_undefined(str)) {
     
     if (pos > 0) { // if ":" is found
         var col = string_copy(str, 1, pos-1);
-        show_debug_message("extractColumnFromListOfCells() says: col = "+string(col));
+        debug_message("extractColumnFromListOfCells() says: col = "+string(col));
         return real(string_digits(col));
     }
     else return -1; // if ":" is NOT found

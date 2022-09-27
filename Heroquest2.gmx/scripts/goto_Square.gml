@@ -5,10 +5,13 @@
  * @Param target row
  *
 **/
+debug = false;
 sourceColumn = column;
 sourceRow    = row;
 targetColumn = argument0;
 targetRow    = argument1;
+
+
 
 // validate
 if !(validCell(targetColumn, targetRow))
@@ -18,7 +21,7 @@ if !(validCell(targetColumn, targetRow))
 
 
 
-show_debug_message("Attempting to move from "+string(column)+":"+string(row)+" to "+string(targetColumn)+":"+string(targetRow));
+debug_message("Attempting to move from "+string(column)+":"+string(row)+" to "+string(targetColumn)+":"+string(targetRow));
 
 var targetX = getXFromColumn(targetColumn); // getCellCenterX(getXFromColumn(targetColumn));
 var targetY = getYFromRow(targetRow);       // getCellCenterY(getYFromRow(targetRow));
@@ -32,7 +35,7 @@ if (validCell(targetColumn, targetRow))
     for (var i=0; i<ds_list_size(pathfindingIgnoreList); i++)
     {
         var val = ds_list_find_value(pathfindingIgnoreList, i);
-        show_debug_message("I am not taking into consideration the following instance:" +string(val));
+        debug_message("I am not taking into consideration the following instance:" +string(val));
     }
     // end of DEBUG
     
@@ -43,8 +46,15 @@ if (validCell(targetColumn, targetRow))
     {
         var spd = delta(global.movementSpeed);
         path_shift(myPath, -offset, -offset);
-        path_start(myPath, spd, path_action_stop, true);
+        
+        // we'll probably want to replace this with a custom 
+        // path movement that works for both the hero units
+        // and the NPCs. Also see ENTITY step event
+        //if !(object_is_ancestor(object_index,NPC)) {
+            path_start(myPath, spd, path_action_stop, true);
+        //}
+        
         MOVING = true;
     }
 }
-else show_debug_message("Invalid target cell! Abandoning move!");
+else debug_message("Invalid target cell! Abandoning move!");

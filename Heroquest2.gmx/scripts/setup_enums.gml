@@ -71,7 +71,15 @@ enum AI_TARGET_CHOICES {
 }
 
 
-
+enum AI_OPTIONS {
+    Advance,
+    Attack,
+    Distance,
+    MoveTowardsAlly,
+    HealSelf,
+    HealAlly,
+    EndTurn
+}
 
 enum TEAMS {
     good,

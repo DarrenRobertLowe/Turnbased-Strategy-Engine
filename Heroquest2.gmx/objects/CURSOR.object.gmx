@@ -76,26 +76,18 @@ keepVisible = true;
             <string>/// Controls
 event_inherited();
 
-
-
-
-/** MODES
- * MODE = 0   //off
- * MODE = 1   //free roaming
- * MODE = 2   //object menu
- * MODE = 3   //moving
- * MODE = 4   //attacking
- * MODE = 5   //defending
- * MODE = 6   //skills
- * MODE = 7   //waiting...
- * MODE = 8   //finishing
+/** FOR MODES
+see setup_enums();
 */
+
+
 
 check_controls();
 
 
 // FREE ROAMING
 if (MODE == MODES.free) {
+    CAMERA.target = id;
     cursor_move();
     
     if (global.controls_cancel) {
@@ -168,8 +160,8 @@ if (MODE == MODES.objectMenu) {
             break;
             
             case "END TURN":
-                nextTurn(); 
-                resetCursor();
+                endTurn();
+                MODE = MODES.finishing;
             break;
             
             case "CANCEL":
@@ -183,7 +175,7 @@ if (MODE == MODES.objectMenu) {
 
 // MOVING UNIT
 if (MODE == MODES.moving) {
-    cursor_move();  // cursor can move freely arounnd the grid, just not select outside of the range.
+    cursor_move();  // cursor can move freely around the grid, just not select outside of the range.
     
     //move    = selected.move;
     myPath  = selected.myPath;
@@ -194,7 +186,7 @@ if (MODE == MODES.moving) {
     }
     
     
-
+    
     if (global.controls_ok) {
         show_debug_message("movement grid cell ("+string(column)+":"+string(row)+") contains: "+string(ds_grid_get(movementGrid,column,row)));
         
@@ -240,19 +232,19 @@ if (MODE == MODES.waiting) {
     // do nothing.
     //draw_set_alpha(0.3);
     //mp_grid_draw(global.pathGrid);
+    visible = false;
+} else {
+    visible = true;
 }
+
 
 // FINISHING
 if (MODE == MODES.finishing) {
-
         if (global.OPTIONS_CURSOR_MEMORY == true) {
             selected.menuPosition = menuPosition;     // remember the cursor position
         }
         pathShown = false;
-        selected  = -1;
-        targetHero = -1;
-        MODE = MODES.free;
-        //ds_grid_destroy(global.MOVE_GRID);
+        resetCursor();
 }
 </string>
           </argument>

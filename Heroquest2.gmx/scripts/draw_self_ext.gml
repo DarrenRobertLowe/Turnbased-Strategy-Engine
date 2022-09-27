@@ -31,8 +31,8 @@ else {
     draw_sprite_ext(
          isoSprite
         ,floor(imageIndex)
-        ,getIsometricX(column, row)
-        ,getIsometricY(column, row) - (z)
+        ,getIsometricXFromCell(column, row)
+        ,getIsometricYFromCell(column, row) - (z)
         ,imageMirror
         ,image_yscale
         ,0

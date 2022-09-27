@@ -14,3 +14,6 @@ view_wview[v]   = global.options_ResolutionWidth;
 view_hview[v]   = global.options_ResolutionHeight;
 
 
+view_object[v] = noone;
+
+

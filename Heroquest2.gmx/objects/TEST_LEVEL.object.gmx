@@ -28,35 +28,25 @@
             <string>/// start the map
 event_inherited();
 
-/*
-if !(global.useDeltaTime)
-{
-    if (room_speed != global.options_TargetFPS)
-    {
-        show_debug_message("Room speed was not correct! Creating new room with target FPS.");
-        room_speed = global.options_TargetFPS;
-        var newRoom = room_duplicate(room);
-    }
-}
-*/
-
 depth = DEPTH.ground;
 
 instance_create(0, 0, FLOOR_DRAWER);
+
+repeat 10 {
+    build(10 + (random(global.gridWidth)-10), 10 + (random(global.gridHeight)-10), WALL, 4);
+    build(10 + (random(global.gridWidth)-10), 10 + (random(global.gridHeight)-10), STEP, 4);  
+}
 
 
 build(8, 8, STEP, 4);
 
 
-
-
-//spawn(9, 8, ENEMY, 4);
-var hero  = spawnUnit(5, 5, 1, 4, true);
-
+var hero  = spawnUnit(0, 0, 1, 4, true);
 var enemy = spawn(9, 9, ENEMY, 4, true);
 
-instance_create(enemy.x, enemy.y, CURSOR);
-instance_create(enemy.x, enemy.y, CAMERA);
+instance_create(hero.x, hero.y, CURSOR);
+instance_create(CURSOR.x, CURSOR.y, CAMERA);
+
 
 build(1, 5, WALL, 4);
 build(3, 5, WALL, 4);

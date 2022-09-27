@@ -17,5 +17,5 @@ else
         +", id:" + string(instance)
         +" at position : " + string(column) + ":" +string(row)
         +"# but we encountered something there already!
-        #value:" +string(ds_grid_get(grid, column, row)), true);
+        #value:" +string(ds_grid_get(grid, column, row)), false);
 }

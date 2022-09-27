@@ -14,7 +14,8 @@
  * to buff those values, so they're a baseline rather
  * than a max. 
  * 
- * See setup_enums() for "stats" enum.
+ * See setup_enums() for "stats" enum
+ * See setup_default_stats() for values
 */ 
 var statsIndex  = argument0;
 var statsGrid   = global.statsGrid;   // deglobalize
@@ -39,3 +40,4 @@ initiative  = initiativeBase;
 fortitude   = fortitudeBase;
 attack      = attackBase;
 defence     = defenceBase;
+

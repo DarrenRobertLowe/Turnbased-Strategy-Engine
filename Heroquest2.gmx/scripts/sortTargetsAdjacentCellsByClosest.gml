@@ -1,4 +1,5 @@
 /// sortTargetsAdjacentCellsByClosest(listOfTargets, remove unreachable?, include diagonals);
+debug = true;
 
 var listOfTargets       = argument0;
 var removeUnreachable   = argument1;
@@ -12,15 +13,13 @@ var targetX = -1;
 var targetY = -1;
 var pathLength = -1;
 var pathfindingOffset = global.pathfindingOffset;
-show_debug_message("running sortTargetsAdjacentCellsByClosest()");
+debug_message("running sortTargetsAdjacentCellsByClosest()");
 
 
 // add our potential targets to the pathfindingIgnoreList so
-// we can check for routes to their exact position quickly
-// and easily.
+// we can check for routes to their exact cell
 for (var i=0; i<size; i++)
 {
-    show_debug_message("phase 1");
     var value = ds_list_find_value(listOfTargets, i);
     ds_list_add(pathfindingIgnoreList, value);
 }
@@ -33,12 +32,8 @@ gridpath_set_collisions(global.pathGrid, OBSTACLE, pathfindingIgnoreList);
 
 
 // iterate through our potential targets and remove the unreachable ones
-if (removeUnreachable)
-{
-    show_debug_message("phase 2");
-    
-    for(var i=0; i<ds_list_size(listOfTargets); i++)
-    {
+if (removeUnreachable) {
+    for(var i=0; i<ds_list_size(listOfTargets); i++) {
         unit = ds_list_find_value(listOfTargets, i);
         
         targetX = getXFromColumn(unit.column);
@@ -70,7 +65,6 @@ gridpath_set_collisions(global.pathGrid, OBSTACLE, pathfindingIgnoreList);
 // added to a list called listOfCells.
 for(var i=0; i<ds_list_size(listOfTargets); i++)
 {
-    show_debug_message("phase 3");
     unit = ds_list_find_value(listOfTargets, i);
     
     
@@ -118,12 +112,12 @@ for(var i=0; i<ds_list_size(listOfTargets); i++)
 
 
 
+
 // iterate through the list of cells to find the closest
 var cell = -1;
 for(var i=0; i<ds_list_size(listOfCells); i++)
 {
-    //show_debug_message("phase 4");
-    show_debug_message("i = "+string(i));
+    debug_message("i = "+string(i));
     cell = ds_list_find_value(listOfCells, i);
     
     
@@ -140,8 +134,8 @@ for(var i=0; i<ds_list_size(listOfCells); i++)
         if (pathLength < best)
         or (best == defaultBest)
         {
-            show_debug_message("phase 5: best is "+string(best));
-            show_debug_message("list size is "+string(ds_list_size(listOfCells)));
+            debug_message("phase 5: best is "+string(best));
+            debug_message("list size is "+string(ds_list_size(listOfCells)));
             ds_list_delete(listOfCells, i);             // remove entry from position
             ds_list_insert(listOfCells, 0, cell);       // add it to the top of the listOfCells
             best = pathLength;
@@ -155,7 +149,7 @@ for(var i=0; i<ds_list_size(listOfCells); i++)
 for (var i=0; i<ds_list_size(listOfCells); i++)
 {
     var val = ds_list_find_value(listOfCells, i);
-    show_debug_message("listOfCells index "+string(i)+" = " +string(val));
+    debug_message("listOfCells index "+string(i)+" = " +string(val));
 }
 
 

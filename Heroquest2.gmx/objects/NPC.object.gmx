@@ -38,7 +38,14 @@ preferredTarget = AI_TARGET_CHOICES.lowestHP;
 AI_getsScared   = true;
 AI_isScared     = false;
 
-AI_AttackType   = "Melee"; // probably base this on the weapon
+AI_AttackType   = "Melee";          // probably base this on the weapon
+
+AI_ActionOrder  = ds_list_create(); // preference order for actions
+
+// default values
+AI_Heal_HP_Percentage = .3;         // 30%
+
+
 </string>
           </argument>
         </arguments>
