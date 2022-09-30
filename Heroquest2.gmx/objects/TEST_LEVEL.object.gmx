@@ -54,6 +54,15 @@ build(3, 4, WALL, 4);
 build(3, 3, WALL, 4);
 build(3, 1, WALL, 4);
 
+
+// set timer for turns to start (needed because heroes
+// have to load in their stats before they can be added
+// to the turn list.
+//alarm[0] = 1;
+
+/// SORT AND START TURNS
+sortTurnList();
+nextTurn();
 </string>
           </argument>
         </arguments>

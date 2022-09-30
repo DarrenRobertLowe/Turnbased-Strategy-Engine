@@ -153,7 +153,6 @@
       <script>scripts\sortTargetsAdjacentCellsByClosest.gml</script>
       <script>scripts\sortTargetsByLowestHP.gml</script>
       <script>scripts\AI_check_getScared.gml</script>
-      <script>scripts\ENEMY_AI_OLD.gml</script>
       <script>scripts\ENEMY_AI.gml</script>
       <script>scripts\AI_getOptionsQueue.gml</script>
     </scripts>
@@ -176,9 +175,9 @@
     <object>objects\ENTITY</object>
     <object>objects\NPC</object>
     <object>objects\HERO</object>
-    <object>objects\ENEMY</object>
     <object>objects\FLOOR_DRAWER</object>
     <object>objects\WALL</object>
+    <object>objects\ENEMY</object>
     <object>objects\PLATFORM</object>
     <object>objects\STEP</object>
     <objects name="Levels">

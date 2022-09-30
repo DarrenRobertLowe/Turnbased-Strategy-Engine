@@ -15,7 +15,7 @@ var pathLength = -1;
 var pathfindingOffset = global.pathfindingOffset;
 debug_message("running sortTargetsAdjacentCellsByClosest()");
 
-
+/*
 // add our potential targets to the pathfindingIgnoreList so
 // we can check for routes to their exact cell
 for (var i=0; i<size; i++)
@@ -27,10 +27,6 @@ for (var i=0; i<size; i++)
 
 // register remaining obstacles on the grid
 gridpath_set_collisions(global.pathGrid, OBSTACLE, pathfindingIgnoreList);
-
-
-// add heights we can't reach as obstacles too
-
 
 
 
@@ -50,18 +46,22 @@ if (removeUnreachable) {
         }
     }
 }
+*/
 
-
-
-// Reset the pathgrid to include all targets as obstacles now as
+// Reset the pathgrid to include all targets as obstacles now, as
 // we'll be looking at paths to the adjacent squares instead.
-// This is incase we calculate an invalid path going through an  
-// enemy somehow. For example, entities can block paths to other
-// entities.
 reset_pathfindingIgnoreList(pathfindingIgnoreList);
 gridpath_set_collisions(global.pathGrid, OBSTACLE, pathfindingIgnoreList);
 
 
+// add heights we can't reach as obstacles
+with (GRID_OBJECT) {
+    if !(ds_list_find_index(pathfindingIgnoreList, id) {
+        if (elevation > (other.elevation + 1)) {
+            mp_grid_add_cell(pathGrid, column, row);
+        }
+    }
+}
 
 // now take the list of remaining targets and add all their adjacent 
 // cells, checking each one for a valid path. Each valid path gets

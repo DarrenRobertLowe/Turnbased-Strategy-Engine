@@ -40,10 +40,6 @@ show_debug_message("room height is "+string(room_height));
 view_wview = global.options_ResolutionWidth;
 view_hview = global.options_ResolutionHeight;
 
-// set timer for turns to start(needed because heros
-// have to loads stats before they can be sorted
-
-alarm[0] = 10;
 </string>
           </argument>
         </arguments>

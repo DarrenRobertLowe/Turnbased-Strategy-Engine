@@ -18,7 +18,7 @@ var bRow = getRowFromY(bY);
 
 if  (instance_exists(argument0))
 and (instance_exists(argument1))
-and (heightUnits > 1)
+and (height > 1)
 {
     if  ( aCol == bCol)
     and ( aRow == bRow)

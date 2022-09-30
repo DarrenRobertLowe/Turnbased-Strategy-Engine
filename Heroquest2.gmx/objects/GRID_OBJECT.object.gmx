@@ -40,10 +40,12 @@ isoSprite   = spr_none;
 selectable  = false;
 xprev       = x;
 yprev       = y;
-heightUnits = 1;
-height      = 0;
+///heightUnits = 1;
 keepVisible = false;
+height      = 0;    // how tall we are, determines the altitude of anything placed on top of us
+elevation   = 1;    // how high up we currently are
 floorCollisionList = ds_list_create();
+
 
 setup_animations();
 update_sprite();

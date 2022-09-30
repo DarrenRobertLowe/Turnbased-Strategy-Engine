@@ -11,21 +11,22 @@ else {
     alpha = 1;
     var currentUnit = global.TURN;
     
-    if (keepVisible == false) {
-        if (blockingVisibility(id, CURSOR)) {
-            alpha = transparencyAlpha;
-        }
-        
-        if (currentUnit != id) {
-            //if (currentUnit.keepVisible == true)
-            //or (currentUnit.MOVING == true) {
-                if (blockingVisibility(id, currentUnit)) {
-                    alpha = transparencyAlpha;
-                }
-            //}
+    if (global.TURN > 0) {
+        if (keepVisible == false) {
+            if (blockingVisibility(id, CURSOR)) {
+                alpha = transparencyAlpha;
+            }
+            
+            if (currentUnit != id) {
+                //if (currentUnit.keepVisible == true)
+                //or (currentUnit.MOVING == true) {
+                    if (blockingVisibility(id, currentUnit)) {
+                        alpha = transparencyAlpha;
+                    }
+                //}
+            }
         }
     }
-    
     
     // draw the sprite
     draw_sprite_ext(

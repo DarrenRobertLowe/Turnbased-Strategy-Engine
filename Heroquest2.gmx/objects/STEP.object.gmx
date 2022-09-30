@@ -27,9 +27,8 @@
             <kind>1</kind>
             <string>/// set the sprite
 event_inherited();
-isoSprite   = spr_step;
-heightUnits = 0;
-height      = 8;
+isoSprite = spr_step;
+height    = 0.5;
 </string>
           </argument>
         </arguments>
