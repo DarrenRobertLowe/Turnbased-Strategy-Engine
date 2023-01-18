@@ -56,6 +56,11 @@
       <script>scripts\setup_statsGrid.gml</script>
       <script>scripts\setup_default_stats.gml</script>
       <script>scripts\setup_options.gml</script>
+      <script>scripts\setup_classnames.gml</script>
+      <script>scripts\load_weapon.gml</script>
+      <script>scripts\create_weapon.gml</script>
+      <script>scripts\setup_weapons_grid.gml</script>
+      <script>scripts\setup_weapons.gml</script>
     </scripts>
     <scripts name="Math">
       <script>scripts\getCellCenterY.gml</script>
@@ -112,6 +117,7 @@
       <script>scripts\log.gml</script>
       <script>scripts\draw_collision_mask.gml</script>
       <script>scripts\debug_message.gml</script>
+      <script>scripts\sout.gml</script>
     </scripts>
     <scripts name="Units">
       <script>scripts\add_new_unit_to_stats.gml</script>
@@ -160,6 +166,12 @@
       <script>scripts\moveToCurrentUnit.gml</script>
       <script>scripts\resetCursor.gml</script>
     </scripts>
+    <scripts name="Actions">
+      <script>scripts\melee_attack.gml</script>
+    </scripts>
+    <scripts name="methods">
+      <script>scripts\get_classname.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu</font>
@@ -173,14 +185,14 @@
     <object>objects\OBSTACLE</object>
     <object>objects\obj_MovementPanel</object>
     <object>objects\ENTITY</object>
+    <object>objects\ENEMY</object>
     <object>objects\NPC</object>
     <object>objects\HERO</object>
     <object>objects\FLOOR_DRAWER</object>
     <object>objects\WALL</object>
-    <object>objects\ENEMY</object>
     <object>objects\PLATFORM</object>
     <object>objects\STEP</object>
-    <objects name="Levels">
+    <objects name="LEVELS">
       <object>objects\LEVEL</object>
       <object>objects\TEST_LEVEL</object>
     </objects>
@@ -189,12 +201,23 @@
       <object>objects\WEAPON</object>
       <object>objects\UNARMED</object>
       <object>objects\SPEAR</object>
+      <object>objects\SWORD</object>
+      <objects name="SWORDS">
+        <object>objects\Cutlass</object>
+      </objects>
     </objects>
+    <object>objects\enemy_Pirate</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\initial</room>
     <room>rooms\level_Test</room>
   </rooms>
+  <constants number="4">
+    <constant name="DAMAGE_MINIMAL">1</constant>
+    <constant name="DAMAGE_LIGHT">2</constant>
+    <constant name="DAMAGE_NORMAL">3</constant>
+    <constant name="DAMAGE_HEAVY">5</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>

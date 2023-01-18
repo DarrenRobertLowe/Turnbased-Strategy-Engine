@@ -36,19 +36,21 @@ if (global.TURN == id) {
                 with (ENTITY) {
                     if (team != other.team) {
                         ds_list_add(other.listOfTargets, id);
+                        target = ds_list_find_value(other.listOfTargets, 0);
                     }
                 }
             }
             
-            
+            // is this moving away from target? (e.g. for archers)
+            /*
             if (option == AI_OPTIONS.Distance) {
-                show_debug_message("WE'RE GOING THE DISTANCE!");
+                show_debug_message("WE'RE GOING THE DISTANCE");
                 movedThisTurn = true;
             }
-            
+            */            
             
             // PERFORM AN ACTION
-            debug_message("considering what to do...");
+            debug_message("considering action...");
             
             
             // ADVANCE
@@ -96,7 +98,8 @@ if (global.TURN == id) {
                         debug_message("Enemy " +string(unit) + " found within attack range!");
                         
                         // attack them
-                        debug_message("Attacking!");
+                        melee_attack(id, target);
+                        
                         actedThisTurn = true;
                     }
                 }
@@ -169,7 +172,7 @@ if (global.TURN == id) {
             /// NOT FINISHED
             
             // before moving to the next cell
-            if (distanceToNextCell <= 0) {                
+            if (distanceToNextCell <= 0) {
                 show_debug_message("column: " +string(column) + "    row: " + string(row));
                 
                 

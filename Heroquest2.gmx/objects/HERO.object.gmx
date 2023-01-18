@@ -35,6 +35,8 @@ selectable      = true;             // can this object be selected by the cursor
 menuPosition    = 0;                // last position of menu cursor.
 team            = TEAMS.good;
 
+name = "Test Hero";
+class = classes.Pirate;
 
 // COMMAND LIST
 menu[0] = "MOVE";

@@ -40,6 +40,17 @@ ds_list_add(AI_ActionOrder, AI_OPTIONS.HealSelf);
 ds_list_add(AI_ActionOrder, AI_OPTIONS.EndTurn);
 
 AI_getOptionsQueue();
+
+
+// weapon
+// Int pwr          = 2;
+// Int dice         = 2; (roll 2 x pwr)
+// List effects     = new List&lt;WeaponEffect&gt;;
+// Weapon weapon    = new Sword(pwr, dice, effects);
+
+class   = classes.Pirate;       
+name    = get_classname(class); // set name to classname by default
+weapon  = instance_create(0,0,Cutlass);
 </string>
           </argument>
         </arguments>

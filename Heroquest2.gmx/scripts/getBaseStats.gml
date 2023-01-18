@@ -1,5 +1,5 @@
 /// getBaseStats(grid index);
-/* Sets the calling instance's stats variables to
+/** Sets the calling instance's stats variables to
  * the given hero index.
  * 
  * What we're doing here is using a grid to represent

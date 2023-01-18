@@ -38,6 +38,8 @@ global.TURNLIST             = ds_list_create();
 /// SETUP
 randomize();
 setup_enums();
+setup_weapons();
+setup_classnames();
 global.pathGrid = mp_grid_create(0, 0, 0, 0, 0, 0); // we need to initialize this here so we can call "setup_grids()" when starting new maps.
 setup_grids(30,30);
 deglobalizeVars();

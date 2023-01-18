@@ -28,21 +28,20 @@
             <string>/// BASICALLY ANYTHING ON THE TURNLIST
 event_inherited();
 
+// setup
+distanceToNextCell = 0;
+
+// entity defaults
 team            = TEAMS.neutral;
 listOfTargets   = ds_list_create();
 listOfCells     = ds_list_create(); // cells adjacent to targets
 ailments        = ds_list_create();
 movedThisTurn   = false;
 actedThisTurn   = false;
-
-// set hp = hpBase, mp = mpBase, etc.
-getBaseStats(0);
-
-canDie      = true;
-
-
-distanceToNextCell = 0;
-
+canDie          = true;
+class           = classes.None;
+name            = "Unnamed";
+getBaseStats(classes.None);
 
 </string>
           </argument>

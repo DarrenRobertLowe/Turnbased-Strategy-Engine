@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>WEAPON</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,22 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// set defaults
-diagonals = false; // allow diagonal attacks?
+            <string>event_inherited();
 
-pwr     = 1;    // base damage
-dice    = 1;    // how many dies of pwr to roll when attacking
-range   = 1;
-
-actions     = ds_list_create();     // attack, push, etc
-effects     = ds_list_create();     // burn, counter, etc.
-modifiers   = ds_list_create();     // Chipped, Sharpened, etc.
-
-
-// we might want the following, 0 would remove as option
-// bash     = 1;
-// slash    = 2;
-// thrust   = 2;
+ds_list_add(actions, "Attack");
 </string>
           </argument>
         </arguments>
