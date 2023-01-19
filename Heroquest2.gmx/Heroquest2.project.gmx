@@ -11,6 +11,7 @@
       <sprite>sprites\spr_cart_enemy</sprite>
       <sprite>sprites\spr_cart_cursor</sprite>
       <sprite>sprites\spr_cart_ColourTiles</sprite>
+      <sprite>sprites\spr_cart_attackPanel</sprite>
       <sprite>sprites\spr_cart_floor</sprite>
       <sprite>sprites\spr_cart_wall</sprite>
       <sprite>sprites\spr_cart_step</sprite>
@@ -57,6 +58,7 @@
       <script>scripts\setup_default_stats.gml</script>
       <script>scripts\setup_options.gml</script>
       <script>scripts\setup_classnames.gml</script>
+      <script>scripts\setup_combat_rules.gml</script>
       <script>scripts\load_weapon.gml</script>
       <script>scripts\create_weapon.gml</script>
       <script>scripts\setup_weapons_grid.gml</script>
@@ -101,6 +103,7 @@
       <script>scripts\update_sprite.gml</script>
       <script>scripts\animate.gml</script>
       <script>scripts\get_z.gml</script>
+      <script>scripts\face_target.gml</script>
     </scripts>
     <scripts name="Cursor">
       <script>scripts\check_controls.gml</script>
@@ -111,6 +114,7 @@
       <script>scripts\menu_cursor_controls.gml</script>
       <script>scripts\show_movement_range.gml</script>
       <script>scripts\moveInstant.gml</script>
+      <script>scripts\show_attack_range.gml</script>
     </scripts>
     <scripts name="Debugging">
       <script>scripts\error.gml</script>
@@ -145,7 +149,6 @@
     </scripts>
     <scripts name="Game Logic">
       <script>scripts\roll.gml</script>
-      <script>scripts\setup_combat_rules.gml</script>
       <script>scripts\addToTurnList.gml</script>
       <script>scripts\sortTurnList.gml</script>
       <script>scripts\sortTargetsByHelplessness.gml</script>
@@ -167,11 +170,14 @@
       <script>scripts\resetCursor.gml</script>
     </scripts>
     <scripts name="Actions">
-      <script>scripts\melee_attack.gml</script>
+      <script>scripts\attack_target.gml</script>
     </scripts>
     <scripts name="methods">
       <script>scripts\get_classname.gml</script>
     </scripts>
+    <script>scripts\update_direction.gml</script>
+    <script>scripts\adjust_animation_for_direction.gml</script>
+    <script>scripts\getEnemies.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu</font>
@@ -184,6 +190,7 @@
     <object>objects\GRID_OBJECT</object>
     <object>objects\OBSTACLE</object>
     <object>objects\obj_MovementPanel</object>
+    <object>objects\AttackPanel</object>
     <object>objects\ENTITY</object>
     <object>objects\ENEMY</object>
     <object>objects\NPC</object>
@@ -200,10 +207,13 @@
     <objects name="WEAPONS">
       <object>objects\WEAPON</object>
       <object>objects\UNARMED</object>
-      <object>objects\SPEAR</object>
+      <object>objects\POLEARM</object>
       <object>objects\SWORD</object>
       <objects name="SWORDS">
         <object>objects\Cutlass</object>
+      </objects>
+      <objects name="POLES">
+        <object>objects\WoodenMop</object>
       </objects>
     </objects>
     <object>objects\enemy_Pirate</object>
@@ -212,12 +222,6 @@
     <room>rooms\initial</room>
     <room>rooms\level_Test</room>
   </rooms>
-  <constants number="4">
-    <constant name="DAMAGE_MINIMAL">1</constant>
-    <constant name="DAMAGE_LIGHT">2</constant>
-    <constant name="DAMAGE_NORMAL">3</constant>
-    <constant name="DAMAGE_HEAVY">5</constant>
-  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>

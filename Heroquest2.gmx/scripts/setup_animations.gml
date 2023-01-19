@@ -1,4 +1,6 @@
 /// setup_animations()
+global.animation_hit_time = 10;
+
 
 
 // stand
@@ -36,3 +38,7 @@ animation_hurt_end      = 29;
 
 // north facing sprites
 animationCount = (animation_hurt_end + 1); // used to quickly swap between north and south facing sprites (see animate() )
+
+
+
+

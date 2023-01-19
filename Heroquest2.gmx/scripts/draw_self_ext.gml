@@ -18,15 +18,13 @@ else {
             }
             
             if (currentUnit != id) {
-                //if (currentUnit.keepVisible == true)
-                //or (currentUnit.MOVING == true) {
-                    if (blockingVisibility(id, currentUnit)) {
-                        alpha = transparencyAlpha;
-                    }
-                //}
+                if (blockingVisibility(id, currentUnit)) {
+                    alpha = transparencyAlpha;
+                }
             }
         }
-    }
+    }// end of transparency check
+    
     
     // draw the sprite
     draw_sprite_ext(

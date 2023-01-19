@@ -27,13 +27,14 @@ global.GRID         = ds_grid_create(w, h);     // objects such as UNITS and CHE
 global.MOVE_GRID    = ds_grid_create(w, h);     // for movement tiles
 global.FLOOR_GRID   = ds_grid_create(w, h);     // the floor, duh
 global.CURSOR_GRID  = ds_grid_create(w, h);     // grid for the cursor (used in map rotation)
-
+global.ATTACK_GRID  = ds_grid_create(w, h);     // grid for attacks
 
 global.gridDefaultValue = -1;
 ds_grid_clear(global.FLOOR_GRID,    global.gridDefaultValue);
 ds_grid_clear(global.GRID,          global.gridDefaultValue);
 ds_grid_clear(global.CURSOR_GRID,   global.gridDefaultValue);
 ds_grid_clear(global.MOVE_GRID,     global.gridDefaultValue);
+ds_grid_clear(global.ATTACK_GRID,     global.gridDefaultValue);
 
 
 // pathfinding

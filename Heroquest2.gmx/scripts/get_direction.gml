@@ -1,10 +1,9 @@
-///get_direction()
+///get_direction(float direction)
+// takes a direction and rounds it to the correct rounded value
 
-var dir = point_direction(xprev, yprev, x, y);
+dir = argument0;
 
-
-if ((dir >= 0 && dir <= 45) || (dir <= 360 && dir >= (360-45)))
-{
+if ((dir >= 0 && dir <= 45) || (dir <= 360 && dir >= (360-45))) {
     direction = 0;
 }
 

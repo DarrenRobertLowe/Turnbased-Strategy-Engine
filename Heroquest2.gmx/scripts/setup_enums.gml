@@ -56,7 +56,8 @@ enum stats {
 
 enum weapons {
     unarmed,
-    cutlass
+    cutlass,
+    woodenmop
 }
 
 // update load_weapon() if editing
@@ -66,8 +67,22 @@ enum weaponStats {
     pwr,
     dice,
     range,
+    diagonal,   // can attack diagonally?
     modifiers,  // this points to an entry in an persistent_modifiers map
+    animation,
     length      // KEEP AT BOTTOM, USED TO GET THE NUMBER OF STATS
+}
+
+enum attackAnimations {
+    punch,
+    slash,
+    bash,
+    bow,
+    pistol,
+    rifle,
+    throw,
+    reloading,
+    cast
 }
 
 

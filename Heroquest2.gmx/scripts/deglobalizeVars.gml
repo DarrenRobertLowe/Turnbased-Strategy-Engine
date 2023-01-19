@@ -23,3 +23,4 @@ grid            = global.GRID;
 movementGrid    = global.MOVE_GRID;
 floorGrid       = global.FLOOR_GRID;
 cursorGrid      = global.CURSOR_GRID;
+attackGrid      = global.ATTACK_GRID;

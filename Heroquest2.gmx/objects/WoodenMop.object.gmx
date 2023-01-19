@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>POLEARM</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,23 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// set defaults
+            <string>// see setup_enums()
 
-pwr         = 1;    // base damage
-dice        = 1;    // how many dies of pwr to roll when attacking
-range       = 1;
-diagonal    = false;
+event_inherited();
 
-actions     = ds_list_create();     // attack, push, etc
-effects     = ds_list_create();     // burn, counter, etc.
-modifiers   = ds_list_create();     // Chipped, Sharpened, etc.
-animation   = "punch";
+key         = weapons.woodenmop;    // get the name of this object
+weaponsGrid = global.weaponsGrid;
 
+sout("key is " + string(key));
 
-// we might want the following, 0 would remove as option
-// bash     = 1;
-// slash    = 2;
-// thrust   = 2;
+name    = ds_grid_get(weaponsGrid, weaponStats.name, key);
+pwr     = ds_grid_get(weaponsGrid, weaponStats.pwr, key);
+dice    = ds_grid_get(weaponsGrid, weaponStats.dice, key);
+range   = ds_grid_get(weaponsGrid, weaponStats.range, key);
+
+animation = ds_grid_get(weaponsGrid, weaponStats.animation, key);
 </string>
           </argument>
         </arguments>

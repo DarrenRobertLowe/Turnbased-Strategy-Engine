@@ -37,6 +37,7 @@ team            = TEAMS.good;
 
 name = "Test Hero";
 class = classes.Pirate;
+weapon = instance_create(0,0,Cutlass); // this should be loaded from a persistent list
 
 // COMMAND LIST
 menu[0] = "MOVE";

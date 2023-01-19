@@ -1,13 +1,8 @@
 ///show_movement_range();
 
 ds_grid_clear(movementGrid,-1); // allows for proper move calculation over tall terrain.
+gridpath_set_collisions(global.pathGrid, OBSTACLE, selected.pathfindingIgnoreList); // add obstacles to grid
 
-gridpath_set_collisions(global.pathGrid, OBSTACLE, selected.pathfindingIgnoreList);
-
-
-// CHECKS THE GRID FOR OBJECTS AND MARKS THEIR COORDS AS PROHIBITED
-//mp_grid_add_instances(global.pathGrid, OBSTACLE, false);   // Add all OBSTACLE objects
-//mp_grid_clear_cell(global.pathGrid, column, row);      // Except our own cell, which is free.
 
 /* // uncomment for Disgaea style platform jumping
 // CHECKS EACH PLATFORM OBJECT TO SEE IF IT CAN BE REACHED.
@@ -18,10 +13,8 @@ with PLATFORM{
 }
 */
 
-
 startx = (gridOffsetX + (column * tileWidth) + (tileWidth/2));
 starty = (gridOffsetY + (row * tileHeight) + (tileHeight/2));
-
 
 
 /* We need to set our targetColumn and targetRow to each square within
@@ -55,17 +48,15 @@ for (i=0; i <= totalColumns; i++) {
         var goaly = (gridOffsetY + (targetRow * tileHeight) + (tileHeight/2));
         
         
-        //if (targetRow > lastRow) then continue;
-        
         // check if there's a valid path to the cell
         if mp_grid_path(
-            global.pathGrid        // Grid on which to calculate path (an imaginary one that we're making temporarily). 
-            ,myPath         // path must indicate an existing path that will be replaced by the computed path
+            global.pathGrid     // Grid on which to calculate path (an imaginary one that we're making temporarily). 
+            ,myPath             // path must indicate an existing path that will be replaced by the computed path
             ,startx
             ,starty
             ,goalx
             ,goaly
-            ,0              // Allow diagonals?
+            ,false              // Allow diagonals?
         ) // check that it's within our movement range
         and (path_get_length(myPath) <= (move * cellSize)) {
             
@@ -84,8 +75,7 @@ for (i=0; i <= totalColumns; i++) {
             
             ds_grid_set(movementGrid, targetColumn, targetRow, obj_MovementPanel);
         }
-        else
-        {
+        else {
             mp_grid_add_cell(rangeGrid,i,j);
         }
     }
