@@ -30,7 +30,7 @@
 event_inherited();
 
 key         = weapons.woodenmop;    // get the name of this object
-weaponsGrid = global.weaponsGrid;
+weaponsGrid = global.default_weapons;
 
 sout("key is " + string(key));
 

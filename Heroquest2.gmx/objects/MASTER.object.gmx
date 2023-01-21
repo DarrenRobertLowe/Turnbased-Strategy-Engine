@@ -47,8 +47,7 @@ deglobalizeVars();
 setup_controls();
 setup_options();
 setup_gui();
-setup_default_stats();
-setup_heroes();
+setup_units();
 
 // OPTIONS
 // (these are defaults but are properly loaded in via load_options())

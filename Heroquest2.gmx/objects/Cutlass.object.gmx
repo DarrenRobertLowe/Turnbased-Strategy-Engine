@@ -28,7 +28,7 @@
             <string>event_inherited();
 
 key         = weapons.cutlass;    // get the name of this object
-weaponsGrid = global.weaponsGrid;
+var weaponsGrid = global.default_weapons;
 
 sout("key is " + string(key));
 

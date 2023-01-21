@@ -37,7 +37,7 @@ enum sexes {
     female
 }
 
-enum stats {
+enum unitStats {
     type,
     name,
     hpBase,
@@ -47,7 +47,7 @@ enum stats {
     fortitudeBase,
     attackBase,
     defenceBase,
-    weapon,
+    weaponId,
     offhand,
     armour,
     length      // KEEP AT BOTTOM, USED TO GET THE NUMBER OF STATS
@@ -62,7 +62,7 @@ enum weapons {
 
 // update load_weapon() if editing
 enum weaponStats {
-    type,     // this is the weapon object, e.g. Cutlass, Mop
+    type,       // this is the weapon object, e.g. Cutlass, Mop
     name,       
     pwr,
     dice,

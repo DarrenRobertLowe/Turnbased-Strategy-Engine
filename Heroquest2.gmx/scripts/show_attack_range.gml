@@ -25,21 +25,7 @@ starty = (gridOffsetY + (row * tileHeight) + (tileHeight/2));
  * in the way.
 */
 
-// var unit = targetHero;
-// var selected = selected.id;
-
-sout("selected = " + string(selected));
-/*
-var weap = unit.weapon;
-sout("weap = " +string(weap));
-var range = weap.range;
-*/
-
 range = 2;  // var range = targetHero.weapon.range;
-
-sout("column is " + string(column));
-sout("row is "    + string(row));
-
 
 
 // set the min and max
@@ -99,21 +85,17 @@ for (i=0; i <= totalColumns; i++) {
                 sout("Target cell " +string(targetColumn) +":" + string(targetRow) + " entity is: " + string(entity));
                 
                 if  (entity > -1)                           // there's something there
-                and (object_is_ancestor(entity.object_index, ENTITY)){   // so we don't target walls and such
+                and (object_is_ancestor(entity.object_index, ENTITY)) {   // so we don't target walls and such
                     if (entity.team != selected.team) {
                         ds_list_add(selected.listOfTargets, entity);
                         sout("Added a unit: " +string(entity) + " to our list of targets!");
                     }
-                } else {
-                    sout("entity: " + string(entity) +" is not an ancestor of ENTITY.");
                 }
             } else {
                 mp_grid_add_cell(rangeGrid,i,j);
-                sout("Target cell " +string(targetColumn) +":" + string(targetRow) + " is not within our reach.");
             }
         } else {
             mp_grid_add_cell(rangeGrid,i,j);
-            sout("Target cell " +string(targetColumn) +":" + string(targetRow) + " is blocked by something.");
         }
     }
 }

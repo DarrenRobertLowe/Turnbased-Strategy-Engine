@@ -26,11 +26,12 @@ target.animTime     = (global.animation_hit_time * (1 + critical));
 target.takingDamage = true;
 
 // begin the animation
-attacker.attackAnim = attacker.weapon.animation;
-animStart = animation_slash_start;
-adjust_animation_for_direction();
-attacker.imageIndex = animStart;
-
+with (attacker) {
+    attackAnim = weapon.animation;
+    animStart = animation_slash_start;
+    adjust_animation_for_direction();
+    imageIndex = animStart;
+}
 
 sout("Setting attacker animation to " + string(attacker.attackAnim));
 

@@ -12,12 +12,6 @@ var addToTurns  = argument4;
 
 var instance  = instance_create(getXFromColumn(column), getYFromRow(row), type);
 
-/*
-with(instance)
-{
-    //event_user(TRIGGERS.getStats); // initialize the stats (see setup_enums)
-}
-*/
 
 if (addToTurns)
 {

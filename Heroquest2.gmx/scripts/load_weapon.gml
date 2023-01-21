@@ -4,23 +4,23 @@
  *
  * For basic weapons you can simply
  * use weapon = instance_create(Cutlass) etc
+ *
+ * See also: setup_enums();
  */
  
- /*
-weaponsGrid = global.weaponsGrid;
+persistent_weapons = global.persistent_weapons;
 
-index   = argument0;
-obj     = ds_grid_get(weaponsGrid, weaponStats.type);
-weapon  = instance_create(0,0, object);
+index       = argument0;
+obj         = ds_grid_get(persistent_weapons, weaponStats.type, index);
+weaponInst  = instance_create(0, 0, obj);
 
-weapon.name     = ds_grid_get(weaponsGrid, index, weaponStats.name);
-weapon.pwr      = ds_grid_get(weaponsGrid, index, weaponStats.pwr);
-weapon.dice     = ds_grid_get(weaponsGrid, index, weaponStats.dice);
-weapon.range    = ds_grid_get(weaponsGrid, index, weaponStats.range);
-weapon.effects  = ds_grid_get(weaponsGrid, index, weaponStats.effects);
+weaponInst.name     = ds_grid_get(persistent_weapons, weaponStats.name, index);
+sout("Replacing weapon.name with : " + string(weaponInst.name));
+weaponInst.pwr      = ds_grid_get(persistent_weapons, weaponStats.pwr, index);
+weaponInst.dice     = ds_grid_get(persistent_weapons, weaponStats.dice, index);
+weaponInst.range    = ds_grid_get(persistent_weapons, weaponStats.range, index);
+weaponInst.diagonal = ds_grid_get(persistent_weapons, weaponStats.diagonal, index);
+//weaponInst.modifiers = ds_grid_get(persistent_weapons, weaponStats.modifiers, index);
+weaponInst.animation = ds_grid_get(persistent_weapons, weaponStats.animation, index);
 
-
-
-return weapon;
-
-*/
+return weaponInst;

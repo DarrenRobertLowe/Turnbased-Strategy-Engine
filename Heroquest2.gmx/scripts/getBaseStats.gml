@@ -1,4 +1,4 @@
-/// getBaseStats(grid index);
+/// getBaseStats(unit index);
 /** Sets the calling instance's stats variables to
  * the given hero index.
  * 
@@ -18,20 +18,20 @@
  * See setup_default_stats() for values
 */ 
 var statsIndex  = argument0;
-var statsGrid   = global.statsGrid;   // deglobalize
+var units       = global.persistent_units;   // deglobalize
 
-type            = ds_grid_get(statsGrid, stats.type,            statsIndex);
-name            = ds_grid_get(statsGrid, stats.name,            statsIndex);
-hpBase          = ds_grid_get(statsGrid, stats.hpBase,          statsIndex);
-mpBase          = ds_grid_get(statsGrid, stats.mpBase,          statsIndex);
-moveBase        = ds_grid_get(statsGrid, stats.moveBase,        statsIndex);
-initiativeBase  = ds_grid_get(statsGrid, stats.initiativeBase,  statsIndex);    // who moves first
-fortitudeBase   = ds_grid_get(statsGrid, stats.fortitudeBase,   statsIndex);    // mental strength against panic, fear, etc
-attackBase      = ds_grid_get(statsGrid, stats.attackBase,      statsIndex);
-defenceBase     = ds_grid_get(statsGrid, stats.defenceBase,     statsIndex);
-weapon          = ds_grid_get(statsGrid, stats.weapon,          statsIndex);
-offhand         = ds_grid_get(statsGrid, stats.offhand,         statsIndex);
-armour          = ds_grid_get(statsGrid, stats.armour,          statsIndex);
+type            = ds_grid_get(units, unitStats.type,            statsIndex);
+name            = ds_grid_get(units, unitStats.name,            statsIndex);
+hpBase          = ds_grid_get(units, unitStats.hpBase,          statsIndex);
+mpBase          = ds_grid_get(units, unitStats.mpBase,          statsIndex);
+moveBase        = ds_grid_get(units, unitStats.moveBase,        statsIndex);
+initiativeBase  = ds_grid_get(units, unitStats.initiativeBase,  statsIndex);    // who moves first
+fortitudeBase   = ds_grid_get(units, unitStats.fortitudeBase,   statsIndex);    // mental strength against panic, fear, etc
+attackBase      = ds_grid_get(units, unitStats.attackBase,      statsIndex);
+defenceBase     = ds_grid_get(units, unitStats.defenceBase,     statsIndex);
+weapon          = ds_grid_get(units, unitStats.weaponId,        statsIndex);
+offhand         = ds_grid_get(units, unitStats.offhand,         statsIndex);
+armour          = ds_grid_get(units, unitStats.armour,          statsIndex);
 
 hp          = hpBase;
 mp          = mpBase;

@@ -47,7 +47,7 @@
       <script>scripts\setup_grids.gml</script>
       <script>scripts\setup_gui.gml</script>
       <script>scripts\setup_controls.gml</script>
-      <script>scripts\setup_heroes.gml</script>
+      <script>scripts\setup_units.gml</script>
       <script>scripts\setup_views.gml</script>
       <script>scripts\setup_animations.gml</script>
       <script>scripts\setup_delta.gml</script>
@@ -55,13 +55,11 @@
       <script>scripts\load_options.gml</script>
       <script>scripts\recalculate_values.gml</script>
       <script>scripts\setup_statsGrid.gml</script>
-      <script>scripts\setup_default_stats.gml</script>
       <script>scripts\setup_options.gml</script>
       <script>scripts\setup_classnames.gml</script>
       <script>scripts\setup_combat_rules.gml</script>
-      <script>scripts\load_weapon.gml</script>
       <script>scripts\create_weapon.gml</script>
-      <script>scripts\setup_weapons_grid.gml</script>
+      <script>scripts\load_weapon.gml</script>
       <script>scripts\setup_weapons.gml</script>
     </scripts>
     <scripts name="Math">
@@ -124,11 +122,11 @@
       <script>scripts\sout.gml</script>
     </scripts>
     <scripts name="Units">
-      <script>scripts\add_new_unit_to_stats.gml</script>
+      <script>scripts\add_new_unit_to_units_table.gml</script>
       <script>scripts\spawn.gml</script>
       <script>scripts\spawnUnit.gml</script>
       <script>scripts\getBaseStats.gml</script>
-      <script>scripts\set_stats_index_to_default.gml</script>
+      <script>scripts\set_unit_stats_to_default.gml</script>
     </scripts>
     <scripts name="Grid">
       <script>scripts\build.gml</script>

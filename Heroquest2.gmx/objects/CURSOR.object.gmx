@@ -86,6 +86,8 @@ see setup_enums();
 check_controls();
 
 
+
+
 // FREE ROAMING
 if (MODE == MODES.free) {
     CAMERA.target = id;
@@ -269,6 +271,7 @@ if (MODE == MODES.attacking) {
         
         if (attackTarget &gt; -1) {
             attack_target(selected, attackTarget);
+            selected.actedThisTurn = true;
         }
         
         // reset variables

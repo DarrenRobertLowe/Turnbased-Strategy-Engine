@@ -41,9 +41,11 @@ repeat 10 {
 build(8, 8, STEP, 4);
 
 
-var hero  = spawnUnit(0, 0, 1, 4, true);
+
 var enemy = spawn(9, 9, enemy_Pirate, 4, true);
 var enemy = spawn(10, 7, enemy_Pirate, 2, true);
+var hero  = spawnUnit(0, 0, 1, 4, true);
+
 
 instance_create(hero.x, hero.y, CURSOR);
 instance_create(CURSOR.x, CURSOR.y, CAMERA);
