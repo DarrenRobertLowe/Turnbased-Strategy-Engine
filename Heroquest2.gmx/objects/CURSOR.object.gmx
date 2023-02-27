@@ -75,12 +75,14 @@ keepVisible = true;
           <argument>
             <kind>1</kind>
             <string>/// Controls
+/** 
+ * For MODEs see setup_enums();
+*/
 event_inherited();
 
-/** FOR MODES
-see setup_enums();
-*/
 
+// end our turn if we've already acted
+//if (selected != 0 and selected.actedThisTurn == true) then MODE = MODES.finishing;
 
 
 check_controls();
@@ -163,7 +165,6 @@ if (MODE == MODES.objectMenu) {
             break;
             
             case "END TURN":
-                endTurn();
                 MODE = MODES.finishing;
             break;
             
@@ -305,9 +306,12 @@ if (MODE == MODES.waiting) {
 
 // FINISHING
 if (MODE == MODES.finishing) {
+        endTurn();
+        
         if (global.OPTIONS_CURSOR_MEMORY == true) {
             selected.menuPosition = menuPosition;     // remember the cursor position
         }
+        
         pathShown = false;
         resetCursor();
 }

@@ -30,6 +30,7 @@
 class   = classes.Pirate;       // this will act as the name by default
 name    = get_classname(class);
 weapon  = instance_create(0,0, Cutlass);
+avatar  = avatar_index.pirate;
 </string>
           </argument>
         </arguments>

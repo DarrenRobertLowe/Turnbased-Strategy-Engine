@@ -1,5 +1,7 @@
 ///spawnUnit(column, row, persistent_units index, facing, add to turnlist?);
-show_debug_message(" ********** RUNNING SPAWN UNIT  ********** ");
+/* 
+ * see setup_units() for persistent_units
+ */
 var column      = argument0;
 var row         = argument1;
 var index       = argument2;
@@ -10,15 +12,7 @@ var obj         = ds_grid_get(global.persistent_units, unitStats.type, index);
 
 var unit    = instance_create(getXFromColumn(column), getYFromRow(row), obj);
 
-// this makes no sense, where is "hero" coming from?
-/*
-if (unitStats.type == HERO) {
-    ds_list_add(global.heroesList, hero);
-}
-if (unitStats.type == ENEMY) {
-    ds_list_add(global.enemiesList, hero);
-}
-*/
+
 
 unit.statsIndex = index; // the unit will need to read and write to its own stats
 

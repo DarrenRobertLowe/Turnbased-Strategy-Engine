@@ -33,11 +33,11 @@ event_inherited();
 isoSprite       = anim_archer;
 selectable      = true;             // can this object be selected by the cursor?
 menuPosition    = 0;                // last position of menu cursor.
-team            = TEAMS.good;
+team            = TEAMS.ally;
 
-name = "Test Hero";
-class = classes.Pirate;
-weapon = instance_create(0,0,Cutlass); // this should be loaded from a persistent list
+name    = "Test Hero";
+class   = classes.Pirate;
+weapon  = instance_create(0,0,Cutlass); // this should be loaded from a persistent list
 
 // COMMAND LIST
 menu[0] = "MOVE";

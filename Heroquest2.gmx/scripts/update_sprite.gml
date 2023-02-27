@@ -4,8 +4,7 @@
  * with image_xscale causes the bounding box to move! 
 */
 
-switch(direction)
-{
+switch(direction) {
     case 0:
         facing = DIRECTION.east;
         imageMirror = -1;  // mirror the sprite

@@ -4,15 +4,17 @@ attacker = argument0;
 target   = argument1;
 
 face_target(attacker, target);  // face the target
-
+sout(string(attacker.name) + " is facing " + string(attacker.direction));
 sout("attacker.weapon :" + string(attacker.weapon));
 
 sout("attacker: " +string(attacker) + "    target: "+ string(target));
 
 
-debug_message(string(attacker.name)
+debug_message(
+    string(attacker) 
+  + ":" + string(attacker.name)
   + " is attacking "
-  + string(target.name)
+  + string(target.id) + ":" +string(target.name)
   + " with their "
   + string(attacker.weapon.name)
   + "!");
@@ -38,5 +40,14 @@ sout("Setting attacker animation to " + string(attacker.attackAnim));
 
 
 // REPORT
+
+var xx = getIsometricXFromCell(target.column, target.row);
+var yy = getIsometricYFromCell(target.column, target.row);
+
+var counter      = instance_create(xx, yy, DamageCounter);
+counter.value    = dmg;
+counter.colour   = global.OPTIONS_COLOUR_DAMAGE;
+//counter.colour   = global.OPTIONS_COLOUR_HEAL;
+
 sout("Did " + string(dmg) + " damage to HP!");
 if (critical) then sout("critical hit!");

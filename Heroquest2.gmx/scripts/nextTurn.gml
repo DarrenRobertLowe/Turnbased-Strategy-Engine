@@ -1,4 +1,7 @@
 /// nextTurn();
+/* Takes the first element of the turnlist
+ * and moves it to the end
+*/
 var list = global.TURNLIST;
 
 var turnEnding = ds_list_find_value(list, 0);   // get the first element (current turn)

@@ -29,6 +29,10 @@
     <sprites name="Menu">
       <sprite>sprites\spr_menuCursor</sprite>
     </sprites>
+    <sprites name="GUI">
+      <sprite>sprites\avatars</sprite>
+      <sprite>sprites\avatar_bg</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -179,18 +183,19 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu</font>
+    <font>fonts\font_combat</font>
   </fonts>
   <objects name="objects">
     <object>objects\MASTER</object>
     <object>objects\OBJECT</object>
     <object>objects\CAMERA</object>
+    <object>objects\GUI</object>
     <object>objects\CURSOR</object>
     <object>objects\GRID_OBJECT</object>
-    <object>objects\OBSTACLE</object>
     <object>objects\obj_MovementPanel</object>
     <object>objects\AttackPanel</object>
+    <object>objects\OBSTACLE</object>
     <object>objects\ENTITY</object>
-    <object>objects\ENEMY</object>
     <object>objects\NPC</object>
     <object>objects\HERO</object>
     <object>objects\FLOOR_DRAWER</object>
@@ -201,7 +206,6 @@
       <object>objects\LEVEL</object>
       <object>objects\TEST_LEVEL</object>
     </objects>
-    <object>objects\GUI</object>
     <objects name="WEAPONS">
       <object>objects\WEAPON</object>
       <object>objects\UNARMED</object>
@@ -214,7 +218,11 @@
         <object>objects\WoodenMop</object>
       </objects>
     </objects>
-    <object>objects\enemy_Pirate</object>
+    <objects name="ENEMIES">
+      <object>objects\ENEMY</object>
+      <object>objects\enemy_Pirate</object>
+    </objects>
+    <object>objects\DamageCounter</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\initial</room>

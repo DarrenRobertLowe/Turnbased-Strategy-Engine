@@ -28,7 +28,7 @@
             <string>/// inherit and set sprite
 event_inherited();
 
-team = TEAMS.evil;
+team = TEAMS.enemy;
 
 /// see setup_enums()
 ds_list_add(AI_ActionOrder, AI_OPTIONS.Attack);
@@ -48,7 +48,8 @@ AI_getOptionsQueue();
 // List effects     = new List&lt;WeaponEffect&gt;;
 // Weapon weapon    = new Sword(pwr, dice, effects);
 
-class   = classes.Pirate;       
+class   = classes.Pirate;
+getBaseStats(class);      
 name    = get_classname(class); // set name to classname by default
 weapon  = instance_create(0,0,Cutlass);
 </string>

@@ -12,14 +12,16 @@ if (attackAnim == "") {
             // 
             
             var option = ds_queue_dequeue(options);    // get the first preference
-            debug_message("The next option in the queue is " + string(option));
+            //debug_message("The next option in the queue is " + string(option));
             
             
             // if we did anything other than move, our turn is over
-            if (actedThisTurn) 
+            if (actedThisTurn)
             or (option == AI_OPTIONS.EndTurn) {
-                debug_message("Ending our turn");
-                endTurn();
+                if (waitTime <= 0) {
+                    // debug_message("Ending our turn");
+                    endTurn();
+                }
             } else {
                 /// setup
                 var target      = -1;           // the target we want to attack
@@ -35,7 +37,7 @@ if (attackAnim == "") {
                 if (listOfTargetsFilled == false) {
                     getEnemies();
                 }
-                
+                //listOfTargetsFilled = true;
                 // is this moving away from target? (e.g. for archers)
                 /*
                 if (option == AI_OPTIONS.Distance) {
@@ -45,25 +47,23 @@ if (attackAnim == "") {
                 */            
                 
                 // PERFORM AN ACTION
-                debug_message("considering action...");
+                // debug_message("considering action...");
                 
                 
                 // ADVANCE
                 if (option == AI_OPTIONS.Advance) {
                     if (!movedThisTurn) {
-                        debug_message("considering moving...");
+                        //debug_message("considering moving...");
                         
                         // pathfinding
                         listOfCells = sortTargetsAdjacentCellsByClosest(listOfTargets, true, weapon.diagonal);
                         if (ds_list_size(listOfCells) > 0) {
-                            show_debug_message("list of cells has a size of " + string(ds_list_size(listOfCells)));
                             var index       = ds_list_find_value(listOfCells, 0);
                             targetColumn    = extractColumnFromListOfCells(listOfCells, index);
                             targetRow       = extractRowFromListOfCells(listOfCells, index);
                             
                             
                             if (validCell(targetColumn, targetRow)) {
-                                debug_message("Valid cell found, moving towards : " +string(targetColumn) +"," +string(targetRow));
                                 movementPoints = move;
                                 startColumn = column;
                                 startRow = row;
@@ -73,9 +73,7 @@ if (attackAnim == "") {
                                 show_error("Error in NPC_AI()# Target cell is outside of the world!", false);
                             }
                         } else {
-                            debug_message("Couldn't find a target cell to walk to.");
-                            // whether or not we moved, consider us as having moved
-                            movedThisTurn = true; 
+                            movedThisTurn = true; // whether or not we moved, consider us as having moved
                         }
                     }
                 } 
@@ -84,8 +82,7 @@ if (attackAnim == "") {
                 if (option == AI_OPTIONS.Attack) {
                     // Melee?
                     if (AI_AttackType == "Melee") { // probably base this on the weapon
-                        debug_message("Planning a melee attack...");
-                        
+                    
                         // is there someone next to us to attack?
                         var unit = checkEnemyAdjacent(diagonals);
                         
@@ -93,9 +90,10 @@ if (attackAnim == "") {
                             debug_message("Enemy " +string(unit) + " found within attack range!");
                             
                             // attack them
-                            attack_target(id, target);
+                            attack_target(id, unit);
                             
                             actedThisTurn = true;
+                            waitTime = delta(3000);
                         }
                     }
                     
@@ -108,7 +106,7 @@ if (attackAnim == "") {
                 
                 
                 if (option == AI_OPTIONS.HealSelf) {
-                    debug_message("Deciding if we should heal or not...");
+                   // debug_message("Deciding if we should heal or not...");
                     // allow some variation to the decision making
                         // EXAMPLE:
                         // global.variancePercentage = .1;
@@ -138,7 +136,7 @@ if (attackAnim == "") {
                     if (hp <= threshold) {
                     // and (mp > requirement)
                     // or (inventory contains potion)
-                        debug_message("Healing Self!");
+                     //   debug_message("Healing Self!");
                         hp = hpBase;
                         actedThisTurn = true;
                     }
@@ -157,7 +155,7 @@ if (attackAnim == "") {
             //if  ((column == targetColumn)
             //and (row == targetRow))
             if (movementPoints <= 0) {
-                show_debug_message("we're done moving!");
+              //  show_debug_message("we're done moving!");
                 movementPoints = 0;
                 CURSOR.MODE = MODES.finishing;          // return control to the cursor
                 MOVING = false;
@@ -168,7 +166,7 @@ if (attackAnim == "") {
                 
                 // before moving to the next cell
                 if (distanceToNextCell <= 0) {
-                    show_debug_message("column: " +string(column) + "    row: " + string(row));
+                 //   show_debug_message("column: " +string(column) + "    row: " + string(row));
                     
                     
                     
@@ -183,10 +181,10 @@ if (attackAnim == "") {
                     // if we're already there, we can stop
                     if  (row    = targetRow)
                     and (column = targetColumn) {
-                        show_debug_message("Final destination reached!");
+                  //      show_debug_message("Final destination reached!");
                         movementPoints = 0;
                     } else {
-                        show_debug_message("Not there yet...");
+                  //      show_debug_message("Not there yet...");
                         
                         
                         // calculate the direction we should go
@@ -219,8 +217,8 @@ if (attackAnim == "") {
                         
                         update_direction();
                         
-                        show_debug_message("dir: " + string(dir));
-                        show_debug_message("movementPoints: " + string(movementPoints));
+                   //     show_debug_message("dir: " + string(dir));
+                   //     show_debug_message("movementPoints: " + string(movementPoints));
                     }
                 }
             }

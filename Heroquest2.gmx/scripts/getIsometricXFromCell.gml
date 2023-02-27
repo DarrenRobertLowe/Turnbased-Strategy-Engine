@@ -1,4 +1,4 @@
-/// getIsometricX(column, row)
+/// getIsometricXFromCell(column, row)
 var column  = argument0;
 var row     = argument1;
 

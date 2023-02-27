@@ -31,6 +31,13 @@ enum classes {
     Musketeer,
 }
 
+enum avatar_index {
+    none,
+    female,
+    male,
+    pirate
+}
+
 enum sexes {
     none,
     male,
@@ -50,6 +57,7 @@ enum unitStats {
     weaponId,
     offhand,
     armour,
+    avatar,
     length      // KEEP AT BOTTOM, USED TO GET THE NUMBER OF STATS
 }
 
@@ -88,6 +96,7 @@ enum attackAnimations {
 
 enum DEPTH {
     menu,
+    info,
     fx,
     sky,
     normal,
@@ -124,7 +133,7 @@ enum AI_OPTIONS {
 }
 
 enum TEAMS {
-    good,
-    evil,
+    ally,
+    enemy,
     neutral
 }

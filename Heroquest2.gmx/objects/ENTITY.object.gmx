@@ -34,6 +34,7 @@ takingDamage = false;
 animTime = 0;
 attackAnim = "";
 targetIndex = 0;    // used for determining targets of attacks
+waitTime = 0;       // used for adding a pause between actions
 
 // entity defaults
 team            = TEAMS.neutral;
@@ -173,6 +174,8 @@ snap_to_grid(column, row);
             <string>/// update xprev and yprev
 xprev = xprevious;
 yprev = yprevious;
+
+if (waitTime &gt; 0) then waitTime--;
 </string>
           </argument>
         </arguments>

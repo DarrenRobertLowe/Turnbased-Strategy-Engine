@@ -32,6 +32,7 @@ defenceBase     = ds_grid_get(units, unitStats.defenceBase,     statsIndex);
 weapon          = ds_grid_get(units, unitStats.weaponId,        statsIndex);
 offhand         = ds_grid_get(units, unitStats.offhand,         statsIndex);
 armour          = ds_grid_get(units, unitStats.armour,          statsIndex);
+avatar          = ds_grid_get(units, unitStats.avatar,          statsIndex);
 
 hp          = hpBase;
 mp          = mpBase;
@@ -40,4 +41,5 @@ initiative  = initiativeBase;
 fortitude   = fortitudeBase;
 attack      = attackBase;
 defence     = defenceBase;
+
 
