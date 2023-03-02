@@ -3,7 +3,7 @@
 var selectedUnit = argument0;
 show_debug_message("selectedUnit = " + string(selectedUnit));
 
-draw_set_font(global.menuFont);
+draw_set_font(global.menu_font);
 textXOffset = global.textXOffset;
 textYOffset = global.textYOffset;
 menuVerticalSeparation = global.menuVerticalSeparation;

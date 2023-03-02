@@ -35,12 +35,11 @@ with (attacker) {
     imageIndex = animStart;
 }
 
-sout("Setting attacker animation to " + string(attacker.attackAnim));
-
+// do the damage
+target.hp -= dmg;
 
 
 // REPORT
-
 var xx = getIsometricXFromCell(target.column, target.row);
 var yy = getIsometricYFromCell(target.column, target.row);
 
@@ -51,3 +50,6 @@ counter.colour   = global.OPTIONS_COLOUR_DAMAGE;
 
 sout("Did " + string(dmg) + " damage to HP!");
 if (critical) then sout("critical hit!");
+
+// destroy enemy if health < 0
+if (target.hp <= 0) then kill(target);

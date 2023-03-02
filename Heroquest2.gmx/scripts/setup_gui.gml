@@ -1,6 +1,5 @@
 /// setup_gui()
-global.menuFont = font_menu;
-draw_set_font(global.menuFont);
+draw_set_font(global.menu_font);
 
 global.menuVerticalSeparation = string_height("MENU");
 global.menuWidth  = string_width("WIDEST POSSIBLE");//(view_wview / 3);

@@ -32,16 +32,18 @@
     <sprites name="GUI">
       <sprite>sprites\avatars</sprite>
       <sprite>sprites\avatar_bg</sprite>
+      <sprite>sprites\spr_combat_panel</sprite>
     </sprites>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bg_sky0</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="Notes">
       <script>scripts\notes_Spell_Types_and_Elements.gml</script>
       <script>scripts\note_Effects.gml</script>
       <script>scripts\notes_Elemental_Weaknesses_And_Effects.gml</script>
-      <script>scripts\notes_Elemental_Weaknesses_And_Strengths.gml</script>
       <script>scripts\notes_Height_Advantage.gml</script>
       <script>scripts\notes_Spell_Schools_and_Elements.gml</script>
     </scripts>
@@ -52,19 +54,20 @@
       <script>scripts\setup_gui.gml</script>
       <script>scripts\setup_controls.gml</script>
       <script>scripts\setup_units.gml</script>
+      <script>scripts\setup_classnames.gml</script>
       <script>scripts\setup_views.gml</script>
       <script>scripts\setup_animations.gml</script>
       <script>scripts\setup_delta.gml</script>
       <script>scripts\deglobalizeVars.gml</script>
       <script>scripts\load_options.gml</script>
-      <script>scripts\recalculate_values.gml</script>
       <script>scripts\setup_statsGrid.gml</script>
       <script>scripts\setup_options.gml</script>
-      <script>scripts\setup_classnames.gml</script>
       <script>scripts\setup_combat_rules.gml</script>
+      <script>scripts\recalculate_values.gml</script>
       <script>scripts\create_weapon.gml</script>
       <script>scripts\load_weapon.gml</script>
       <script>scripts\setup_weapons.gml</script>
+      <script>scripts\setup_fonts.gml</script>
     </scripts>
     <scripts name="Math">
       <script>scripts\getCellCenterY.gml</script>
@@ -159,6 +162,7 @@
       </scripts>
       <script>scripts\nextTurn.gml</script>
       <script>scripts\endTurn.gml</script>
+      <script>scripts\isBattleOver.gml</script>
     </scripts>
     <scripts name="AI">
       <script>scripts\sortTargetsAdjacentCellsByClosest.gml</script>
@@ -180,10 +184,13 @@
     <script>scripts\update_direction.gml</script>
     <script>scripts\adjust_animation_for_direction.gml</script>
     <script>scripts\getEnemies.gml</script>
+    <script>scripts\draw_text_outlined.gml</script>
+    <script>scripts\kill.gml</script>
   </scripts>
   <fonts name="fonts">
-    <font>fonts\font_menu</font>
-    <font>fonts\font_combat</font>
+    <font>fonts\font_menu_normal</font>
+    <font>fonts\font_combat_normal</font>
+    <font>fonts\font_header_normal</font>
   </fonts>
   <objects name="objects">
     <object>objects\MASTER</object>
@@ -223,6 +230,7 @@
       <object>objects\enemy_Pirate</object>
     </objects>
     <object>objects\DamageCounter</object>
+    <object>objects\SKY_CONTROLLER</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\initial</room>

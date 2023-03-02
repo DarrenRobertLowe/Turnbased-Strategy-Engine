@@ -37,7 +37,7 @@ Ice heals Frost Elementals.
 
 
 
-Shock
+SHOCK
 ---------
 Shock is good for dealing damage to multiple enemies at a time (chain lightning).
 Enemies can be shocked. Shocked enemies can't move, fight or defend themselves.

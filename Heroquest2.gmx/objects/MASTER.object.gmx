@@ -46,8 +46,10 @@ setup_grids(30,30);
 deglobalizeVars();
 setup_controls();
 setup_options();
+setup_fonts();
 setup_gui();
 setup_units();
+
 
 // OPTIONS
 // (these are defaults but are properly loaded in via load_options())

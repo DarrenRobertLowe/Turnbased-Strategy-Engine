@@ -40,6 +40,8 @@ show_debug_message("room height is "+string(room_height));
 view_wview = global.options_ResolutionWidth;
 view_hview = global.options_ResolutionHeight;
 
+instance_create(0,0,SKY_CONTROLLER);
+
 </string>
           </argument>
         </arguments>
