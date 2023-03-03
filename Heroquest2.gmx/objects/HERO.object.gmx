@@ -40,13 +40,20 @@ class   = classes.Pirate;
 weapon  = instance_create(0,0,Cutlass); // this should be loaded from a persistent list
 
 // COMMAND LIST
+menu = ds_list_create();
+ds_list_add(menu, "MOVE");
+ds_list_add(menu, "ATTACK");
+ds_list_add(menu, "SKILL");
+ds_list_add(menu, "END TURN");
+ds_list_add(menu, "CANCEL");
+
+/*
 menu[0] = "MOVE";
 menu[1] = "ATTACK";
 menu[2] = "SKILL";
-menu[3] = "SEARCH";
 menu[4] = "END TURN";
 menu[5] = "CANCEL";
-
+*/
 
 
 </string>

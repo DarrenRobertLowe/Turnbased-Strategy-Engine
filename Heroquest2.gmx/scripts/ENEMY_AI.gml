@@ -6,11 +6,6 @@ if (attackAnim == "") {
         CAMERA.target = id;
         
         if !(MOVING) {
-            // DEBUG 
-            hpBase = 20;
-            hp = 8;
-            // 
-            
             var option = ds_queue_dequeue(options);    // get the first preference
             //debug_message("The next option in the queue is " + string(option));
             

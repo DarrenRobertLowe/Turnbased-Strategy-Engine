@@ -1,5 +1,5 @@
 ///show_attack_range();
-
+sout("******* SEARCHING FOR TARGETS IN ATTACK RANGE ********");
 ds_grid_clear(attackGrid, global.gridDefaultValue); // reset the grid
 mp_grid_clear_all(global.pathGrid);
 //gridpath_set_collisions(global.pathGrid, OBSTACLE, selected.pathfindingIgnoreList); // add obstacles to grid
@@ -82,7 +82,7 @@ for (i=0; i <= totalColumns; i++) {
                 
                 // is there a valid enemy on this cell?
                 var entity = ds_grid_get(grid, targetColumn, targetRow);
-                sout("Target cell " +string(targetColumn) +":" + string(targetRow) + " entity is: " + string(entity));
+                if (entity > 0) then sout("Target cell " +string(targetColumn) +":" + string(targetRow) + " entity is: " + string(entity));
                 
                 if  (entity > -1)                           // there's something there
                 and (object_is_ancestor(entity.object_index, ENTITY)) {   // so we don't target walls and such
@@ -99,3 +99,6 @@ for (i=0; i <= totalColumns; i++) {
         }
     }
 }
+
+
+sout("******* FINISHED SEARCHING FOR TARGETS IN ATTACK RANGE ********");

@@ -65,7 +65,7 @@ keepVisible = true;
 event_inherited();
 
 if (CURSOR.MODE != MODES.attacking) {
-    ds_grid_set(ourGrid,column,row,-1);
+    ds_grid_set(attackGrid,column,row,-1);
     instance_destroy();
 }
 

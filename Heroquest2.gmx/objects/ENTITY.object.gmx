@@ -186,7 +186,7 @@ if (MOVING) {
         if (path_position &gt;= 1) {
             update_direction();
             getCellFromCoords(x,y);
-            CURSOR.MODE = MODES.finishing;              // return control to the cursor
+            CURSOR.MODE = MODES.free;              // return control to the cursor
             MOVING = false;
             updateGrid(id, sourceColumn, sourceRow, targetColumn, targetRow);   // empty old coords and add id to new position.
         }

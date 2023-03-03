@@ -32,11 +32,10 @@ var offset = global.pathfindingOffset;
 if (validCell(targetColumn, targetRow))
 {
     // DEBUG
-    for (var i=0; i<ds_list_size(pathfindingIgnoreList); i++)
-    {
-        var val = ds_list_find_value(pathfindingIgnoreList, i);
-        debug_message("I am not taking into consideration the following instance:" +string(val));
-    }
+    // for (var i=0; i<ds_list_size(pathfindingIgnoreList); i++){
+    //     var val = ds_list_find_value(pathfindingIgnoreList, i);
+    //     debug_message("I am not taking into consideration the following instance:" +string(val));
+    // }
     // end of DEBUG
     
     

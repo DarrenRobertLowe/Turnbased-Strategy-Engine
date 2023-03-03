@@ -1,7 +1,8 @@
 /// endTurn();
 /// RESET VARIABLES AT START OF TURN
+var entity = ds_list_find_value(global.TURNLIST,0);
 
-with (ENTITY) {
+with (entity) {
     movedThisTurn = false;
     actedThisTurn = false;
     performedActionThisTurn = false;

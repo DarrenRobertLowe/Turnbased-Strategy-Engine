@@ -52,6 +52,12 @@ menuPosition = 0;
 targetHero = -1;
 MODE = MODES.free;
 keepVisible = true;
+
+
+actedThisTurn = false;// this shouldn't actually be here
+
+
+tempMenu = ds_list_create();
 </string>
           </argument>
         </arguments>
@@ -82,7 +88,9 @@ event_inherited();
 
 
 // end our turn if we've already acted
-//if (selected != 0 and selected.actedThisTurn == true) then MODE = MODES.finishing;
+if (selected != 0) {
+    if (selected.actedThisTurn == true) then MODE = MODES.finishing;
+}
 
 
 check_controls();
@@ -125,13 +133,14 @@ if (MODE == MODES.free) {
                 selected = targetHero;
                 MODE = MODES.objectMenu;
                 
-                getMenuValues(selected);
+                selected.sourceColumn   = selected.column;      // needed for cancel movement
+                selected.sourceRow      = selected.row;         // needed for cancel movement
                 
                 if (global.options_CursorMemory) {
-                    menuPosition = selected.menuPosition;     // Use the objects cursor memory?
+                    menuPosition = selected.menuPosition;       // Use the objects cursor memory?
                 }
                 else {
-                    menuPosition = 0;                          // No? Position zero it is.
+                    menuPosition = 0;                           // No? Position zero it is.
                 }
             }
         }
@@ -141,15 +150,20 @@ if (MODE == MODES.free) {
 
 // CHARACTER MENU
 if (MODE == MODES.objectMenu) {
+    getMenuValues(selected);
     menu_cursor_controls();
-    
+
+    show_debug_message("menu position: "+ string(menuPosition) + " : " + string(ds_list_find_value(tempMenu, menuPosition)));
+        
     if (global.controls_ok) {
         global.controls_ok = 0; // prevent instant repeats
         
-        switch (selected.menu[menuPosition])
+        switch ds_list_find_value(tempMenu, menuPosition)
         {
             case "MOVE":
-                MODE = MODES.moving;
+               if (selected.movedThisTurn == false)
+                then MODE = MODES.moving;
+                else MODE = MODES.objectMenu;
             break;
             
             case "ATTACK":
@@ -158,10 +172,6 @@ if (MODE == MODES.objectMenu) {
             
             case "SKILL":
                 //MODE = MODES.skills;
-            break;
-            
-            case "SEARCH":
-                //MODE = MODES.search;
             break;
             
             case "END TURN":
@@ -200,6 +210,7 @@ if (MODE == MODES.moving) {
                 selected.sourceRow      = selected.row;     // needed for update_Grid()
                 selected.targetColumn   = column;           // set the target column for the unit
                 selected.targetRow      = row;              // set the target row for the unit
+                selected.movedThisTurn  = true;
                 selected.alarm[0]       = 1;                // tell the unit to start moving
                 MODE = MODES.waiting;                       // wait while unit has finished moving
                 }
@@ -227,6 +238,10 @@ if (MODE == MODES.attacking) {
         attackPathShown = true;
     }
     
+    if (global.controls_cancel) {
+        resetCursor();
+    }
+    
     
     // cursor movement
     if (global.controls_up)
@@ -236,7 +251,7 @@ if (MODE == MODES.attacking) {
         if (selected.targetIndex &lt; 0)
           then selected.targetIndex = (ds_list_size(selected.listOfTargets)-1);
           
-        sout("targetIndex is " + string(selected.targetIndex));
+        sout("targetIndex is " + string(selected.targetIndex) + " : " + string(selected.targetIndex.id));
         
         
         attackTarget = ds_list_find_value(selected.listOfTargets, selected.targetIndex);
@@ -256,13 +271,16 @@ if (MODE == MODES.attacking) {
         if (selected.targetIndex &gt; (ds_list_size(selected.listOfTargets)-1))
           then selected.targetIndex = 0;
         
-    sout("targetIndex is " + string(selected.targetIndex));
+    sout("targetIndex is " + string(selected.targetIndex) + " : " + string(selected.targetIndex.id));
           
         attackTarget = ds_list_find_value(selected.listOfTargets, selected.targetIndex);
         
         if (attackTarget &gt; -1) {
             CURSOR.column = attackTarget.column;
             CURSOR.row = attackTarget.row;
+        } else {
+            show_debug_message("no valid targets to attack");
+            MODE = MODES.free;
         }
     }
     
@@ -273,6 +291,7 @@ if (MODE == MODES.attacking) {
         if (attackTarget &gt; -1) {
             attack_target(selected, attackTarget);
             selected.actedThisTurn = true;
+            ds_list_clear(selected.listOfTargets);
         }
         
         // reset variables
@@ -311,7 +330,7 @@ if (MODE == MODES.finishing) {
         if (global.OPTIONS_CURSOR_MEMORY == true) {
             selected.menuPosition = menuPosition;     // remember the cursor position
         }
-        
+        attackPathShown = false;
         pathShown = false;
         resetCursor();
 }
