@@ -25,7 +25,7 @@ starty = (gridOffsetY + (row * tileHeight) + (tileHeight/2));
  * in the way.
 */
 
-range = 2;  // var range = targetHero.weapon.range;
+var range = targetHero.weapon.range;
 
 
 // set the min and max
@@ -84,13 +84,23 @@ for (i=0; i <= totalColumns; i++) {
                 var entity = ds_grid_get(grid, targetColumn, targetRow);
                 if (entity > 0) then sout("Target cell " +string(targetColumn) +":" + string(targetRow) + " entity is: " + string(entity));
                 
-                if  (entity > -1)                           // there's something there
-                and (object_is_ancestor(entity.object_index, ENTITY)) {   // so we don't target walls and such
+                
+                // ADD TARGET TO listOfTargets
+                if  (entity > -1)                                           // there's something there
+                and (object_is_ancestor(entity.object_index, ENTITY)) {     // don't target walls and such
                     if (entity.team != selected.team) {
                         ds_list_add(selected.listOfTargets, entity);
                         sout("Added a unit: " +string(entity) + " to our list of targets!");
                     }
                 }
+                
+                // Default selected target to the first index
+                if (ds_list_size(selected.listOfTargets) > 0) {
+                    attackTarget = ds_list_find_value(selected.listOfTargets, selected.targetIndex);
+                    CURSOR.column = attackTarget.column;
+                    CURSOR.row = attackTarget.row;
+                }
+                
             } else {
                 mp_grid_add_cell(rangeGrid,i,j);
             }

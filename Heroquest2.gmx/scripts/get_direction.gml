@@ -1,23 +1,36 @@
 ///get_direction(float direction)
 // takes a direction and rounds it to the correct rounded value
 
-dir = argument0;
+var dir = argument0;
 
-if ((dir >= 0 && dir <= 45) || (dir <= 360 && dir >= (360-45))) {
+sout("dir passed is : "+ string(dir));
+
+if (dir >= 0 && dir < 45) {
     direction = 0;
+    debug_message("direction set to " + string(direction));
 }
 
-if (dir <= (180+45) && dir >= (180-45)) {
-    direction = 180;
-}
-
-if (dir <= (90+45) && dir >= (90-45)) {
+if (dir >= 45 && dir < 135) {
     direction = 90;
+    debug_message("direction set to " + string(direction));
 }
 
-if (dir <= (270+45) && dir >= (270-45)) {
-    direction = 270;
+if (dir >= 135 && dir < 225) {
+    direction = 180;
+    debug_message("direction set to " + string(direction));
 }
+
+if (dir >= 225 && dir < 315) {
+    direction = 270;
+    debug_message("direction set to " + string(direction));
+}
+
+if (dir >= 315 && dir < 360) {
+    direction = 0;   // because 360 = 0
+    debug_message("direction set to " + string(direction));
+}
+
+
 
 
 update_sprite();

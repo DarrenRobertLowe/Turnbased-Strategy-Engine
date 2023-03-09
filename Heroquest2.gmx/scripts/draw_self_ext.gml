@@ -31,7 +31,7 @@ else {
          isoSprite
         ,floor(imageIndex)
         ,getIsometricXFromCell(column, row)
-        ,getIsometricYFromCell(column, row) - (z)
+        ,(getIsometricYFromCell(column, row)) - (z)
         ,imageMirror
         ,image_yscale
         ,0

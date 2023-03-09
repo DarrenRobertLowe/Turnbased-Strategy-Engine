@@ -149,12 +149,13 @@ if (MODE == MODES.free) {
 
 
 // CHARACTER MENU
+// note: see draw_menu() for excluding menu items
 if (MODE == MODES.objectMenu) {
     getMenuValues(selected);
     menu_cursor_controls();
-
+    
     show_debug_message("menu position: "+ string(menuPosition) + " : " + string(ds_list_find_value(tempMenu, menuPosition)));
-        
+    
     if (global.controls_ok) {
         global.controls_ok = 0; // prevent instant repeats
         
@@ -162,26 +163,25 @@ if (MODE == MODES.objectMenu) {
         {
             case "MOVE":
                if (selected.movedThisTurn == false)
-                then MODE = MODES.moving;
-                else MODE = MODES.objectMenu;
-            break;
+                 then MODE = MODES.moving;
+                break;
             
             case "ATTACK":
-                MODE = MODES.attacking;
-            break;
+                if  (selected.actedThisTurn == false)
+                  then MODE = MODES.attacking;
+                break;
             
             case "SKILL":
                 //MODE = MODES.skills;
-            break;
+                break;
             
             case "END TURN":
                 MODE = MODES.finishing;
-            break;
+                break;
             
             case "CANCEL":
                 resetCursor();
-            break;
-            
+                break;
         }
     }
 }
@@ -233,16 +233,22 @@ if (MODE == MODES.attacking) {
     
     myPath = selected.myPath;
     
+    // setup attack range and targets
     if (attackPathShown == false) {
-        show_attack_range();
+        show_attack_range();    // NOTE: this also creates the list of targets
         attackPathShown = true;
     }
     
-    if (global.controls_cancel) {
+    
+    // cancel attack?
+    if (global.controls_cancel) 
+    or (ds_list_size(selected.listOfTargets) == 0) {
+        attackPathShown = false
         resetCursor();
     }
     
     
+    // Continue Attacking...
     // cursor movement
     if (global.controls_up)
     or (global.controls_left) {
@@ -250,9 +256,13 @@ if (MODE == MODES.attacking) {
         
         if (selected.targetIndex &lt; 0)
           then selected.targetIndex = (ds_list_size(selected.listOfTargets)-1);
-          
-        sout("targetIndex is " + string(selected.targetIndex) + " : " + string(selected.targetIndex.id));
         
+        sout("targetIndex is " + string(selected) + " : " + string(selected.id));
+        for(var i=0; i&lt;ds_list_size(selected.listOfTargets); i++){
+            sout("list of targets:");
+            sout(ds_list_find_value(selected.listOfTargets, i));
+            sout("-----");
+        }
         
         attackTarget = ds_list_find_value(selected.listOfTargets, selected.targetIndex);
         
@@ -260,7 +270,6 @@ if (MODE == MODES.attacking) {
             CURSOR.column = attackTarget.column;
             CURSOR.row = attackTarget.row;
         }
-        
     }
     
     
@@ -271,7 +280,13 @@ if (MODE == MODES.attacking) {
         if (selected.targetIndex &gt; (ds_list_size(selected.listOfTargets)-1))
           then selected.targetIndex = 0;
         
-    sout("targetIndex is " + string(selected.targetIndex) + " : " + string(selected.targetIndex.id));
+        sout("targetIndex is " + string(selected) + " : " + string(selected.id));
+        for(var i=0; i&lt;ds_list_size(selected.listOfTargets); i++){
+            sout("list of targets:");
+            sout(ds_list_find_value(selected.listOfTargets, i));
+            sout("-----");
+        }
+        
           
         attackTarget = ds_list_find_value(selected.listOfTargets, selected.targetIndex);
         

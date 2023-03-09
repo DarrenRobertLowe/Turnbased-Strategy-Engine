@@ -26,6 +26,18 @@ if (selected.movedThisTurn == true) {
     ds_list_delete(tempMenu, pos);
 }
 
+
+// already acted this turn?
+if (selected.actedThisTurn == true) {
+    var pos = ds_list_find_index(tempMenu, "ATTACK");
+    ds_list_delete(tempMenu, pos);
+}
+if (selected.actedThisTurn == true) {
+    var pos = ds_list_find_index(tempMenu, "SKILLS");
+    ds_list_delete(tempMenu, pos);
+}
+
+
 // draw the menu items
 var i=0;
 var size = ds_list_size(tempMenu); // array_length_1d(selected.menu);
