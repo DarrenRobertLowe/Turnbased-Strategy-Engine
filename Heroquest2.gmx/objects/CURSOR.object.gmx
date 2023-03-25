@@ -30,6 +30,8 @@ event_inherited();
 
 menuX = global.menuX;
 menuY = global.menuY;
+avatarWidth  = sprite_get_width(avatars);
+
 
 z = -1;
 xscale = 1;
@@ -96,7 +98,8 @@ if (selected != 0) {
 check_controls();
 
 
-
+// check if we're over a unit
+getGridEntityAndUnit(global.GRID, column, row);
 
 // FREE ROAMING
 if (MODE == MODES.free) {

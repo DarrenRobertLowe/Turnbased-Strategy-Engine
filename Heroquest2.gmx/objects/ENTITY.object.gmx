@@ -155,7 +155,7 @@ goto_Square(targetColumn, targetRow);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// ANIMATION
+            <string>/// ANIMATION and MOVEMENT
 event_inherited();
 
 update_sprite();
@@ -181,7 +181,7 @@ if (MOVING) {
     path_speed = delta(global.movementSpeed);   // if using delta time you probably need to update it here
     
     
-    // This is for player controlled movement.
+    // Player controlled movement.
     if !(object_is_ancestor(object_index, NPC)) {
         if (path_position &gt;= 1) {
             update_direction();
@@ -193,8 +193,12 @@ if (MOVING) {
     }
     
     
-    // This is for NPC movement, and corresponds to moving a 
-    // single cell along a path, not the actual end of moving.
+    // NPC movement
+    // NOTEL: This corresponds to moving a single cell
+    // along the path, not the actual end of moving.
+    // This is because the enemy just walks towards the
+    // target, rather than choosing a square they can
+    // actually reach. This should probably be changed.
     if (object_is_ancestor(object_index, NPC)) {
         if (path_position &gt;= 1) {
             update_direction();

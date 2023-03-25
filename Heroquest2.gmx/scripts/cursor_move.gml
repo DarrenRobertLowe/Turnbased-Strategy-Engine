@@ -8,4 +8,5 @@ if (global.controls_down)  then move = DIRECTION.south;
 if (global.controls_left)  then move = DIRECTION.west;
 if (global.controls_right) then move = DIRECTION.east;
 
+
 moveInstant();

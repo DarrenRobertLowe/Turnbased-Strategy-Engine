@@ -73,8 +73,7 @@ recalculate_values();
 
 
 // DEBUG
-if (global.DEBUG)
-{
+if (global.DEBUG) {
     global.currentFrame = 0;
     show_debug_overlay(true);
 }

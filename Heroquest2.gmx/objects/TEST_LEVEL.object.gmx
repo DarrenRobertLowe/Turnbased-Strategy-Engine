@@ -32,19 +32,23 @@ depth = DEPTH.ground;
 
 instance_create(0, 0, FLOOR_DRAWER);
 
+/*
 var enemy = spawn(12, 3, enemy_Pirate, 4, true);
 var enemy = spawn(6, 6, enemy_Pirate, 2, true);
+*/
 var enemy = spawn(2, 3, enemy_Pirate, 4, true);
+/*
 var enemy = spawn(8, 5, enemy_Pirate, 2, true);
 var enemy = spawn(9, 9, enemy_Pirate, 4, true);
 var enemy = spawn(10, 7, enemy_Pirate, 2, true);
+*/
 
 var hero  = spawnUnit(0, 0, 1, 4, true);
 var hero2 = spawnUnit(1, 1, 2, 3, true);
 instance_create(hero.x, hero.y, CURSOR);
 instance_create(CURSOR.x, CURSOR.y, CAMERA);
 instance_create(0, 0, GUI);
-
+instance_create(0,0, SKY_CONTROLLER);
 
 repeat 10 {
     build(10 + (random(global.gridWidth)-10), 10 + (random(global.gridHeight)-10), WALL, 4);

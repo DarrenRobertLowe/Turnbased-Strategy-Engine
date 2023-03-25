@@ -7,8 +7,8 @@ if (attackAnim == "") {
         
         if !(MOVING) {
             var option = ds_queue_dequeue(options);    // get the first preference
-            //debug_message("The next option in the queue is " + string(option));
-            
+            debug_message("The next option in the queue is " + string(option));
+                
             
             // if we did anything other than move, our turn is over
             if (actedThisTurn)
@@ -32,23 +32,14 @@ if (attackAnim == "") {
                 if (listOfTargetsFilled == false) {
                     getEnemies();
                 }
-                //listOfTargetsFilled = true;
-                // is this moving away from target? (e.g. for archers)
-                /*
-                if (option == AI_OPTIONS.Distance) {
-                    show_debug_message("WE'RE GOING THE DISTANCE");
-                    movedThisTurn = true;
-                }
-                */            
                 
                 // PERFORM AN ACTION
-                // debug_message("considering action...");
-                
+                debug_message("considering action...");
                 
                 // ADVANCE
                 if (option == AI_OPTIONS.Advance) {
                     if (!movedThisTurn) {
-                        //debug_message("considering moving...");
+                        debug_message("We haven't yet moved... considering moving...");
                         
                         // pathfinding
                         listOfCells = sortTargetsAdjacentCellsByClosest(listOfTargets, true, weapon.diagonal);
@@ -120,7 +111,7 @@ if (attackAnim == "") {
                     var modifier  = ceil(hpBase * global.variancePercentage);
                     threshold -= modifier;
                     threshold += round(random(modifier * 2));
-        
+                    
                     //debug_message("Decided threshold is " + string(threshold));
                     
                     
@@ -161,9 +152,7 @@ if (attackAnim == "") {
                 
                 // before moving to the next cell
                 if (distanceToNextCell <= 0) {
-                 //   show_debug_message("column: " +string(column) + "    row: " + string(row));
-                    
-                    
+                    //   show_debug_message("column: " +string(column) + "    row: " + string(row));
                     
                     // RECALCULATE THE ULTIMATE PATH
                     var index       = ds_list_find_value(listOfCells, 0);

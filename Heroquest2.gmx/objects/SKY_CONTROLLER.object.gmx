@@ -26,8 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>/// set a (random?) sky backdrop
-room_set_background(room, 0, true, false, bg_sky0, 0,0,true,true,0,0,1);
-
+background_index = 0;//irandom(7);
+background_hspeed = random(0.2);
+background_vspeed = random(0.2);
+//show_message("vspeed = " + string(background_vspeed) + ": hspeed = " + string(background_vspeed));
 background_visible[0] = true;
 </string>
           </argument>

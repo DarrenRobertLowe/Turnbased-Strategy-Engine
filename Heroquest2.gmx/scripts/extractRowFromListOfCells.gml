@@ -15,7 +15,6 @@ if !(is_undefined(str)) {
     
     if (pos > 0) { // if ":" is found
         var row = string_copy(str, pos+1, string_length(str));
-        debug_message("extractRowFromListOfCells() says: row = "+string(row));
         return real(string_digits(row));
     }
     else return -1; // if ":" is NOT found

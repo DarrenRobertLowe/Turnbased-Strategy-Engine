@@ -15,13 +15,14 @@
  * than a max. 
  * 
  * See setup_enums() for "stats" enum
- * See setup_default_stats() for values
+ * See setup_units() for default values
 */ 
 var statsIndex  = argument0;
 var units       = global.persistent_units;   // deglobalize
 
 type            = ds_grid_get(units, unitStats.type,            statsIndex);
 name            = ds_grid_get(units, unitStats.name,            statsIndex);
+level           = ds_grid_get(units, unitStats.level,           statsIndex);
 hpBase          = ds_grid_get(units, unitStats.hpBase,          statsIndex);
 mpBase          = ds_grid_get(units, unitStats.mpBase,          statsIndex);
 moveBase        = ds_grid_get(units, unitStats.moveBase,        statsIndex);
@@ -33,6 +34,7 @@ weapon          = ds_grid_get(units, unitStats.weaponId,        statsIndex);
 offhand         = ds_grid_get(units, unitStats.offhand,         statsIndex);
 armour          = ds_grid_get(units, unitStats.armour,          statsIndex);
 avatar          = ds_grid_get(units, unitStats.avatar,          statsIndex);
+
 
 hp          = hpBase;
 mp          = mpBase;

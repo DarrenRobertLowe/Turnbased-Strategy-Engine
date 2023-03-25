@@ -30,16 +30,7 @@ event_inherited();
 
 team = TEAMS.enemy;
 
-/// see setup_enums()
-ds_list_add(AI_ActionOrder, AI_OPTIONS.Attack);
-ds_list_add(AI_ActionOrder, AI_OPTIONS.Advance);
-ds_list_add(AI_ActionOrder, AI_OPTIONS.HealSelf);
-//ds_list_add(AI_ActionOrder, AI_OPTIONS.Distance);
-//ds_list_add(AI_ActionOrder, AI_OPTIONS.MoveTowardsAlly);
-//ds_list_add(AI_ActionOrder, AI_OPTIONS.HealAlly);
-ds_list_add(AI_ActionOrder, AI_OPTIONS.EndTurn);
 
-AI_getOptionsQueue();
 
 
 // weapon

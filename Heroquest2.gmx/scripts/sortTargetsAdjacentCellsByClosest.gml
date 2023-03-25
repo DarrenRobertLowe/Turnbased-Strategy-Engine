@@ -1,5 +1,7 @@
 /// sortTargetsAdjacentCellsByClosest(listOfTargets, remove unreachable?, include diagonals);
-debug = true;
+var debug = false;
+
+if (debug) then debug_message("running sortTargetsAdjacentCellsByClosest()");
 
 var listOfTargets       = argument0;
 var removeUnreachable   = argument1;
@@ -13,7 +15,7 @@ var targetX = -1;
 var targetY = -1;
 var pathLength = -1;
 var pathfindingOffset = global.pathfindingOffset;
-debug_message("running sortTargetsAdjacentCellsByClosest()");
+
 
 
 // add our potential targets to the pathfindingIgnoreList so
@@ -120,7 +122,7 @@ for(var i=0; i<ds_list_size(listOfTargets); i++)
 var cell = -1;
 for(var i=0; i<ds_list_size(listOfCells); i++)
 {
-    debug_message("i = "+string(i));
+    if (debug) then debug_message("i = "+string(i));
     cell = ds_list_find_value(listOfCells, i);
     
     
@@ -137,8 +139,8 @@ for(var i=0; i<ds_list_size(listOfCells); i++)
         if (pathLength < best)
         or (best == defaultBest)
         {
-            debug_message("phase 5: best is "+string(best));
-            debug_message("list size is "+string(ds_list_size(listOfCells)));
+            if (debug) then debug_message("phase 5: best is "+string(best));
+            if (debug) then debug_message("list size is "+string(ds_list_size(listOfCells)));
             ds_list_delete(listOfCells, i);             // remove entry from position
             ds_list_insert(listOfCells, 0, cell);       // add it to the top of the listOfCells
             best = pathLength;
@@ -152,7 +154,7 @@ for(var i=0; i<ds_list_size(listOfCells); i++)
 for (var i=0; i<ds_list_size(listOfCells); i++)
 {
     var val = ds_list_find_value(listOfCells, i);
-    debug_message("listOfCells index "+string(i)+" = " +string(val));
+    if (debug) then debug_message("listOfCells index "+string(i)+" = " +string(val));
 }
 
 

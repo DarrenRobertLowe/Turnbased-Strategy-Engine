@@ -47,6 +47,7 @@ enum sexes {
 enum unitStats {
     type,
     name,
+    level,
     hpBase,
     mpBase,
     moveBase,

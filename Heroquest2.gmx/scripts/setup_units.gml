@@ -2,7 +2,7 @@
 /*
  * See: setup_enums() for unitStats
 */
-global.heroesList  = ds_list_create();
+global.heroesList = ds_list_create();
 global.persistent_units = ds_grid_create(unitStats.length,1);
 
 
@@ -11,6 +11,7 @@ global.persistent_units = ds_grid_create(unitStats.length,1);
 var index = 0;
 ds_grid_set(global.persistent_units, unitStats.type,              index, NPC);
 ds_grid_set(global.persistent_units, unitStats.name,              index, "I AM ERROR");
+ds_grid_set(global.persistent_units, unitStats.level,             index, 1);
 ds_grid_set(global.persistent_units, unitStats.hpBase,            index, 1);
 ds_grid_set(global.persistent_units, unitStats.mpBase,            index, 1);
 ds_grid_set(global.persistent_units, unitStats.moveBase,          index, 1);
@@ -28,6 +29,7 @@ index = add_new_unit_to_units_table();  // create a blank unit entry
 // give the unit their starting stats
 ds_grid_set(global.persistent_units, unitStats.type,          index, HERO);
 ds_grid_set(global.persistent_units, unitStats.name,          index, "Serana");
+ds_grid_set(global.persistent_units, unitStats.level,         index, 2);
 ds_grid_set(global.persistent_units, unitStats.hpBase,        index, 8);
 ds_grid_set(global.persistent_units, unitStats.mpBase,        index, 10);
 ds_grid_set(global.persistent_units, unitStats.moveBase,      index, 3);
@@ -40,6 +42,7 @@ index = add_new_unit_to_units_table();  // create a blank unit entry
 // give the unit their starting stats
 ds_grid_set(global.persistent_units, unitStats.type,          index, HERO);
 ds_grid_set(global.persistent_units, unitStats.name,          index, "Devlin");
+ds_grid_set(global.persistent_units, unitStats.level,         index, 4);
 ds_grid_set(global.persistent_units, unitStats.hpBase,        index, 10);
 ds_grid_set(global.persistent_units, unitStats.mpBase,        index, 0);
 ds_grid_set(global.persistent_units, unitStats.moveBase,      index, 3);

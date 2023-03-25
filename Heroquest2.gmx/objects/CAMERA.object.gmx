@@ -123,13 +123,11 @@ if (global.isometricView == false)
     var yMax = (offsetY + (gridHeight * tileHeight));
     
     
-    for(var xx = 0; xx&lt;=gridWidth; xx++)
-    {
+    for(var xx = 0; xx&lt;=gridWidth; xx++) {
         var xxx = (offsetX + (xx * tileWidth));
         draw_line(xxx, yMin, xxx, yMax);
         
-        for(var yy = 0; yy&lt;=gridHeight; yy++)
-        {
+        for(var yy = 0; yy&lt;=gridHeight; yy++) {
             var yyy = (offsetY + (yy * tileHeight));
             draw_line(xMin, yyy, xMax, yyy);
         }
