@@ -1,55 +1,58 @@
-///checkEnemyAdjacent(diagonals?);
+///checkEnemyAdjacent(range, diagonals?);
 /** Returns the unit instance id or -1 if 
   * nothing is found.
  */
  
 var unit;
-var diagonals = argument0;
+var range     = argument0;
+var diagonals = argument1;
 
 // north
-if ((row-1) > -1) {
-    unit = containsEnemyUnit(global.GRID, column, row-1)
+if ((row-range) > -1) {
+    unit = containsEnemyUnit(global.GRID, column, row-range)
     if (unit > -1)
         return unit;
 }
 
 // south
-if ((row+1) < ds_grid_width(global.GRID)) {
-    unit = containsEnemyUnit(global.GRID, column, row+1);
+if ((row+range) < ds_grid_width(global.GRID)) {
+    unit = containsEnemyUnit(global.GRID, column, row+range);
     if (unit > -1)
         return unit;
 }
 
 
 // west
-if ((column-1) > -1) {
-unit = containsEnemyUnit(global.GRID, column-1, row);
+if ((column-range) > -1) {
+unit = containsEnemyUnit(global.GRID, column-range, row);
 if (unit > -1)
     return unit;
 }
 
 // east
-if ((column+1) < ds_grid_height(global.GRID)) {
-unit = containsEnemyUnit(global.GRID, column+1, row);
+if ((column+range) < ds_grid_height(global.GRID)) {
+unit = containsEnemyUnit(global.GRID, column+range, row);
 if (unit > -1)
     return unit;
 }
 
+
 // diagonals
+range--; // so a spear with range of 2, will have 1 diagonal
 if (diagonals) {
-    unit = containsEnemyUnit(global.GRID, column-1, row-1);
+    unit = containsEnemyUnit(global.GRID, column-range, row-range);
     if (unit > -1)
         return unit;
     
-    unit = containsEnemyUnit(global.GRID, column-1, row+1);
+    unit = containsEnemyUnit(global.GRID, column-range, row+range);
     if (unit > -1)
         return unit;
     
-    unit = containsEnemyUnit(global.GRID, column+1, row-1);
+    unit = containsEnemyUnit(global.GRID, column+range, row-range);
     if (unit > -1)
         return unit;
     
-    unit = containsEnemyUnit(global.GRID, column+1, row+1);
+    unit = containsEnemyUnit(global.GRID, column+range, row+range);
     if (unit > -1)
         return unit;
 }

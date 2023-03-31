@@ -28,6 +28,7 @@
             <string>/// INIT
 setup_global_variables();
 global.DEBUG                = true;
+global.PAUSED               = false;
 global.isometricView        = true;
 global.transparencyAlpha    = 0.5;
 global.heroesList           = ds_list_create();
