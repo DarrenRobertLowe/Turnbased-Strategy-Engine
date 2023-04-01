@@ -166,6 +166,10 @@ if (global.isometricView) {
     animate();
 }
 
+if (waitTime &gt; 0) {
+    waitTime--;
+}
+
 
 // MOVEMENT
 if (global.PAUSED == false) {

@@ -68,6 +68,8 @@
       <script>scripts\load_weapon.gml</script>
       <script>scripts\setup_weapons.gml</script>
       <script>scripts\setup_fonts.gml</script>
+      <script>scripts\setup_limits.gml</script>
+      <script>scripts\setup_delays.gml</script>
     </scripts>
     <scripts name="Math">
       <script>scripts\getCellCenterY.gml</script>
@@ -157,9 +159,12 @@
       <script>scripts\blockingVisibility.gml</script>
       <script>scripts\hpInDanger.gml</script>
       <script>scripts\isOurCell.gml</script>
-      <script>scripts\checkEnemyAdjacent.gml</script>
+      <script>scripts\getValidTargets.gml</script>
       <script>scripts\entityIsUnit.gml</script>
       <script>scripts\containsEnemyUnit.gml</script>
+      <script>scripts\directionIsBlocked.gml</script>
+      <script>scripts\get_direction_value.gml</script>
+      <script>scripts\getTargetWithLowestHP.gml</script>
     </scripts>
     <scripts name="Game Logic">
       <script>scripts\roll.gml</script>
@@ -192,7 +197,6 @@
     </scripts>
     <scripts name="GUI">
       <script>scripts\GUI_drawTurnList.gml</script>
-      <script>scripts\GUI_drawCurrentUnitInfo.gml</script>
       <script>scripts\GUI_drawUnitInfoPanel.gml</script>
     </scripts>
   </scripts>

@@ -24,10 +24,10 @@ starty = (gridOffsetY + (row * tileHeight) + (tileHeight/2));
 */
 
 // set the min and max
-var minCol = (column - move);
-var minRow = (row - move);
-var maxCol = (column + move);
-var maxRow = (row + move);
+var minCol = (column - selected.move);
+var minRow = (row - selected.move);
+var maxCol = (column + selected.move);
+var maxRow = (row + selected.move);
 
 var totalColumns = (maxCol - minCol);
 var totalRows = (maxRow - minRow);

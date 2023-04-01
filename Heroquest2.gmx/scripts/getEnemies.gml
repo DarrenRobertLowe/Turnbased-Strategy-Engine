@@ -1,7 +1,6 @@
 ///getEnemies();
 
 // Create a list of all valid targets
-debug_message("creating a list of targets...");
 with (ENTITY) {
     if (team != other.team) {
         ds_list_add(other.listOfTargets, id);

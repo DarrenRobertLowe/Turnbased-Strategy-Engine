@@ -37,7 +37,7 @@ effects     = ds_list_create();     // burn, counter, etc.
 modifiers   = ds_list_create();     // Chipped, Sharpened, etc.
 animation   = "punch";
 
-
+attackType  = "Melee";  // Melee, Ranged, Magic
 // we might want the following, 0 would remove as option
 // bash     = 1;
 // slash    = 2;

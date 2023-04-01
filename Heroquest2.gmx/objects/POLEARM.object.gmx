@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>diagonals = false; // allow diagonal attacks?
+            <string>event_inherited();
+diagonal = true; // allow diagonal attacks?
 </string>
           </argument>
         </arguments>

@@ -3,24 +3,8 @@
 attacker = argument0;
 target   = argument1;
 
-sout(string(attacker.name) + " is facing " + string(attacker.direction));
+
 face_target(attacker, target);  // face the target
-sout(string(attacker.name) + " is facing " + string(attacker.direction));
-
-sout("attacker.weapon :" + string(attacker.weapon));
-
-sout("attacker: " +string(attacker) + "    target: "+ string(target));
-
-
-debug_message(
-    string(attacker) 
-  + ":" + string(attacker.name)
-  + " is attacking "
-  + string(target.id) + ":" +string(target.name)
-  + " with their "
-  + string(attacker.weapon.name)
-  + "!");
-
 
 dmg = roll(attacker.weapon.dice, attacker.weapon.pwr);
 
@@ -50,14 +34,6 @@ counter.value    = dmg;
 counter.colour   = global.OPTIONS_COLOUR_DAMAGE;
 //counter.colour   = global.OPTIONS_COLOUR_HEAL;
 
-sout("Did " + string(dmg) + " damage to HP!");
-if (critical) then sout("critical hit!");
-
-
-/// DEBUG
-sout("target is : " + string(target.id));
-sout("target name: "+ string(target.id.name));
-sout("target.hp : " + string(target.hp));
-
 // destroy enemy if health < 0
 if (target.hp <= 0) then kill(target);
+

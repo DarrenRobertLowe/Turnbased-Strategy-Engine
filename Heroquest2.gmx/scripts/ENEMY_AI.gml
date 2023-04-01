@@ -3,181 +3,195 @@ debug = true;
 if (global.PAUSED == false) {
     if (attackAnim == "") {
         if (global.TURN == id) {
-            CAMERA.target = id;
-            
-            if !(MOVING) {
-                //sout("-----------------------");
-                //sout("Start of decision loop");
+            if (waitTime <= 0) {
+                CAMERA.target = id;
                 
-                var option = ds_queue_dequeue(options);     // get the first preference
-                debug_message("The next option in the queue is " + string(option));
-                
-                
-                /// END TURN
-                if (actedThisTurn)
-                or (option == AI_OPTIONS.EndTurn) {
-                    if (waitTime <= 0) {
-                        //sout("We acted this turn, so we're done");
-                        CURSOR.MODE = MODES.finishing;
-                    }
+                if !(MOVING) {
+                    //sout("-----------------------");
+                    //sout("Start of decision loop");
                     
-                /// TURN
-                } else {
-                    //sout("We haven't yet acted this turn");
-                    // setup
-                    var target      = -1;           // the target we want to attack
-                    var targetCell  = -1;           // the actual cell we're moving to
-                    ds_list_clear(listOfTargets);
-                    ds_list_clear(listOfCells);
-                    
-                    /// Decide what action to take
-                    // Create a list of all valid targets
-                    if (listOfTargetsFilled == false) {
-                        getEnemies();
-                    }
+                    var option = ds_queue_dequeue(options);     // get the first preference
+                    debug_message("The next option in the queue is " + string(option));
                     
                     
-                    ///// PERFORM AN ACTION /////
-                    
-                    // ADVANCE
-                    if (option == AI_OPTIONS.Advance)
-                    and (!movedThisTurn) {
-                            AI_tryAdvance();
-                    } // end of advance
-                    
-                    
-                    // ATTACK
-                    if (option == AI_OPTIONS.Attack) {
-                        //sout("Considering attacking...");
+                    /// END TURN
+                    if (actedThisTurn)
+                    or (option == AI_OPTIONS.EndTurn)
+                    or (option == undefined) {
+                        if (waitTime <= 0) {
+                            //sout("We acted this turn, so we're done");
+                            CURSOR.MODE = MODES.finishing;
+                        }
                         
-                        // Melee?
-                        if (AI_AttackType == "Melee") { // probably base this on the weapon
+                    /// TURN
+                    } else {
+                        //sout("We haven't yet acted this turn");
+                        // setup
+                        var target      = -1;           // the target we want to attack
+                        var targetCell  = -1;           // the actual cell we're moving to
+                        ds_list_clear(listOfTargets);
+                        ds_list_clear(listOfCells);
+                        
+                        /// Decide what action to take
+                        // Create a list of all valid targets
+                        if (listOfTargetsFilled == false) {
+                            getEnemies();
+                        }
+                        
+                        
+                        ///// PERFORM AN ACTION /////
+                        
+                        // ADVANCE
+                        if (option == AI_OPTIONS.Advance)
+                        and (!movedThisTurn) {
+                                AI_tryAdvance();
+                        } // end of advance
+                        
+                        
+                        // ATTACK
+                        if (option == AI_OPTIONS.Attack) {
+                            //sout("Considering attacking...");
                             
-                            // is there someone next to us to attack?
-                            var unit = checkEnemyAdjacent(weapon.range, weapon.diagonal);
-                            
-                            if (unit > 0) {
-                                //debug_message("Enemy " +string(unit) + " found within attack range!");
+                            // Melee?
+                            if (weapon.attackType == "Melee") {
                                 
-                                // attack them
-                                attack_target(id, unit);
+                                // is there someone next to us to attack?
+                                listOfTargets = getValidTargets(weapon.range, weapon.diagonal, listOfTargets);
+                                
+                                
+                                
+                                if (ds_list_size(listOfTargets) > 0) {
+                                    var unit = getTargetWithLowestHP(listOfTargets); // this could be dependant on the unit themselves, they might have a different preference
+                                    
+                                    if (unit > -1) {
+                                        // check for a clear path and no obstacles
+                                        if !(directionIsBlocked(x, y, unit.x, unit.y)) {
+                                            // attack them
+                                            attack_target(id, unit);
+                                            actedThisTurn = true;
+                                        } else {
+                                            sout("Can't attack, that direction is blocked.");
+                                        }
+                                    } else {
+                                        sout("something went wrong while sorting units by lowest HP");
+                                    }
+                                } else {
+                                    sout("No enemy within range of our attack.");
+                                }
+                            }
+                        } // end of attack
+                        
+                        
+                        /*
+                        if (option == AI_OPTIONS.HealSelf) {
+                            debug_message("Deciding if we should heal or not...");
+                            // allow some variation to the decision making
+                                // EXAMPLE:
+                                // global.variancePercentage = .1;
+                                // hpBase = 20
+                                // AI_Heal_HP_Percentage = .3
+                                //
+                                // CALCULATION:
+                                // var threshold = (20 * .3);           = 6
+                                // var modifier  = ceil(20 * .1);       = 2
+                                // threshold -= modifier;               = 6-2   = 4 minimum
+                                // threshold += round(random((modifier * 2)); += 0-4   = 4 min, 8 max
+                                //
+                                // RESULT:
+                                // so healing can occur anywhere <= 8 hp and is guaranteed when hp <= 4
+                            var threshold = (hpBase * AI_Heal_HP_Percentage);
+                            var modifier  = ceil(hpBase * global.variancePercentage);
+                            threshold -= modifier;
+                            threshold += round(random(modifier * 2));
+                            
+                            debug_message("Decided health threshold is " + string(threshold));
+                            
+                            
+                            // is there an enemy next to us?
+                            var unit = checkEnemyAdjacent(false);
+                            
+                            
+                            if (hp <= threshold) {
+                            // and (mp > requirement)
+                            // or (inventory contains potion)
+                             //   debug_message("Healing Self!");
+                                hp = hpBase;
                                 actedThisTurn = true;
-                            } else {
-                                sout("No enemy within range of our attack.");
                             }
-                        }
-                    } // end of attack
-                    
-                    
-                    /*
-                    if (option == AI_OPTIONS.HealSelf) {
-                        debug_message("Deciding if we should heal or not...");
-                        // allow some variation to the decision making
-                            // EXAMPLE:
-                            // global.variancePercentage = .1;
-                            // hpBase = 20
-                            // AI_Heal_HP_Percentage = .3
-                            //
-                            // CALCULATION:
-                            // var threshold = (20 * .3);           = 6
-                            // var modifier  = ceil(20 * .1);       = 2
-                            // threshold -= modifier;               = 6-2   = 4 minimum
-                            // threshold += round(random((modifier * 2)); += 0-4   = 4 min, 8 max
-                            //
-                            // RESULT:
-                            // so healing can occur anywhere <= 8 hp and is guaranteed when hp <= 4
-                        var threshold = (hpBase * AI_Heal_HP_Percentage);
-                        var modifier  = ceil(hpBase * global.variancePercentage);
-                        threshold -= modifier;
-                        threshold += round(random(modifier * 2));
+                        } // end of heal
+                        */
                         
-                        debug_message("Decided health threshold is " + string(threshold));
-                        
-                        
-                        // is there an enemy next to us?
-                        var unit = checkEnemyAdjacent(false);
-                        
-                        
-                        if (hp <= threshold) {
-                        // and (mp > requirement)
-                        // or (inventory contains potion)
-                         //   debug_message("Healing Self!");
-                            hp = hpBase;
-                            actedThisTurn = true;
-                        }
-                    } // end of heal
-                    */
-                    
-                } // end of turn
-            } // if !(MOVING)
-        
-        
+                    } // end of turn
+                } // if !(MOVING)
             
-            // MOVEMENT
-            if (MOVING) {
-                CURSOR.MODE = MODES.waiting;                // make cursor wait while we move
+            
                 
-                // FINISHED MOVING
-                if (movementPoints <= 0) {
-                    movementPoints = 0;
-                    //CURSOR.MODE = MODES.finishing;          // ends the turn and returns control to the cursor.
-                    MOVING = false;
-                    distanceToNextCell = 0;
-                    updateGrid(id, startColumn, startRow, column, row); // targetColumn, targetRow);   // empty old coords and add id to new position.
-                    movedThisTurn = true;
-                } else {
-                    /// NOT FINISHED MOVING
+                // MOVEMENT
+                if (MOVING) {
+                    CURSOR.MODE = MODES.waiting;                // make cursor wait while we move
                     
-                    // before moving to the next cell
-                    if (distanceToNextCell <= 0) {
+                    // FINISHED MOVING
+                    if (movementPoints <= 0) {
+                        movementPoints = 0;
+                        //CURSOR.MODE = MODES.finishing;          // ends the turn and returns control to the cursor.
+                        MOVING = false;
+                        distanceToNextCell = 0;
+                        updateGrid(id, startColumn, startRow, column, row); // targetColumn, targetRow);   // empty old coords and add id to new position.
+                        movedThisTurn = true;
+                        wait(global.delay_short);
+                    } else {
+                        /// NOT FINISHED MOVING
                         
-                        // RECALCULATE THE ULTIMATE PATH
-                        var index       = ds_list_find_value(listOfCells, 0);
-                        targetColumn    = extractColumnFromListOfCells(listOfCells, index);
-                        targetRow       = extractRowFromListOfCells(listOfCells, index);
-                        goto_Square(targetColumn, targetRow);
-                        path_end(); // stop the path immediately
-                        
-                        
-                        // if we're already there, we can stop
-                        if  (row    = targetRow)
-                        and (column = targetColumn) {
-                            movementPoints = 0;
-                        } else {
-                            // calculate the direction we should go
-                            var xx  = path_get_point_x(myPath, 1);
-                            var yy  = path_get_point_y(myPath, 1);
-                            var dir = point_direction(x,y,xx,yy);
+                        // before moving to the next cell
+                        if (distanceToNextCell <= 0) {
                             
-                            // take it one cell at a time
-                            switch (dir) {
-                                case 0:     // right
-                                    goto_Square(column+1, row);
-                                    break;
+                            // RECALCULATE THE ULTIMATE PATH
+                            var index       = ds_list_find_value(listOfCells, 0);
+                            targetColumn    = extractColumnFromListOfCells(listOfCells, index);
+                            targetRow       = extractRowFromListOfCells(listOfCells, index);
+                            goto_Square(targetColumn, targetRow);
+                            path_end(); // stop the path immediately
+                            
+                            
+                            // if we're already there, we can stop
+                            if  (row    = targetRow)
+                            and (column = targetColumn) {
+                                movementPoints = 0;
+                            } else {
+                                // calculate the direction we should go
+                                var xx  = path_get_point_x(myPath, 1);
+                                var yy  = path_get_point_y(myPath, 1);
+                                var dir = point_direction(x,y,xx,yy);
                                 
-                                case 180:   // left
-                                    goto_Square(column-1, row);
-                                    break;
+                                // take it one cell at a time
+                                switch (dir) {
+                                    case 0:     // right
+                                        goto_Square(column+1, row);
+                                        break;
                                     
-                                case 90:    // up
-                                    goto_Square(column, row-1);
-                                    break;
-                                    
-                                case 270:   // down
-                                    goto_Square(column, row+1);
+                                    case 180:   // left
+                                        goto_Square(column-1, row);
+                                        break;
+                                        
+                                    case 90:    // up
+                                        goto_Square(column, row-1);
+                                        break;
+                                        
+                                    case 270:   // down
+                                        goto_Square(column, row+1);
+                                }
+                                 
+                                
+                                // start the new path
+                                path_start(myPath, delta(global.movementSpeed), path_action_stop, true);
+                                distanceToNextCell = 1;
+                                
+                                update_direction();
                             }
-                             
-                            
-                            // start the new path
-                            path_start(myPath, delta(global.movementSpeed), path_action_stop, true);
-                            distanceToNextCell = 1;
-                            
-                            update_direction();
                         }
-                    }
-                } // move points > 0
-            } // MOVING
-              
+                    } // move points > 0
+                } // MOVING
+            } // waitTime <= 0
         } // global.TURN == id
     } // attackAnim == ""
 } // not paused
