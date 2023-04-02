@@ -31,7 +31,7 @@ event_inherited();
 
 //sprite_collision_mask(sprite_index, false, 2, 2, 2, sprite_width-2, sprite_height-2, 1, 0);
 
-depth       = DEPTH.normal;
+depth       = global.normalDepth;
 direction   = 0;
 facing      = DIRECTION.east;
 MOVING      = false;
@@ -55,8 +55,8 @@ update_sprite();
 alpha       = 1;
 column      = getColumnFromX(x);
 row         = getRowFromY(y);
-isoX        = getIsometricXFromCell(column, row);
-isoY        = getIsometricYFromCell(column, row);
+//isoX        = getIsometricXFromCell(column, row);
+//isoY        = getIsometricYFromCell(column, row);
 
 
 pathfindingIgnoreList = ds_list_create();
@@ -87,6 +87,7 @@ ds_list_add(pathfindingIgnoreList, id);
 event_inherited();
 
 draw_self_ext();
+
 
 // CARTESIAN view
 if !(global.isometricView) {

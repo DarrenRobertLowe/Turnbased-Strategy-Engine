@@ -28,7 +28,7 @@
             <string>///setup views, set depth
 event_inherited();
 setup_views();
-depth = DEPTH.menu;
+depth  = global.infoDepth;
 target = CURSOR;
 cameraSpeed = .1;   // percentage of the distance to the cursor covered per step
 </string>

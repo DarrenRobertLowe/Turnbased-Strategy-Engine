@@ -2,6 +2,8 @@
 sout("******* SEARCHING FOR TARGETS IN ATTACK RANGE ********");
 ds_grid_clear(attackGrid, global.gridDefaultValue); // reset the grid
 mp_grid_clear_all(global.pathGrid);
+
+ds_list_clear(selected.listOfTargets);
 //gridpath_set_collisions(global.pathGrid, OBSTACLE, selected.pathfindingIgnoreList); // add obstacles to grid
 
 

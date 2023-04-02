@@ -28,8 +28,6 @@
             <string>/// start the map
 event_inherited();
 
-depth = DEPTH.ground;
-
 instance_create(0, 0, FLOOR_DRAWER);
 
 /*
@@ -51,8 +49,8 @@ instance_create(0, 0, GUI);
 instance_create(0,0, SKY_CONTROLLER);
 
 repeat 10 {
-    build(10 + (random(global.gridWidth)-10), 10 + (random(global.gridHeight)-10), WALL, 4);
-    build(10 + (random(global.gridWidth)-10), 10 + (random(global.gridHeight)-10), STEP, 4);  
+    build(irandom(global.gridWidth)-1, irandom(global.gridHeight)-1, WALL, 4);
+    build(irandom(global.gridWidth)-1, irandom(global.gridHeight)-1, STEP, 4);  
 }
 
 

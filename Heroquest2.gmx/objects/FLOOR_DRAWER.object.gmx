@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// inherit and set depth
 event_inherited();
-depth = DEPTH.ground;
+depth = global.floorDepth;
 </string>
           </argument>
         </arguments>

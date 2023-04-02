@@ -15,6 +15,7 @@
       <sprite>sprites\spr_cart_floor</sprite>
       <sprite>sprites\spr_cart_wall</sprite>
       <sprite>sprites\spr_cart_step</sprite>
+      <sprite>sprites\spr_cart_none</sprite>
     </sprites>
     <sprites name="Isometric">
       <sprite>sprites\spr_cursor</sprite>
@@ -49,6 +50,7 @@
     </scripts>
     <scripts name="Setup">
       <script>scripts\setup_enums.gml</script>
+      <script>scripts\setup_depths.gml</script>
       <script>scripts\setup_global_variables.gml</script>
       <script>scripts\setup_grids.gml</script>
       <script>scripts\setup_gui.gml</script>
@@ -100,7 +102,6 @@
       </scripts>
     </scripts>
     <scripts name="Drawing">
-      <script>scripts\DEPRECATEDdraw_self_isometric.gml</script>
       <script>scripts\draw_self_ext.gml</script>
       <script>scripts\draw_menu.gml</script>
       <script>scripts\draw_menuCursor.gml</script>

@@ -129,9 +129,6 @@ if (MODE == MODES.free) {
         
         
         if (targetHero &gt; -1) {                                  // check grid position for an object.
-            show_debug_message("targetHero = " +string(targetHero));
-            show_debug_message("targetHero.selectable = " +string(targetHero.selectable));
-            
             if (targetHero.selectable == true) {
                 selected = targetHero;
                 MODE = MODES.objectMenu;
@@ -141,8 +138,7 @@ if (MODE == MODES.free) {
                 
                 if (global.options_CursorMemory) {
                     menuPosition = selected.menuPosition;       // Use the objects cursor memory?
-                }
-                else {
+                } else {
                     menuPosition = 0;                           // No? Position zero it is.
                 }
             }
@@ -156,8 +152,6 @@ if (MODE == MODES.free) {
 if (MODE == MODES.objectMenu) {
     getMenuValues(selected);
     menu_cursor_controls();
-    
-    show_debug_message("menu position: "+ string(menuPosition) + " : " + string(ds_list_find_value(tempMenu, menuPosition)));
     
     if (global.controls_ok) {
         global.controls_ok = 0; // prevent instant repeats
@@ -202,8 +196,6 @@ if (MODE == MODES.moving) {
     }
     
     if (global.controls_ok) {
-        show_debug_message("movement grid cell ("+string(column)+":"+string(row)+") contains: "+string(ds_grid_get(movementGrid,column,row)));
-        
         if (ds_grid_get(movementGrid, column, row) == obj_MovementPanel) {
             panel = ds_grid_get(movementGrid, column, row);
             

@@ -32,7 +32,7 @@ timeToLive  = 12;     // seconds to show on screen
 life        = global.options_TargetFPS * timeToLive;
 vSpeed      = delta(1);
 vFriction   = delta(0.001);
-depth       = global.info_depth;
+depth       = global.infoDepth;
 </string>
           </argument>
         </arguments>

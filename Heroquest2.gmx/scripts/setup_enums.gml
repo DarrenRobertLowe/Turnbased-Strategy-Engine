@@ -95,14 +95,6 @@ enum attackAnimations {
 }
 
 
-enum DEPTH {
-    menu,
-    info,
-    fx,
-    sky,
-    normal,
-    ground
-}
 
 enum TRIGGER {
     getStats

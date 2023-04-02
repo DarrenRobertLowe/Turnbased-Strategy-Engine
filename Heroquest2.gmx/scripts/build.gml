@@ -4,10 +4,11 @@
  *   create a random variations in appearance.
  */
 
-var column      = argument0;
-var row         = argument1;
+var column      = floor(argument0); // floor() is a safety feature in case random() is used instead of irandom()
+var row         = floor(argument1); // floor() is a safety feature in case random() is used instead of irandom()
 var type        = argument2;
 var facing      = faceDirection(argument3);
+
 
 var instance  = instance_create(getXFromColumn(column), getYFromRow(row), type);
 

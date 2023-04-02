@@ -23,11 +23,13 @@ starty = (gridOffsetY + (row * tileHeight) + (tileHeight/2));
  * objects reduces the range in a given direction.
 */
 
+var moveDistance = selected.move;
+
 // set the min and max
-var minCol = (column - selected.move);
-var minRow = (row - selected.move);
-var maxCol = (column + selected.move);
-var maxRow = (row + selected.move);
+var minCol = (column - moveDistance);
+var minRow = (row - moveDistance);
+var maxCol = (column + moveDistance);
+var maxRow = (row + moveDistance);
 
 var totalColumns = (maxCol - minCol);
 var totalRows = (maxRow - minRow);
@@ -58,10 +60,10 @@ for (i=0; i <= totalColumns; i++) {
             ,goaly
             ,false              // Allow diagonals?
         ) // check that it's within our movement range
-        and (path_get_length(myPath) <= (move * cellSize)) {
+        and (path_get_length(myPath) <= (moveDistance * cellSize)) {
             
-            var targX = (gridOffsetX + (targetColumn * tileWidth));
-            var targY = (gridOffsetY + (targetRow * tileHeight));
+            var targX = getXFromColumn(targetColumn);//(gridOffsetX + (targetColumn * tileWidth));
+            var targY = getYFromRow(targetRow);//(gridOffsetY + (targetRow * tileHeight));
             
             panel = instance_create(targX, targY, obj_MovementPanel);
             panel.parent = selected.id;
@@ -74,8 +76,7 @@ for (i=0; i <= totalColumns; i++) {
                 else panel.unitHeight = 0;*/
             
             ds_grid_set(movementGrid, targetColumn, targetRow, obj_MovementPanel);
-        }
-        else {
+        } else {
             mp_grid_add_cell(rangeGrid,i,j);
         }
     }

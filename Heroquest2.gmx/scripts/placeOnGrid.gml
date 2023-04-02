@@ -16,13 +16,4 @@ if (ds_grid_get(grid, column, row) == -1) {
         +"# but we encountered something there already!
         #value:" +string(ds_grid_get(grid, column, row))
         );
-    /*
-    show_error(
-        "Grid cell already occupied! #
-        Error: attempted to create object "+string(object_get_name(instance.object_index))
-        +", id:" + string(instance)
-        +" at position : " + string(column) + ":" +string(row)
-        +"# but we encountered something there already!
-        #value:" +string(ds_grid_get(grid, column, row)), false);
-    */
 }

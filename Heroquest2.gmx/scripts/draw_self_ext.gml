@@ -38,4 +38,19 @@ else {
         ,hue
         ,alpha
         );
+        
+    
+    // DEBUG
+    /*
+    var xx = getIsometricXFromCell(column, row);
+    var yy = getIsometricYFromCell(column, row);
+    draw_set_alpha((1/room_height) * ((xx*0.5)+yy));
+    //draw_text(xx,yy,depth);
+    
+    
+    draw_text(xx, yy, "coords: " + string(column) + ":" +string(row));
+    
+    
+    draw_text(xx, yy, "x:"+string(x)+"   y:"+ string(y));
+    */
 }

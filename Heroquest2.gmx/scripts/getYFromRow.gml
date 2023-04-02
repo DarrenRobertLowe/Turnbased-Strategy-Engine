@@ -1,7 +1,7 @@
 /// getYFromRow(row number)
 /* returns INT
  *
- * converts a row number into a y co-ordinate
+ * converts a row number into a y co-ordinate (NOT ISOMETRIC!)
 */
 
 var row = argument0;

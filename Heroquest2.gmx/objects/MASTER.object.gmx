@@ -39,6 +39,7 @@ global.TURNLIST             = ds_list_create();
 /// SETUP
 randomize();
 setup_enums();
+setup_depths();
 setup_limits();
 setup_delays();
 setup_combat_rules();

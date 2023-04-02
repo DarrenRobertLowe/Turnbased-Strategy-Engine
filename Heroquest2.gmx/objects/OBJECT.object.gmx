@@ -28,17 +28,18 @@
             <string>/// ALL OBJECTS
 image_speed = 0;
 image_index = 0;
+sprite_index = spr_cart_none;
 isoSprite   = spr_none;
-imageIndex  = 0;    // image_index for iso sprites (this is needed to prevent Game Maker setting the image_index to zero)
+imageIndex  = 0;            // image_index for iso sprites (this is needed to prevent Game Maker setting the image_index to zero)
 transparencyAlpha = global.transparencyAlpha;
 hue = c_white;
 z = 0;
-imageMirror = 1;   // replaces image_xscale because image_xscale moves the bounding box
-
+imageMirror = 1;            // replaces image_xscale because image_xscale moves the bounding box
+MOVING = false;
 
 deglobalizeVars();
 
-depth = DEPTH.sky;
+depth = global.normalDepth;
 
 </string>
           </argument>
@@ -63,7 +64,10 @@ depth = DEPTH.sky;
           <argument>
             <kind>1</kind>
             <string>/// depth sorting
-depth = -(y + x + z);
+var y_row = getRowFromY(y);
+var x_col = getColumnFromX(x);
+
+depth = -(((x*0.5)+y) + z);
 </string>
           </argument>
         </arguments>
