@@ -26,6 +26,10 @@
       <sprite>sprites\anim_fighter</sprite>
       <sprite>sprites\spr_wall</sprite>
       <sprite>sprites\spr_step</sprite>
+      <sprites name="Terrain">
+        <sprite>sprites\spr_floor_wood</sprite>
+        <sprite>sprites\spr_step_wood</sprite>
+      </sprites>
     </sprites>
     <sprites name="Menu">
       <sprite>sprites\spr_menuCursor</sprite>
@@ -34,6 +38,10 @@
       <sprite>sprites\avatars</sprite>
       <sprite>sprites\avatar_bg</sprite>
       <sprite>sprites\spr_combat_panel</sprite>
+    </sprites>
+    <sprites name="Particles">
+      <sprite>sprites\spr_fire</sprite>
+      <sprite>sprites\spr_part_cinder</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -200,6 +208,9 @@
       <script>scripts\GUI_drawTurnList.gml</script>
       <script>scripts\GUI_drawUnitInfoPanel.gml</script>
     </scripts>
+    <scripts name="Particles">
+      <script>scripts\setup_particles_fire.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu_normal</font>
@@ -245,6 +256,7 @@
     </objects>
     <object>objects\DamageCounter</object>
     <object>objects\SKY_CONTROLLER</object>
+    <object>objects\FIRE</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\initial</room>

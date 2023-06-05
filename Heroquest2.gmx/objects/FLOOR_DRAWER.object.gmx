@@ -59,7 +59,7 @@ for(column=0; column &lt; gridWidth; column++) {
         {
             // isometric
             draw_sprite_isometric(
-                spr_Floor
+                spr_floor_wood
                 ,ds_grid_get(global.FLOOR_GRID, column, row)
                 ,column
                 ,row

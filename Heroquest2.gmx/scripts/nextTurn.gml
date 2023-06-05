@@ -4,7 +4,7 @@
 */
 var list = global.TURNLIST;
 
-if ( !isBattleOver() ){
+if ( !isBattleOver() ) {
     var turnEnding = ds_list_find_value(list, 0);   // get the first element (current turn)
     ds_list_add(list, turnEnding);                  // append that element to the list
     ds_list_delete(list, 0);                        // delete the first element (current turn)
