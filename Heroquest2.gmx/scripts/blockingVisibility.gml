@@ -6,6 +6,9 @@
 var a = argument0;
 var b = argument1;
 
+if !exists(a) return false;
+if !exists(b) return false;
+
 var aX = getXFromColumn(a.column);
 var aY = getYFromRow(a.row);
 var bX = getXFromColumn(b.column);

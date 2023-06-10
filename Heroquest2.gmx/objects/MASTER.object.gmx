@@ -34,7 +34,7 @@ global.transparencyAlpha    = 0.5;
 global.heroesList           = ds_list_create();
 global.z_offset             = 8;                    // used to make units appears on top of platforms correctly
 global.TURNLIST             = ds_list_create();
-
+global.TEMP_TURNLIST        = ds_list_create(); // this is used to actually draw the list and is a filtered version so we don't show stuff like FIRE
 
 /// SETUP
 randomize();

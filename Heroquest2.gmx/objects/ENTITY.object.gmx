@@ -36,6 +36,7 @@ attackAnim = "";
 targetIndex = 0;    // used for determining targets of attacks
 waitTime = 0;       // used for adding a pause between actions
 
+
 // entity defaults
 team            = TEAMS.neutral;
 listOfTargets   = ds_list_create();
@@ -43,6 +44,7 @@ listOfCells     = ds_list_create(); // cells adjacent to targets
 ailments        = ds_list_create();
 movedThisTurn   = false;
 actedThisTurn   = false;
+showOnTurnList  = true;
 canDie          = true;
 class           = classes.None;
 name            = "Unnamed";
@@ -72,15 +74,19 @@ getBaseStats(classes.None);
             <kind>1</kind>
             <string>/// remove from grid and turnlist
 
-event_inherited();
-
-// grid
-ds_grid_set(global.GRID, column, row, global.gridDefaultValue);
+// remove from grid
+if (ds_grid_get(occupiedGrid, column, row) == id) {
+    ds_grid_set(occupiedGrid, column, row, global.gridDefaultValue);
+}
 
 // turn list
 var index = ds_list_find_index(global.TURNLIST, id);
 if (index &gt; -1) then ds_list_delete(global.TURNLIST, index);
 
+// change the turn if it was our's
+if (global.TURN == id) {
+    endTurn();
+}
 </string>
           </argument>
         </arguments>

@@ -55,6 +55,10 @@ cameraSpeed = .1;   // percentage of the distance to the cursor covered per step
             <kind>1</kind>
             <string>/// position the camera
 var view    = VIEWS.combat;
+
+if !(exists(target)) then target = CURSOR;  // prevents crashing when target instance is destroyed
+
+
 var targetX = target.x;
 var targetY = target.y;
 

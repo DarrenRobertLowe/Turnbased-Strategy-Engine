@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>NPC</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,17 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-fireLevel = 3;
-size = ((global.tileWidth * 0.3) * fireLevel);
-setup_particles_fire(depth, size);
+            <string>/// Setup emitters, etc
 
+event_inherited();          // FIRE is an ENTITY and is on the turnlist
+
+
+
+isoSprite = spr_fire;
+hp      = 3;                // hp is effectively the fire's level. Each turn it's reduced by 1 until it dies out.
+size    = ((global.tileWidth * 0.3) * hp);
+setup_particles_fire(depth, size);
+showOnTurnList = false;
 
 my_emitter = part_emitter_create(global.partsys_fire);
 
 
 // main flame
-part_emitter_region(global.partsys_fire, my_emitter, x-size, x+size, y, y, ps_shape_diamond, ps_distr_gaussian);
+//part_emitter_region(global.partsys_fire, my_emitter, x-size, x+size, y, y, ps_shape_diamond, ps_distr_gaussian);
 
 // this code looks great for a gui effect
 //part_emitter_region(global.partsys_fire,my_emitter,-50,850,450,500,ps_shape_rectangle,ps_distr_linear);
@@ -61,12 +67,52 @@ part_emitter_region(global.partsys_fire, my_emitter, x-size, x+size, y, y, ps_sh
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// burn!
+            <string>/// BURN
+event_inherited();
+
+// main flame
+/*
+part_emitter_region(global.partsys_fire, my_emitter, x-size, x+size, y, y, ps_shape_diamond, ps_distr_gaussian);
+
 part_emitter_burst(global.partsys_fire, my_emitter, global.part_fire, delta(50));//delta(100));
+*/
+
+image_xscale = hp;
+image_yscale = hp;
+
+FIRE_AI();
 
 // cinders
 //part_emitter_burst(global.partsys_fire, my_emitter, global.part_cinder, -5);
 
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// SPAWN ON CORRECT GRID
+// note: Overwrite this if you need a different grid. e.g. FIRE_GRID
+occupiedGrid = global.FIRE_GRID;
+placeOnGrid(occupiedGrid, column, row, id);
 </string>
           </argument>
         </arguments>

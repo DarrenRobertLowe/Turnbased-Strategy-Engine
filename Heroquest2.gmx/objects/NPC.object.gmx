@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// UNITS NOT UNDER THE PLAYER'S CONTROL
 event_inherited();
-
+grid            = global.GRID;
 isoSprite       = anim_fighter;
 selectable      = false;            // can this object be selected by the cursor?
 preferredTarget = noone;

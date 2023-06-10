@@ -14,3 +14,5 @@ global.DAMAGE_HEAVY     = 5;
 
 global.hpDangerPercentage = 0.2;
 global.hpScareThrowDifficulty = 2; // a lower dice roll than this = scared
+
+global.fireDieSpeed = 1;

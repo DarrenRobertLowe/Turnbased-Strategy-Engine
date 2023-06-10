@@ -26,6 +26,7 @@
       <sprite>sprites\anim_fighter</sprite>
       <sprite>sprites\spr_wall</sprite>
       <sprite>sprites\spr_step</sprite>
+      <sprite>sprites\spr_fire</sprite>
       <sprites name="Terrain">
         <sprite>sprites\spr_floor_wood</sprite>
         <sprite>sprites\spr_step_wood</sprite>
@@ -40,7 +41,7 @@
       <sprite>sprites\spr_combat_panel</sprite>
     </sprites>
     <sprites name="Particles">
-      <sprite>sprites\spr_fire</sprite>
+      <sprite>sprites\spr_part_flames</sprite>
       <sprite>sprites\spr_part_cinder</sprite>
     </sprites>
   </sprites>
@@ -174,6 +175,7 @@
       <script>scripts\directionIsBlocked.gml</script>
       <script>scripts\get_direction_value.gml</script>
       <script>scripts\getTargetWithLowestHP.gml</script>
+      <script>scripts\exists.gml</script>
     </scripts>
     <scripts name="Game Logic">
       <script>scripts\roll.gml</script>
@@ -199,6 +201,12 @@
         <script>scripts\ENEMY_AI.gml</script>
         <script>scripts\AI_tryAdvance.gml</script>
         <script>scripts\AI_getOptionsQueue.gml</script>
+        <scripts name="Fire">
+          <script>scripts\FIRE_AI.gml</script>
+          <script>scripts\FIRE_AI_trySpread.gml</script>
+          <script>scripts\FIRE_AI_spread.gml</script>
+          <script>scripts\spawn_fire.gml</script>
+        </scripts>
       </scripts>
     </scripts>
     <scripts name="methods">
