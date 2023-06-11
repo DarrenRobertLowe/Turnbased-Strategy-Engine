@@ -29,9 +29,10 @@ global.FLOOR_GRID   = ds_grid_create(w, h);     // the floor, duh
 global.CURSOR_GRID  = ds_grid_create(w, h);     // grid for the cursor (used in map rotation)
 global.ATTACK_GRID  = ds_grid_create(w, h);     // grid for attacks
 global.FIRE_GRID    = ds_grid_create(w, h);     // grid that fire will occupy
+global.PLATFORM_GRID = ds_grid_create(w, h);    // grid above the floor that units walk on, affecting Z value.
 
 global.gridDefaultValue = -1;
-ds_grid_clear(global.FLOOR_GRID,    global.gridDefaultValue);
+ds_grid_clear(global.FLOOR_GRID,    3); // this represents the floor health
 ds_grid_clear(global.GRID,          global.gridDefaultValue);
 ds_grid_clear(global.CURSOR_GRID,   global.gridDefaultValue);
 ds_grid_clear(global.MOVE_GRID,     global.gridDefaultValue);

@@ -31,6 +31,9 @@ isoSprite = spr_wall;
 keepVisible = false;
 heightUnits = 2;
 height      = (heightUnits * isometricTileHeight);
+invincible  = true;
+flammable   = false;
+fireMultiplier = 0;
 </string>
           </argument>
         </arguments>

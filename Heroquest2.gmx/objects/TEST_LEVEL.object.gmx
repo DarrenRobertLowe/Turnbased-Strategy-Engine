@@ -48,6 +48,7 @@ instance_create(CURSOR.x, CURSOR.y, CAMERA);
 instance_create(0, 0, GUI);
 instance_create(0,0, SKY_CONTROLLER);
 
+/*
 repeat 10 {
     build(irandom(global.gridWidth)-1, irandom(global.gridHeight)-1, WALL, 4);
     build(irandom(global.gridWidth)-1, irandom(global.gridHeight)-1, STEP, 4);  
@@ -55,7 +56,7 @@ repeat 10 {
 
 
 build(8, 8, STEP, 4);
-
+*/
 
 build(1, 5, WALL, 4);
 build(3, 5, WALL, 4);
@@ -64,7 +65,9 @@ build(3, 3, WALL, 4);
 build(3, 1, WALL, 4);
 
 
-spawn_fire(6, 6, 3);
+spawn_fire(6, 6, 5);
+ds_grid_set(global.FLOOR_GRID, 6, 5, 0);
+build(6, 7, STEP, 0);
 
 // set timer for turns to start (needed because heroes
 // have to load in their stats before they can be added

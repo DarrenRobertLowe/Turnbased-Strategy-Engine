@@ -28,6 +28,7 @@
             <string>/// ANY OBJECTS ON THE MAIN GRIDS
 
 event_inherited();
+event_user(0);  // add us to our respective grid
 
 //sprite_collision_mask(sprite_index, false, 2, 2, 2, sprite_width-2, sprite_height-2, 1, 0);
 
@@ -44,9 +45,16 @@ animStart   = 0;
 animEnd     = 0;
 ///heightUnits = 1;
 keepVisible = false;
-height      = 0;    // how tall we are, determines the altitude of anything placed on top of us
-elevation   = 1;    // how high up we currently are
+height      = 0;        // how tall we are, determines the altitude of anything placed on top of us
+elevation   = 1;        // how high up we currently are
 floorCollisionList = ds_list_create();
+
+
+/// stats
+hp          = 9999;
+invincible  = true;     // set to false for destructible objects
+fireMultiplier = 1;     // how much damage fire does, 0 = immune to fire
+
 
 
 setup_animations();
@@ -61,6 +69,32 @@ row         = getRowFromY(y);
 
 pathfindingIgnoreList = ds_list_create();
 ds_list_add(pathfindingIgnoreList, id);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// SPAWN ON CORRECT GRID
+// note: Overwrite this if you need a different grid. e.g. FIRE_GRID
+occupiedGrid = global.GRID;
+placeOnGrid(occupiedGrid, column, row, id);
 </string>
           </argument>
         </arguments>

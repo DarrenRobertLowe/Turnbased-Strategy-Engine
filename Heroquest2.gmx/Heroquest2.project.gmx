@@ -219,6 +219,7 @@
     <scripts name="Particles">
       <script>scripts\setup_particles_fire.gml</script>
     </scripts>
+    <script>scripts\burn.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu_normal</font>

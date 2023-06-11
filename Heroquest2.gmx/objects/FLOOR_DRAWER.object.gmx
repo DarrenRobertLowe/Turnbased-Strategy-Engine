@@ -57,13 +57,12 @@ for(column=0; column &lt; gridWidth; column++) {
         
         if (global.isometricView)
         {
-            // isometric
-            draw_sprite_isometric(
-                spr_floor_wood
-                ,ds_grid_get(global.FLOOR_GRID, column, row)
-                ,column
-                ,row
-                ,1);
+            var tileHealth = ds_grid_get(global.FLOOR_GRID, column, row);
+            
+            if (tileHealth &gt; 0) {
+                draw_sprite_isometric(spr_floor_wood, 0, column, row, 1);
+            }
+            
         }
         else
         {
