@@ -28,6 +28,9 @@
             <string>/// ANY OBJECTS ON THE MAIN GRIDS
 
 event_inherited();
+
+column      = getColumnFromX(x);
+row         = getRowFromY(y);
 event_user(0);  // add us to our respective grid
 
 //sprite_collision_mask(sprite_index, false, 2, 2, 2, sprite_width-2, sprite_height-2, 1, 0);
@@ -61,40 +64,13 @@ setup_animations();
 update_sprite();
 
 alpha       = 1;
-column      = getColumnFromX(x);
-row         = getRowFromY(y);
+
 //isoX        = getIsometricXFromCell(column, row);
 //isoY        = getIsometricYFromCell(column, row);
 
 
 pathfindingIgnoreList = ds_list_create();
 ds_list_add(pathfindingIgnoreList, id);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// SPAWN ON CORRECT GRID
-// note: Overwrite this if you need a different grid. e.g. FIRE_GRID
-occupiedGrid = global.GRID;
-placeOnGrid(occupiedGrid, column, row, id);
 </string>
           </argument>
         </arguments>

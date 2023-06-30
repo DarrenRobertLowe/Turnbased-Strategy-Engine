@@ -66,7 +66,7 @@ build(3, 1, WALL, 4);
 
 
 spawn_fire(6, 6, 5);
-ds_grid_set(global.FLOOR_GRID, 6, 5, 0);
+ds_grid_set(global.FLOOR_GRID, 6, 5, 0);    // gap in the floor
 build(6, 7, STEP, 0);
 
 // set timer for turns to start (needed because heroes

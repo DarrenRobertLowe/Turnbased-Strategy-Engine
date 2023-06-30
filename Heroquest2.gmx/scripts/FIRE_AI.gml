@@ -15,6 +15,7 @@ if (global.PAUSED == false) {
                         CURSOR.MODE = MODES.finishing;
                     /// TURN
                     } else {
+                        show_message("Turn belongs to fire: "+ string(id));
                         // spread
                         if (hp > 1) {
                             FIRE_AI_trySpread(id);
@@ -26,12 +27,13 @@ if (global.PAUSED == false) {
                         var unit      = ds_grid_get(global.GRID, column, row);
                         
                         if (unit > 0) {                 // damage units
-                            burn(unit, 1);
+                            show_message("target unit is " + string(unit));
+                            burn(unit, hp);             // do damage equal to our hp (level)
                         }
                          
                         if (platform > 0) {             // hit any platform first
                             show_message("yep, burning a platform");
-                            burn(platform, 1);
+                            burn(platform, hp);
                         } else if (floortile > 0) {     // only if there's no platform burn the floor
                             ds_grid_set(global.FLOOR_GRID, column, row, floortile-1);
                         }

@@ -111,8 +111,6 @@ if (global.TURN == id) {
             <kind>1</kind>
             <string>/// DEATH Sequence (e.g. play audio)
 
-debug_message("AAaarrrrgh!");
-
 instance_destroy(self, true);
 </string>
           </argument>

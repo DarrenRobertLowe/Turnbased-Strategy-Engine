@@ -8,6 +8,5 @@ var newFire = spawn(targetColumn, targetRow, FIRE, 0, true); // spawn a new FIRE
 
 
 if (exists(newFire)) {
-    sout("New fire spawned at column:" +string(targetColumn) +"   row:"  +string(targetRow));
     newFire.hp = hp;   // setting the power of the flame
 }
