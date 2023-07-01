@@ -34,6 +34,8 @@ height      = (heightUnits * isometricTileHeight);
 invincible  = true;
 flammable   = false;
 fireMultiplier = 0;
+facing = DIRECTION.none;
+imageMirror = 1;
 </string>
           </argument>
         </arguments>

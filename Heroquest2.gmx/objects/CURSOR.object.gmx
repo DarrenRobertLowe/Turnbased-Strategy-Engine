@@ -366,13 +366,48 @@ if (MODE == MODES.finishing) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// draw GUI elements (menu, cursor, etc)
+            <string>/// draw GUI elements (menu, cursor, floor tile info, etc)
 event_inherited();
 
 
 if (MODE == MODES.objectMenu) {
     draw_menu();
     draw_menuCursor();
+}
+
+/// draw the tile info to the screen
+
+var title = "";
+var condition = 0;
+var tileValue = 0;
+
+
+draw_text_outlined(16, 64, "Cursor: " +string(row)+":" + string(column), c_black, c_white, font_menu_normal);
+
+// prioritize platforms
+tileValue = ds_grid_get(global.PLATFORM_GRID, column, row);
+if (tileValue &gt; 0) {
+    title = "Platform";
+    condition = tileValue.hp;
+} else {
+    // else give floor tile info
+    tileValue = ds_grid_get(global.FLOOR_GRID, column, row);
+    title = "Floor";
+    condition = tileValue;
+}
+
+// draw the info
+draw_text_outlined(16, 96, title, c_black, c_white, font_menu_normal);
+draw_text_outlined(16, 112, "Health: " + string(condition), c_black, c_white, font_menu_normal);
+
+
+
+// FIRE
+tileValue = ds_grid_get(global.FIRE_GRID, column, row) {
+    if (tileValue &gt; 0) {
+        draw_text_outlined(16, 144, "Fire", c_black, c_white, font_menu_normal);
+        draw_text_outlined(16, 160, "Level:" + string(tileValue.hp), c_black, c_white, font_menu_normal);
+    }
 }
 </string>
           </argument>

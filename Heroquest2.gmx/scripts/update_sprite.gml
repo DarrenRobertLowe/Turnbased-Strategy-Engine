@@ -27,6 +27,7 @@ switch(direction) {
     
     default:
         facing = DIRECTION.none;
+        imageMirror = 1;
         image_xscale = 1;
         break;
 }

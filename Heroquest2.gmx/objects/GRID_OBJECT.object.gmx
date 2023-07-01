@@ -37,7 +37,7 @@ event_user(0);  // add us to our respective grid
 
 depth       = global.normalDepth;
 direction   = 0;
-facing      = DIRECTION.east;
+facing      = DIRECTION.none;
 MOVING      = false;
 myPath      = path_add();
 isoSprite   = spr_none;

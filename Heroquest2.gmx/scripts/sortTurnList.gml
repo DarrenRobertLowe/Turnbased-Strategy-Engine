@@ -1,5 +1,5 @@
 ///sortTurnList();
-
+/*
 var list = global.TURNLIST;
 var unit = -1;
 var spd  = 0;
@@ -20,3 +20,4 @@ for(var i=0; i<ds_list_size(list); i++) {
         }
     }
 }
+*/

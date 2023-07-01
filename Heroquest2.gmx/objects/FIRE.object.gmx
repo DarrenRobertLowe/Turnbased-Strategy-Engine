@@ -30,14 +30,19 @@
 event_inherited();          // FIRE is an ENTITY and is on the turnlist
 
 
-
-isoSprite = spr_fire;
-hp      = 3;                // hp is effectively the fire's level. Each turn it's reduced by 1 until it dies out.
-size    = ((global.tileWidth * 0.3) * hp);
-setup_particles_fire(depth, size);
 showOnTurnList = false;
 
-my_emitter = part_emitter_create(global.partsys_fire);
+isoSprite = spr_fire;
+image_index = choose(image_number);
+hp      = 3;                // hp is effectively the fire's level. Each turn it's reduced by 1 until it dies out.
+yoffset = 12;               // see step event for explanation
+maxScale = 3;
+
+//size    = ((global.tileWidth * 0.3) * hp);
+//setup_particles_fire(depth, size);
+
+
+//my_emitter = part_emitter_create(global.partsys_fire);
 
 
 // main flame
@@ -45,6 +50,33 @@ my_emitter = part_emitter_create(global.partsys_fire);
 
 // this code looks great for a gui effect
 //part_emitter_region(global.partsys_fire,my_emitter,-50,850,450,500,ps_shape_rectangle,ps_distr_linear);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// death event: inherit
+
+event_inherited();
+
+instance_create(getXFromColumn(column), getYFromRow(row), SMOKE_SPAWNER);
 </string>
           </argument>
         </arguments>
@@ -70,23 +102,19 @@ my_emitter = part_emitter_create(global.partsys_fire);
             <string>/// BURN
 event_inherited();
 
-// main flame
-/*
-part_emitter_region(global.partsys_fire, my_emitter, x-size, x+size, y, y, ps_shape_diamond, ps_distr_gaussian);
+image_xscale = max(1, hp * 0.75);
+image_yscale = max(1, hp * 0.75);
 
-part_emitter_burst(global.partsys_fire, my_emitter, global.part_fire, delta(50));//delta(100));
-*/
+ // clamp to maxScale
+image_xscale = min(image_xscale, maxScale);
+image_yscale = min(image_yscale, maxScale);
 
-image_xscale = hp;
-image_yscale = hp;
+
+// adjust the y position of the sprite when scaled
+//yoffset = 8; // gets multiplied by image_yscale and minused from the y pos
+if (hp == 1) then yoffset = 1;
 
 FIRE_AI();
-
-// cinders
-//part_emitter_burst(global.partsys_fire, my_emitter, global.part_cinder, -5);
-
-
-
 </string>
           </argument>
         </arguments>
@@ -135,8 +163,22 @@ placeOnGrid(occupiedGrid, column, row, id);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// DEBUG DRAW TILE
-draw_sprite_isometric(spr_ColourTiles, 3, column, row, (hp/5));
+            <string>/// draw self with y-offset for scale
+
+draw_set_blend_mode(bm_add);
+draw_sprite_ext (
+    isoSprite, 
+    floor(imageIndex), 
+    getIsometricXFromCell(column, row), 
+    getIsometricYFromCell(column, row) - (image_yscale * yoffset), 
+    image_xscale,
+    image_yscale,
+    0, 
+    c_white, 
+    (0.5 + (1/10) * hp)
+);
+
+draw_set_blend_mode(bm_normal);
 </string>
           </argument>
         </arguments>

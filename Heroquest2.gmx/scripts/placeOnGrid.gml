@@ -5,7 +5,7 @@ var row      = argument2;
 var instance = argument3;
 
 
-if (ds_grid_get(grid, column, row) == -1) {
+if (ds_grid_get(grid, column, row) <= 0) {
     ds_grid_set(grid, column, row, instance);
 } else {
     sout(

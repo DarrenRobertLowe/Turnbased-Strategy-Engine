@@ -11,8 +11,8 @@ and (ds_grid_get(global.FLOOR_GRID, targetColumn, targetRow) > 0)   // don't spa
 //if (ds_grid_get(global.FLOOR_GRID, targetColumn, targetRow) > 0) 
 {
     spawn_fire(targetColumn, targetRow, hp);
-} else {
+}/* else {
     if !(ds_grid_get(global.FLOOR_GRID, targetColumn, targetRow) > 0) {
         show_message("can't spread to " +string(targetColumn) +":" +string(targetRow));
     }
-}
+}*/
