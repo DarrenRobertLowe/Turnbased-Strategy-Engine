@@ -8,13 +8,9 @@ var pathGrid    = argument0;
 var objectIndex = argument1;
 var ignoreList  = argument2;
 
-/*
-for(var i=0; i<ds_list_size(ignoreList); i++) {
-    var inst = ds_list_find_value(ignoreList, i);
-}
-*/
+ignoreList = gridpath_ignore_fire(ignoreList);
 
-mp_grid_clear_all(global.pathGrid);
+mp_grid_clear_all(pathGrid);
 
 
 with(objectIndex) {
@@ -22,3 +18,5 @@ with(objectIndex) {
         mp_grid_add_cell(pathGrid, column, row);
     }
 }
+
+return pathGrid;

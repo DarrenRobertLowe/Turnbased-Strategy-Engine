@@ -83,6 +83,20 @@
       <script>scripts\setup_limits.gml</script>
       <script>scripts\setup_delays.gml</script>
     </scripts>
+    <scripts name="Pathfinding">
+      <script>scripts\goto_Square.gml</script>
+      <script>scripts\draw_path_ext.gml</script>
+      <script>scripts\get_direction.gml</script>
+      <script>scripts\removeInstanceFromGrid.gml</script>
+      <script>scripts\addInstanceToGrid.gml</script>
+      <script>scripts\updateGrid.gml</script>
+      <script>scripts\gridpath_set_collisions.gml</script>
+      <script>scripts\reset_pathfindingIgnoreList.gml</script>
+      <script>scripts\extractColumnFromListOfCells.gml</script>
+      <script>scripts\extractRowFromListOfCells.gml</script>
+      <script>scripts\pathfinding_add_empty_floors.gml</script>
+      <script>scripts\gridpath_ignore_fire.gml</script>
+    </scripts>
     <scripts name="Math">
       <script>scripts\getCellCenterY.gml</script>
       <script>scripts\getIsometricXFromCell.gml</script>
@@ -98,18 +112,6 @@
       <script>scripts\getCoordsFromCell.gml</script>
       <script>scripts\getCellFromCoordsPrecise.gml</script>
       <script>scripts\getCellFromCoords.gml</script>
-      <scripts name="Pathfinding">
-        <script>scripts\goto_Square.gml</script>
-        <script>scripts\draw_path_ext.gml</script>
-        <script>scripts\get_direction.gml</script>
-        <script>scripts\removeInstanceFromGrid.gml</script>
-        <script>scripts\addInstanceToGrid.gml</script>
-        <script>scripts\updateGrid.gml</script>
-        <script>scripts\gridpath_set_collisions.gml</script>
-        <script>scripts\reset_pathfindingIgnoreList.gml</script>
-        <script>scripts\extractColumnFromListOfCells.gml</script>
-        <script>scripts\extractRowFromListOfCells.gml</script>
-      </scripts>
     </scripts>
     <scripts name="Drawing">
       <script>scripts\draw_self_ext.gml</script>
@@ -211,6 +213,7 @@
           <script>scripts\spawn_fire.gml</script>
         </scripts>
       </scripts>
+      <script>scripts\damage.gml</script>
     </scripts>
     <scripts name="methods">
       <script>scripts\get_classname.gml</script>

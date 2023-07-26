@@ -1,7 +1,14 @@
 ///show_movement_range();
 
 ds_grid_clear(movementGrid,-1); // allows for proper move calculation over tall terrain.
+
+
 gridpath_set_collisions(global.pathGrid, OBSTACLE, selected.pathfindingIgnoreList); // add obstacles to grid
+
+
+pathfinding_add_empty_floors();     // add missing floor tiles as obstacles (keep after gridpath_set_collision)
+
+
 
 
 /* // uncomment for Disgaea style platform jumping

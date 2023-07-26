@@ -18,6 +18,4 @@ if ( !isBattleOver() ) {
             CURSOR.row = nextUnit.row;
         }
     }
-    
-    show_debug_message("global.TURN is now " + string(global.TURN));
 }

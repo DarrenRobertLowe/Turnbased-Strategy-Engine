@@ -1,4 +1,10 @@
 /// sortTargetsAdjacentCellsByClosest(listOfTargets, remove unreachable?, include diagonals);
+/* adds potential targets to the pathfindingIgnoreList and
+ * checks for routes to their exact cell, taking objects that
+ * block the path into consideration.
+ */
+
+
 var debug = false;
 
 if (debug) then debug_message("running sortTargetsAdjacentCellsByClosest()");
@@ -28,12 +34,14 @@ for (var i=0; i<size; i++)
 
 
 // register remaining obstacles on the grid
-gridpath_set_collisions(global.pathGrid, OBSTACLE, pathfindingIgnoreList);
+global.pathGrid = gridpath_set_collisions(global.pathGrid, OBSTACLE, pathfindingIgnoreList);
 
 
-// add heights we can't reach as obstacles too
+// add missing floor tiles to ignoreList (keep after gridpath_set_collision)
+pathfinding_add_empty_floors();
 
 
+// TO DO: add heights we can't reach as obstacles too
 
 
 // iterate through our potential targets and remove the unreachable ones
@@ -48,7 +56,7 @@ if (removeUnreachable) {
         if !(mp_grid_path(global.pathGrid, myPath, x+pathfindingOffset, y+pathfindingOffset, targetX +pathfindingOffset, targetY +pathfindingOffset, false))
         {
             ds_list_delete(listOfTargets, i);
-            i =- 1; // go back to start of listOfTargets
+            i = -1; // go back to start of listOfTargets
         }
     }
 }
@@ -64,6 +72,10 @@ reset_pathfindingIgnoreList(pathfindingIgnoreList);
 gridpath_set_collisions(global.pathGrid, OBSTACLE, pathfindingIgnoreList);
 
 
+// add missing floor tiles to ignoreList (keep after gridpath_set_collisions)
+pathfinding_add_empty_floors();
+
+
 
 // now take the list of remaining targets and add all their adjacent 
 // cells, checking each one for a valid path. Each valid path gets
@@ -72,7 +84,7 @@ for(var i=0; i<ds_list_size(listOfTargets); i++)
 {
     unit = ds_list_find_value(listOfTargets, i);
     
-    
+    // right of target
     targetX = getXFromColumn(unit.column + 1);
     targetY = getYFromRow(unit.row);
     
@@ -82,7 +94,7 @@ for(var i=0; i<ds_list_size(listOfTargets); i++)
         ds_list_add(listOfCells, val);
     }
     
-    
+    // left of target
     targetX = getXFromColumn(unit.column - 1);
     targetY = getYFromRow(unit.row);
     
@@ -92,7 +104,7 @@ for(var i=0; i<ds_list_size(listOfTargets); i++)
         ds_list_add(listOfCells, val);
     }
     
-    
+    // south of target
     targetX = getXFromColumn(unit.column);
     targetY = getYFromRow(unit.row+1);
     
@@ -102,12 +114,10 @@ for(var i=0; i<ds_list_size(listOfTargets); i++)
         ds_list_add(listOfCells, val);
     }
     
-    
-    
+    // north of target
     targetX = getXFromColumn(unit.column);
     targetY = getYFromRow(unit.row-1);
     
-    // if getPath(column, row, unit.column, unit.row-1, myPath) {
     if (mp_grid_path(global.pathGrid, myPath, x+pathfindingOffset, y+pathfindingOffset, targetX +pathfindingOffset, targetY +pathfindingOffset, false))
     {
         var val = string(unit.column) +":" +string(unit.row-1);
@@ -132,7 +142,7 @@ for(var i=0; i<ds_list_size(listOfCells); i++)
     mp_grid_path(global.pathGrid, myPath, x+pathfindingOffset, y+pathfindingOffset, targetX +pathfindingOffset, targetY +pathfindingOffset, false);
     
     // get the length and compare against the other paths
-    pathLength  = path_get_length(myPath);
+    pathLength = path_get_length(myPath);
     
     if (pathLength > 0)
     {
@@ -141,6 +151,7 @@ for(var i=0; i<ds_list_size(listOfCells); i++)
         {
             if (debug) then debug_message("phase 5: best is "+string(best));
             if (debug) then debug_message("list size is "+string(ds_list_size(listOfCells)));
+            
             ds_list_delete(listOfCells, i);             // remove entry from position
             ds_list_insert(listOfCells, 0, cell);       // add it to the top of the listOfCells
             best = pathLength;

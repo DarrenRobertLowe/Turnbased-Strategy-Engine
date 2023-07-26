@@ -7,9 +7,6 @@ if (global.PAUSED == false) {
                 CAMERA.target = id;
                 
                 if !(MOVING) {
-                    //sout("-----------------------");
-                    //sout("Start of decision loop");
-                    
                     var option = ds_queue_dequeue(options);     // get the first preference
                     debug_message("The next option in the queue is " + string(option));
                     
@@ -19,7 +16,6 @@ if (global.PAUSED == false) {
                     or (option == AI_OPTIONS.EndTurn)
                     or (option == undefined) {
                         if (waitTime <= 0) {
-                            //sout("We acted this turn, so we're done");
                             CURSOR.MODE = MODES.finishing;
                         }
                         
@@ -42,10 +38,10 @@ if (global.PAUSED == false) {
                         ///// PERFORM AN ACTION /////
                         
                         // ADVANCE
-                        if (option == AI_OPTIONS.Advance)
+                        if  (option == AI_OPTIONS.Advance)
                         and (!movedThisTurn) {
                                 AI_tryAdvance();
-                        } // end of advance
+                        }
                         
                         
                         // ATTACK
