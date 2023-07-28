@@ -119,7 +119,7 @@ enum AI_OPTIONS {
     Advance,
     Attack,
     Distance,
-    MoveTowardsAlly,
+    Retreat,    // probably moves towards the nearest ally
     HealSelf,
     HealAlly,
     EndTurn

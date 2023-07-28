@@ -28,25 +28,11 @@
             <string>/// start the map
 event_inherited();
 
-instance_create(0, 0, FLOOR_DRAWER);
 
-/*
-var enemy = spawn(12, 3, enemy_Pirate, 4, true);
-var enemy = spawn(6, 6, enemy_Pirate, 2, true);
-*/
-var enemy = spawn(2, 3, enemy_Pirate, 4, true);
-/*
-var enemy = spawn(8, 5, enemy_Pirate, 2, true);
-var enemy = spawn(9, 9, enemy_Pirate, 4, true);
-var enemy = spawn(10, 7, enemy_Pirate, 2, true);
-*/
-
+// LEVEL CONTENTS
 var hero  = spawnUnit(0, 0, 1, 4, true);
 var hero2 = spawnUnit(1, 1, 2, 3, true);
-instance_create(hero.x, hero.y, CURSOR);
-instance_create(CURSOR.x, CURSOR.y, CAMERA);
-instance_create(0, 0, GUI);
-instance_create(0,0, SKY_CONTROLLER);
+var enemy = spawn(2, 3, enemy_Pirate, 4, true);
 
 /*
 repeat 10 {
@@ -58,25 +44,25 @@ repeat 10 {
 build(8, 8, STEP, 4);
 */
 
+/*
 build(1, 5, WALL, 4);
 build(3, 5, WALL, 4);
 build(3, 4, WALL, 4);
 build(3, 3, WALL, 4);
 build(3, 1, WALL, 4);
+*/
 
-
-spawn_fire(9, 9, 10);
+spawn_fire(9, 9, 3);
 ds_grid_set(global.FLOOR_GRID, 6, 5, 0);    // gap in the floor
 build(6, 7, STEP, 0);
 
-// set timer for turns to start (needed because heroes
-// have to load in their stats before they can be added
-// to the turn list.
-//alarm[0] = 1;
-
 /// SORT AND START TURNS
 sortTurnList();
-nextTurn();
+global.TURN = ds_list_find_value(global.TURNLIST, 0);      // change the turn to the new first element
+moveCursorToUnit(global.TURN);
+
+
+
 </string>
           </argument>
         </arguments>

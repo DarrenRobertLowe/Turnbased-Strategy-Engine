@@ -31,8 +31,6 @@ event_inherited();
 team = TEAMS.enemy;
 
 
-
-
 // weapon
 // Int pwr          = 2;
 // Int dice         = 2; (roll 2 x pwr)

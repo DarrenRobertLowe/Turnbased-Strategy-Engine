@@ -16,9 +16,13 @@ if (global.PAUSED == false) {
                     or (option == AI_OPTIONS.EndTurn)
                     or (option == undefined) {
                         if (waitTime <= 0) {
+                            sout("Ending turn");
+                            if (actedThisTurn) {
+                                sout("...because we already acted");
+                            }
                             CURSOR.MODE = MODES.finishing;
                         }
-                        
+                    
                     /// TURN
                     } else {
                         //sout("We haven't yet acted this turn");
@@ -40,13 +44,13 @@ if (global.PAUSED == false) {
                         // ADVANCE
                         if  (option == AI_OPTIONS.Advance)
                         and (!movedThisTurn) {
-                                AI_tryAdvance();
+                            AI_tryAdvance();
                         }
                         
                         
                         // ATTACK
                         if (option == AI_OPTIONS.Attack) {
-                            //sout("Considering attacking...");
+                            sout("Considering attacking...");
                             
                             // Melee?
                             if (weapon.attackType == "Melee") {
@@ -61,7 +65,7 @@ if (global.PAUSED == false) {
                                     
                                     if (unit > -1) {
                                         // check for a clear path and no obstacles
-                                        if !(directionIsBlocked(x, y, unit.x, unit.y)) {
+                                        if !(attackDirectionIsBlocked(x, y, unit.x, unit.y, unit)) {
                                             // attack them
                                             attack_target(id, unit);
                                             actedThisTurn = true;

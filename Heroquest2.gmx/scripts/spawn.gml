@@ -6,10 +6,16 @@ var type        = argument2;
 var facing      = faceDirection(argument3);
 var addToTurns  = argument4;
 
-var instance  = instance_create(getXFromColumn(column), getYFromRow(row), type);
+var instance    = instance_create(getXFromColumn(column), getYFromRow(row), type);
 
+if (addToTurns) {
+    ds_list_add(global.TURNLIST, instance);
+}
+/*
 if (addToTurns) {
     addToTurnList(instance);
 }
+*/
+
 
 return instance;

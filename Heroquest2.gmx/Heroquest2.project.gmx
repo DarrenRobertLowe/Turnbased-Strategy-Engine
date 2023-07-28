@@ -177,7 +177,7 @@
       <script>scripts\getValidTargets.gml</script>
       <script>scripts\entityIsUnit.gml</script>
       <script>scripts\containsEnemyUnit.gml</script>
-      <script>scripts\directionIsBlocked.gml</script>
+      <script>scripts\attackDirectionIsBlocked.gml</script>
       <script>scripts\get_direction_value.gml</script>
       <script>scripts\getTargetWithLowestHP.gml</script>
       <script>scripts\exists.gml</script>
@@ -226,6 +226,7 @@
       <script>scripts\setup_particles_fire.gml</script>
     </scripts>
     <script>scripts\burn.gml</script>
+    <script>scripts\moveCursorToUnit.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu_normal</font>

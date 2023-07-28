@@ -79,14 +79,18 @@ if (ds_grid_get(occupiedGrid, column, row) == id) {
     ds_grid_set(occupiedGrid, column, row, global.gridDefaultValue);
 }
 
-// turn list
-var index = ds_list_find_index(global.TURNLIST, id);
-if (index &gt; -1) then ds_list_delete(global.TURNLIST, index);
 
+/* NOTE: endTurn() needs to be called before we
+ * remove ourselves from the list.
+ */
 // change the turn if it was our's
 if (global.TURN == id) {
     endTurn();
 }
+// remove ourselves from the turnlist
+var index = ds_list_find_index(global.TURNLIST, id);
+if (index &gt; -1) then ds_list_delete(global.TURNLIST, index);
+
 </string>
           </argument>
         </arguments>

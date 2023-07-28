@@ -2,8 +2,9 @@
 var target  = argument0;
 var dmg     = argument1;
 
-target.hp -= dmg;
 
+target.hp -= dmg;
+sout(string(target) + " dealt " +string(dmg) +" damage!");
 
 // REPORT
 var xx = getIsometricXFromCell(target.column, target.row);

@@ -40,8 +40,17 @@ show_debug_message("room height is "+string(room_height));
 view_wview = global.options_ResolutionWidth;
 view_hview = global.options_ResolutionHeight;
 
-instance_create(0,0,SKY_CONTROLLER);
 
+// GAME STUFF
+instance_create(0, 0, GUI);
+instance_create(0, 0, SKY_CONTROLLER);
+instance_create(0, 0, FLOOR_DRAWER);
+instance_create(0, 0, CURSOR);
+instance_create(CURSOR.x, CURSOR.y, CAMERA);
+
+
+// set timer before first turn starts
+//alarm[0] = delta(60);
 </string>
           </argument>
         </arguments>
@@ -66,7 +75,8 @@ instance_create(0,0,SKY_CONTROLLER);
             <kind>1</kind>
             <string>/// SORT AND START TURNS
 sortTurnList();
-nextTurn();
+global.TURN = ds_list_find_value(global.TURNLIST, 0);      // change the turn to the new first element
+moveCursorToUnit(global.TURN);
 </string>
           </argument>
         </arguments>

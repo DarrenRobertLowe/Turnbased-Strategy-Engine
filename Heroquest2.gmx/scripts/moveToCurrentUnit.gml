@@ -6,8 +6,7 @@
  */
 var instance = argument0;
 
-if instance_exists(global.TURN)
-{
+if instance_exists(global.TURN) {
     instance.column  = global.TURN.column;
     instance.row     = global.TURN.row;
 }

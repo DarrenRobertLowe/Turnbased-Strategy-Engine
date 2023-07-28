@@ -2,7 +2,7 @@
 
 attacker = argument0;
 target   = argument1;
-
+sout("ATTACK! - " +string(attacker) +" is attacking "+string(target));
 
 face_target(attacker, target);  // face the target
 

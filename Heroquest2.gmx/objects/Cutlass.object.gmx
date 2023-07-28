@@ -32,6 +32,7 @@ var weaponsGrid = global.default_weapons;
 
 sout("key is " + string(key));
 
+/// see setup_weapons()
 name        = ds_grid_get(weaponsGrid, weaponStats.name, key);
 pwr         = ds_grid_get(weaponsGrid, weaponStats.pwr, key);
 dice        = ds_grid_get(weaponsGrid, weaponStats.dice, key);
