@@ -126,6 +126,7 @@ enum AI_OPTIONS {
 }
 
 enum TEAMS {
+    fire,
     ally,
     enemy,
     neutral
