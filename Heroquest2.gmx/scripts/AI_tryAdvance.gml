@@ -1,5 +1,5 @@
 ///AI_tryAdvance()
-
+show_debug_message("Advancing");
 //debug_message("We haven't yet moved... considering moving...");
                             
 // get a list of targets, sorted by the closest one

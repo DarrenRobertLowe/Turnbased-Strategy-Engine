@@ -184,14 +184,14 @@ if (global.PAUSED == false) {
     if (MOVING) {
         CAMERA.target = id;
         get_z();
-        CURSOR.MODE = MODES.waiting;                // make cursor wait while we move
+        CURSOR.MODE = MODES.waiting;                    // make cursor wait while we move
         getCellFromCoordsPrecise(x,y);
         
         
         // we'll probably want to replace this with a custom 
         // path movement that works for both the hero units
         // and the NPCs. Also see goto_Square()
-        path_speed = delta(global.movementSpeed);   // if using delta time you probably need to update it here
+        path_speed = delta(global.movementSpeed);       // if using delta time you probably need to update it here
         
         
         
@@ -220,8 +220,6 @@ if (global.PAUSED == false) {
                 getCellFromCoords(x,y);
                 distanceToNextCell = 0;
                 movementPoints--;
-                sout("moved a cell");
-                //updateGrid(id, sourceColumn, sourceRow, targetColumn, targetRow);   // empty old coords and add id to new position.
             }
         }
     }

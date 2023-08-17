@@ -69,8 +69,10 @@ alpha       = 1;
 //isoY        = getIsometricYFromCell(column, row);
 
 
+// PATHFINDING SETUP
 pathfindingIgnoreList = ds_list_create();
 ds_list_add(pathfindingIgnoreList, id);
+badTargetCells = ds_grid_create(gridWidth, gridHeight);
 </string>
           </argument>
         </arguments>

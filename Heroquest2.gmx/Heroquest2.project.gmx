@@ -91,11 +91,15 @@
       <script>scripts\addInstanceToGrid.gml</script>
       <script>scripts\updateGrid.gml</script>
       <script>scripts\gridpath_set_collisions.gml</script>
+      <script>scripts\gridpath_add_collisions.gml</script>
       <script>scripts\reset_pathfindingIgnoreList.gml</script>
       <script>scripts\extractColumnFromListOfCells.gml</script>
       <script>scripts\extractRowFromListOfCells.gml</script>
       <script>scripts\pathfinding_add_empty_floors.gml</script>
       <script>scripts\gridpath_ignore_fire.gml</script>
+      <script>scripts\get_cells_spiral.gml</script>
+      <script>scripts\validColumn.gml</script>
+      <script>scripts\validRow.gml</script>
     </scripts>
     <scripts name="Math">
       <script>scripts\getCellCenterY.gml</script>
@@ -212,6 +216,8 @@
           <script>scripts\FIRE_AI_spread.gml</script>
           <script>scripts\spawn_fire.gml</script>
         </scripts>
+        <script>scripts\AI_EscapeFire.gml</script>
+        <script>scripts\considerFireEscape.gml</script>
       </scripts>
       <script>scripts\damage.gml</script>
     </scripts>

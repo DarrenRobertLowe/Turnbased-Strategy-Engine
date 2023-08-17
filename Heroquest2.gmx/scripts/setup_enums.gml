@@ -116,6 +116,7 @@ enum AI_TARGET_CHOICES {
 
 
 enum AI_OPTIONS {
+    EscapeFire,
     Advance,
     Attack,
     Distance,

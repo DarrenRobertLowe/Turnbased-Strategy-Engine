@@ -26,8 +26,7 @@ var pathfindingOffset = global.pathfindingOffset;
 
 // add our potential targets to the pathfindingIgnoreList so
 // we can check for routes to their exact cell
-for (var i=0; i<size; i++)
-{
+for (var i=0; i<size; i++) {
     var value = ds_list_find_value(listOfTargets, i);
     ds_list_add(pathfindingIgnoreList, value);
 }

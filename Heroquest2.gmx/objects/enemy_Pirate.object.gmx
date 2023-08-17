@@ -34,13 +34,15 @@ weapon  = instance_create(0,0, Cutlass);
 avatar  = avatar_index.pirate;
 level   = irandom(4)+1;
 hpBase  = 5;
-hp      = 5;
+hp      = 10;
 
 
 
 /* setup AI_ActionOrder
  * also see setup_enums
 */
+//ds_list_add(AI_ActionOrder, AI_OPTIONS.DouseFire);
+ds_list_add(AI_ActionOrder, AI_OPTIONS.EscapeFire);
 ds_list_add(AI_ActionOrder, AI_OPTIONS.Attack);
 ds_list_add(AI_ActionOrder, AI_OPTIONS.Advance);
 ds_list_add(AI_ActionOrder, AI_OPTIONS.Attack);
@@ -51,7 +53,7 @@ ds_list_add(AI_ActionOrder, AI_OPTIONS.HealSelf);
 ds_list_add(AI_ActionOrder, AI_OPTIONS.EndTurn);
 
 
-// actions options queue
+// create options queue from AI_ActionOrder
 AI_getOptionsQueue();
 </string>
           </argument>

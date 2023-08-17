@@ -39,18 +39,7 @@ hp      = 3;                // hp is effectively the fire's level. Each turn it'
 yoffset = 12;               // see step event for explanation
 maxScale = 3;
 
-//size    = ((global.tileWidth * 0.3) * hp);
-//setup_particles_fire(depth, size);
-
-
-//my_emitter = part_emitter_create(global.partsys_fire);
-
-
-// main flame
-//part_emitter_region(global.partsys_fire, my_emitter, x-size, x+size, y, y, ps_shape_diamond, ps_distr_gaussian);
-
-// this code looks great for a gui effect
-//part_emitter_region(global.partsys_fire,my_emitter,-50,850,450,500,ps_shape_rectangle,ps_distr_linear);
+ds_list_add(AI_ActionOrder, AI_OPTIONS.EndTurn);
 </string>
           </argument>
         </arguments>

@@ -29,14 +29,6 @@
 event_inherited();
 
 team = TEAMS.enemy;
-
-
-// weapon
-// Int pwr          = 2;
-// Int dice         = 2; (roll 2 x pwr)
-// List effects     = new List&lt;WeaponEffect&gt;;
-// Weapon weapon    = new Sword(pwr, dice, effects);
-
 class   = classes.Pirate;
 getBaseStats(class);      
 name    = get_classname(class); // set name to classname by default

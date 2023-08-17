@@ -8,8 +8,6 @@ if (global.PAUSED == false) {
                 
                 if !(MOVING) {
                     var option = ds_queue_dequeue(options);     // get the first preference
-                    debug_message("The next option in the queue is " + string(option));
-                    
                     
                     /// END TURN
                     if (actedThisTurn)
@@ -41,12 +39,17 @@ if (global.PAUSED == false) {
                         
                         ///// PERFORM AN ACTION /////
                         
-                        // ADVANCE
-                        if  (option == AI_OPTIONS.Advance)
-                        and (!movedThisTurn) {
-                            AI_tryAdvance();
+                        /// MOVEMENT
+                        if (!movedThisTurn) {
+                            if (option == AI_OPTIONS.EscapeFire) {
+                                if (considerFireEscape()) {
+                                    AI_EscapeFire();    // ESCAPE FIRE
+                                }
+                            } else if  (option == AI_OPTIONS.Advance) {
+                                AI_tryAdvance();    // ADVANCE
+                            }
                         }
-                        
+
                         
                         // ATTACK
                         if (option == AI_OPTIONS.Attack) {
@@ -123,8 +126,8 @@ if (global.PAUSED == false) {
                         
                     } // end of turn
                 } // if !(MOVING)
-            
-            
+                
+                
                 
                 // MOVEMENT
                 if (MOVING) {
@@ -146,9 +149,9 @@ if (global.PAUSED == false) {
                         if (distanceToNextCell <= 0) {
                             
                             // RECALCULATE THE ULTIMATE PATH
-                            var index       = ds_list_find_value(listOfCells, 0);
-                            targetColumn    = extractColumnFromListOfCells(listOfCells, index);
-                            targetRow       = extractRowFromListOfCells(listOfCells, index);
+                            //var index       = ds_list_find_value(listOfCells, 0);
+                            //targetColumn    = extractColumnFromListOfCells(listOfCells, index);
+                            //targetRow       = extractRowFromListOfCells(listOfCells, index);
                             goto_Square(targetColumn, targetRow);
                             path_end(); // stop the path immediately
                             

@@ -9,4 +9,3 @@ and (row >= 0)
 and (row < global.gridHeight) {
     return true;
 }
-else show_debug_message("invalid cell attempted: "+string(column)+":"+string(row));
