@@ -335,14 +335,16 @@ if (MODE == MODES.waiting) {
 
 // FINISHING
 if (MODE == MODES.finishing) {
-        endTurn();
-        
-        if (global.OPTIONS_CURSOR_MEMORY == true) {
-            selected.menuPosition = menuPosition;     // remember the cursor position
-        }
-        attackPathShown = false;
-        pathShown = false;
-        resetCursor();
+        //if (selected &gt; 0 and selected.waitTime &lt;= 0) or (selected &lt; 1) {
+            endTurn();
+            
+            if (global.OPTIONS_CURSOR_MEMORY == true) {
+                selected.menuPosition = menuPosition;     // remember the cursor position
+            }
+            attackPathShown = false;
+            pathShown = false;
+            resetCursor();
+        //}
 }
 </string>
           </argument>

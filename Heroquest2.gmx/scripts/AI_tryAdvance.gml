@@ -17,7 +17,7 @@ if (ds_list_size(listOfCells) > 0) {
         movementPoints  = move;
         startColumn     = column;
         startRow        = row;
-        goto_Square(targetColumn, targetRow);
+        goto_square(targetColumn, targetRow);
         path_end();                                 // stop the path immediately
     }
 } else {

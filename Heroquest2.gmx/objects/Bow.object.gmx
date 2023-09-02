@@ -30,6 +30,7 @@
 key         = weapons.cutlass;    // get the name of this object
 var weaponsGrid = global.default_weapons;
 
+sout("key is " + string(key));
 
 /// see setup_weapons()
 name        = ds_grid_get(weaponsGrid, weaponStats.name, key);

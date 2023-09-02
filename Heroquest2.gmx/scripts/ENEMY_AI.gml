@@ -149,10 +149,12 @@ if (global.PAUSED == false) {
                         if (distanceToNextCell <= 0) {
                             
                             // RECALCULATE THE ULTIMATE PATH
-                            //var index       = ds_list_find_value(listOfCells, 0);
-                            //targetColumn    = extractColumnFromListOfCells(listOfCells, index);
-                            //targetRow       = extractRowFromListOfCells(listOfCells, index);
-                            goto_Square(targetColumn, targetRow);
+                            var index           = ds_list_find_value(listOfCells, 0);
+                            if !( is_undefined(index) ) { // this is a bit of a hack, but seems to work fine, allowing for moving away from fire and moving more than 1 square
+                                targetColumn    = extractColumnFromListOfCells(listOfCells, index);
+                                targetRow       = extractRowFromListOfCells(listOfCells, index);
+                            }
+                            goto_square(targetColumn, targetRow);
                             path_end(); // stop the path immediately
                             
                             
@@ -169,19 +171,19 @@ if (global.PAUSED == false) {
                                 // take it one cell at a time
                                 switch (dir) {
                                     case 0:     // right
-                                        goto_Square(column+1, row);
+                                        goto_square(column+1, row);
                                         break;
                                     
                                     case 180:   // left
-                                        goto_Square(column-1, row);
+                                        goto_square(column-1, row);
                                         break;
                                         
                                     case 90:    // up
-                                        goto_Square(column, row-1);
+                                        goto_square(column, row-1);
                                         break;
                                         
                                     case 270:   // down
-                                        goto_Square(column, row+1);
+                                        goto_square(column, row+1);
                                 }
                                  
                                 

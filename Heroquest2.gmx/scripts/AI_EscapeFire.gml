@@ -7,7 +7,7 @@ ds_list_clear(pathfindingIgnoreList);
 ds_list_add(pathfindingIgnoreList, id);
 
 // create a grid of obstacles that aren't us
-gridpath_add_collisions(global.pathGrid, OBSTACLE, pathfindingIgnoreList);
+gridpath_add_collisions(global.pathGrid, OBSTACLE, pathfindingIgnoreList, true);
 
 
 //badTargetCells = ds_grid_create(gridWidth, gridHeight);      // cells we can't move to
@@ -73,7 +73,7 @@ for (var i=0; i<size; i++) {
         startColumn     = column;
         startRow        = row;
         show_debug_message("Cell " + string(iCol) + ":" +string(iRow) + " looks safe! Moving there...");
-        goto_Square(iCol, iRow);
+        goto_square(iCol, iRow);
         path_end();                                 // stop the path immediately
         exit;
     }

@@ -1,4 +1,4 @@
-/// goto_Square(targetColumn, targetRow);
+/// goto_square(targetColumn, targetRow);
 /**
  *
  * @Param target columm
@@ -27,7 +27,8 @@ var targetY = getYFromRow(targetRow);       // getCellCenterY(getYFromRow(target
 var offset = global.pathfindingOffset;
 
 if (validCell(targetColumn, targetRow)) {
-    gridpath_set_collisions(global.pathGrid, OBSTACLE, pathfindingIgnoreList);
+    mp_grid_clear_all(global.pathGrid);
+    gridpath_add_collisions(global.pathGrid, OBSTACLE, pathfindingIgnoreList, true);
     
     if (mp_grid_path(global.pathGrid, myPath, x+offset, y+offset, targetX +offset, targetY +offset, false))
     {

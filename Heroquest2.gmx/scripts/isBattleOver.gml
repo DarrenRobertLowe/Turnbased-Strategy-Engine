@@ -1,5 +1,6 @@
 ///isBattleOver();
 
+
 var list = global.TURNLIST;
 var size = ds_list_size(list);
 var allies  = 0;

@@ -2,11 +2,11 @@
 
 ds_grid_clear(movementGrid,-1); // allows for proper move calculation over tall terrain.
 
+mp_grid_clear_all(global.pathGrid);
+gridpath_add_collisions(global.pathGrid, OBSTACLE, selected.pathfindingIgnoreList, true); // add obstacles to grid
 
-gridpath_set_collisions(global.pathGrid, OBSTACLE, selected.pathfindingIgnoreList); // add obstacles to grid
 
-
-pathfinding_add_empty_floors();     // add missing floor tiles as obstacles (keep after gridpath_set_collision)
+pathfinding_add_empty_floors(global.pathGrid);     // add missing floor tiles as obstacles (keep after gridpath_set_collision)
 
 
 

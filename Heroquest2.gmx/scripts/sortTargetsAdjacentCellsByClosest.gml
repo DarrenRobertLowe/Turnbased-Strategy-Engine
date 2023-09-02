@@ -33,11 +33,8 @@ for (var i=0; i<size; i++) {
 
 
 // register remaining obstacles on the grid
-global.pathGrid = gridpath_set_collisions(global.pathGrid, OBSTACLE, pathfindingIgnoreList);
-
-
-// add missing floor tiles to ignoreList (keep after gridpath_set_collision)
-pathfinding_add_empty_floors();
+mp_grid_clear_all(global.pathGrid);
+global.pathGrid = gridpath_add_collisions(global.pathGrid, OBSTACLE, pathfindingIgnoreList, true);
 
 
 // TO DO: add heights we can't reach as obstacles too
@@ -52,8 +49,7 @@ if (removeUnreachable) {
         targetY = getYFromRow(unit.row);
         
         // remove any targets that aren't reachable
-        if !(mp_grid_path(global.pathGrid, myPath, x+pathfindingOffset, y+pathfindingOffset, targetX +pathfindingOffset, targetY +pathfindingOffset, false))
-        {
+        if !(mp_grid_path(global.pathGrid, myPath, x+pathfindingOffset, y+pathfindingOffset, targetX +pathfindingOffset, targetY +pathfindingOffset, false)) {
             ds_list_delete(listOfTargets, i);
             i = -1; // go back to start of listOfTargets
         }
@@ -62,17 +58,14 @@ if (removeUnreachable) {
 
 
 
-// Reset the pathgrid to include all targets as obstacles now as
+// Recalc the pathgrid to include all targets as obstacles now as
 // we'll be looking at paths to the adjacent squares instead.
 // This is incase we calculate an invalid path going through an  
 // enemy somehow. For example, entities can block paths to other
 // entities.
 reset_pathfindingIgnoreList(pathfindingIgnoreList);
-gridpath_set_collisions(global.pathGrid, OBSTACLE, pathfindingIgnoreList);
+gridpath_add_collisions(global.pathGrid, OBSTACLE, pathfindingIgnoreList, true);
 
-
-// add missing floor tiles to ignoreList (keep after gridpath_set_collisions)
-pathfinding_add_empty_floors();
 
 
 

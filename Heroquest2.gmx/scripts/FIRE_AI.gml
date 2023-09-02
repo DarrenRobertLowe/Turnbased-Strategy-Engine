@@ -42,10 +42,10 @@ if (global.PAUSED == false) {
                         actedThisTurn = true;
                         waitTime = delta(global.delay_short);
                         
-                        // reduce lifespan
+                        // reduce lifespan or die when no ground
                         hp -= global.fireDieSpeed; // see setup_combat_rules();
                         floortile = ds_grid_get(global.FLOOR_GRID, column, row);
-                        if ((hp <= 0) or (floortile <= 0)) {
+                        if ((hp <= 0) or ( (floortile < 1) and (platform < 1) )) {
                             kill(id);
                         }
                     } // turn

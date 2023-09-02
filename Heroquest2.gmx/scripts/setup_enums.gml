@@ -62,12 +62,12 @@ enum unitStats {
     length      // KEEP AT BOTTOM, USED TO GET THE NUMBER OF STATS
 }
 
-
 enum weapons {
     unarmed,
     cutlass,
     woodenmop
 }
+
 
 // update load_weapon() if editing
 enum weaponStats {

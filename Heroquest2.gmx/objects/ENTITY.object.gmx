@@ -35,7 +35,8 @@ animTime = 0;
 attackAnim = "";
 targetIndex = 0;    // used for determining targets of attacks
 waitTime = 0;       // used for adding a pause between actions
-
+FALLING = false;
+fallTime = 300;     // how long to fall before destroying self
 
 // entity defaults
 team            = TEAMS.neutral;
@@ -80,8 +81,13 @@ if (ds_grid_get(occupiedGrid, column, row) == id) {
 }
 
 
+if (object_index != FIRE) {
+    show_message("aiiieeeeee!!!");
+}
+
 /* NOTE: endTurn() needs to be called before we
- * remove ourselves from the list.
+ * remove ourselves from the list, otherwise the
+ * order gets messed up.
  */
 // change the turn if it was our's
 if (global.TURN == id) {
@@ -91,6 +97,7 @@ if (global.TURN == id) {
 var index = ds_list_find_index(global.TURNLIST, id);
 if (index &gt; -1) then ds_list_delete(global.TURNLIST, index);
 
+isBattleOver();
 </string>
           </argument>
         </arguments>
@@ -139,8 +146,7 @@ instance_destroy(self, true);
           <argument>
             <kind>1</kind>
             <string>/// PATHFINDING
-//MOVING = true;
-goto_Square(targetColumn, targetRow);
+goto_square(targetColumn, targetRow);
 </string>
           </argument>
         </arguments>
@@ -174,59 +180,76 @@ if (global.isometricView) {
     animate();
 }
 
-if (waitTime &gt; 0) {
-    waitTime--;
-}
 
 
-// MOVEMENT
-if (global.PAUSED == false) {
-    if (MOVING) {
-        CAMERA.target = id;
-        get_z();
-        CURSOR.MODE = MODES.waiting;                    // make cursor wait while we move
-        getCellFromCoordsPrecise(x,y);
-        
-        
-        // we'll probably want to replace this with a custom 
-        // path movement that works for both the hero units
-        // and the NPCs. Also see goto_Square()
-        path_speed = delta(global.movementSpeed);       // if using delta time you probably need to update it here
-        
-        
-        
-        
-        // Player controlled movement.
-        if !(object_is_ancestor(object_index, NPC)) {
-            if (path_position &gt;= 1) {
-                update_direction();
-                getCellFromCoords(x,y);
-                CURSOR.MODE = MODES.free;              // return control to the cursor
-                MOVING = false;
-                updateGrid(id, sourceColumn, sourceRow, targetColumn, targetRow);   // empty old coords and add id to new position.
-            }
-        }
-        
-        
-        // NPC movement
-        // NOTE: This corresponds to moving a single cell
-        // along the path, not the actual end of moving.
-        // This is because the enemy just walks towards the
-        // target, rather than choosing a square they can
-        // actually reach. This should probably be changed.
-        if (object_is_ancestor(object_index, NPC)) {
-            if (path_position &gt;= 1) {
-                update_direction();
-                getCellFromCoords(x,y);
-                distanceToNextCell = 0;
-                movementPoints--;
-            }
-        }
+// FALLING
+if (FALLING) {
+    image_xscale -= delta(.1);
+    image_yscale -= delta(.01);
+    z -= delta(1);
+    if (image_xscale &lt; 0) then image_xscale = 0;
+    if (image_yscale &lt; 0) then image_yscale = 0;
+    waitTime = 100; // keep waiting while we fall
+    fallTime--;
+    if (fallTime &lt;= 0) {
+        alarm[1] = 1;
     }
 } else {
-    path_speed = 0;
-}
 
+    if (waitTime &gt; 0) {
+        waitTime--;
+    }
+    
+    // MOVEMENT
+    if (global.PAUSED == false) {
+        if (MOVING) {
+            CAMERA.target = id;
+            get_z();
+            CURSOR.MODE = MODES.waiting;                    // make cursor wait while we move
+            getCellFromCoordsPrecise(x,y);
+            
+            
+            // we'll probably want to replace this with a custom 
+            // path movement that works for both the hero units
+            // and the NPCs. Also see goto_Square()
+            path_speed = delta(global.movementSpeed);       // if using delta time you probably need to update it here
+            
+            
+            
+            
+            // Player controlled movement.
+            if !(object_is_ancestor(object_index, NPC)) {
+                if (path_position &gt;= 1) {
+                    update_direction();
+                    getCellFromCoords(x,y);
+                    CURSOR.MODE = MODES.free;              // return control to the cursor
+                    MOVING = false;
+                    updateGrid(id, sourceColumn, sourceRow, targetColumn, targetRow);   // empty old coords and add id to new position.
+                }
+            }
+            
+            
+            // NPC movement
+            // NOTE: This corresponds to moving a single cell
+            // along the path, not the actual end of moving.
+            // This is because the enemy just walks towards the
+            // target, rather than choosing a square they can
+            // actually reach. This should probably be changed.
+            if (object_is_ancestor(object_index, NPC)) {
+                if (path_position &gt;= 1) {
+                    update_direction();
+                    getCellFromCoords(x,y);
+                    distanceToNextCell = 0;
+                    movementPoints--;
+                }
+            }
+        }
+    } else {
+        path_speed = 0;
+    }
+
+}
+    
 // prevent occupation of mulitple grid cells that can happen on rare occasions
 snap_to_grid(column, row);
 </string>

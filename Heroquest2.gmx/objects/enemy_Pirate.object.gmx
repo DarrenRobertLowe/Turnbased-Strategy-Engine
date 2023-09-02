@@ -34,7 +34,7 @@ weapon  = instance_create(0,0, Cutlass);
 avatar  = avatar_index.pirate;
 level   = irandom(4)+1;
 hpBase  = 5;
-hp      = 10;
+hp      = 1000;
 
 
 

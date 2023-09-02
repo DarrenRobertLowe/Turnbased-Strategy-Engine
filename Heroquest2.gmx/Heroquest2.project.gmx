@@ -84,13 +84,12 @@
       <script>scripts\setup_delays.gml</script>
     </scripts>
     <scripts name="Pathfinding">
-      <script>scripts\goto_Square.gml</script>
+      <script>scripts\goto_square.gml</script>
       <script>scripts\draw_path_ext.gml</script>
       <script>scripts\get_direction.gml</script>
       <script>scripts\removeInstanceFromGrid.gml</script>
       <script>scripts\addInstanceToGrid.gml</script>
       <script>scripts\updateGrid.gml</script>
-      <script>scripts\gridpath_set_collisions.gml</script>
       <script>scripts\gridpath_add_collisions.gml</script>
       <script>scripts\reset_pathfindingIgnoreList.gml</script>
       <script>scripts\extractColumnFromListOfCells.gml</script>
@@ -185,6 +184,7 @@
       <script>scripts\get_direction_value.gml</script>
       <script>scripts\getTargetWithLowestHP.gml</script>
       <script>scripts\exists.gml</script>
+      <script>scripts\cellsAreAdjacent.gml</script>
     </scripts>
     <scripts name="Game Logic">
       <script>scripts\roll.gml</script>
@@ -270,6 +270,9 @@
       </objects>
       <objects name="POLES">
         <object>objects\WoodenMop</object>
+      </objects>
+      <objects name="BOWS">
+        <object>objects\Bow</object>
       </objects>
     </objects>
     <objects name="ENEMIES">

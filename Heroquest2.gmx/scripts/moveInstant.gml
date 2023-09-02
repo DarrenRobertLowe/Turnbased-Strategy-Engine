@@ -2,14 +2,11 @@
 /* Instantly repositions an object 1 cell in
  *  a given direction.
  * Note: This should really only be used by
- * the cursor, or anything else
+ * the cursor
  * 
- * Calls updateGridPosition();
  * Teleports to the new cell
  * Resets the move var
 */
-
-//updateGridPosition(x, y);
 
 
 if (move = DIRECTION.north) {

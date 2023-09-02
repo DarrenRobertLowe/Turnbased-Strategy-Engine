@@ -32,7 +32,6 @@ event_inherited();
 key         = weapons.woodenmop;    // get the name of this object
 weaponsGrid = global.default_weapons;
 
-sout("key is " + string(key));
 
 name    = ds_grid_get(weaponsGrid, weaponStats.name, key);
 pwr     = ds_grid_get(weaponsGrid, weaponStats.pwr, key);
