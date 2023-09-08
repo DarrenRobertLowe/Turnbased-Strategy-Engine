@@ -51,6 +51,7 @@ setup_controls();
 setup_options();
 setup_fonts();
 setup_gui();
+setup_weapon_quality_titles();
 setup_units();
 
 

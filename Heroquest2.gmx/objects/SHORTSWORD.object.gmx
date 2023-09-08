@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>SHORTSWORD</parentName>
+  <parentName>SWORD</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,10 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///
+            <string>qualityTitlesList = global.SwordQualityTitles;
+
 event_inherited();
-ds_list_clear(childClasses); // we are the top-level weapon  
-hierarchy = 0; // how distant this is from a specific weapon
+
+ds_list_clear(childClasses);
+ds_list_add(childClasses, Cutlass);
+ds_list_add(childClasses, Saber);
+ds_list_add(childClasses, Broadsword);
+
+hierarchy   = 1; // how distant this is from a specific weapon
+
 </string>
           </argument>
         </arguments>

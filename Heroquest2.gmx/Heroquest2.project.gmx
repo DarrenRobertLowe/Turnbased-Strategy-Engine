@@ -82,6 +82,7 @@
       <script>scripts\setup_fonts.gml</script>
       <script>scripts\setup_limits.gml</script>
       <script>scripts\setup_delays.gml</script>
+      <script>scripts\setup_weapon_quality_titles.gml</script>
     </scripts>
     <scripts name="Pathfinding">
       <script>scripts\goto_square.gml</script>
@@ -233,6 +234,9 @@
     </scripts>
     <script>scripts\burn.gml</script>
     <script>scripts\moveCursorToUnit.gml</script>
+    <scripts name="Weapons">
+      <script>scripts\generateWeapon.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu_normal</font>
@@ -263,16 +267,27 @@
     <objects name="WEAPONS">
       <object>objects\WEAPON</object>
       <object>objects\UNARMED</object>
-      <object>objects\POLEARM</object>
-      <object>objects\SWORD</object>
       <objects name="SWORDS">
-        <object>objects\Cutlass</object>
+        <object>objects\SWORD</object>
+        <objects name="SHORTSWORDS">
+          <object>objects\SHORTSWORD</object>
+          <object>objects\Cutlass</object>
+          <object>objects\Saber</object>
+          <object>objects\Broadsword</object>
+        </objects>
+        <objects name="RAPIERS">
+          <object>objects\FOIL</object>
+          <object>objects\Epee</object>
+          <object>objects\Sidesword</object>
+          <object>objects\Rapier</object>
+        </objects>
       </objects>
       <objects name="POLES">
+        <object>objects\POLEARM</object>
         <object>objects\WoodenMop</object>
       </objects>
       <objects name="BOWS">
-        <object>objects\Bow</object>
+        <object>objects\BOW</object>
       </objects>
     </objects>
     <objects name="ENEMIES">

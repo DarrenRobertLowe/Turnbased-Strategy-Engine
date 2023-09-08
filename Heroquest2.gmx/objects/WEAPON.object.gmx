@@ -27,21 +27,58 @@
             <kind>1</kind>
             <string>/// set defaults
 
-pwr         = 1;    // base damage
+pwr         = global.DAMAGE_MINIMAL;    // base damage
 dice        = 1;    // how many dies of pwr to roll when attacking
 range       = 1;
 diagonal    = false;
+pwr         = global.DAMAGE_MINIMAL;
+animation   = attackAnimations.punch;
 
-actions     = ds_list_create();     // attack, push, etc
-effects     = ds_list_create();     // burn, counter, etc.
-modifiers   = ds_list_create();     // Chipped, Sharpened, etc.
+
+childClasses    = ds_list_create();
+actions         = ds_list_create();     // attack, push, etc
+effects         = ds_list_create();     // burn, counter, etc.
+modifiers       = ds_list_create();     // Chipped, Sharpened, etc.
+quality         = 0;
+
 animation   = "punch";
-
 attackType  = "Melee";  // Melee, Ranged, Magic
 // we might want the following, 0 would remove as option
 // bash     = 1;
 // slash    = 2;
 // thrust   = 2;
+
+// generate name based on stats (also called by spawning script)
+event_user(0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// generate name from stats
+qualityTitle = ds_list_find_value(qualityTitlesList, quality);
+name = qualityTitle + " " + object_get_name(object_index) + " ";
+
+
+
+
 </string>
           </argument>
         </arguments>

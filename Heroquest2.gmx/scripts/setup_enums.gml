@@ -65,7 +65,8 @@ enum unitStats {
 enum weapons {
     unarmed,
     cutlass,
-    woodenmop
+    woodenmop,
+    bow
 }
 
 

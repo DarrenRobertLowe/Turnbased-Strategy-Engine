@@ -25,12 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>///
+event_inherited();
 
 // stats
 class   = classes.Pirate;       // this will act as the name by default
 name    = get_classname(class);
-weapon  = instance_create(0,0, Cutlass);
+
+repeat(100) {
+    generateWeapon(SWORD,20,25);
+}
+
+weapon  = generateWeapon(SWORD, 5, 25);//instance_create(0,0, Cutlass);
 avatar  = avatar_index.pirate;
 level   = irandom(4)+1;
 hpBase  = 5;

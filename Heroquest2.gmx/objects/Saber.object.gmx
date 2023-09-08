@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>///
 event_inherited();
+
 ds_list_clear(childClasses); // we are the top-level weapon  
 hierarchy = 0; // how distant this is from a specific weapon
 </string>
