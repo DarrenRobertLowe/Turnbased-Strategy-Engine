@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>qualityTitlesList = global.SwordQualityTitles;
+            <string>//qualityTitlesList = global.SwordQualityTitles;
 
 event_inherited();
 
@@ -34,7 +34,10 @@ dice        = 1;
 range       = 1;
 diagonal    = false;
 animation   = attackAnimations.slash;
-hierarchy   = 2; // how distant this is from a specific weapon
+hierarchy   = 2; // how distant this is from a instantiable weapon
+tier        = 0;
+
+
 
 ds_list_clear(childClasses);
 ds_list_add(childClasses, SHORTSWORD);

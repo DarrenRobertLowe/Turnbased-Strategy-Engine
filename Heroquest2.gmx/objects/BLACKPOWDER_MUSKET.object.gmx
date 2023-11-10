@@ -4,8 +4,8 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
-  <parentName>POLEARM</parentName>
+  <persistent>0</persistent>
+  <parentName>WEAPON</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,10 +25,35 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///
-event_inherited();
-ds_list_clear(childClasses); // we are the top-level weapon  
-hierarchy = 0; // how distant this is from a specific weapon
+            <string>event_inherited();
+
+pwr         = global.DAMAGE_HIGH;
+dice        = 1;
+range       = 8;
+diagonal    = false;
+animation   = attackAnimations.rifle;
+hierarchy   = 1; // how distant this is from a instantiable weapon
+tier        = 0;
+
+tiers[0] = "Cheap";
+tiers[1] = "";
+tiers[2] = "Quality";
+tiers[3] = "Signature";
+
+ds_list_clear(childClasses);
+ds_list_add(childClasses, Musket);
+
+
+ds_list_add(actions,    "Attack");
+ds_list_add(actions,    "Defend");
+
+//ds_list_add(passives, );
+
+ds_list_add(possibleModifiers,
+"Bayonet",      // allows for melee combat with Normal damage
+"Rifled"        // doubles range
+);
+//"Flintlock");   // ??? You kind of need flintlocks on a ship, be it sea or air.
 </string>
           </argument>
         </arguments>

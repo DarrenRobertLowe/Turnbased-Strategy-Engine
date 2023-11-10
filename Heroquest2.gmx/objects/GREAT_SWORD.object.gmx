@@ -4,8 +4,8 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
-  <parentName>POLEARM</parentName>
+  <persistent>0</persistent>
+  <parentName>SWORD</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,10 +25,34 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///
+            <string>/// Refers to all greatswords
 event_inherited();
-ds_list_clear(childClasses); // we are the top-level weapon  
-hierarchy = 0; // how distant this is from a specific weapon
+
+ds_list_clear(childClasses);
+ds_list_add(childClasses, Greatsword);
+
+pwr         = global.DAMAGE_HIGH;
+dice        = 1;
+range       = 2;
+diagonal    = false;
+animation   = attackAnimations.bash;
+hierarchy   = 1; // how distant this is from a instantiable weapon
+
+tiers[0] = "Battered";
+tiers[1] = "";
+tiers[2] = "Mighty";    // Fearsome
+tiers[3] = "Titanic";   // Formidable // Dreadful
+
+
+ds_list_add(actions, 
+"Barricade",     // sword is lodged in the ground preventing enemies from advancing
+"Defend");      // reduce incoming damage
+
+
+ds_list_add(possibleModifiers, 
+"Tempered",         // increased defence +2
+"Double-edged");    // increased attack?
+
 </string>
           </argument>
         </arguments>

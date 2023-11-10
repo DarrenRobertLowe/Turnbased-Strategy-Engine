@@ -25,13 +25,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>qualityTitlesList = global.PoleQualityTitles; // see setup_weapon_quality_titles
-
+            <string>/// Refers to all polearms
 event_inherited();
-diagonal = true; // allow diagonal attacks?
 
 ds_list_clear(childClasses);
 ds_list_add(childClasses, WoodenMop);
+
+pwr         = global.DAMAGE_NORMAL;
+dice        = 1;
+range       = 2;
+diagonal    = true;
+animation   = attackAnimations.slash;
+hierarchy   = 1; // how distant this is from a instantiable weapon
+
+
+ds_list_add(actions,
+"Block",     // reduce damage of incoming attacks
+"Vault");   // traverse up to 3 squares, valuting over anything in between (e.g. holes, fire, enemies, etc)
+
+ds_list_add(passives,
+"Knockback");
+
+ds_list_add(possibleModifiers,
+"Sharpened", // +1 damage
+"Long");    // +1 to range
 </string>
           </argument>
         </arguments>

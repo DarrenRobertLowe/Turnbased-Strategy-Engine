@@ -25,24 +25,33 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///
-
-qualityTitlesList = global.RapierQualityTitles;
-
+            <string>/// Refers to all rapier form weapons
 event_inherited();
 
+ds_list_clear(childClasses);
+ds_list_add(childClasses, Epee);
+ds_list_add(childClasses, Sidesword);
+ds_list_add(childClasses, Rapier);
 
 pwr         = global.DAMAGE_NORMAL;
 dice        = 1;
 range       = 1;
 diagonal    = false;
 animation   = attackAnimations.slash;
-hierarchy   = 1; // how distant this is from a specific weapon
+hierarchy   = 1; // how distant this is from a instantiable weapon
 
-ds_list_clear(childClasses);
-ds_list_add(childClasses, Epee);
-ds_list_add(childClasses, Sidesword);
-ds_list_add(childClasses, Rapier);
+tiers[0] = "Warped";
+tiers[1] = "";
+tiers[2] = "Refined";
+tiers[3] = "Exquisite";
+
+ds_list_add(actions, "Parry");
+
+
+ds_list_add(possibleModifiers, 
+"Swept-hilt",   // increased defence +1
+"Nimble",       // increased chance to parry with counter
+"Long");        // attack +1 squares away
 </string>
           </argument>
         </arguments>

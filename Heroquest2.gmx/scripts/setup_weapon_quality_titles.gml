@@ -13,6 +13,8 @@
 // Superb
 // Special
 // Glorious
+// Incredible
+// Fancy
 
 global.SwordQualityTitles = ds_list_create();
 ds_list_add(global.SwordQualityTitles, "Rusty");
@@ -21,7 +23,7 @@ ds_list_add(global.SwordQualityTitles, "Fine");
 ds_list_add(global.SwordQualityTitles, "Masterful");
 
 global.RapierQualityTitles = ds_list_create();
-ds_list_add(global.RapierQualityTitles, "Blunted");
+ds_list_add(global.RapierQualityTitles, "Warped");
 ds_list_add(global.RapierQualityTitles, "");             // common
 ds_list_add(global.RapierQualityTitles, "Refined");
 ds_list_add(global.RapierQualityTitles, "Exquisite");
@@ -46,9 +48,9 @@ ds_list_add(global.PoleQualityTitles, "Awesome");
 
 global.GreatswordQualityTitles = ds_list_create();
 ds_list_add(global.GreatswordQualityTitles, "Battered");
-ds_list_add(global.GreatswordQualityTitles, "");             // common
-ds_list_add(global.GreatswordQualityTitles, "Fearsome");
-ds_list_add(global.GreatswordQualityTitles, "Incredible");
+ds_list_add(global.GreatswordQualityTitles, "");            // common
+ds_list_add(global.GreatswordQualityTitles, "Mighty");      // Fearsome
+ds_list_add(global.GreatswordQualityTitles, "Titanic");     // Formidable // Dreadful
 
 global.MusketQualityTitles = ds_list_create();
 ds_list_add(global.MusketQualityTitles, "Cheap");
@@ -67,6 +69,6 @@ ds_list_add(global.PistolQualityTitles, "Magnificent");
 global.BlunderbussQualityTitles = ds_list_create();
 ds_list_add(global.BlunderbussQualityTitles, "Risky");
 ds_list_add(global.BlunderbussQualityTitles, "");             // common
-ds_list_add(global.BlunderbussQualityTitles, "Fancy");
 ds_list_add(global.BlunderbussQualityTitles, "Marvelous");
+ds_list_add(global.BlunderbussQualityTitles, "Splendiferous");
 

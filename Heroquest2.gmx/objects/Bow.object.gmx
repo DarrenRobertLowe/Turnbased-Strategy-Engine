@@ -25,25 +25,27 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>qualityTitlesList = global.BowQualityTitles; // see setup_weapon_quality_titles
-
-
+            <string>/// Refers to all Bows
 event_inherited();
 
-key         = weapons.bow;    // get the name of this object
-var weaponsGrid = global.default_weapons;
-
-
-/// see setup_weapons()
-name        = ds_grid_get(weaponsGrid, weaponStats.name,        key);
-pwr         = ds_grid_get(weaponsGrid, weaponStats.pwr,         key);
-dice        = ds_grid_get(weaponsGrid, weaponStats.dice,        key);
-range       = ds_grid_get(weaponsGrid, weaponStats.range,       key);
-diagonal    = ds_grid_get(weaponsGrid, weaponStats.diagonal,    key);
-animation   = ds_grid_get(weaponsGrid, weaponStats.animation,   key);
-
-
 ds_list_clear(childClasses);
+ds_list_add(childClasses, Huntingbow);
+ds_list_add(childClasses, Longbow);
+
+pwr         = global.DAMAGE_LIGHT;
+dice        = 1;
+range       = 7;
+diagonal    = true;
+animation   = attackAnimations.bow;
+attackType = "Ranged"
+hierarchy   = 1; // how distant this is from a instantiable weapon
+
+
+ds_list_add(actions,
+"Charge");   // Next attack will deal double damage
+
+
+// ds_list_add(possibleModifiers, );
 </string>
           </argument>
         </arguments>

@@ -32,11 +32,12 @@ event_inherited();
 class   = classes.Pirate;       // this will act as the name by default
 name    = get_classname(class);
 
-repeat(100) {
-    generateWeapon(SWORD,20,25);
+repeat(10) {
+    show_debug_message("generating weapon...");
+    generateWeapon(SWORD,25);
 }
 
-weapon  = generateWeapon(SWORD, 5, 25);//instance_create(0,0, Cutlass);
+weapon  = generateWeapon(SWORD, 25);//instance_create(0,0, Cutlass);
 avatar  = avatar_index.pirate;
 level   = irandom(4)+1;
 hpBase  = 5;

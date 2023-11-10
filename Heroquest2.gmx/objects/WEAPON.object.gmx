@@ -33,13 +33,17 @@ range       = 1;
 diagonal    = false;
 pwr         = global.DAMAGE_MINIMAL;
 animation   = attackAnimations.punch;
-
+tier        = 0;
+tiers[0]    = "";
 
 childClasses    = ds_list_create();
 actions         = ds_list_create();     // attack, push, etc
 effects         = ds_list_create();     // burn, counter, etc.
-modifiers       = ds_list_create();     // Chipped, Sharpened, etc.
-quality         = 0;
+possibleModifiers = ds_list_create();   // The possible modifiers: Chipped, Sharpened, etc.
+modifiers       = ds_list_create();     // The active modifiers
+techniques      = ds_list_create();     // "Parry", "Swing", "Reload", etc
+passives        = ds_list_create();     // Effects that the player doesn't actively choose to use
+
 
 animation   = "punch";
 attackType  = "Melee";  // Melee, Ranged, Magic
@@ -73,8 +77,19 @@ event_user(0);
           <argument>
             <kind>1</kind>
             <string>/// generate name from stats
-qualityTitle = ds_list_find_value(qualityTitlesList, quality);
-name = qualityTitle + " " + object_get_name(object_index) + " ";
+//qualityTitle = ds_list_find_value(qualityTitlesList, quality);
+
+// generate string from modifiers
+var modifierString = "";
+for (var i=0; i&lt;ds_list_size(modifiers); i++) {
+    var val = ds_list_find_value(modifiers, i);
+    modifierString += string(val) + " ";
+}
+
+var tierString = tiers[tier];
+if (tier != 1) then tierString += " ";
+
+name = tierString + modifierString + object_get_name(object_index);
 
 
 

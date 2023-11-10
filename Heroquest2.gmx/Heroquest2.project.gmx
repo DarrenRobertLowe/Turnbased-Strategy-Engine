@@ -83,6 +83,7 @@
       <script>scripts\setup_limits.gml</script>
       <script>scripts\setup_delays.gml</script>
       <script>scripts\setup_weapon_quality_titles.gml</script>
+      <script>scripts\setup_weapon_generation.gml</script>
     </scripts>
     <scripts name="Pathfinding">
       <script>scripts\goto_square.gml</script>
@@ -281,6 +282,10 @@
           <object>objects\Sidesword</object>
           <object>objects\Rapier</object>
         </objects>
+        <objects name="GREATSWORDS">
+          <object>objects\GREAT_SWORD</object>
+          <object>objects\Greatsword</object>
+        </objects>
       </objects>
       <objects name="POLES">
         <object>objects\POLEARM</object>
@@ -288,6 +293,18 @@
       </objects>
       <objects name="BOWS">
         <object>objects\BOW</object>
+        <object>objects\Huntingbow</object>
+        <object>objects\Longbow</object>
+      </objects>
+      <objects name="DAGGERS">
+        <object>objects\DAGGER</object>
+        <object>objects\Dirk</object>
+        <object>objects\Rondel</object>
+        <object>objects\Tanto</object>
+      </objects>
+      <objects name="MUSKETS">
+        <object>objects\BLACKPOWDER_MUSKET</object>
+        <object>objects\Musket</object>
       </objects>
     </objects>
     <objects name="ENEMIES">

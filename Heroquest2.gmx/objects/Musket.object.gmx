@@ -4,8 +4,8 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
-  <parentName>POLEARM</parentName>
+  <persistent>0</persistent>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -29,6 +29,7 @@
 event_inherited();
 ds_list_clear(childClasses); // we are the top-level weapon  
 hierarchy = 0; // how distant this is from a specific weapon
+
 </string>
           </argument>
         </arguments>

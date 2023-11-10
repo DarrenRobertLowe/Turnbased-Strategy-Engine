@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>qualityTitlesList = global.SwordQualityTitles;
-
+            <string>/// Refers to all short swords
 event_inherited();
 
 ds_list_clear(childClasses);
@@ -34,7 +33,23 @@ ds_list_add(childClasses, Cutlass);
 ds_list_add(childClasses, Saber);
 ds_list_add(childClasses, Broadsword);
 
-hierarchy   = 1; // how distant this is from a specific weapon
+pwr         = global.DAMAGE_NORMAL;
+dice        = 1;
+range       = 1;
+diagonal    = false;
+animation   = attackAnimations.slash;
+hierarchy   = 1; // how distant this is from a instantiable weapon
+
+tiers[0] = "Rusty";
+tiers[1] = "";
+tiers[2] = "Steel";
+tiers[3] = "Tempered"; // honed/sharpened?
+
+ds_list_add(actions, "Defend");
+
+ds_list_add(possibleModifiers, 
+"Basket-Hilt",      // increased defence +2
+"Double-edged");    // increased attack?
 
 </string>
           </argument>
