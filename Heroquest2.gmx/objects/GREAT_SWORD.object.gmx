@@ -31,7 +31,7 @@ event_inherited();
 ds_list_clear(childClasses);
 ds_list_add(childClasses, Greatsword);
 
-pwr         = global.DAMAGE_HIGH;
+pwr         = global.DAMAGE_HEAVY;
 dice        = 1;
 range       = 2;
 diagonal    = false;

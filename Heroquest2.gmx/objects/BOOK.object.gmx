@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>FIREARM</parentName>
+  <parentName>WEAPON</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -27,33 +27,21 @@
             <kind>1</kind>
             <string>event_inherited();
 
-pwr         = global.DAMAGE_HIGH;
+pwr         = global.DAMAGE_MINIMAL;
 dice        = 1;
-range       = 8;
+range       = 1;
 diagonal    = false;
-animation   = attackAnimations.rifle;
+animation   = attackAnimations.cast;
 hierarchy   = 1; // how distant this is from a instantiable weapon
 tier        = 0;
 
-tiers[0] = "Cheap";
-tiers[1] = "";
-tiers[2] = "Quality";
-tiers[3] = "Signature";
+
 
 ds_list_clear(childClasses);
-ds_list_add(childClasses, Musket);
-
-
-ds_list_add(actions,    "Attack");
-ds_list_add(actions,    "Defend");
-
-//ds_list_add(passives, );
-
-ds_list_add(possibleModifiers,
-"Bayonet",      // allows for melee combat with Normal damage
-"Rifled"        // doubles range
-);
-//"Flintlock");   // ??? You kind of need flintlocks on a ship, be it sea or air.
+ds_list_add(childClasses, Blaze_Tome);  // Fire / Explode
+ds_list_add(childClasses, Volt_Tome);   // Electric
+ds_list_add(childClasses, Life_Tome);   // Water, Earth, Healing
+//ds_list_add(childClasses, Chaos_Tome);  // Time and Space
 </string>
           </argument>
         </arguments>

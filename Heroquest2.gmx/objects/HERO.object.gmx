@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>ENTITY</parentName>
+  <parentName>UNIT</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -41,20 +41,12 @@ class   = classes.Pirate;
 
 
 // COMMAND LIST
-menu = ds_list_create();
-ds_list_add(menu, "MOVE");
-ds_list_add(menu, "ATTACK");
-ds_list_add(menu, "SKILL");
-ds_list_add(menu, "END TURN");
-ds_list_add(menu, "CANCEL");
-
-/*
-menu[0] = "MOVE";
-menu[1] = "ATTACK";
-menu[2] = "SKILL";
-menu[4] = "END TURN";
-menu[5] = "CANCEL";
-*/
+//menu = ds_list_create();
+ds_list_add(actions, "MOVE");
+ds_list_add(actions, "ATTACK");
+//ds_list_add(actions, "SKILL");
+ds_list_add(actions, "END TURN");
+ds_list_add(actions, "CANCEL");
 
 
 </string>

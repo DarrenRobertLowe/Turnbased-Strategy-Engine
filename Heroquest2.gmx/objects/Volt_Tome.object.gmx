@@ -4,8 +4,8 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
-  <parentName>FIREARM</parentName>
+  <persistent>-1</persistent>
+  <parentName>BOOK</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,35 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>///
+event_inherited();
 
-pwr         = global.DAMAGE_HIGH;
-dice        = 1;
-range       = 8;
-diagonal    = false;
-animation   = attackAnimations.rifle;
-hierarchy   = 1; // how distant this is from a instantiable weapon
-tier        = 0;
+ds_list_clear(childClasses); // we are the top-level weapon
+hierarchy = 0; // how distant this is from a specific weapon
 
-tiers[0] = "Cheap";
-tiers[1] = "";
-tiers[2] = "Quality";
-tiers[3] = "Signature";
+// Available Spells based on tome level, Hero level is x3
+spells = ds_list_create();
 
-ds_list_clear(childClasses);
-ds_list_add(childClasses, Musket);
-
-
-ds_list_add(actions,    "Attack");
-ds_list_add(actions,    "Defend");
-
-//ds_list_add(passives, );
-
-ds_list_add(possibleModifiers,
-"Bayonet",      // allows for melee combat with Normal damage
-"Rifled"        // doubles range
+ds_list_add(spells,
+    "Arc",
+    "Bolt",
+    "Flash",
+    "Storm"
 );
-//"Flintlock");   // ??? You kind of need flintlocks on a ship, be it sea or air.
 </string>
           </argument>
         </arguments>

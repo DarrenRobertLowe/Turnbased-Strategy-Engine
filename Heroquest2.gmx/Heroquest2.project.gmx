@@ -65,14 +65,13 @@
       <script>scripts\setup_grids.gml</script>
       <script>scripts\setup_gui.gml</script>
       <script>scripts\setup_controls.gml</script>
-      <script>scripts\setup_units.gml</script>
       <script>scripts\setup_classnames.gml</script>
       <script>scripts\setup_views.gml</script>
       <script>scripts\setup_animations.gml</script>
       <script>scripts\setup_delta.gml</script>
       <script>scripts\deglobalizeVars.gml</script>
       <script>scripts\load_options.gml</script>
-      <script>scripts\setup_statsGrid.gml</script>
+      <script>scripts\OLD_setup_statsGrid.gml</script>
       <script>scripts\setup_options.gml</script>
       <script>scripts\setup_combat_rules.gml</script>
       <script>scripts\recalculate_values.gml</script>
@@ -82,7 +81,6 @@
       <script>scripts\setup_fonts.gml</script>
       <script>scripts\setup_limits.gml</script>
       <script>scripts\setup_delays.gml</script>
-      <script>scripts\setup_weapon_quality_titles.gml</script>
       <script>scripts\setup_weapon_generation.gml</script>
     </scripts>
     <scripts name="Pathfinding">
@@ -134,6 +132,7 @@
       <script>scripts\adjust_animation_for_direction.gml</script>
       <script>scripts\face_target.gml</script>
       <script>scripts\draw_text_outlined.gml</script>
+      <script>scripts\clean_text.gml</script>
     </scripts>
     <scripts name="Cursor">
       <script>scripts\check_controls.gml</script>
@@ -158,11 +157,8 @@
       <script>scripts\sout.gml</script>
     </scripts>
     <scripts name="Units">
-      <script>scripts\add_new_unit_to_units_table.gml</script>
       <script>scripts\spawn.gml</script>
       <script>scripts\spawnUnit.gml</script>
-      <script>scripts\getBaseStats.gml</script>
-      <script>scripts\set_unit_stats_to_default.gml</script>
     </scripts>
     <scripts name="Grid">
       <script>scripts\build.gml</script>
@@ -255,8 +251,14 @@
     <object>objects\AttackPanel</object>
     <object>objects\OBSTACLE</object>
     <object>objects\ENTITY</object>
+    <object>objects\UNIT</object>
     <object>objects\NPC</object>
-    <object>objects\HERO</object>
+    <objects name="HEROES">
+      <object>objects\HERO</object>
+      <object>objects\HERO_MC</object>
+      <object>objects\HERO_HEALER</object>
+      <object>objects\HERO_KNIGHT</object>
+    </objects>
     <object>objects\FLOOR_DRAWER</object>
     <object>objects\WALL</object>
     <object>objects\PLATFORM</object>
@@ -293,7 +295,7 @@
       </objects>
       <objects name="BOWS">
         <object>objects\BOW</object>
-        <object>objects\Huntingbow</object>
+        <object>objects\Hunting_Bow</object>
         <object>objects\Longbow</object>
       </objects>
       <objects name="DAGGERS">
@@ -302,9 +304,23 @@
         <object>objects\Rondel</object>
         <object>objects\Tanto</object>
       </objects>
-      <objects name="MUSKETS">
-        <object>objects\BLACKPOWDER_MUSKET</object>
-        <object>objects\Musket</object>
+      <objects name="BOOKS">
+        <object>objects\BOOK</object>
+        <object>objects\Blaze_Tome</object>
+        <object>objects\Volt_Tome</object>
+        <object>objects\Life_Tome</object>
+      </objects>
+      <objects name="FIREARMS">
+        <object>objects\FIREARM</object>
+        <object>objects\Blunderbuss</object>
+        <objects name="MUSKETS">
+          <object>objects\BLACKPOWDER_MUSKET</object>
+          <object>objects\Musket</object>
+        </objects>
+        <objects name="PISTOLS">
+          <object>objects\BLACKPOWDER_PISTOL</object>
+          <object>objects\Pistol</object>
+        </objects>
       </objects>
     </objects>
     <objects name="ENEMIES">

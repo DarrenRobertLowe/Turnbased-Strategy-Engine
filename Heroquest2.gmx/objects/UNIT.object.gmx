@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>FIREARM</parentName>
+  <parentName>ENTITY</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -27,33 +27,30 @@
             <kind>1</kind>
             <string>event_inherited();
 
-pwr         = global.DAMAGE_HIGH;
-dice        = 1;
-range       = 8;
-diagonal    = false;
-animation   = attackAnimations.rifle;
-hierarchy   = 1; // how distant this is from a instantiable weapon
-tier        = 0;
+type            = "";
+name            = "";
+level           = 1;
+hpBase          = 1;
+mpBase          = 0;
+moveBase        = 3;
+attackBase      = 1;
+defenceBase     = 1;
+//initiativeBase  = 1;
+    // initiative = initiativeBase;
+//fortitudeBase   = 1;
+    //fortitude = foritudeBase;
+// luckBase = 1;
+    // luck = luckBase;
+weapon          = 0;
+// offhand         = 0;
+armour          = 0;
+avatar          = 0;
 
-tiers[0] = "Cheap";
-tiers[1] = "";
-tiers[2] = "Quality";
-tiers[3] = "Signature";
-
-ds_list_clear(childClasses);
-ds_list_add(childClasses, Musket);
-
-
-ds_list_add(actions,    "Attack");
-ds_list_add(actions,    "Defend");
-
-//ds_list_add(passives, );
-
-ds_list_add(possibleModifiers,
-"Bayonet",      // allows for melee combat with Normal damage
-"Rifled"        // doubles range
-);
-//"Flintlock");   // ??? You kind of need flintlocks on a ship, be it sea or air.
+hp = hpBase;
+mp  = mpBase;
+move = moveBase;
+attack = attackBase;
+defence = defenceBase;
 </string>
           </argument>
         </arguments>

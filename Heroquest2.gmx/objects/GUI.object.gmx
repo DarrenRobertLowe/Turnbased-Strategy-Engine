@@ -56,7 +56,7 @@ combatPanelHeight = sprite_get_height(spr_combat_panel);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// draw the GUI
+            <string>/// draw the GUI (e.g. turn order, unit info, etc)
 draw_reset();
 
 windowWidth  = window_get_width();

@@ -14,12 +14,6 @@ draw_rectangle(menuX, menuY, menuX+menuWidth, menuY+menuHeight, false);
 draw_set_color(c_white);
 
 
-// Make a copy of the unit's menu options so we can
-// remove options under certain circumstances.
-// e.g. a unit has already moved, a unit is unable to attack, etc.
-tempMenu = ds_list_create();
-ds_list_copy(tempMenu, selected.menu);
-
 // already moved this turn?
 if (selected.movedThisTurn == true) {
     var pos = ds_list_find_index(tempMenu, "MOVE");

@@ -29,31 +29,23 @@
 
 pwr         = global.DAMAGE_HIGH;
 dice        = 1;
-range       = 8;
+range       = 4;
 diagonal    = false;
-animation   = attackAnimations.rifle;
-hierarchy   = 1; // how distant this is from a instantiable weapon
+animation   = attackAnimations.pistol;
 tier        = 0;
 
-tiers[0] = "Cheap";
+tiers[0] = "Risky";
 tiers[1] = "";
-tiers[2] = "Quality";
-tiers[3] = "Signature";
+tiers[2] = "Marvelous";
+tiers[3] = "Splendiferous";
 
-ds_list_clear(childClasses);
-ds_list_add(childClasses, Musket);
+hierarchy   = 0; // how distant this is from a instantiable weapon
+ds_list_clear(childClasses); // we are the top-level weapon  
 
-
-ds_list_add(actions,    "Attack");
-ds_list_add(actions,    "Defend");
-
+//ds_list_add(actions,  );
 //ds_list_add(passives, );
+//ds_list_add(possibleModifiers, );
 
-ds_list_add(possibleModifiers,
-"Bayonet",      // allows for melee combat with Normal damage
-"Rifled"        // doubles range
-);
-//"Flintlock");   // ??? You kind of need flintlocks on a ship, be it sea or air.
 </string>
           </argument>
         </arguments>

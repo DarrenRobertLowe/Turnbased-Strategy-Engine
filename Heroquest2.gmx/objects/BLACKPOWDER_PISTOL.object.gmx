@@ -27,33 +27,32 @@
             <kind>1</kind>
             <string>event_inherited();
 
-pwr         = global.DAMAGE_HIGH;
+pwr         = global.DAMAGE_NORMAL;
 dice        = 1;
-range       = 8;
+range       = 5;
 diagonal    = false;
-animation   = attackAnimations.rifle;
-hierarchy   = 1; // how distant this is from a instantiable weapon
+animation   = attackAnimations.pistol;
+hierarchy   = 0; // how distant this is from a instantiable weapon
 tier        = 0;
 
-tiers[0] = "Cheap";
+tiers[0] = "Shoddy";
 tiers[1] = "";
-tiers[2] = "Quality";
-tiers[3] = "Signature";
+tiers[2] = "Remarkable";
+tiers[3] = "Magnificent";
 
 ds_list_clear(childClasses);
-ds_list_add(childClasses, Musket);
+ds_list_add(childClasses, Pistol);
 
 
-ds_list_add(actions,    "Attack");
-ds_list_add(actions,    "Defend");
-
+//ds_list_add(actions,    "Attack");
 //ds_list_add(passives, );
 
 ds_list_add(possibleModifiers,
-"Bayonet",      // allows for melee combat with Normal damage
-"Rifled"        // doubles range
+"Double-Barrelled",     // can shoot twice before reloading. Also add action "Double-shot" which fires both rounds.
+"Triple-Barrelled",     // replaces double-barrelled and "Double-shot" with "Triage-shot"
+"Quadruple-Barrelled",  // replaces 'N'-barrelled. Might have "Quad Damage" action for memery.
+"Six-Barrelled"         // replaces 'N'-barrelled. Has "Volley" action, same thing.
 );
-//"Flintlock");   // ??? You kind of need flintlocks on a ship, be it sea or air.
 </string>
           </argument>
         </arguments>

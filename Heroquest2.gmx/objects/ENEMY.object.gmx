@@ -30,7 +30,7 @@ event_inherited();
 
 team = TEAMS.enemy;
 class   = classes.Pirate;
-getBaseStats(class);      
+///getBaseStats(class);      
 name    = get_classname(class); // set name to classname by default
 weapon  = instance_create(0,0,Cutlass);
 </string>

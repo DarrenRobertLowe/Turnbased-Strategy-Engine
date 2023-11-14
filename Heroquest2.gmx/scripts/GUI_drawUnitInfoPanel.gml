@@ -10,11 +10,11 @@ var rightSide   = argument1;
 var margin      = 24;
 var panelWidth  = sprite_get_width(spr_combat_panel);
 var panelHeight = sprite_get_height(spr_combat_panel);
-var panelX;     //(windowWidth - panelWidth);
+var panelX;     // (windowWidth - panelWidth);
 var panelEndX;  // (panelX + panelWidth);
 var panelEndY;  //   = (panelY + panelHeight);
 
-var avatarX;    //(panelX + avatarWidth * 0.5);
+var avatarX;    // (panelX + avatarWidth * 0.5);
 var mirrored = -1; // either 0 or -1
 
 
@@ -52,10 +52,10 @@ var nameY = (panelY - (lineSeparation * 0.5));
 
 if (rightSide) {    // right side / target unit
     draw_text_outlined(panelX, nameY, unit.name, outlineColour, nameColour, global.header_font);    // name
-    draw_text_outlined(panelX, panelY + lineSeparation, "lvl " + string(unit.level), outlineColour, nameColour, global.menu_font);   // lvl
+//    draw_text_outlined(panelX, panelY + lineSeparation, "lvl " + string(unit.level), outlineColour, nameColour, global.menu_font);   // lvl
 } else {            // left side / current unit
     draw_text_outlined(panelX + avatarWidth, nameY, unit.name, outlineColour, nameColour, global.header_font);  // name
-    draw_text_outlined(panelX + avatarWidth, panelY + lineSeparation, "lvl " + string(unit.level), outlineColour, nameColour, global.menu_font); // lvl
+//    draw_text_outlined(panelX + avatarWidth, panelY + lineSeparation, "lvl " + string(unit.level), outlineColour, nameColour, global.menu_font); // lvl
 }
 
     
@@ -80,9 +80,14 @@ var column2 = (column1 + columnWidth);
 
 // column 1
 draw_set_halign(fa_left);
-draw_text_outlined(column1, panelY + (lineSeparation * 2),  "HP: "       + string(unit.hp)   + "/" + string(unit.hpBase), c_black,c_white, global.menu_font);
-draw_text_outlined(column1, panelY + (lineSeparation * 3),  "Status: "   + string(unit.move), c_black,c_white, global.menu_font);
+draw_text_outlined(column1, panelY + (lineSeparation * 2),  "HP: "       + string(unit.hp)   + "/" + string(unit.hpBase), c_black, c_white, global.menu_font);
+draw_text_outlined(column1, panelY + (lineSeparation * 3),  "Status: "   + string(unit.move), c_black, c_white, global.menu_font);
 
 // column 2
 draw_set_halign(fa_right);
-draw_text_outlined(column2, panelY + (lineSeparation * 2),  "Move: "     + string(unit.move) + "/" + string(unit.moveBase), c_black,c_white, global.menu_font);
+
+if exists(unit.weapon) {
+    draw_text_outlined(column2, panelY + (lineSeparation * 1),  "Weapon: "   + string(unit.weapon.name), c_black, c_white, global.menu_font);
+}
+
+draw_text_outlined(column2, panelY + (lineSeparation * 2),  "Move: "     + string(unit.move) + "/" + string(unit.moveBase), c_black, c_white, global.menu_font);

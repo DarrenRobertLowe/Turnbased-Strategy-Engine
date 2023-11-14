@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>LEVEL</parentName>
+  <parentName>HERO</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,59 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// start the map
+            <string>/// The main hero
 event_inherited();
 
-
-// LEVEL CONTENTS
-var hero  = spawnUnit(0, 0, HERO_MC, -1);
-var hero2 = spawnUnit(1, 1, HERO_HEALER, -1);
-var hero2 = spawnUnit(2, 1, HERO_KNIGHT, -1);
-var enemy = spawn(2, 3, enemy_Pirate, 4, true);
-
-/*
-repeat 10 {
-    build(irandom(global.gridWidth)-1, irandom(global.gridHeight)-1, WALL, 4);
-    build(irandom(global.gridWidth)-1, irandom(global.gridHeight)-1, STEP, 4);  
-}
-
-
-build(8, 8, STEP, 4);
-*/
-
-/*
-build(1, 5, WALL, 4);
-build(3, 5, WALL, 4);
-build(3, 4, WALL, 4);
-build(3, 3, WALL, 4);
-build(3, 1, WALL, 4);
-*/
-
-spawn_fire(1, 3, 3);
-spawn_fire(3, 3, 3);
-spawn_fire(2, 2, 3);
-spawn_fire(2, 4, 3);
-
-
-ds_grid_set(global.FLOOR_GRID, 6, 2, 0);    // gap in the floor
-ds_grid_set(global.FLOOR_GRID, 6, 3, 0);    // gap in the floor
-ds_grid_set(global.FLOOR_GRID, 6, 4, 0);    // gap in the floor
-ds_grid_set(global.FLOOR_GRID, 6, 5, 0);    // gap in the floor
-ds_grid_set(global.FLOOR_GRID, 6, 6, 0);    // gap in the floor
-ds_grid_set(global.FLOOR_GRID, 1, 2, 0);    // gap in the floor
-ds_grid_set(global.FLOOR_GRID, 2, 2, 0);    // gap in the floor
-ds_grid_set(global.FLOOR_GRID, 3, 2, 0);    // gap in the floor
-ds_grid_set(global.FLOOR_GRID, 4, 2, 0);    // gap in the floor
-ds_grid_set(global.FLOOR_GRID, 5, 2, 0);    // gap in the floor
-build(6, 7, STEP, 0);
-
-/// SORT AND START TURNS
-sortTurnList();
-global.TURN = ds_list_find_value(global.TURNLIST, 0);      // change the turn to the new first element
-moveCursorToUnit(global.TURN);
-
-
-
+//type    = "HERO";
+name    = "MC";
+level   = 2;
+hpBase  = 8;
+hp      = hpBase;
+mpBase  = 10;
+mp      = mpBase;
+moveBase = 3;
+move    = moveBase;
+attackBase = 3;
+attack  = attackBase;
+weapon  = instance_create(x, y, Rapier);
+weapon.tier = 1;
+avatar = 1;
 </string>
           </argument>
         </arguments>

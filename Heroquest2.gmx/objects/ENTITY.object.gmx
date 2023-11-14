@@ -48,13 +48,14 @@ listOfTargets   = ds_list_create();
 listOfCells     = ds_list_create(); // cells adjacent to targets
 ailments        = ds_list_create();
 traits          = ds_list_create(); // "Agile", "Opportunist", "Stalwart", etc
+actions         = ds_list_create();
 movedThisTurn   = false;
 actedThisTurn   = false;
 showOnTurnList  = true;
 canDie          = true;
 class           = classes.None;
 name            = "Unnamed";
-getBaseStats(classes.None);
+///getBaseStats(classes.None);
 
 </string>
           </argument>

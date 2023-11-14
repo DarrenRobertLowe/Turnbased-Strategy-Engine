@@ -42,7 +42,7 @@ tier        = 0;
 ds_list_clear(childClasses);
 ds_list_add(childClasses, SHORTSWORD);
 ds_list_add(childClasses, FOIL);
-ds_list_add(actions, "Attack");
+
 
 
 </string>

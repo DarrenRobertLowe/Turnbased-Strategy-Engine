@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>/// set defaults
 
+name        = "";
 pwr         = global.DAMAGE_MINIMAL;    // base damage
 dice        = 1;    // how many dies of pwr to roll when attacking
 range       = 1;
@@ -37,11 +38,10 @@ tier        = 0;
 tiers[0]    = "";
 
 childClasses    = ds_list_create();
-actions         = ds_list_create();     // attack, push, etc
+actions         = ds_list_create();     // attack, push, parry, reload, swing, etc
 effects         = ds_list_create();     // burn, counter, etc.
 possibleModifiers = ds_list_create();   // The possible modifiers: Chipped, Sharpened, etc.
 modifiers       = ds_list_create();     // The active modifiers
-techniques      = ds_list_create();     // "Parry", "Swing", "Reload", etc
 passives        = ds_list_create();     // Effects that the player doesn't actively choose to use
 
 
@@ -89,7 +89,7 @@ for (var i=0; i&lt;ds_list_size(modifiers); i++) {
 var tierString = tiers[tier];
 if (tier != 1) then tierString += " ";
 
-name = tierString + modifierString + object_get_name(object_index);
+name = tierString + modifierString + clean_text(object_get_name(object_index));
 
 
 

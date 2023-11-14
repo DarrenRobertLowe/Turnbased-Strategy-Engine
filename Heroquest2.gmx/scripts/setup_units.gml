@@ -25,7 +25,7 @@ ds_grid_set(global.persistent_units, unitStats.avatar,            index, 0);
 
 
 // CREATE THE ACTUAL UNITS
-index = add_new_unit_to_units_table();  // create a blank unit entry
+//index = add_new_unit_to_units_table();  // create a blank unit entry
 // give the unit their starting stats
 ds_grid_set(global.persistent_units, unitStats.type,          index, HERO);
 ds_grid_set(global.persistent_units, unitStats.name,          index, "Serana");
@@ -38,7 +38,7 @@ ds_grid_set(global.persistent_units, unitStats.weaponId,      index, 1);
 ds_grid_set(global.persistent_units, unitStats.avatar,        index, avatar_index.female);
 
 
-index = add_new_unit_to_units_table();  // create a blank unit entry
+//index = add_new_unit_to_units_table();  // create a blank unit entry
 // give the unit their starting stats
 ds_grid_set(global.persistent_units, unitStats.type,          index, HERO);
 ds_grid_set(global.persistent_units, unitStats.name,          index, "Devlin");

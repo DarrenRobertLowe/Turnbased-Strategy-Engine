@@ -131,6 +131,15 @@ if (MODE == MODES.free) {
         if (targetHero &gt; -1) {                                  // check grid position for an object.
             if (targetHero.selectable == true) {
                 selected = targetHero;
+                ds_list_clear(tempMenu);
+                ds_list_copy(tempMenu, selected.actions);       // we use a tempMenu so we can remove actions
+                
+                var weaponActions = selected.weapon.actions;
+                for(var i=0; i&lt;ds_list_size(weaponActions); i++){
+                    var val = ds_list_find_value(weaponActions, i);
+                    ds_list_insert(tempMenu, 1, val);
+                }
+                
                 MODE = MODES.objectMenu;
                 
                 selected.sourceColumn   = selected.column;      // needed for cancel movement

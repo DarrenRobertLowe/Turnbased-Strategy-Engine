@@ -53,30 +53,6 @@ while (hierarchy > 0) {
 }
 
 
-// point distribution
-// quality
-/*
-var qVal    = global.points
-var quality = 0;                    // Makeshift
-if (qVal  >= 20) then quality = 1;  // Common
-if (qVal  >= 80) then quality = 2;  // Quality
-if (qVal  >= 98) then quality = 3;  // Masterful
-*/
-
-
-// find the tier
-/*
-*** Bing Idea ***
-weights = [40, 40, 15, 5]
-total_weight = sum(weights)
-random_number = random.randint(0, total_weight - 1)
-
-for i, weight in enumerate(weights):
-    random_number -= weight
-    if random_number < 0:
-        print(f"Selected tier {i}")
-        break
-*/
 var weightedChance;
 weightedChance[0] = 100;
 weightedChance[1] = 40;
@@ -121,11 +97,5 @@ instance_destroy(rootInst, false);
 with(newWeapon) {
     event_user(0);
 }
-/*
-if (newWeapon.quality = 0) {
-    var qualityTitle = ds_list_find_value(global.RapierQualityTitles, quality);
-    show_debug_message(qualityTitle + " " + object_get_name(newWeapon.object_index));
-}
-*/
 
 return newWeapon;
