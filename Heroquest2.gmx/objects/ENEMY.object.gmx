@@ -28,11 +28,10 @@
             <string>/// inherit and set sprite
 event_inherited();
 
-team = TEAMS.enemy;
-class   = classes.Pirate;
-///getBaseStats(class);      
-name    = get_classname(class); // set name to classname by default
-weapon  = instance_create(0,0,Cutlass);
+team        = TEAMS.enemy;
+sex         = choose("Male", "Female");
+name        = getRandomName(sex);
+
 </string>
           </argument>
         </arguments>

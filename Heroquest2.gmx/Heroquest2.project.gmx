@@ -234,6 +234,8 @@
     <scripts name="Weapons">
       <script>scripts\generateWeapon.gml</script>
     </scripts>
+    <script>scripts\getRandomName.gml</script>
+    <script>scripts\setup_characterNames.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu_normal</font>
@@ -326,6 +328,7 @@
     <objects name="ENEMIES">
       <object>objects\ENEMY</object>
       <object>objects\enemy_Pirate</object>
+      <object>objects\enemy_Musketeer</object>
     </objects>
     <object>objects\DamageCounter</object>
     <object>objects\SKY_CONTROLLER</object>

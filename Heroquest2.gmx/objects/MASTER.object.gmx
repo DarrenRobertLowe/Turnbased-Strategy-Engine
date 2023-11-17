@@ -45,6 +45,7 @@ setup_combat_rules();
 setup_weapons();
 setup_weapon_generation();
 setup_classnames();
+setup_characterNames();
 global.pathGrid = mp_grid_create(0, 0, 0, 0, 0, 0); // we need to initialize this here so we can call "setup_grids()" when starting new maps.
 setup_grids(30,30);
 deglobalizeVars();

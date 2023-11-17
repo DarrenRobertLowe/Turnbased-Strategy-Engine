@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 
-pwr         = global.DAMAGE_HIGH;
+pwr         = global.DAMAGE_HEAVY;
 dice        = 1;
 range       = 8;
 diagonal    = false;

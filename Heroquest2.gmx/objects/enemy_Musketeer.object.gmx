@@ -29,8 +29,8 @@
 event_inherited();
 
 // stats
-class       = "Pirate";
-weapon      = generateWeapon(SWORD, 25);
+class       = "Musketeer";
+weapon      = generateWeapon(BLACKPOWDER_MUSKET, 25);
 avatar      = avatar_index.pirate;
 level       = irandom(4)+1;
 hpBase      = 5;
