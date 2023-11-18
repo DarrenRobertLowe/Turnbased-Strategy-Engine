@@ -15,6 +15,7 @@ enum MODES {
     moving,
     attacking,
     defending,
+    reloading,
     skills,
     waiting,
     finishing

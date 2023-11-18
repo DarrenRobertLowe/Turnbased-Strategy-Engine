@@ -43,7 +43,7 @@ class   = classes.Pirate;
 // COMMAND LIST
 //menu = ds_list_create();
 ds_list_add(actions, "MOVE");
-ds_list_add(actions, "ATTACK");
+//ds_list_add(actions, "ATTACK");
 //ds_list_add(actions, "SKILL");
 ds_list_add(actions, "END TURN");
 ds_list_add(actions, "CANCEL");

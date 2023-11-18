@@ -25,6 +25,11 @@ switch (dir)
         facing = DIRECTION.east;
         direction = 0;
         break;
+        
+    default:
+        facing = DIRECTION.south;
+        direction = 270;
+        break;
 }
 
 return facing;

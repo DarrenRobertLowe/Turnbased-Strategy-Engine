@@ -34,6 +34,7 @@ diagonal    = false;
 animation   = attackAnimations.pistol;
 hierarchy   = 0; // how distant this is from a instantiable weapon
 tier        = 0;
+type        = "Pistol";
 
 tiers[0] = "Shoddy";
 tiers[1] = "";
@@ -43,9 +44,8 @@ tiers[3] = "Magnificent";
 ds_list_clear(childClasses);
 ds_list_add(childClasses, Pistol);
 
-
-//ds_list_add(actions,    "Attack");
-//ds_list_add(passives, );
+// ds_list_add(actions, );
+// ds_list_add(passives, );
 
 ds_list_add(possibleModifiers,
 "Double-Barrelled",     // can shoot twice before reloading. Also add action "Double-shot" which fires both rounds.

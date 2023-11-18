@@ -39,13 +39,19 @@ range       = 1;
 diagonal    = false;
 animation   = attackAnimations.slash;
 hierarchy   = 1; // how distant this is from a instantiable weapon
+type        = "Rapier";
 
 tiers[0] = "Warped";
 tiers[1] = "";
 tiers[2] = "Refined";
 tiers[3] = "Exquisite";
 
-ds_list_add(actions, "Parry");
+
+// Replace DEFEND with PARRY
+var pos = ds_list_find_index(actions, "DEFEND");
+if (pos != -1)
+ then ds_list_delete(actions, pos);
+ds_list_add(actions, "PARRY");  // Chance to Evade incoming attack and deal back damage in response
 
 
 ds_list_add(possibleModifiers, 

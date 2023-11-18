@@ -37,11 +37,12 @@ range       = 2;
 diagonal    = true;
 animation   = attackAnimations.slash;
 hierarchy   = 1; // how distant this is from a instantiable weapon
-
+type        = "Polearm";
 
 ds_list_add(actions,
-"Block",     // reduce damage of incoming attacks
-"Vault");   // traverse up to 3 squares, valuting over anything in between (e.g. holes, fire, enemies, etc)
+"DEFEND",     // reduce damage of incoming attacks
+"VAULT" // traverse up to 3 squares, valuting over anything in between (e.g. holes, fire, enemies, etc)
+);   
 
 ds_list_add(passives,
 "Knockback");

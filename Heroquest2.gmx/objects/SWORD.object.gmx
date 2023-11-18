@@ -37,7 +37,7 @@ animation   = attackAnimations.slash;
 hierarchy   = 2; // how distant this is from a instantiable weapon
 tier        = 0;
 
-
+ds_list_add_unique(actions, "DEFEND");
 
 ds_list_clear(childClasses);
 ds_list_add(childClasses, SHORTSWORD);

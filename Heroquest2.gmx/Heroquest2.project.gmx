@@ -236,6 +236,8 @@
     </scripts>
     <script>scripts\getRandomName.gml</script>
     <script>scripts\setup_characterNames.gml</script>
+    <script>scripts\ds_list_add_unique.gml</script>
+    <script>scripts\show_attack_range_core.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu_normal</font>

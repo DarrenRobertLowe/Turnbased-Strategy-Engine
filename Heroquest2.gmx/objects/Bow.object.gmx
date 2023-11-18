@@ -39,10 +39,13 @@ diagonal    = true;
 animation   = attackAnimations.bow;
 attackType = "Ranged"
 hierarchy   = 1; // how distant this is from an instantiable weapon
+type        = "Bow";
+
 
 
 ds_list_add(actions,
-"Charge");   // Next attack will deal double damage
+"POWER DRAW"
+);   // Next attack will deal double damage
 
 
 // ds_list_add(possibleModifiers, );

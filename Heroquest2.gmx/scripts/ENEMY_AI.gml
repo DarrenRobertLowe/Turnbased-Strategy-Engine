@@ -55,23 +55,27 @@ if (global.PAUSED == false) {
                         if (option == AI_OPTIONS.Attack) {
                             sout("Considering attacking...");
                             
-                            // Melee?
-                            if (weapon.attackType == "Melee") {
-                                
-                                // is there someone next to us to attack?
+                            if (ds_list_find_index(weapon.actions, "ATTACK") > -1) {
+
                                 listOfTargets = getValidTargets(weapon.range, weapon.diagonal, listOfTargets);
-                                
-                                
                                 
                                 if (ds_list_size(listOfTargets) > 0) {
                                     var unit = getTargetWithLowestHP(listOfTargets); // this could be dependant on the unit themselves, they might have a different preference
                                     
                                     if (unit > -1) {
-                                        // check for a clear path and no obstacles
-                                        if !(attackDirectionIsBlocked(x, y, unit.x, unit.y, unit)) {
-                                            // attack them
+                                        if !(attackDirectionIsBlocked(x, y, unit.x, unit.y, unit)) {    // check for a clear path and no obstacles
+                                        
                                             attack_target(id, unit);
                                             actedThisTurn = true;
+                                            
+                                            // IF A FIREARM THEN REMOVE ATTACK AND ADD RELOAD
+                                            if (weapon.type = "Musket" or weapon.type = "Pistol") {
+                                                sout("******* replacing ATTACK with RELOAD ******");
+                                                var ind = ds_list_find_index(weapon.actions, "ATTACK");
+                                                if (ind > -1) then ds_list_delete(weapon.actions, ind);
+                                                ds_list_add_unique(weapon.actions, "RELOAD");
+                                            }
+                                            
                                         } else {
                                             sout("Can't attack, that direction is blocked.");
                                         }
@@ -80,6 +84,19 @@ if (global.PAUSED == false) {
                                     }
                                 } else {
                                     sout("No enemy within range of our attack.");
+                                }
+                            } // end of ATTACK is an option
+                            
+                            else {
+                                // RELOAD
+                                sout("Can't attack, will check if we need to reload");
+                                
+                                if (ds_list_find_index(weapon.actions, "RELOAD") > -1) {
+                                    actedThisTurn = true;
+                                    sout("Reloading...");
+                                    var ind = ds_list_find_index(weapon.actions, "RELOAD");
+                                    if (ind > -1) then ds_list_delete(weapon.actions, ind);
+                                    ds_list_add_unique(weapon.actions, "ATTACK");
                                 }
                             }
                         } // end of attack

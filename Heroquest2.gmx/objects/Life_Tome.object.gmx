@@ -35,7 +35,8 @@ hierarchy = 0; // how distant this is from a specific weapon
 spells = ds_list_create();
 
 
-ds_list_add(spells,
+//ds_list_add(spells,
+ds_list_add(actions,
     "Heal",
     "Extinguish",
 );

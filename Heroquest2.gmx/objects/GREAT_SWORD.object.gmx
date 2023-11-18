@@ -37,6 +37,8 @@ range       = 2;
 diagonal    = false;
 animation   = attackAnimations.bash;
 hierarchy   = 1; // how distant this is from a instantiable weapon
+type        = "Greatsword";
+
 
 tiers[0] = "Battered";
 tiers[1] = "";
@@ -45,8 +47,8 @@ tiers[3] = "Titanic";   // Formidable // Dreadful
 
 
 ds_list_add(actions, 
-"Barricade",     // sword is lodged in the ground preventing enemies from advancing
-"Defend");      // reduce incoming damage
+"BARRICADE"     // sword is lodged in the ground preventing enemies from advancing
+);      // makes yourself the target instead of adjacent units
 
 
 ds_list_add(possibleModifiers, 

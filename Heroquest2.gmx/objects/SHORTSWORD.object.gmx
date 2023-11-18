@@ -39,13 +39,14 @@ range       = 1;
 diagonal    = false;
 animation   = attackAnimations.slash;
 hierarchy   = 1; // how distant this is from a instantiable weapon
+type        = "Shortsword";
 
 tiers[0] = "Rusty";
 tiers[1] = "";
 tiers[2] = "Steel";
 tiers[3] = "Tempered"; // honed/sharpened?
 
-ds_list_add(actions, "Defend");
+ds_list_add(actions, "DEFEND");
 
 ds_list_add(possibleModifiers, 
 "Basket-Hilt",      // increased defence +2

@@ -30,6 +30,7 @@ dice        = 1;
 range       = 1;
 diagonal    = false;
 animation   = attackAnimations.punch;
+type        = "Unarmed";
 </string>
           </argument>
         </arguments>

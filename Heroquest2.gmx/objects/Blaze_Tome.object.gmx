@@ -34,7 +34,8 @@ hierarchy = 0; // how distant this is from a specific weapon
 // Available Spells based on tome level, Hero level is x3
 spells = ds_list_create();
 
-ds_list_add(spells,
+// ds_list_add(spells,
+ds_list_add(actions,
     "Scorch",
     "Ignite",
     "Blaze",

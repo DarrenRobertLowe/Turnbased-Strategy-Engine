@@ -34,6 +34,7 @@ diagonal    = false;
 animation   = attackAnimations.rifle;
 hierarchy   = 1; // how distant this is from a instantiable weapon
 tier        = 0;
+type        = "Musket";
 
 tiers[0] = "Cheap";
 tiers[1] = "";
@@ -44,8 +45,9 @@ ds_list_clear(childClasses);
 ds_list_add(childClasses, Musket);
 
 
-ds_list_add(actions,    "Attack");
-ds_list_add(actions,    "Defend");
+ds_list_add(actions,
+"DEFEND"
+);
 
 //ds_list_add(passives, );
 

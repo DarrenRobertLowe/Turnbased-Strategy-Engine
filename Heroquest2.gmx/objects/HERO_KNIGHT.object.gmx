@@ -42,6 +42,9 @@ attack  = attackBase;
 weapon  = instance_create(x, y, Greatsword);
 weapon.tier = 0;
 avatar = 3;
+
+ds_list_add(feats,
+"PROTECT");      // makes yourself the target instead of adjacent units
 </string>
           </argument>
         </arguments>

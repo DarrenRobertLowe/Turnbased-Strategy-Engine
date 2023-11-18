@@ -32,6 +32,7 @@ ds_list_add(childClasses, Blunderbuss); // this might break hierarchy
 ds_list_add(childClasses, BLACKPOWDER_MUSKET);
 ds_list_add(childClasses, BLACKPOWDER_PISTOL);
 
+
 hierarchy = 2; // how distant this is from a instantiable weapon
 </string>
           </argument>

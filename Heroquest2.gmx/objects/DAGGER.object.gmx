@@ -37,6 +37,7 @@ range       = 2;
 diagonal    = false;
 animation   = attackAnimations.slash;
 hierarchy   = 1; // how distant this is from a instantiable weapon
+type        = "Dagger";
 
 tiers[0] = "Rudimentary";
 tiers[1] = "";
@@ -45,6 +46,7 @@ tiers[3] = "Sinister";
 
 
 //ds_list_add(techniques,
+//ds_list_add(actions,
 
 ds_list_add(passives,
 "Agility",  // this will probably be a unique character trait

@@ -49,6 +49,7 @@ listOfCells     = ds_list_create(); // cells adjacent to targets
 ailments        = ds_list_create();
 traits          = ds_list_create(); // "Agile", "Opportunist", "Stalwart", etc
 actions         = ds_list_create();
+feats           = ds_list_create(); // unique unit skills
 movedThisTurn   = false;
 actedThisTurn   = false;
 showOnTurnList  = true;

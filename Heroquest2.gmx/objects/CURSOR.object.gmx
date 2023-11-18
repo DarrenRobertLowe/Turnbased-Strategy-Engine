@@ -173,10 +173,15 @@ if (MODE == MODES.objectMenu) {
                 break;
             
             case "ATTACK":
-                if  (selected.actedThisTurn == false)
+                if (selected.actedThisTurn == false)
                   then MODE = MODES.attacking;
                 break;
             
+            case "RELOAD":
+                if (selected.actedThisTurn == false)
+                  then MODE = MODES.reloading;
+                break;
+                
             case "SKILL":
                 //MODE = MODES.skills;
                 break;
@@ -311,6 +316,15 @@ if (MODE == MODES.attacking) {
             attack_target(selected, attackTarget);
             selected.actedThisTurn = true;
             ds_list_clear(selected.listOfTargets);
+            
+            
+            // IF A FIREARM THEN REMOVE ATTACK AND ADD RELOAD
+            if (selected.weapon.type = "Musket" or selected.weapon.type = "Pistol") {
+                var ind = ds_list_find_index(selected.weapon.actions, "ATTACK");
+                if (ind &gt; -1) then ds_list_delete(selected.weapon.actions, ind);
+                ds_list_add_unique(selected.weapon.actions, "RELOAD");
+            }
+            
         }
         
         // reset variables
@@ -321,6 +335,17 @@ if (MODE == MODES.attacking) {
     // (note the "attack" option should be grayed out if no valid target exists)
     // allow the cursor to jump between any valid target.
     // pressing okay attacks that target.
+}
+
+if (MODE == MODES.reloading) {
+    selected.actedThisTurn = true;
+    ds_list_clear(selected.listOfTargets);
+    
+    var ind = ds_list_find_index(selected.weapon.actions, "RELOAD");
+    if (ind &gt; -1) then ds_list_delete(selected.weapon.actions, ind);
+    ds_list_add_unique(selected.weapon.actions, "ATTACK");
+                                
+    MODE = MODES.finishing;
 }
 
 // DEFEND

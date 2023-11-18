@@ -39,7 +39,7 @@ moveBase = 3;
 move    = moveBase;
 attackBase = 3;
 attack  = attackBase;
-weapon  = instance_create(x, y, Rapier);
+weapon  = instance_create(x, y, Musket); //Rapier);
 weapon.tier = 1;
 avatar = 1;
 </string>

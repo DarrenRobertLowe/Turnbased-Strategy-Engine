@@ -32,6 +32,7 @@ team        = TEAMS.enemy;
 sex         = choose("Male", "Female");
 name        = getRandomName(sex);
 
+//ds_list_add(actions, "ATTACK");
 </string>
           </argument>
         </arguments>
