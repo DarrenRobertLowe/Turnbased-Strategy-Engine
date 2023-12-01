@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>HERO</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -39,8 +39,19 @@ moveBase = 3;
 move    = moveBase;
 attackBase = 3;
 attack  = attackBase;
-weapon  = instance_create(x, y, Musket); //Rapier);
-weapon.tier = 1;
+weapon  = instance_create(x, y, Rapier);
+weapon.tier = 2;
+ds_list_add(weapon.modifiers, "test value1");
+ds_list_add(weapon.modifiers, "test value2");
+ds_list_add(weapon.modifiers, "test value3");
+
+ds_list_add(weapon.effects, "test effect 1");
+ds_list_add(weapon.effects, "test effect 2");
+
+ds_list_add(weapon.passives, "test passive 1");
+ds_list_add(weapon.passives, "test passive 2");
+ds_list_add(weapon.passives, "test passive 3");
+ds_list_add(weapon.passives, "test passive 4");
 avatar = 1;
 </string>
           </argument>

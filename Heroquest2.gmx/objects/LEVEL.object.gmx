@@ -48,7 +48,7 @@ instance_create(0, 0, FLOOR_DRAWER);
 instance_create(0, 0, CURSOR);
 instance_create(CURSOR.x, CURSOR.y, CAMERA);
 
-
+ds_list_clear(global.COMBAT_spoilsOfWar);
 // set timer before first turn starts
 //alarm[0] = delta(60);
 </string>

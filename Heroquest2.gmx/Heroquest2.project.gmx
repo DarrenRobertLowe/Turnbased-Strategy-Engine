@@ -82,6 +82,7 @@
       <script>scripts\setup_limits.gml</script>
       <script>scripts\setup_delays.gml</script>
       <script>scripts\setup_weapon_generation.gml</script>
+      <script>scripts\setup_combat.gml</script>
     </scripts>
     <scripts name="Pathfinding">
       <script>scripts\goto_square.gml</script>
@@ -197,6 +198,7 @@
       <script>scripts\isBattleOver.gml</script>
       <script>scripts\getEnemies.gml</script>
       <script>scripts\wait.gml</script>
+      <script>scripts\endBattle.gml</script>
     </scripts>
     <scripts name="Combat">
       <script>scripts\attack_target.gml</script>
@@ -238,6 +240,7 @@
     <script>scripts\setup_characterNames.gml</script>
     <script>scripts\ds_list_add_unique.gml</script>
     <script>scripts\show_attack_range_core.gml</script>
+    <script>scripts\persistWeapon.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu_normal</font>
@@ -246,10 +249,10 @@
   </fonts>
   <objects name="objects">
     <object>objects\MASTER</object>
+    <object>objects\CURSOR</object>
     <object>objects\OBJECT</object>
     <object>objects\CAMERA</object>
     <object>objects\GUI</object>
-    <object>objects\CURSOR</object>
     <object>objects\GRID_OBJECT</object>
     <object>objects\obj_MovementPanel</object>
     <object>objects\AttackPanel</object>
@@ -257,20 +260,6 @@
     <object>objects\ENTITY</object>
     <object>objects\UNIT</object>
     <object>objects\NPC</object>
-    <objects name="HEROES">
-      <object>objects\HERO</object>
-      <object>objects\HERO_MC</object>
-      <object>objects\HERO_HEALER</object>
-      <object>objects\HERO_KNIGHT</object>
-    </objects>
-    <object>objects\FLOOR_DRAWER</object>
-    <object>objects\WALL</object>
-    <object>objects\PLATFORM</object>
-    <object>objects\STEP</object>
-    <objects name="LEVELS">
-      <object>objects\LEVEL</object>
-      <object>objects\TEST_LEVEL</object>
-    </objects>
     <objects name="WEAPONS">
       <object>objects\WEAPON</object>
       <object>objects\UNARMED</object>
@@ -327,12 +316,27 @@
         </objects>
       </objects>
     </objects>
+    <objects name="HEROES">
+      <object>objects\HERO</object>
+      <object>objects\HERO_MC</object>
+      <object>objects\HERO_HEALER</object>
+      <object>objects\HERO_KNIGHT</object>
+    </objects>
+    <object>objects\FLOOR_DRAWER</object>
+    <object>objects\WALL</object>
+    <object>objects\PLATFORM</object>
+    <object>objects\STEP</object>
     <objects name="ENEMIES">
       <object>objects\ENEMY</object>
       <object>objects\enemy_Pirate</object>
       <object>objects\enemy_Musketeer</object>
     </objects>
     <object>objects\DamageCounter</object>
+    <objects name="LEVELS">
+      <object>objects\LEVEL</object>
+      <object>objects\TEST_LEVEL</object>
+      <object>objects\TEST_LEVEL2</object>
+    </objects>
     <object>objects\SKY_CONTROLLER</object>
     <object>objects\FIRE</object>
     <object>objects\SMOKE_SPAWNER</object>
@@ -341,6 +345,7 @@
   <rooms name="rooms">
     <room>rooms\initial</room>
     <room>rooms\level_Test</room>
+    <room>rooms\level2_Test</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

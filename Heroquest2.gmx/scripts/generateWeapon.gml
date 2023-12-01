@@ -34,7 +34,7 @@ while (hierarchy > 0) {
         var choices = (numberOfChildren);
         var choice  = 0;
         
-        // e.g. choose a random SWORD = Cutlass, Rapier, etc.
+        // e.g. choose a random SWORD (Cutlass, Rapier, etc.)
         for(var i=(numberOfChildren-1); i>=0; i--) {
             choice = irandom(i); // random chance of picking i.
         }

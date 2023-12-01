@@ -53,7 +53,7 @@ setup_controls();
 setup_options();
 setup_fonts();
 setup_gui();
-
+setup_combat();
 
 
 // OPTIONS
@@ -109,6 +109,58 @@ room_goto(level_Test);
             <string>/// KEEP DELTA TIME
 global.actual_delta = (delta_time / MILLION);
 global.delta_multiplier = (global.actual_delta / global.target_delta);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// SAVE DATA
+
+with (HERO) {
+    persistWeapon(weapon);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="123">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Run game_end(); DEBUG, pls delete me 
+
+game_end();
 </string>
           </argument>
         </arguments>

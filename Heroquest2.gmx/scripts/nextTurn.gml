@@ -16,4 +16,6 @@ if ( !isBattleOver() ) {
     }
     
     moveCursorToUnit(global.TURN);
+} else {
+    endBattle();
 }

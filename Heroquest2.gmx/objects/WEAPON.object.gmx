@@ -36,6 +36,7 @@ pwr         = global.DAMAGE_MINIMAL;
 animation   = attackAnimations.punch;
 tier        = 0;
 tiers[0]    = "";
+persistent  = true;
 
 childClasses    = ds_list_create();
 actions         = ds_list_create();     // attack, push, parry, reload, swing, etc
