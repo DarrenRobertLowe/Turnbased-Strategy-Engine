@@ -37,9 +37,9 @@ for(var i=(size-1); i > -1; i--) {
     
     if (unit > 0) {
         var spr;
-        if (unit.team == TEAMS.ally)    then spr = 0;
-        if (unit.team == TEAMS.enemy)   then spr = 1;
-        if (unit.team == TEAMS.neutral) then spr = 2;
+        if (unit.team == "ally") then spr = 0;
+        if (unit.team == "enemy") then spr = 1;
+        if (unit.team == "neutral") then spr = 2;
         
         var alpha = (1 - ((i/size)*.5));
         var horizontalSeparation = 10*(logn(1.5,i+1)); // why am I doing this?

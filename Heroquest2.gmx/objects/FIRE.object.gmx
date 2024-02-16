@@ -29,7 +29,7 @@
 
 event_inherited();          // FIRE is an ENTITY and is on the turnlist
 
-team = TEAMS.fire;
+team = "fire";
 
 showOnTurnList = false;
 

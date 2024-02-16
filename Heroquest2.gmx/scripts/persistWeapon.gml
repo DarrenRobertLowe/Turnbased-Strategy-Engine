@@ -51,14 +51,7 @@ ini_close();
 
 
 // check that the ini files exist
-fname = "WeaponsPersist.ini";
 if file_exists(fname) {
     show_debug_message(string(fname) + " exists!");
 } else show_message(string(fname) + " does not exist!");
-
-fname = "WeaponModifiers.ini";
-if file_exists(fname) {
-    show_debug_message(string(fname) + " exists!");
-} else show_message(string(fname) + " does not exist!");
-
 

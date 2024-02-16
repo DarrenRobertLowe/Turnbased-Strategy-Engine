@@ -60,6 +60,7 @@ depth       = global.infoDepth;
 y -= vSpeed;
 vSpeed -= vFriction;
 
+if (value &lt; 0) then colour = global.OPTIONS_COLOUR_HEAL;
 
 life--;
 if (life &lt;= 0) then instance_destroy(self, true);
@@ -87,7 +88,8 @@ if (life &lt;= 0) then instance_destroy(self, true);
             <kind>1</kind>
             <string>/// Animate
 
-draw_text_colour(x,y,value,colour,colour,colour,colour,1);
+if (value &lt; 0) then colour = global.OPTIONS_COLOUR_HEAL;
+draw_text_colour(x,y,abs(value),colour,colour,colour,colour,1);
 
 
 </string>

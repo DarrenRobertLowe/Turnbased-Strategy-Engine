@@ -15,7 +15,9 @@ starty = (gridOffsetY + (row * tileHeight) + (tileHeight/2));
  * in the way.
 */
 
-var range = targetHero.weapon.range;
+var weapon = targetHero.weapon;
+var range = weapon.range;
+
 
 // set the min and max
 var minCol = (column - range);
@@ -38,7 +40,7 @@ if (targetHero.weapon.diagonal == true) {
         
         for (j=0; j <= totalRows; j++) {
             targetRow = (minRow + j);
-            show_attack_range_core(i, j);
+            show_attack_range_core(i, j, weapon.range, weapon.targetTeam);
         }
     }
 }
@@ -49,7 +51,7 @@ else {
         targetRow = targetHero.row;
         targetColumn = (minCol + i);
 
-        show_attack_range_core(i, j);
+        show_attack_range_core(i, j, weapon.range, weapon.targetTeam);
     }
     
     // columns -
@@ -57,7 +59,7 @@ else {
         targetRow = targetHero.row;
         targetColumn = (minCol - i);
 
-        show_attack_range_core(i, j);
+        show_attack_range_core(i, j, weapon.range, weapon.targetTeam);
     }
     
     
@@ -66,7 +68,7 @@ else {
         targetColumn = targetHero.column;
         targetRow = (minRow + i);
         
-        show_attack_range_core(i, j);
+        show_attack_range_core(i, j, weapon.range, weapon.targetTeam);
     }
     
     // rows -
@@ -74,7 +76,7 @@ else {
         targetColumn = targetHero.column;
         targetRow = (minRow - i);
         
-        show_attack_range_core(i, j);
+        show_attack_range_core(i, j, weapon.range, weapon.targetTeam);
     }
     
 }

@@ -16,7 +16,7 @@ enum MODES {
     attacking,
     defending,
     reloading,
-    skills,
+    healing,
     waiting,
     finishing
 }
@@ -126,11 +126,4 @@ enum AI_OPTIONS {
     HealSelf,
     HealAlly,
     EndTurn
-}
-
-enum TEAMS {
-    fire,
-    ally,
-    enemy,
-    neutral
 }

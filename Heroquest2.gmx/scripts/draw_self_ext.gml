@@ -9,6 +9,7 @@ if !(global.isometricView) {
 else {
     // should we go transparent?
     alpha = 1;
+    
     var currentUnit = global.TURN;
     
     if (global.TURN > 0) {

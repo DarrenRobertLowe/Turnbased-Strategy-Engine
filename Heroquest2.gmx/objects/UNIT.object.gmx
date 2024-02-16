@@ -46,10 +46,10 @@ weapon          = 0;
 armour          = 0;
 avatar          = 0;
 
-hp = hpBase;
-mp  = mpBase;
-move = moveBase;
-attack = attackBase;
+hp      = hpBase;
+mp      = mpBase;
+move    = moveBase;
+attack  = attackBase;
 defence = defenceBase;
 </string>
           </argument>

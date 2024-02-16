@@ -39,7 +39,7 @@ moveBase = 3;
 move    = moveBase;
 attackBase = 1;
 attack  = attackBase;
-weapon  = instance_create(x, y, Hunting_Bow);//Life_Tome);
+weapon  = instance_create(x, y, Life_Tome);
 weapon.tier = 1;
 avatar = 2;
 </string>

@@ -37,6 +37,9 @@ animation   = attackAnimations.punch;
 tier        = 0;
 tiers[0]    = "";
 persistent  = true;
+targetTeam  = "enemy"; // "enemy", "ally" or "any". This actually means "opponent", "same team" and "anyone".
+explicitTargetRequired = true; // some spells can be cast on the ground rather than on an enemy/ally
+
 
 childClasses    = ds_list_create();
 actions         = ds_list_create();     // attack, push, parry, reload, swing, etc

@@ -32,6 +32,7 @@ isoSprite       = anim_fighter;
 selectable      = false;            // can this object be selected by the cursor?
 preferredTarget = noone;
 listOfTargetsFilled = false;
+team            = "neutral";
 
 // AI
 preferredTarget = AI_TARGET_CHOICES.lowestHP;

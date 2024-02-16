@@ -4,6 +4,9 @@ var dmg     = argument1;
 
 
 target.hp -= dmg;
+if (target.hp > target.hpBase) then target.hp = target.hpBase;
+if (target.hp < 0) then target.hp = 0;
+
 sout(string(target) + " dealt " +string(dmg) +" damage!");
 
 // REPORT
@@ -12,12 +15,11 @@ var yy = getIsometricYFromCell(target.column, target.row);
 
 var counter      = instance_create(xx, yy, DamageCounter);
 counter.value    = dmg;
-counter.colour   = global.OPTIONS_COLOUR_DAMAGE;
-//counter.colour   = global.OPTIONS_COLOUR_HEAL;
 
 
 target.animTime     = (global.animation_hit_time); //* (1 + critical));
-target.takingDamage = true;
+
+if (dmg >= 0) then target.takingDamage = true;
 
 
 // destroy enemy if health < 0

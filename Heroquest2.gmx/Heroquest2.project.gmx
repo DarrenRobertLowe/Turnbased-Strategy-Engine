@@ -48,6 +48,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\bg_sky0</background>
+    <background>background\overworld_background</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -75,7 +76,6 @@
       <script>scripts\setup_options.gml</script>
       <script>scripts\setup_combat_rules.gml</script>
       <script>scripts\recalculate_values.gml</script>
-      <script>scripts\create_weapon.gml</script>
       <script>scripts\load_weapon.gml</script>
       <script>scripts\setup_weapons.gml</script>
       <script>scripts\setup_fonts.gml</script>
@@ -83,6 +83,10 @@
       <script>scripts\setup_delays.gml</script>
       <script>scripts\setup_weapon_generation.gml</script>
       <script>scripts\setup_combat.gml</script>
+      <scripts name="Spells">
+        <script>scripts\setup_lifeSpells.gml</script>
+        <script>scripts\setup_spells.gml</script>
+      </scripts>
     </scripts>
     <scripts name="Pathfinding">
       <script>scripts\goto_square.gml</script>
@@ -145,10 +149,14 @@
       <script>scripts\show_movement_range.gml</script>
       <script>scripts\moveInstant.gml</script>
       <script>scripts\show_attack_range.gml</script>
+      <script>scripts\show_target_range.gml</script>
       <script>scripts\cursorIsOver.gml</script>
       <script>scripts\moveToCurrentUnit.gml</script>
       <script>scripts\resetCursor.gml</script>
       <script>scripts\getGridEntityAndUnit.gml</script>
+      <script>scripts\show_attack_range_core.gml</script>
+      <script>scripts\show_magic_range_core.gml</script>
+      <script>scripts\cursorTargetControls.gml</script>
     </scripts>
     <scripts name="Debugging">
       <script>scripts\error.gml</script>
@@ -202,6 +210,7 @@
     </scripts>
     <scripts name="Combat">
       <script>scripts\attack_target.gml</script>
+      <script>scripts\magic_target.gml</script>
       <script>scripts\kill.gml</script>
       <scripts name="AI">
         <script>scripts\sortTargetsAdjacentCellsByClosest.gml</script>
@@ -235,12 +244,14 @@
     <script>scripts\moveCursorToUnit.gml</script>
     <scripts name="Weapons">
       <script>scripts\generateWeapon.gml</script>
+      <script>scripts\generateSpell.gml</script>
     </scripts>
     <script>scripts\getRandomName.gml</script>
     <script>scripts\setup_characterNames.gml</script>
     <script>scripts\ds_list_add_unique.gml</script>
-    <script>scripts\show_attack_range_core.gml</script>
     <script>scripts\persistWeapon.gml</script>
+    <script>scripts\persistHero.gml</script>
+    <script>scripts\save_game.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu_normal</font>
@@ -297,12 +308,6 @@
         <object>objects\Rondel</object>
         <object>objects\Tanto</object>
       </objects>
-      <objects name="BOOKS">
-        <object>objects\BOOK</object>
-        <object>objects\Blaze_Tome</object>
-        <object>objects\Volt_Tome</object>
-        <object>objects\Life_Tome</object>
-      </objects>
       <objects name="FIREARMS">
         <object>objects\FIREARM</object>
         <object>objects\Blunderbuss</object>
@@ -314,6 +319,17 @@
           <object>objects\BLACKPOWDER_PISTOL</object>
           <object>objects\Pistol</object>
         </objects>
+      </objects>
+      <objects name="BOOKS">
+        <object>objects\BOOK</object>
+        <object>objects\Blaze_Tome</object>
+        <object>objects\Volt_Tome</object>
+        <object>objects\Life_Tome</object>
+        <object>objects\Grimoire</object>
+      </objects>
+      <objects name="SPELLS">
+        <object>objects\SPELL</object>
+        <object>objects\Spell_Heal</object>
       </objects>
     </objects>
     <objects name="HEROES">
@@ -344,6 +360,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\initial</room>
+    <room>rooms\Overworld</room>
     <room>rooms\level_Test</room>
     <room>rooms\level2_Test</room>
   </rooms>

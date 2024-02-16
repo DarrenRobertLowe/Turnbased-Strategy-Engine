@@ -54,6 +54,7 @@ setup_options();
 setup_fonts();
 setup_gui();
 setup_combat();
+setup_spells();
 
 
 // OPTIONS
@@ -133,9 +134,7 @@ global.delta_multiplier = (global.actual_delta / global.target_delta);
             <kind>1</kind>
             <string>/// SAVE DATA
 
-with (HERO) {
-    persistWeapon(weapon);
-}
+save_game();
 </string>
           </argument>
         </arguments>

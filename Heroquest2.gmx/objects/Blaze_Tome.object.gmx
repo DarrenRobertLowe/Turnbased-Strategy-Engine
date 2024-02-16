@@ -36,7 +36,7 @@ spells = ds_list_create();
 
 // ds_list_add(spells,
 ds_list_add(actions,
-    "Scorch",
+    "Scorch", // generateSpell("Scorch", 0, 0, 0).name; // e.g. "SCORCH"
     "Ignite",
     "Blaze",
     "Flare"

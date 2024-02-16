@@ -34,7 +34,7 @@ grid            = global.GRID;
 isoSprite       = anim_archer;
 selectable      = true;             // can this object be selected by the cursor?
 menuPosition    = 0;                // last position of menu cursor.
-team            = TEAMS.ally;
+team            = "ally";   //TEAMS.ally;
 
 name    = "Test Hero";
 class   = classes.Pirate;

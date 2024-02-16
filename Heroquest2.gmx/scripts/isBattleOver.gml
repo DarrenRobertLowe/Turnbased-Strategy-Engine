@@ -7,8 +7,8 @@ var enemies = 0;
 
 for(var i=0; i<size; i++){
     var entity = ds_list_find_value(list, i);
-    if (entity.team == TEAMS.ally)  then allies++;
-    if (entity.team == TEAMS.enemy) then enemies++;
+    if (entity.team == "ally")  then allies++;
+    if (entity.team == "enemy") then enemies++;
 }
 
 // end the battle under these circumstances...

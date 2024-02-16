@@ -37,9 +37,11 @@ targetIndex = 0;    // used for determining targets of attacks
 waitTime = 0;       // used for adding a pause between actions
 FALLING = false;
 fallTime = 300;     // how long to fall before destroying self
+casting = -1;       // the current spell being cast by this unit
+
 
 // entity defaults
-team            = TEAMS.neutral;
+team            = "neutral"
 weapon          = 0;
 itemSlot1       = 0; // shield, off-hand, amulet, etc.
 itemSlot2       = 0; // shield, off-hand, amulet, etc.

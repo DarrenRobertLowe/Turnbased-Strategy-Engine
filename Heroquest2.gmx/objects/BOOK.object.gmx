@@ -32,8 +32,9 @@ dice        = 1;
 range       = 1;
 diagonal    = false;
 animation   = attackAnimations.cast;
-hierarchy   = 1; // how distant this is from a instantiable weapon
-tier        = 0;
+hierarchy   = 1;    // how distant this is from a instantiable weapon
+level       = 1;
+tier        = 0;    // unused in Books
 type        = "Book";
 
 
