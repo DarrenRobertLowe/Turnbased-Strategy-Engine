@@ -10,33 +10,14 @@ draw_set_color(c_black);
 draw_set_alpha(0.5);
 draw_rectangle(menuX, menuY, menuX+menuWidth, menuY+menuHeight, false);
 
-//draw_set_alpha(1);
+draw_set_alpha(1);
 draw_set_color(c_white);
 
-/*
-// already moved this turn?
-if (selected.movedThisTurn == true) {
-    var pos = ds_list_find_index(tempMenu, "MOVE");
-    //ds_list_delete(tempMenu, pos);
-}
-
-
-// already acted this turn?
-if (selected.actedThisTurn == true) {
-    var pos = ds_list_find_index(tempMenu, "ATTACK");
-    //ds_list_delete(tempMenu, pos);
-}
-if (selected.actedThisTurn == true) {
-    var pos = ds_list_find_index(tempMenu, "SKILLS");
-    //ds_list_delete(tempMenu, pos);
-}
-*/
 
 // draw the menu items
-var i=0;
-var size = ds_list_size(tempMenu);
-for(; i<size; i++) {
-    var item = ds_list_find_value(tempMenu, i);
+var size = ds_list_size(displayMenu);
+for(var i=0; i<size; i++) {
+    var item = ds_list_find_value(displayMenu, i);
     
     draw_set_color(c_white);
     if ((item != "END TURN") and (selected.actedThisTurn == true)) {
@@ -51,6 +32,28 @@ for(; i<size; i++) {
     }
     
     draw_text(textX, textY + (i * menuVerticalSeparation), item);
+    
+    
+    
+    // draw the item description
+    if (menuPosition == i) {
+        draw_set_color(c_black);
+        draw_set_alpha(0.5);
+        draw_rectangle(menuX, menuY+menuHeight+2, menuX+menuWidth, menuY+menuHeight+menuVerticalSeparation+2, false);
+        
+        
+        var item = ds_list_find_value(dataMenu, i);
+        var description = "";
+        if (object_is_ancestor(item.object_index, SPELL)) {
+            description = item.description; 
+        }
+        
+        draw_set_alpha(1);
+        draw_set_color(c_white);
+        
+        description = string_upper(description);
+        draw_text(textX, (menuY + menuHeight + 4), description);
+    }
 }
 
 

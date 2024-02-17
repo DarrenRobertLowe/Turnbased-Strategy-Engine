@@ -330,6 +330,11 @@
       <objects name="SPELLS">
         <object>objects\SPELL</object>
         <object>objects\Spell_Heal</object>
+        <object>objects\Spell_Heal2</object>
+        <object>objects\Spell_Heal3</object>
+        <object>objects\Spell_Shelter</object>
+        <object>objects\Spell_Aegis</object>
+        <object>objects\Spell_Cleanse</object>
       </objects>
     </objects>
     <objects name="HEROES">

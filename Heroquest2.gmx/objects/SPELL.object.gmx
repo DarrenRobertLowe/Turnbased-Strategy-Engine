@@ -29,6 +29,8 @@
 
 pwr         = global.DAMAGE_MINIMAL;
 range       = 1;
+area        = 1;
+level       = 1;
 diagonal    = true;
 animation   = attackAnimations.cast;
 hierarchy   = 1; // how distant this is from an instantiable weapon

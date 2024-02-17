@@ -35,7 +35,7 @@ spells = ds_list_create();
 
 // ds_list_add(spells,
 ds_list_add(actions,
-    generateSpell(0, level, 0, 0)
+    generateSpell(0, level, -1, -1, -1)
 );
 </string>
           </argument>

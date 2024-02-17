@@ -56,10 +56,12 @@ MODE = MODES.free;
 keepVisible = true;
 attackTarget = -1;
 
+
 actedThisTurn = false;// this shouldn't actually be here
 
 
-tempMenu = ds_list_create();
+dataMenu = ds_list_create();
+displayMenu = ds_list_create();
 </string>
           </argument>
         </arguments>
@@ -131,14 +133,36 @@ if (MODE == MODES.free) {
         if (targetHero &gt; -1) {                                  // check grid position for an object.
             if (targetHero.selectable == true) {
                 selected = targetHero;
-                ds_list_clear(tempMenu);
-                ds_list_copy(tempMenu, selected.actions);       // we use a tempMenu so we can remove actions
+                ds_list_clear(dataMenu);
+                ds_list_copy(dataMenu, selected.actions);       // we use a dataMenu so we can remove actions
                 
-                var weaponActions = selected.weapon.actions;
-                for(var i=0; i&lt;ds_list_size(weaponActions); i++) {
-                    var val = ds_list_find_value(weaponActions, i);
-                    ds_list_insert(tempMenu, 1, val);
+                //var weaponActions = selected.weapon.actions;
+                ds_list_copy(displayMenu, dataMenu);
+                
+                // get actions from the weapon
+                var weapon = selected.weapon;
+                
+                if !(object_is_ancestor(weapon.object_index, BOOK)) {
+                    // not a book...
+                    var weaponActions = selected.weapon.actions;
+                    
+                    for(var i=0; i&lt;ds_list_size(weaponActions); i++) {
+                        var val = ds_list_find_value(weaponActions, i);
+                        ds_list_insert(dataMenu, 1, val);
+                        ds_list_insert(displayMenu, 1, val);
+                    }
+                } else {
+                    // Books work differently...
+                    for(var i=0; i&lt;ds_list_size(weapon.spells); i++) {
+                        var spell = ds_list_find_value(weapon.spells, i);
+                        ds_list_insert(dataMenu, 1, spell);
+                        ds_list_insert(displayMenu, 1, spell.name);
+                    }
                 }
+                
+                
+                
+                
                 
                 MODE = MODES.objectMenu;
                 
@@ -165,7 +189,7 @@ if (MODE == MODES.objectMenu) {
     if (global.controls_ok) {
         global.controls_ok = 0; // prevent instant repeats
         
-        switch ds_list_find_value(tempMenu, menuPosition) 
+        switch ds_list_find_value(displayMenu, menuPosition) 
         {
             case "MOVE":
                if (selected.movedThisTurn == false)

@@ -59,7 +59,7 @@ repeat (spellsRemaining) {
             ds_list_delete(tempSPELLS, ind); // remove the spell from the list
             spellCount = ds_list_size(tempSPELLS);
             
-            var spellInstance = generateSpell(aSpell, level, 0, 0);
+            var spellInstance = generateSpell(aSpell, level, -1, -1, -1);
             ds_list_add(spells, spellInstance);
         } else {
             spellsRemaining = 0;
@@ -70,7 +70,7 @@ repeat (spellsRemaining) {
 // add each spell as an action
 for (var i=0; i &lt; ds_list_size(spells); i++) {
     ds_list_add(actions,
-        ds_list_find_value(spells, 0).name
+        ds_list_find_value(spells, i).name
     );
 }
 </string>

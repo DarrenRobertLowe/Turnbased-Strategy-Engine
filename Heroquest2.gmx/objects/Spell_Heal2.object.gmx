@@ -31,18 +31,18 @@ event_inherited();
 ds_list_clear(childClasses); // we are the top-level weapon
 hierarchy = 0;               // how distant this is from a specific weapon
 
-name             = "HEAL";
-pwr              = global.DAMAGE_LIGHT;
-heals            = true;        // healing or damaging
-level            = 1;
-range            = 5;
+name             = "STRONG HEAL";
+pwr              = global.DAMAGE_NORMAL;
+heals            = true;   // healing or damaging
+level            = 4;
+range            = 4;
 area             = 1;
 diagonal         = true;
 school           = "Life";
 needsLineOfSight = false;
 targetTeam       = "ally";      // ally, enemy, any
 explicitTargetRequired = false;
-description      = "Heals a little HP.";
+description      = "Heals some HP.";
 </string>
           </argument>
         </arguments>

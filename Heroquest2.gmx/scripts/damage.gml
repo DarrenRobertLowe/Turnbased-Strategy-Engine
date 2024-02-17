@@ -3,6 +3,7 @@ var target  = argument0;
 var dmg     = argument1;
 
 
+
 target.hp -= dmg;
 if (target.hp > target.hpBase) then target.hp = target.hpBase;
 if (target.hp < 0) then target.hp = 0;
