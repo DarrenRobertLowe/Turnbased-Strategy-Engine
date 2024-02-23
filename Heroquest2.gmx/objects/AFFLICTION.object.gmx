@@ -25,42 +25,39 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// set defaults
+            <string>/// afflictions count down each turn then remove themselves
 
-name        = "";
-pwr         = global.DAMAGE_MINIMAL;    // base damage
-dice        = 1;    // how many dies of pwr to roll when attacking
-range       = 1;
-diagonal    = false;
-area        = 1;
-animation   = attackAnimations.punch;
-tier        = 0;
-tiers[0]    = "";
-persistent  = true;
-targetTeam  = "enemy"; // "enemy", "ally" or "any". This actually means "opponent", "same team" and "anyone".
-explicitTargetRequired = true; // some spells can be cast on the ground rather than on an enemy/ally
+name = "none";      // passed when created
+target = noone;     // passed when created
+turnsLeft = 3;      // passed when created
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// REMOVE FROM TARGET'S AFFLICTION LIST
 
-
-childClasses    = ds_list_create();
-actions         = ds_list_create();     // attack, push, parry, reload, swing, etc
-effects         = ds_list_create();     // burn, counter, etc.
-possibleModifiers = ds_list_create();   // The possible modifiers: Chipped, Sharpened, etc.
-modifiers       = ds_list_create();     // The active modifiers
-passives        = ds_list_create();     // Effects that the player doesn't actively choose to use
-
-
-animation   = "punch";
-attackType  = "Melee";  // Melee, Ranged, Magic
-
-ds_list_add(actions,    "ATTACK");
-
-// we might want the following, 0 would remove as option
-// bash     = 1;
-// slash    = 2;
-// thrust   = 2;
-
-// generate name based on stats (also called by spawning script)
-event_user(0);
+if exists(target) {
+    var pos = ds_list_find_index(target.afflictions, id);
+    if (pos &gt; -1) then ds_list_delete(target.afflictions, pos);
+}
 </string>
           </argument>
         </arguments>
@@ -83,24 +80,17 @@ event_user(0);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// generate name from stats
-//qualityTitle = ds_list_find_value(qualityTitlesList, quality);
+            <string>// CUSTOM EVENT FOR THE EFFECT
 
-// generate string from modifiers
-var modifierString = "";
-for (var i=0; i&lt;ds_list_size(modifiers); i++) {
-    var val = ds_list_find_value(modifiers, i);
-    modifierString += string(val) + " ";
-}
-
-var tierString = tiers[tier];
-if (tier != 1) then tierString += " ";
-
-name = tierString + modifierString + clean_text(object_get_name(object_index));
-
-
-
-
+if (exists(target)) {
+    // CUSTOM CODE FOR EACH TURN
+    turnsLeft--;
+    
+    // DESTROY SELF
+    if (turnsLeft &lt;= 0) {
+        instance_destroy();
+    }
+} else instance_destroy();
 </string>
           </argument>
         </arguments>

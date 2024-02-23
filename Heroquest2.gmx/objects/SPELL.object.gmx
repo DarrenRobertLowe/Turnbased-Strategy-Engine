@@ -33,13 +33,16 @@ area        = 1;
 level       = 1;
 diagonal    = true;
 animation   = attackAnimations.cast;
-hierarchy   = 1; // how distant this is from an instantiable weapon
+hierarchy   = 1;                    // how distant this is from an instantiable weapon
 type        = "Spell";
-heals       = false;   // healing or damaging
+heals       = false;                // healing or damaging
 tier        = 0;
-dice        = 1;            // unused?
-explicitTargetRequired = false;  // direct target or area of effect basically
+dice        = 1;                    // unused?
+explicitTargetRequired = false;     // direct target or area of effect basically
 needsLineOfSight = true;
+cures       = ds_list_create();     // what ailments this spell cures
+inflicts    = ds_list_create();     // what ailments this spell inflicts
+
 
 ds_list_clear(childClasses);
 ds_list_add(childClasses, Spell_Heal);

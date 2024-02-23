@@ -42,7 +42,7 @@ school           = "Life";
 needsLineOfSight = false;
 targetTeam       = "ally";      // ally, enemy, any
 explicitTargetRequired = false;
-description      = "Heals HP a lot.";
+description      = "Heals HP a lot";
 </string>
           </argument>
         </arguments>

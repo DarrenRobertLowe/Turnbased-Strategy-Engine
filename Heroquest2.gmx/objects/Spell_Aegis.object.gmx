@@ -28,8 +28,8 @@
             <string>///
 event_inherited();
 
-ds_list_clear(childClasses); // we are the top-level weapon
-hierarchy = 0;               // how distant this is from a specific weapon
+ds_list_clear(childClasses);    // we are the top-level weapon
+hierarchy = 0;                  // how distant this is from a specific weapon
 
 name             = "AEGIS";
 pwr              = global.DAMAGE_NORMAL;
@@ -43,6 +43,7 @@ needsLineOfSight = false;
 targetTeam       = "ally";      // ally, enemy, any
 explicitTargetRequired = false;
 description      = "Physical defence x2";
+ds_list_add(inflicts, Affliction_Aegis);
 </string>
           </argument>
         </arguments>

@@ -17,6 +17,7 @@ enum MODES {
     defending,
     reloading,
     healing,
+    casting,
     waiting,
     finishing
 }

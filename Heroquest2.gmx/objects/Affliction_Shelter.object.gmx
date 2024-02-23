@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>SWORD</parentName>
+  <parentName>AFFLICTION</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,39 +25,38 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Refers to all rapier form weapons
+            <string>/// Setup name, turnLeft, etc.
+
 event_inherited();
+name = "Shelter";
+turnsLeft = 3;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// CUSTOM CODE FOR TURN
+event_inherited(); // handles countdown and destruction
 
-ds_list_clear(childClasses);
-ds_list_add(childClasses, Epee);
-ds_list_add(childClasses, Sidesword);
-ds_list_add(childClasses, Rapier);
-
-pwr         = global.DAMAGE_NORMAL;
-dice        = 1;
-range       = 2;
-diagonal    = false;
-animation   = attackAnimations.slash;
-hierarchy   = 1; // how distant this is from a instantiable weapon
-type        = "Rapier";
-
-tiers[0] = "Warped";
-tiers[1] = "";
-tiers[2] = "Refined";
-tiers[3] = "Exquisite";
-
-
-// Replace DEFEND with PARRY
-var pos = ds_list_find_index(actions, "DEFEND");
-if (pos != -1)
- then ds_list_delete(actions, pos);
-ds_list_add(actions, "PARRY");  // Chance to Evade incoming attack and deal back damage in response
-
-
-ds_list_add(possibleModifiers, 
-"Swept-hilt",   // increased defence +1
-"Nimble",       // increased chance to parry with counter
-"Long");        // attack +1 squares away
+// note that the target's stats get reset before this
+target.resistance += (target.resistanceBase);
 </string>
           </argument>
         </arguments>

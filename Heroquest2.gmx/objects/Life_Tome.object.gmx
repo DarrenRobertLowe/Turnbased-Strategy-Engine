@@ -38,7 +38,7 @@ spellsRemaining = ceil(random(3));
 if (spellsRemaining &lt; 1) then spellsRemaining = 1;
 
 
-level = 4;
+level = 14;
 
 
 var tempSPELLS = ds_list_create();
@@ -53,14 +53,14 @@ repeat (spellsRemaining) {
         if (ind &gt;= spellCount) then ind = (spellCount-1);
         
         if (ind &gt; -1) {
-            var aSpell    = ds_list_find_value(tempSPELLS, ind);
-            show_debug_message("aSpell: "+ string(aSpell));
-            
-            ds_list_delete(tempSPELLS, ind); // remove the spell from the list
+            var aSpell = ds_list_find_value(tempSPELLS, ind);
+            ds_list_delete(tempSPELLS, ind);            // remove the spell from the list
             spellCount = ds_list_size(tempSPELLS);
             
             var spellInstance = generateSpell(aSpell, level, -1, -1, -1);
             ds_list_add(spells, spellInstance);
+            
+            show_debug_message("added spell :" + string(aSpell.name));
         } else {
             spellsRemaining = 0;
         }
@@ -68,11 +68,13 @@ repeat (spellsRemaining) {
 }
 
 // add each spell as an action
+/*
 for (var i=0; i &lt; ds_list_size(spells); i++) {
     ds_list_add(actions,
         ds_list_find_value(spells, i).name
     );
 }
+*/
 </string>
           </argument>
         </arguments>

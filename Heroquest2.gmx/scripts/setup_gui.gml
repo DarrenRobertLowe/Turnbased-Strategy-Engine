@@ -10,5 +10,5 @@ global.menuHeight = (view_wview / 2);
 global.textXOffset = 15;
 global.textYOffset = 15;
 
-global.menuX = ((view_wview - global.menuWidth) - (global.menuWidth/2));
+global.menuX = ((view_wview - global.menuWidth) - (global.menuWidth));
 global.menuY = ((view_hview - global.menuHeight) - (global.menuHeight/2));

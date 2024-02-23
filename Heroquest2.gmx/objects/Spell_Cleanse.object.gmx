@@ -42,7 +42,14 @@ school           = "Life";
 needsLineOfSight = false;
 targetTeam       = "ally";      // ally, enemy, any
 explicitTargetRequired = false;
-description      = "Cures all ailments.";
+description      = "Removes all afflictions";
+
+
+// This spell cures all ailments and buffs, so just add the whole list.
+// see setup_afflictions()
+for (var i=0; i&lt;ds_list_size(global.AFFLICTIONS); i++) {
+    var val = ds_list_find_value(global.AFFLICTIONS, i);
+}
 </string>
           </argument>
         </arguments>

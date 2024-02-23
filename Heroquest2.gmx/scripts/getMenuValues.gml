@@ -13,7 +13,7 @@ lastIndex = 0;
 
 
 if (selectedUnit != noone) {
-    menuSize    = ds_list_size(dataMenu);
+    menuSize    = ds_list_size(displayMenu);//dataMenu);
     menuHeight  = ((menuSize+1) * global.menuVerticalSeparation);
     lastIndex   = (menuSize-1);
 }

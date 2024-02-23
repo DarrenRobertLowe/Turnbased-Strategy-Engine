@@ -48,7 +48,7 @@ itemSlot2       = 0; // shield, off-hand, amulet, etc.
 itemSlot3       = 0; // shield, off-hand, amulet, etc.
 listOfTargets   = ds_list_create();
 listOfCells     = ds_list_create(); // cells adjacent to targets
-ailments        = ds_list_create();
+afflictions     = ds_list_create(); // can be ailments or buffs
 traits          = ds_list_create(); // "Agile", "Opportunist", "Stalwart", etc
 actions         = ds_list_create();
 feats           = ds_list_create(); // unique unit skills
@@ -58,7 +58,6 @@ showOnTurnList  = true;
 canDie          = true;
 class           = classes.None;
 name            = "Unnamed";
-///getBaseStats(classes.None);
 
 </string>
           </argument>

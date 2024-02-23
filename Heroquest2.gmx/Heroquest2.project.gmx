@@ -40,6 +40,10 @@
       <sprite>sprites\avatars</sprite>
       <sprite>sprites\avatar_bg</sprite>
       <sprite>sprites\spr_combat_panel</sprite>
+      <sprite>sprites\menu_icon_back</sprite>
+      <sprite>sprites\menu_icon_power</sprite>
+      <sprite>sprites\menu_icon_range</sprite>
+      <sprite>sprites\menu_icon_area</sprite>
     </sprites>
     <sprites name="Particles">
       <sprite>sprites\spr_part_flames</sprite>
@@ -72,7 +76,6 @@
       <script>scripts\setup_delta.gml</script>
       <script>scripts\deglobalizeVars.gml</script>
       <script>scripts\load_options.gml</script>
-      <script>scripts\OLD_setup_statsGrid.gml</script>
       <script>scripts\setup_options.gml</script>
       <script>scripts\setup_combat_rules.gml</script>
       <script>scripts\recalculate_values.gml</script>
@@ -84,9 +87,11 @@
       <script>scripts\setup_weapon_generation.gml</script>
       <script>scripts\setup_combat.gml</script>
       <scripts name="Spells">
-        <script>scripts\setup_lifeSpells.gml</script>
         <script>scripts\setup_spells.gml</script>
+        <script>scripts\setup_lifeSpells.gml</script>
       </scripts>
+      <script>scripts\setup_afflictions.gml</script>
+      <script>scripts\reset_baseStats.gml</script>
     </scripts>
     <scripts name="Pathfinding">
       <script>scripts\goto_square.gml</script>
@@ -207,6 +212,7 @@
       <script>scripts\getEnemies.gml</script>
       <script>scripts\wait.gml</script>
       <script>scripts\endBattle.gml</script>
+      <script>scripts\startTurn.gml</script>
     </scripts>
     <scripts name="Combat">
       <script>scripts\attack_target.gml</script>
@@ -257,6 +263,7 @@
     <font>fonts\font_menu_normal</font>
     <font>fonts\font_combat_normal</font>
     <font>fonts\font_header_normal</font>
+    <font>fonts\font_stats_number</font>
   </fonts>
   <objects name="objects">
     <object>objects\MASTER</object>
@@ -292,10 +299,6 @@
           <object>objects\GREAT_SWORD</object>
           <object>objects\Greatsword</object>
         </objects>
-      </objects>
-      <objects name="POLES">
-        <object>objects\POLEARM</object>
-        <object>objects\WoodenMop</object>
       </objects>
       <objects name="BOWS">
         <object>objects\BOW</object>
@@ -336,6 +339,10 @@
         <object>objects\Spell_Aegis</object>
         <object>objects\Spell_Cleanse</object>
       </objects>
+      <objects name="POLES">
+        <object>objects\POLEARM</object>
+        <object>objects\WoodenMop</object>
+      </objects>
     </objects>
     <objects name="HEROES">
       <object>objects\HERO</object>
@@ -362,6 +369,11 @@
     <object>objects\FIRE</object>
     <object>objects\SMOKE_SPAWNER</object>
     <object>objects\SMOKE</object>
+    <objects name="AFFLICTIONS">
+      <object>objects\AFFLICTION</object>
+      <object>objects\Affliction_Aegis</object>
+      <object>objects\Affliction_Shelter</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\initial</room>

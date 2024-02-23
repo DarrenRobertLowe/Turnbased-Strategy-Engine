@@ -35,14 +35,8 @@ mpBase          = 0;
 moveBase        = 3;
 attackBase      = 1;
 defenceBase     = 1;
-//initiativeBase  = 1;
-    // initiative = initiativeBase;
-//fortitudeBase   = 1;
-    //fortitude = foritudeBase;
-// luckBase = 1;
-    // luck = luckBase;
+resistanceBase  = 1;
 weapon          = 0;
-// offhand         = 0;
 armour          = 0;
 avatar          = 0;
 
@@ -51,6 +45,7 @@ mp      = mpBase;
 move    = moveBase;
 attack  = attackBase;
 defence = defenceBase;
+resistance = resistanceBase;
 </string>
           </argument>
         </arguments>

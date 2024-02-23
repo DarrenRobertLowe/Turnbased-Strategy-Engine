@@ -134,34 +134,37 @@ if (MODE == MODES.free) {
             if (targetHero.selectable == true) {
                 selected = targetHero;
                 ds_list_clear(dataMenu);
+                ds_list_clear(displayMenu);
                 ds_list_copy(dataMenu, selected.actions);       // we use a dataMenu so we can remove actions
-                
-                //var weaponActions = selected.weapon.actions;
-                ds_list_copy(displayMenu, dataMenu);
+                ds_list_copy(displayMenu, dataMenu);            // displayMenu is what the player actually sees
                 
                 // get actions from the weapon
                 var weapon = selected.weapon;
                 
-                if !(object_is_ancestor(weapon.object_index, BOOK)) {
-                    // not a book...
-                    var weaponActions = selected.weapon.actions;
-                    
-                    for(var i=0; i&lt;ds_list_size(weaponActions); i++) {
-                        var val = ds_list_find_value(weaponActions, i);
-                        ds_list_insert(dataMenu, 1, val);
-                        ds_list_insert(displayMenu, 1, val);
-                    }
-                } else {
-                    // Books work differently...
-                    for(var i=0; i&lt;ds_list_size(weapon.spells); i++) {
+                // Add Attack and abilities
+                var weaponActions = selected.weapon.actions;
+                
+                for(var i=0; i&lt;ds_list_size(weaponActions); i++) {
+                    var val = ds_list_find_value(weaponActions, i);
+                    ds_list_insert(dataMenu, 1, val);
+                    ds_list_insert(displayMenu, 1, val);
+                }
+                
+                if (object_is_ancestor(weapon.object_index, BOOK)) {
+                    // Books have spells too...
+                    for(var i=ds_list_size(weapon.spells)-1; i&gt;=0; i--) {
                         var spell = ds_list_find_value(weapon.spells, i);
                         ds_list_insert(dataMenu, 1, spell);
                         ds_list_insert(displayMenu, 1, spell.name);
+                        show_debug_message("MenuPosition: "+ string(menuPosition));
+                        
+                        /*
+                        for(var i=0; i&lt;ds_list_size(displayMenu); i++) {
+                            show_debug_message( "displayMenu: "+ string(menuPosition) + ": " +string(ds_list_find_value(displayMenu, i)) );
+                        }*/
+                        
                     }
                 }
-                
-                
-                
                 
                 
                 MODE = MODES.objectMenu;
@@ -205,14 +208,14 @@ if (MODE == MODES.objectMenu) {
                 if (selected.actedThisTurn == false)
                   then MODE = MODES.reloading;
                 break;
-            
+            /*
             case "HEAL":
                 if (selected.actedThisTurn == false) {
                     selected.casting = ds_list_find_value(selected.weapon.spells, menuPosition-1); // this references the actual spell object
                     MODE = MODES.healing;
                 }
             break;
-            
+            */
             case "END TURN":
                 MODE = MODES.finishing;
                 break;
@@ -220,6 +223,12 @@ if (MODE == MODES.objectMenu) {
             case "CANCEL":
                 resetCursor();
                 break;
+                
+                
+            default:
+                // this is where all the spells go
+                selected.casting = ds_list_find_value(selected.weapon.spells, menuPosition-1); // this references the actual spell object
+                MODE = MODES.casting;
         }
     }
 }
@@ -303,7 +312,6 @@ if (MODE == MODES.attacking) {
                 if (ind &gt; -1) then ds_list_delete(selected.weapon.actions, ind);
                 ds_list_add_unique(selected.weapon.actions, "RELOAD");
             }
-            
         }
         
         // reset variables
@@ -317,6 +325,38 @@ if (MODE == MODES.attacking) {
 }
 
 if (MODE == MODES.healing) {
+    myPath = selected.myPath;
+    
+    // setup attack range and targets
+    if (attackPathShown == false) {
+        show_target_range(selected.casting);
+        attackPathShown = true;
+    }
+    
+    // cancel attack?
+    if (global.controls_cancel) 
+    or (ds_list_size(selected.listOfTargets) == 0) {
+        attackPathShown = false
+        resetCursor();
+    }
+    
+    // select a target
+    cursorTargetControls();
+    
+    // confirm
+    if (global.controls_ok) {
+        attackTarget = ds_list_find_value(selected.listOfTargets, selected.targetIndex);
+        
+        if (attackTarget &gt; -1) {
+            magic_target(selected, attackTarget, selected.casting);
+            selected.actedThisTurn = true;
+            ds_list_clear(selected.listOfTargets);
+        }
+    }
+}
+
+
+if (MODE == MODES.casting) {
     myPath = selected.myPath;
     
     // setup attack range and targets
