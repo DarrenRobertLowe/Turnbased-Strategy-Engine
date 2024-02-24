@@ -10,12 +10,12 @@ var rightSide   = argument1;
 var margin      = 24;
 var panelWidth  = sprite_get_width(spr_combat_panel);
 var panelHeight = sprite_get_height(spr_combat_panel);
-var panelX;     // (windowWidth - panelWidth);
-var panelEndX;  // (panelX + panelWidth);
-var panelEndY;  //   = (panelY + panelHeight);
+var panelX;
+var panelEndX;
+var panelEndY;
 
-var avatarX;    // (panelX + avatarWidth * 0.5);
-var mirrored = -1; // either 0 or -1
+var avatarX;
+var mirrored = -1;  // can be either 0 or -1
 
 
 // setup the positioning
@@ -51,11 +51,9 @@ var outlineColour   = c_black;
 var nameY = (panelY - (lineSeparation * 0.5));
 
 if (rightSide) {    // right side / target unit
-    draw_text_outlined(panelX, nameY, unit.name, outlineColour, nameColour, global.header_font);    // name
-//    draw_text_outlined(panelX, panelY + lineSeparation, "lvl " + string(unit.level), outlineColour, nameColour, global.menu_font);   // lvl
+    draw_text_outlined(panelX, nameY, unit.name, outlineColour, nameColour, global.header_font);                // name
 } else {            // left side / current unit
     draw_text_outlined(panelX + avatarWidth, nameY, unit.name, outlineColour, nameColour, global.header_font);  // name
-//    draw_text_outlined(panelX + avatarWidth, panelY + lineSeparation, "lvl " + string(unit.level), outlineColour, nameColour, global.menu_font); // lvl
 }
 
     

@@ -59,48 +59,8 @@ ds_list_add(actions,    "ATTACK");
 // slash    = 2;
 // thrust   = 2;
 
-// generate name based on stats (also called by spawning script)
-event_user(0);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// generate name from stats
-//qualityTitle = ds_list_find_value(qualityTitlesList, quality);
-
-// generate string from modifiers
-var modifierString = "";
-for (var i=0; i&lt;ds_list_size(modifiers); i++) {
-    var val = ds_list_find_value(modifiers, i);
-    modifierString += string(val) + " ";
-}
-
-var tierString = tiers[tier];
-if (tier != 1) then tierString += " ";
-
-name = tierString + modifierString + clean_text(object_get_name(object_index));
-
-
-
-
+// generate name based on stats
+generate_weapon_name(id);
 </string>
           </argument>
         </arguments>

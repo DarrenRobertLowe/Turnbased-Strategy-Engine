@@ -42,6 +42,7 @@ school           = "Life";
 needsLineOfSight = false;
 targetTeam       = "ally";      // ally, enemy, any
 explicitTargetRequired = false;
+
 description      = "Magic defence x2";
 ds_list_add(inflicts, Affliction_Shelter);
 </string>

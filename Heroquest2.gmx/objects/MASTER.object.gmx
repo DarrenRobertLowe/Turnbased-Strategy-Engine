@@ -61,9 +61,9 @@ setup_spells();
 
 // OPTIONS
 // (these are defaults but are properly loaded in via load_options())
-global.useDeltaTime                 = true;
+global.useDeltaTime                 = false;
 global.options_CursorMemory         = true;
-global.options_TargetFPS            = 60; //60; //120;
+global.options_TargetFPS            = 120; //60; //120;
 global.options_AntialiasingAmount   = 0;
 global.options_VSync                = 0;
 global.options_ResolutionWidth      = 800;

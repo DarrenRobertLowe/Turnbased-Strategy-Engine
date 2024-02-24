@@ -38,16 +38,60 @@ type        = "Spell";
 heals       = false;                // healing or damaging
 tier        = 0;
 dice        = 1;                    // unused?
+target      = noone;
 explicitTargetRequired = false;     // direct target or area of effect basically
 needsLineOfSight = true;
 cures       = ds_list_create();     // what ailments this spell cures
 inflicts    = ds_list_create();     // what ailments this spell inflicts
 
-
 ds_list_clear(childClasses);
 ds_list_add(childClasses, Spell_Heal);
 //ds_list_add(childClasses, Spell_Scorch);
 //ds_list_add(childClasses, Spell_Bolt);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// APPLY AFFLICTIONS
+event_inherited();
+
+if (exists(target)) {
+    show_message("total inflictions for spell: "+ string(name) +": "  + string(ds_list_size(inflicts)));
+    
+    // This creates an instance for any afflictions in the spell's afflictions list
+    for(var i=0; i&lt;ds_list_size(inflicts); i++) {
+        var affliction = ds_list_find_value(inflicts, i);
+        show_debug_message(name + " has infliction of: " + string(affliction) );
+        var inst = instance_create(0, 0, affliction);
+        show_debug_message("created an instance for the infliction: " +string(inst) );
+        inst.target = target;
+        show_debug_message("The target of the infliction is: " +string(target) + " (" + string(target.name) + ")");
+        ds_list_add(target.afflictions, inst);
+        
+        // apply the effect immediately
+        with(inst) {
+            event_user(0);
+        }
+    }
+}
 </string>
           </argument>
         </arguments>

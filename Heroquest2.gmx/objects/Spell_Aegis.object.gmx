@@ -43,6 +43,7 @@ needsLineOfSight = false;
 targetTeam       = "ally";      // ally, enemy, any
 explicitTargetRequired = false;
 description      = "Physical defence x2";
+
 ds_list_add(inflicts, Affliction_Aegis);
 </string>
           </argument>

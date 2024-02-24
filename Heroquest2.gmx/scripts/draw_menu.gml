@@ -42,7 +42,7 @@ for(var i=0; i<size; i++) {
         draw_set_color(c_white);
     }
     
-    draw_text(textX, textY + (i * menuVerticalSeparation), item);
+    draw_text_outlined(textX, textY + (i * menuVerticalSeparation), item, c_black, c_white, global.menu_font);
     
     
 
@@ -50,33 +50,33 @@ for(var i=0; i<size; i++) {
     // draw the item info
     if (menuPosition == i) {
         if (item == "MOVE") {
-            draw_text(textX, descriptionTextY, "MOVE UNIT TO A NEW POSITION");
+            draw_text_outlined(textX, descriptionTextY, "MOVE UNIT TO A NEW POSITION", c_black, c_white, global.menu_font);
         }
         
         if (item == "END TURN") {
-            draw_text(textX, descriptionTextY, "END THIS UNIT'S TURN");
+            draw_text_outlined(textX, descriptionTextY, "END THIS UNIT'S TURN", c_black, c_white, global.menu_font);
         }
         
         if (item == "ATTACK") {
             var item = selected.weapon;
             
-            draw_text(textX, descriptionTextY, "ATTACK WITH " + string_upper(item.name));
+            draw_text_outlined(textX, descriptionTextY, "ATTACK WITH " + string_upper(item.name), c_black, c_white, global.menu_font);
             
             // power
             draw_set_font(font_header_normal);
             draw_sprite(menu_icon_back, 0, menuX, iconY);
             draw_sprite(menu_icon_power, 0, menuX, iconY);
-            draw_text(menuX + iconWidth, iconY, item.pwr);
+            draw_text_outlined(menuX + iconWidth, iconY, item.pwr, c_black, c_white, global.stats_font);
             
             // range
             draw_sprite(menu_icon_back, 0, menuX + (iconWidth*2), iconY);
             draw_sprite(menu_icon_range, 0, menuX + (iconWidth*2), iconY);
-            draw_text(menuX + (iconWidth * 3), iconY, item.range);
+            draw_text_outlined(menuX + (iconWidth * 3), iconY, item.range, c_black, c_white, global.stats_font);
             
             // area
             draw_sprite(menu_icon_back, 0, menuX + (iconWidth*4), iconY);
             draw_sprite(menu_icon_area, 0, menuX + (iconWidth*4), iconY);
-            draw_text(menuX + (iconWidth*5), iconY, item.area);
+            draw_text_outlined(menuX + (iconWidth*5), iconY, item.area, c_black, c_white, global.stats_font);
         }
         
         
@@ -91,7 +91,7 @@ for(var i=0; i<size; i++) {
         draw_set_color(c_white);
         
         description = string_upper(description);
-        draw_text(textX, (menuY + menuHeight + 4), description);
+        draw_text_outlined(textX, (menuY + menuHeight + 4), description, c_black, c_white, global.menu_font);
         
         
         // spells
@@ -100,17 +100,17 @@ for(var i=0; i<size; i++) {
             draw_set_font(font_header_normal);
             draw_sprite(menu_icon_back, 0, menuX, iconY);
             draw_sprite(menu_icon_power, 0, menuX, iconY);
-            draw_text(menuX + iconWidth, iconY, item.pwr);
+            draw_text_outlined(menuX + iconWidth, iconY, item.pwr, c_black, c_white, global.stats_font);
             
             // range
             draw_sprite(menu_icon_back, 0, menuX + (iconWidth*2), iconY);
             draw_sprite(menu_icon_range, 0, menuX + (iconWidth*2), iconY);
-            draw_text(menuX + (iconWidth * 3), iconY, item.range);
+            draw_text_outlined(menuX + (iconWidth * 3), iconY, item.range, c_black, c_white, global.stats_font);
             
             // area
             draw_sprite(menu_icon_back, 0, menuX + (iconWidth*4), iconY);
             draw_sprite(menu_icon_area, 0, menuX + (iconWidth*4), iconY);
-            draw_text(menuX + (iconWidth*5), iconY, item.area);
+            draw_text_outlined(menuX + (iconWidth*5), iconY, item.area, c_black, c_white, global.stats_font);
         }
         
         draw_reset();

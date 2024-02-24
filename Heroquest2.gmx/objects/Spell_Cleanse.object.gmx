@@ -44,11 +44,43 @@ targetTeam       = "ally";      // ally, enemy, any
 explicitTargetRequired = false;
 description      = "Removes all afflictions";
 
+target = noone;
 
-// This spell cures all ailments and buffs, so just add the whole list.
-// see setup_afflictions()
-for (var i=0; i&lt;ds_list_size(global.AFFLICTIONS); i++) {
-    var val = ds_list_find_value(global.AFFLICTIONS, i);
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// SPELL EFFECT
+event_inherited();
+
+// removes all afflictions from the target
+if (exists(target)) {
+    var list = target.afflictions;
+    
+    for (var i=0; i&lt;ds_list_size(list); i++) {
+        var affliction = ds_list_find_value(list, i);
+        instance_destroy(affliction, true); // AFFLICITON handles the cleanup
+    }
 }
 </string>
           </argument>

@@ -678,8 +678,9 @@
     <option_xbone_title_id>1234ABCD</option_xbone_title_id>
   </Options>
   <ConfigConstants>
-    <constants number="1">
+    <constants number="2">
       <constant name="MILLION">1000000</constant>
+      <constant name="EFFECT_EVENT">0</constant>
     </constants>
   </ConfigConstants>
 </Config>

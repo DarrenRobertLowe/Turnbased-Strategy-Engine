@@ -69,6 +69,7 @@
       <script>scripts\setup_global_variables.gml</script>
       <script>scripts\setup_grids.gml</script>
       <script>scripts\setup_gui.gml</script>
+      <script>scripts\setup_fonts.gml</script>
       <script>scripts\setup_controls.gml</script>
       <script>scripts\setup_classnames.gml</script>
       <script>scripts\setup_views.gml</script>
@@ -81,7 +82,6 @@
       <script>scripts\recalculate_values.gml</script>
       <script>scripts\load_weapon.gml</script>
       <script>scripts\setup_weapons.gml</script>
-      <script>scripts\setup_fonts.gml</script>
       <script>scripts\setup_limits.gml</script>
       <script>scripts\setup_delays.gml</script>
       <script>scripts\setup_weapon_generation.gml</script>
@@ -91,7 +91,7 @@
         <script>scripts\setup_lifeSpells.gml</script>
       </scripts>
       <script>scripts\setup_afflictions.gml</script>
-      <script>scripts\reset_baseStats.gml</script>
+      <script>scripts\reapplyAfflictions.gml</script>
     </scripts>
     <scripts name="Pathfinding">
       <script>scripts\goto_square.gml</script>
@@ -258,12 +258,21 @@
     <script>scripts\persistWeapon.gml</script>
     <script>scripts\persistHero.gml</script>
     <script>scripts\save_game.gml</script>
+    <script>scripts\generate_weapon_name.gml</script>
   </scripts>
   <fonts name="fonts">
+    <font>fonts\font_menu_normalOLD</font>
+    <font>fonts\font_menu_normalBITPOTION</font>
     <font>fonts\font_menu_normal</font>
+    <font>fonts\font_combat_normalOLD</font>
+    <font>fonts\font_combat_normalBITPOTION</font>
     <font>fonts\font_combat_normal</font>
+    <font>fonts\font_header_normalOLD</font>
     <font>fonts\font_header_normal</font>
+    <font>fonts\font_header_normalBITPOTION</font>
+    <font>fonts\font_stats_numberOLD</font>
     <font>fonts\font_stats_number</font>
+    <font>fonts\font_stats_numberBITPOTION</font>
   </fonts>
   <objects name="objects">
     <object>objects\MASTER</object>

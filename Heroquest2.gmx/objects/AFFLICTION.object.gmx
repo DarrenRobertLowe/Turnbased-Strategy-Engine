@@ -29,7 +29,7 @@
 
 name = "none";      // passed when created
 target = noone;     // passed when created
-turnsLeft = 3;      // passed when created
+turnsLeft = 4;      // this needs to be 1 more than the number of turns you want it to live for (because the effect occurs immediately it will remove 1 from the total life)
 </string>
           </argument>
         </arguments>
@@ -55,8 +55,14 @@ turnsLeft = 3;      // passed when created
             <string>/// REMOVE FROM TARGET'S AFFLICTION LIST
 
 if exists(target) {
+    show_debug_message("affliction "+ string(id) + " says target is : " +string(target) +" : " +string(target.name));
     var pos = ds_list_find_index(target.afflictions, id);
-    if (pos &gt; -1) then ds_list_delete(target.afflictions, pos);
+    show_debug_message("Affliction position is: "+string(pos));
+    
+    if (pos &gt; -1) {
+        ds_list_delete(target.afflictions, pos);
+        show_debug_message("Affliction removed!");
+    }
 }
 </string>
           </argument>
@@ -80,7 +86,7 @@ if exists(target) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// CUSTOM EVENT FOR THE EFFECT
+            <string>/// CUSTOM EVENT FOR THE EFFECT
 
 if (exists(target)) {
     // CUSTOM CODE FOR EACH TURN

@@ -216,6 +216,11 @@ if (MODE == MODES.objectMenu) {
                 }
             break;
             */
+            
+            case "DEFEND":
+                MODE = MODES.defending;
+                break;
+            
             case "END TURN":
                 MODE = MODES.finishing;
                 break;
@@ -324,6 +329,14 @@ if (MODE == MODES.attacking) {
     // pressing okay attacks that target.
 }
 
+
+if (MODE == MODES.defending) {
+    selected.defence += selected.defenceBase;
+    selected.actedThisTurn = true;
+    ds_list_clear(selected.listOfTargets);
+    MODE = MODES.finishing;
+}
+
 if (MODE == MODES.healing) {
     myPath = selected.myPath;
     
@@ -399,9 +412,6 @@ if (MODE == MODES.reloading) {
     MODE = MODES.finishing;
 }
 
-// DEFEND
-if (MODE == MODES.defending) {
-}
 
 
 // WAITING

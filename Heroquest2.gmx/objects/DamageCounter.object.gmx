@@ -27,11 +27,25 @@
             <kind>1</kind>
             <string>/// SETUP
 value       = 0;
-colour      = global.OPTIONS_COLOUR_DAMAGE;
-timeToLive  = 12;     // seconds to show on screen
-life        = global.options_TargetFPS * timeToLive;
-vSpeed      = delta(1);
-vFriction   = delta(0.001);
+timeToLive  = 1;
+life        = (room_speed * timeToLive);
+
+// damage
+hFriction   = 0.01;
+hForce      = 1;
+hDirection  = choose(0, 180);
+initialVForce = 4;
+grav        = 0.2;
+vForce      = initialVForce;
+vFriction   = 0.03;
+ground      = y;
+
+
+// healing
+healGravity = 0.05;
+healVForce  = 2;
+minY        = y-100;
+
 depth       = global.infoDepth;
 </string>
           </argument>
@@ -56,11 +70,32 @@ depth       = global.infoDepth;
           <argument>
             <kind>1</kind>
             <string>/// time out
+if (value &lt; 0) {
+    y -= healVForce;
+    if (healVForce &gt; 0) then healVForce -= healGravity;
+    if (healVForce &lt; 0) then healVForce = 0;
+    
+    //if (y &lt; minY) then y = minY;
+}
+else {
+    if (hDirection == 0) {
+        x += hForce;
+    } else {
+        x -= hForce;
+    }
+    
+    if (hForce &gt; 0) then hForce -= hFriction;
+    if (hForce &lt; 0) then hForce = 0;
+    
+    y -= vForce;
+    vForce -= grav;
+    
+    if (y &gt;= ground) {
+        vForce = delta(initialVForce * 0.5)
+        initialVForce *= 0.5;
+    }
+}
 
-y -= vSpeed;
-vSpeed -= vFriction;
-
-if (value &lt; 0) then colour = global.OPTIONS_COLOUR_HEAL;
 
 life--;
 if (life &lt;= 0) then instance_destroy(self, true);
@@ -88,8 +123,15 @@ if (life &lt;= 0) then instance_destroy(self, true);
             <kind>1</kind>
             <string>/// Animate
 
-if (value &lt; 0) then colour = global.OPTIONS_COLOUR_HEAL;
-draw_text_colour(x,y,abs(value),colour,colour,colour,colour,1);
+if (value &lt; 0) {
+    colour = global.heal_colour;
+    outline_colour = global.heal_outline_colour;
+} else {
+    colour = global.damage_colour;
+    outline_colour = global.damage_outline_colour;
+}
+
+draw_text_outlined(x,y,abs(value), outline_colour, colour, global.combat_font);
 
 
 </string>
