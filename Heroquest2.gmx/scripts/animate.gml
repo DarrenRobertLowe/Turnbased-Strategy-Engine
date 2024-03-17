@@ -2,21 +2,19 @@
 /** see setup_animations()
  */
 if (global.PAUSED == false) {
-    
     animStart = 0;
     animEnd   = 0;
     var attackAnimSpeed = (global.animationSpeed * 0.5); // attack animations need to be slowed down
     
-    
-    if !(MOVING) { // standing 
+    if !(MOVING) {  // standing 
         animStart = animation_stand_start;
         animEnd   = animation_stand_end;
         adjust_animation_for_direction();
         
-        imageIndex += delta(attackAnimSpeed);       // 0.5 because standing animations are slower
+        imageIndex += delta(attackAnimSpeed);
     }
     
-    if (MOVING) { // walking
+    if (MOVING) {   // walking
         animStart = animation_walk_start;
         animEnd   = animation_walk_end;
         adjust_animation_for_direction();
@@ -24,9 +22,7 @@ if (global.PAUSED == false) {
         imageIndex += delta(global.animationSpeed);
     }
     
-    
-    // hurt
-    if (takingDamage) {
+    if (takingDamage) { // hurt
         animStart = animation_hurt_start;
         animEnd   = animation_hurt_end;
         adjust_animation_for_direction();

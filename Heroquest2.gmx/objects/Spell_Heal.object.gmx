@@ -72,6 +72,10 @@ event_inherited();
 if (exists(target)) {
     var dmg = 0 - pwr;    // roll(spell.dice, spell.pwr);
     damage(target, dmg);
+    
+    
+    // animation
+    create_animation("heal");
 }
 </string>
           </argument>

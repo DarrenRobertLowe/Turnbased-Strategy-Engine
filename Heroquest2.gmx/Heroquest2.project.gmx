@@ -32,6 +32,7 @@
         <sprite>sprites\spr_step_wood</sprite>
       </sprites>
       <sprite>sprites\spr_smoke</sprite>
+      <sprite>sprites\anim_bubbles</sprite>
     </sprites>
     <sprites name="Menu">
       <sprite>sprites\spr_menuCursor</sprite>
@@ -71,7 +72,6 @@
       <script>scripts\setup_gui.gml</script>
       <script>scripts\setup_fonts.gml</script>
       <script>scripts\setup_controls.gml</script>
-      <script>scripts\setup_classnames.gml</script>
       <script>scripts\setup_views.gml</script>
       <script>scripts\setup_animations.gml</script>
       <script>scripts\setup_delta.gml</script>
@@ -259,6 +259,7 @@
     <script>scripts\persistHero.gml</script>
     <script>scripts\save_game.gml</script>
     <script>scripts\generate_weapon_name.gml</script>
+    <script>scripts\create_animation.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_menu_normalOLD</font>
@@ -341,6 +342,7 @@
       </objects>
       <objects name="SPELLS">
         <object>objects\SPELL</object>
+        <object>objects\SPELL_ANIMATION</object>
         <object>objects\Spell_Heal</object>
         <object>objects\Spell_Heal2</object>
         <object>objects\Spell_Heal3</object>
@@ -383,6 +385,7 @@
       <object>objects\Affliction_Aegis</object>
       <object>objects\Affliction_Shelter</object>
     </objects>
+    <object>objects\GAME_CLOCK</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\initial</room>

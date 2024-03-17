@@ -183,6 +183,7 @@ event_inherited();
 update_sprite();
 
 
+
 // ANIMATE IF WALKING
 if (global.isometricView) {
     animate();
@@ -221,9 +222,8 @@ if (FALLING) {
             // path movement that works for both the hero units
             // and the NPCs. Also see goto_Square()
             path_speed = delta(global.movementSpeed);       // if using delta time you probably need to update it here
-            
-            
-            
+            ///
+            ///
             
             // Player controlled movement.
             if !(object_is_ancestor(object_index, NPC)) {

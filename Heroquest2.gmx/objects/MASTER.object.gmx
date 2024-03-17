@@ -35,6 +35,15 @@ global.heroesList           = ds_list_create();
 global.z_offset             = 8;                    // used to make units appears on top of platforms correctly
 global.TURNLIST             = ds_list_create();
 global.TEMP_TURNLIST        = ds_list_create(); // this is used to actually draw the list and is a filtered version so we don't show stuff like FIRE
+global.defaultFPS           = 30;
+
+
+/// DEFAULTS
+global.defaultMovementSpeed  = 4;   // pixels per second based on 30 fps
+global.movementSpeed = global.defaultMovementSpeed;
+global.defaultAnimationSpeed = 0.5; // frames per second based on 30 fps
+global.animationSpeed = global.defaultAnimationSpeed;
+
 
 /// SETUP
 randomize();
@@ -42,9 +51,9 @@ setup_enums();
 setup_depths();
 setup_limits();
 setup_combat_rules();
-setup_weapons();
+//setup_weapons();
 setup_weapon_generation();
-setup_classnames();
+//setup_classnames();
 setup_characterNames();
 global.pathGrid = mp_grid_create(0, 0, 0, 0, 0, 0); // we need to initialize this here so we can call "setup_grids()" when starting new maps.
 setup_grids(30,30);
@@ -57,20 +66,9 @@ setup_afflictions(); // both ailments and buffs
 setup_combat();
 setup_spells();
 
+instance_create(0, 0, GAME_CLOCK);
 
-
-// OPTIONS
-// (these are defaults but are properly loaded in via load_options())
-global.useDeltaTime                 = false;
-global.options_CursorMemory         = true;
-global.options_TargetFPS            = 120; //60; //120;
-global.options_AntialiasingAmount   = 0;
-global.options_VSync                = 0;
-global.options_ResolutionWidth      = 800;
-global.options_ResolutionHeight     = 600;
-global.options_GameSpeed            = 1;    // allows the user to slowdown or speedup gameplay
-
-
+/// MISC
 default_animationFramesPerSecond    = 12;
 default_cellsWalkedPerSecond        = 3;
 default_pixelsPerSecond             = (global.isometricTileWidth * default_cellsWalkedPerSecond);
@@ -110,8 +108,11 @@ room_goto(level_Test);
           <argument>
             <kind>1</kind>
             <string>/// KEEP DELTA TIME
-global.actual_delta = (delta_time / MILLION);
-global.delta_multiplier = (global.actual_delta / global.target_delta);
+
+if (global.useDeltaTime) {
+    global.actual_delta = (delta_time / MILLION);
+    global.delta_multiplier = (global.actual_delta / global.target_delta);
+}
 </string>
           </argument>
         </arguments>

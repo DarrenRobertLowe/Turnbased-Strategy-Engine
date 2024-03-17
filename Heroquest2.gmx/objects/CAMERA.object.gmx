@@ -30,7 +30,10 @@ event_inherited();
 setup_views();
 depth  = global.infoDepth;
 target = CURSOR;
-cameraSpeed = .1;   // percentage of the distance to the cursor covered per step
+cameraSpeed = .2;   // percentage of the distance to the cursor covered per step
+
+
+
 </string>
           </argument>
         </arguments>
@@ -55,9 +58,7 @@ cameraSpeed = .1;   // percentage of the distance to the cursor covered per step
             <kind>1</kind>
             <string>/// position the camera
 var view    = VIEWS.combat;
-
 if !(exists(target)) then target = CURSOR;  // prevents crashing when target instance is destroyed
-
 
 var targetX = target.x;
 var targetY = target.y;
@@ -65,20 +66,14 @@ var targetY = target.y;
 var column  = getColumnFromXPrecise(x);
 var row     = getRowFromYPrecise(y);
 
-var isoX = getIsometricXFromCell(column, row);
-var isoY = getIsometricYFromCell(column, row);
-
-
 //ISOMETRIC
 if (global.isometricView) {
-    if (global.OPTIONS_INSTANT_CAMERA) {
-        x = targetX;
-        y = targetY;
-    } else {
-         var dist = point_distance(x, y, targetX, targetY);
-         var spd  = delta(dist * cameraSpeed);
-         move_towards_point(targetX, targetY, spd);
-    }
+    var isoX = getIsometricXFromCell(column, row);
+    var isoY = getIsometricYFromCell(column, row);
+
+    var dist = point_distance(x, y, targetX, targetY);
+    var spd  = delta(dist * cameraSpeed);
+    move_towards_point(targetX, targetY, spd);
     
     view_xview[view] = (isoX - global.GRID_OFFSET_X);
     view_yview[view] = (isoY - global.GRID_OFFSET_Y);

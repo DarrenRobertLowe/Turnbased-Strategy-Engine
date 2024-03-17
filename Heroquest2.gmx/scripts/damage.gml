@@ -18,7 +18,7 @@ var counter      = instance_create(xx, yy, DamageCounter);
 counter.value    = dmg;
 
 
-target.animTime     = (global.animation_hit_time); //* (1 + critical));
+target.animTime  = (global.animation_hit_time); //* (1 + critical));
 
 if (dmg >= 0) then target.takingDamage = true;
 

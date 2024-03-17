@@ -166,17 +166,10 @@ if (MODE == MODES.free) {
                     }
                 }
                 
-                
                 MODE = MODES.objectMenu;
-                
                 selected.sourceColumn   = selected.column;      // needed for cancel movement
                 selected.sourceRow      = selected.row;         // needed for cancel movement
-                
-                if (global.options_CursorMemory) {
-                    menuPosition = selected.menuPosition;       // Use the objects cursor memory?
-                } else {
-                    menuPosition = 0;                           // No? Position zero it is.
-                }
+                menuPosition = 0;                           // This could be set to cursor memory instead but would need validation
             }
         }
     }
@@ -425,10 +418,6 @@ if (MODE == MODES.waiting) {
 // FINISHING
 if (MODE == MODES.finishing) {
     endTurn();
-    
-    if (global.OPTIONS_CURSOR_MEMORY == true) {
-        selected.menuPosition = menuPosition;     // remember the cursor position
-    }
     attackPathShown = false;
     pathShown = false;
     resetCursor();

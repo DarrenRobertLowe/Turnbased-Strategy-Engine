@@ -78,6 +78,9 @@ ds_grid_set(global.FLOOR_GRID, 4, 2, 0);    // gap in the floor
 ds_grid_set(global.FLOOR_GRID, 5, 2, 0);    // gap in the floor
 build(6, 7, STEP, 0);
 
+global.options_TargetFPS = 24;//round(random(240));
+show_debug_message("options_TargetFPS set to : "+ string(global.options_TargetFPS));
+
 /// SORT AND START TURNS
 sortTurnList();
 global.TURN = ds_list_find_value(global.TURNLIST, 0);      // change the turn to the new first element
