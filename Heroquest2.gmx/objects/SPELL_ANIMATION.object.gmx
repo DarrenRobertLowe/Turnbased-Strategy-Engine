@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>GRID_OBJECT</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,15 +26,18 @@
           <argument>
             <kind>1</kind>
             <string>/// Default values
+event_inherited();
 
 // Note: These values should be set by the spell creating this animation
-alpha       = 1;
+alphaDirection = true;
 colour      = c_white;
-animation   = anim_bubbles;
+isoSprite   = anim_bubbles;
 timeToLive  = room_speed;
+alpha       = 1;
+image_speed = 1;
 direction   = 90;
 speed       = 1;
-
+keepVisible = true;
 </string>
           </argument>
         </arguments>
@@ -59,61 +62,29 @@ speed       = 1;
             <kind>1</kind>
             <string>/// countdown
 
+// animate
+imageIndex += delta(global.animationSpeed);
+
+// Fade in and out
+if (alphaDirection == true) {
+    if (alpha &lt; 1) {
+        alpha += delta(0.01);
+    } else alphaDirection = false;
+} else {
+    if (alpha &gt; 0) {
+        alpha -= delta(0.01);
+    }
+}
+
+
+
+
+// lifetime
 timeToLive --;
-
 if (timeToLive &lt;= 0) then instance_destroy(self, true);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// set values
-sprite_index = animation;
-image_index = 0;
-image_speed = animSpeed;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// draw self
 
-draw_sprite_ext(animation, image_index, x, y, 1, 1, 0, colour, alpha);
-image_index += animSpeed;
+// keep on top
+depth = -100000000;
 </string>
           </argument>
         </arguments>

@@ -278,6 +278,7 @@
   <objects name="objects">
     <object>objects\MASTER</object>
     <object>objects\CURSOR</object>
+    <object>objects\GAME_CLOCK</object>
     <object>objects\OBJECT</object>
     <object>objects\CAMERA</object>
     <object>objects\GUI</object>
@@ -385,7 +386,6 @@
       <object>objects\Affliction_Aegis</object>
       <object>objects\Affliction_Shelter</object>
     </objects>
-    <object>objects\GAME_CLOCK</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\initial</room>

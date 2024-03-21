@@ -1,6 +1,9 @@
 /// setup_animations()
 global.animation_hit_time = 10;
-
+global.defaultAnimationSpeed = 0.5; // frames per second based on 30 fps
+global.animationSpeed = global.defaultAnimationSpeed;
+global.defaultMovementSpeed  = 4;   // pixels per second based on 30 fps
+global.movementSpeed = global.defaultMovementSpeed;
 
 
 // stand

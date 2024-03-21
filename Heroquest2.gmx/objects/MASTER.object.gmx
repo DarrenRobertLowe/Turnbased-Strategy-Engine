@@ -35,15 +35,7 @@ global.heroesList           = ds_list_create();
 global.z_offset             = 8;                    // used to make units appears on top of platforms correctly
 global.TURNLIST             = ds_list_create();
 global.TEMP_TURNLIST        = ds_list_create(); // this is used to actually draw the list and is a filtered version so we don't show stuff like FIRE
-global.defaultFPS           = 30;
-
-
-/// DEFAULTS
-global.defaultMovementSpeed  = 4;   // pixels per second based on 30 fps
-global.movementSpeed = global.defaultMovementSpeed;
-global.defaultAnimationSpeed = 0.5; // frames per second based on 30 fps
-global.animationSpeed = global.defaultAnimationSpeed;
-
+global.defaultFPS           = 60;
 
 /// SETUP
 randomize();

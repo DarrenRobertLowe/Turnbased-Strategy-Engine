@@ -32,10 +32,11 @@ sprite_index = spr_cart_none;
 isoSprite   = spr_none;
 imageIndex  = 0;            // image_index for iso sprites (this is needed to prevent Game Maker setting the image_index to zero)
 transparencyAlpha = global.transparencyAlpha;
-hue = c_white;
+colour = c_white;
 z = 0;
 imageMirror = 1;            // replaces image_xscale because image_xscale moves the bounding box
 MOVING = false;
+alpha = 1;
 
 deglobalizeVars();
 

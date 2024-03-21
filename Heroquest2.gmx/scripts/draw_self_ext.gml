@@ -2,13 +2,13 @@
 
 // CARTESIAN VIEW
 if !(global.isometricView) {
-    draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, image_alpha);
+    draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, colour, alpha);
 }
 
 // ISOMETRIC VIEW
 else {
     // should we go transparent?
-    alpha = 1;
+    //alpha = 1;
     
     var currentUnit = global.TURN;
     
@@ -36,7 +36,7 @@ else {
         ,imageMirror
         ,image_yscale
         ,0
-        ,hue
+        ,colour
         ,alpha
         );
         

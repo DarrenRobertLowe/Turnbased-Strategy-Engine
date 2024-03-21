@@ -31,9 +31,9 @@ event_inherited();
 
 column      = getColumnFromX(x);
 row         = getRowFromY(y);
+
 event_user(0);  // add us to our respective grid
 
-//sprite_collision_mask(sprite_index, false, 2, 2, 2, sprite_width-2, sprite_height-2, 1, 0);
 
 depth       = global.normalDepth;
 direction   = 0;
@@ -46,6 +46,7 @@ xprev       = x;
 yprev       = y;
 animStart   = 0;
 animEnd     = 0;
+colour      = c_white;
 ///heightUnits = 1;
 keepVisible = false;
 height      = 0;        // how tall we are, determines the altitude of anything placed on top of us
@@ -63,7 +64,7 @@ fireMultiplier = 1;     // how much damage fire does, 0 = immune to fire
 setup_animations();
 update_sprite();
 
-alpha       = 1;
+
 
 //isoX        = getIsometricXFromCell(column, row);
 //isoY        = getIsometricYFromCell(column, row);
@@ -100,8 +101,8 @@ event_inherited();
 
 draw_self_ext();
 
-
-// CARTESIAN view
+/*
+// Draw the path
 if !(global.isometricView) {
     draw_set_alpha(1);
     draw_path_ext();
@@ -112,6 +113,7 @@ if !(global.isometricView) {
 else // ISOMETRIC view
 {
 }
+*/
 </string>
           </argument>
         </arguments>

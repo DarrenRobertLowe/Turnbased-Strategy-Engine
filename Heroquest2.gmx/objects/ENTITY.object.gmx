@@ -179,16 +179,12 @@ goto_square(targetColumn, targetRow);
             <kind>1</kind>
             <string>/// ANIMATION and MOVEMENT
 event_inherited();
-
 update_sprite();
-
-
 
 // ANIMATE IF WALKING
 if (global.isometricView) {
     animate();
 }
-
 
 
 // FALLING
@@ -216,7 +212,6 @@ if (FALLING) {
             get_z();
             CURSOR.MODE = MODES.waiting;                    // make cursor wait while we move
             getCellFromCoordsPrecise(x,y);
-            
             
             // we'll probably want to replace this with a custom 
             // path movement that works for both the hero units

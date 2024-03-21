@@ -1,22 +1,22 @@
 ///create_animation(animation);
-var type = argument0;
+var effect = argument0;
 
-if (type == "heal") {
-    var animation        = anim_bubbles;
-    var colour           = c_lime;
-    var alpha            = 0.5;
-    var animTimeToLive   = room_speed;
+if (effect == "heal") {
+    var spellAnim           = instance_create(getXFromColumn(target.column), getYFromRow(target.row), SPELL_ANIMATION);
     
-    var spellAnim = instance_create(target.x, target.y, SPELL_ANIMATION);
-    spellAnim.alpha = alpha;
-    spellAnim.colour = colour;
-    spellAnim.animation = animation;
-    spellAnim.animSpeed = 1;
-    spellAnim.timeToLive = animTimeToLive;
-    spellAnim.direction = 90;
-    spellAnim.speed = 1;
+    // appearance
+    spellAnim.isoSprite     = anim_bubbles;
+    spellAnim.alpha         = 0.2;
+    spellAnim.colour        = c_lime;
     
-    with(spellAnim) {
-        event_user(0);  // sets all the above
-    }
+    // animation
+    spellAnim.image_index   = 0;
+    spellAnim.image_speed   = 1;
+    
+    // movement
+    spellAnim.direction     = 90;   // we want the bubbles to rise
+    spellAnim.speed         = 1;
+    
+    // lifespan
+    spellAnim.timeToLive    = (room_speed * 3);
 }
