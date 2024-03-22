@@ -40,6 +40,7 @@ direction   = 0;
 facing      = DIRECTION.none;
 MOVING      = false;
 myPath      = path_add();
+next_path_node = 0;
 isoSprite   = spr_none;
 selectable  = false;
 xprev       = x;
@@ -100,20 +101,6 @@ badTargetCells = ds_grid_create(gridWidth, gridHeight);
 event_inherited();
 
 draw_self_ext();
-
-/*
-// Draw the path
-if !(global.isometricView) {
-    draw_set_alpha(1);
-    draw_path_ext();
-    draw_collision_mask();
-    draw_set_alpha(0.25);
-    mp_grid_draw(global.pathGrid);
-}
-else // ISOMETRIC view
-{
-}
-*/
 </string>
           </argument>
         </arguments>

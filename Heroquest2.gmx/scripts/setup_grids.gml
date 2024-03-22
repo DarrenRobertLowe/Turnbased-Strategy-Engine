@@ -2,7 +2,6 @@
 global.gridWidth        = argument0;
 global.gridHeight       = argument1;
 
-
 global.tileWidth            = 32;
 global.tileHeight           = 32;
 global.isometricTileWidth   = 32;
@@ -30,6 +29,8 @@ global.CURSOR_GRID  = ds_grid_create(w, h);     // grid for the cursor (used in 
 global.ATTACK_GRID  = ds_grid_create(w, h);     // grid for attacks
 global.FIRE_GRID    = ds_grid_create(w, h);     // grid that fire will occupy
 global.PLATFORM_GRID = ds_grid_create(w, h);    // grid above the floor that units walk on, affecting Z value.
+global.NODE_GRID    = ds_grid_create(w, h);     // used for pathfinding
+global.NODES        = ds_map_create();          // used for pathfinding
 
 global.gridDefaultValue = -1;
 ds_grid_clear(global.FLOOR_GRID,    3); // this represents the floor health
@@ -43,16 +44,3 @@ ds_grid_clear(global.FIRE_GRID,     global.gridDefaultValue);
 mp_grid_destroy(global.pathGrid);
 global.pathGrid = mp_grid_create(global.GRID_OFFSET_X, global.GRID_OFFSET_Y, w, h, tw, th);
 
-
-
-/* Uncomment to allow for lists of objects per cell
-// populate the main grid with lists for each cell
-for (c=0; c<w; c++)
-{
-    for (r=0; r<h; r++)
-    {
-        var list = ds_list_create();
-        ds_grid_set(global.GRID, c, r, list);
-    }
-}
-*/

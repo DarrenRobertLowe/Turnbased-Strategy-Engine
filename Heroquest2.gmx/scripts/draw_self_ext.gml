@@ -1,8 +1,34 @@
 /// draw_self_ext();
 
-// CARTESIAN VIEW
+// CARTESIAN VIEW (DEBUGGING)
 if !(global.isometricView) {
-    draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, colour, alpha);
+    depth = -y;
+    draw_sprite_ext(sprite_index, 0, x, y, 1, 1, 0, colour, 1);
+    
+    draw_rectangle_colour(x, y, x+32, y+32, c_white, c_white, c_white, c_white, false);
+    draw_rectangle_colour(x, y, x+32, y+32, c_teal, c_teal, c_teal, c_teal, true);
+    
+    if (MOVING) {
+        // Draw the path
+        draw_collision_mask();
+        draw_set_alpha(1);
+        
+        var size = array_length_1d(pathNodes);
+        var x1 = pathNodes[0, 0];
+        var y1 = pathNodes[0, 0];
+        var prevX = x1;
+        var prevY = y1;
+        
+        for(var i=0; i<size; i++) {
+            x1 = pathNodes[i, 0];
+            y1 = pathNodes[i, 1];
+            
+            draw_line_colour(prevX, prevY, x1, y1, c_red, c_red);
+            
+            prevX = x1;
+            prevY = y1;
+        }
+    }
 }
 
 // ISOMETRIC VIEW

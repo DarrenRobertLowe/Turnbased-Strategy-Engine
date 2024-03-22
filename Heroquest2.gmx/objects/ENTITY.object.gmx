@@ -210,22 +210,55 @@ if (FALLING) {
         if (MOVING) {
             CAMERA.target = id;
             get_z();
-            CURSOR.MODE = MODES.waiting;                    // make cursor wait while we move
+            CURSOR.MODE = MODES.waiting;    // make cursor wait while we move
             getCellFromCoordsPrecise(x,y);
             
-            // we'll probably want to replace this with a custom 
-            // path movement that works for both the hero units
-            // and the NPCs. Also see goto_Square()
-            path_speed = delta(global.movementSpeed);       // if using delta time you probably need to update it here
-            ///
-            ///
+            var finishedPath = false;
+            var spd = delta(global.movementSpeed);
+            if (next_path_node &lt; array_height_2d(pathNodes)) {
+                var targX = pathNodes[next_path_node, 0];
+                var targY = pathNodes[next_path_node, 1];
+                
+                // move towards the node
+                move_towards_point(targX, targY, spd);
+                
+                // check if we should clamp to the grid cell yet
+                var dx = (targX - x);
+                var dy = (targY - y);
+                var dist = sqrt(dx*dx + dy*dy);
+                
+                if (dist &lt;= spd) {
+                    // if within 'spd' distance, clamp to target point
+                    x = targX;
+                    y = targY;
+                } else {
+                    // otherwise, move towards target point
+                    //x += (spd * dx / dist);
+                    //y += (spd * dy / dist);
+                }
+                
+                
+                // if node reached
+                if ((x == targX) and (y == targY)) {
+                    current_path_node++;
+                    next_path_node++;
+                }
+            } else {
+                x = pathNodes[array_length_1d(pathNodes)-1, 0];
+                y = pathNodes[array_length_1d(pathNodes)-1, 1];
+                
+                // finish path
+                finishedPath = true;
+            }
+            
             
             // Player controlled movement.
-            if !(object_is_ancestor(object_index, NPC)) {
-                if (path_position &gt;= 1) {
+            if (finishedPath) {
+                if !(object_is_ancestor(object_index, NPC)) {
                     update_direction();
-                    getCellFromCoords(x,y);
-                    CURSOR.MODE = MODES.free;              // return control to the cursor
+                    column = targetColumn;
+                    row = targetRow;
+                    CURSOR.MODE = MODES.free;               // return control to the cursor
                     MOVING = false;
                     updateGrid(id, sourceColumn, sourceRow, targetColumn, targetRow);   // empty old coords and add id to new position.
                 }
