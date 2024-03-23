@@ -48,8 +48,6 @@ instance_create(0, 0, FLOOR_DRAWER);
 instance_create(0, 0, CURSOR);
 instance_create(CURSOR.x, CURSOR.y, CAMERA);
 
-// pathfinding
-create_nodegrid(global.GRID);
 
 ds_list_clear(global.COMBAT_spoilsOfWar);
 // set timer before first turn starts

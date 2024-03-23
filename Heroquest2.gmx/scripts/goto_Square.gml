@@ -28,7 +28,10 @@ if (validCell(targetColumn, targetRow)) {
     /// gridpath_add_collisions(global.pathGrid, OBSTACLE, pathfindingIgnoreList, true);
     
     var startNode = ds_grid_get(global.NODE_GRID, sourceColumn, sourceRow);
+    show_message("startNode is :" +string(startNode));
     var endNode   = ds_grid_get(global.NODE_GRID, targetColumn, targetRow);
+    show_message("endNode is :" +string(endNode));
+    
     
     // try to find a path
     myPathNodes = astar_get_path(startNode, endNode);
@@ -38,14 +41,13 @@ if (validCell(targetColumn, targetRow)) {
         CURSOR.MODE = MODES.free;
     } else {
         // found the goal successfully
-        var size = ds_list_size(myPathNodes);
-        if (size > 0) { // if there's a path
-        
+        if (array_length_1d(fullPathArray) > 0) { // if there's a path
+            
             // get the x and y coords of each node as an array
             for(var i=0; i<size; i++) {
-                var node = ds_list_find_value(myPathNodes, i);
-                pathNodes[i, 0] = node.x;
-                pathNodes[i, 1] = node.y;
+                var node = fullPathArray[i];    // ds_list_find_value(myPathNodes, i);
+                pathNodes[i, 0] = ds_map_find_value(node, "x"); // node.x
+                pathNodes[i, 1] = ds_map_find_value(node, "y"); // node.y
             }
             
             current_path_node = 0;

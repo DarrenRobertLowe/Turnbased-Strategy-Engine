@@ -123,6 +123,7 @@ if (MODE == MODES.free) {
         and (unit.selectable == true)
         and (global.TURN == unit)
         {
+            create_nodegrid(global.GRID);
             targetHero = unit;
         }
         

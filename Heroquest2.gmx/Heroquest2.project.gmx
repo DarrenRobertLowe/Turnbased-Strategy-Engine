@@ -261,6 +261,7 @@
     <script>scripts\generate_weapon_name.gml</script>
     <script>scripts\create_animation.gml</script>
     <scripts name="Pathfinding">
+      <script>scripts\clean_pathfinding_nodes.gml</script>
       <script>scripts\create_nodegrid.gml</script>
       <script>scripts\astar_get_path.gml</script>
       <script>scripts\get_neighbors.gml</script>
@@ -394,9 +395,6 @@
       <object>objects\AFFLICTION</object>
       <object>objects\Affliction_Aegis</object>
       <object>objects\Affliction_Shelter</object>
-    </objects>
-    <objects name="Pathfinding">
-      <object>objects\NODE</object>
     </objects>
   </objects>
   <rooms name="rooms">

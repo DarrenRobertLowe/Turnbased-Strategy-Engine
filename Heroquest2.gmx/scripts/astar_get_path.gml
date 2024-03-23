@@ -38,7 +38,8 @@ while (!ds_priority_empty(openSet)) {
     if (current == goal) {
         show_debug_message("goal found at " + string(current));
         fullPath = ds_list_create();
-        fullPath = reconstruct_path(fullPath, cameFromMap, current);
+        fullPathArray = reconstruct_path(fullPath, cameFromMap, current);
+        ds_list_destroy(fullPath);  // garbage collection is blind to data structures
         
         // clean up
         ds_priority_destroy(openSet);
@@ -48,7 +49,7 @@ while (!ds_priority_empty(openSet)) {
         ds_map_destroy(cameFromMap);
         
         // exit on success!
-        return fullPath;
+        return fullPathArray;
     }
     
     
@@ -80,7 +81,6 @@ ds_map_destroy(openSetList);
 ds_map_destroy(gScore);
 ds_map_destroy(fScore);
 ds_map_destroy(cameFromMap);
-
 
 // exit on failure
 return -1;
