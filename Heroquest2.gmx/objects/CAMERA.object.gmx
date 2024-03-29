@@ -129,6 +129,23 @@ if (global.isometricView == false)
         for(var yy = 0; yy&lt;=gridHeight; yy++) {
             var yyy = (offsetY + (yy * tileHeight));
             draw_line(xMin, yyy, xMax, yyy);
+            
+            var node = ds_grid_get(global.NODE_GRID, xx, yy);
+            if (node &gt; 0) {
+                if (ds_map_find_value(node, "no entry") == true) {
+                    var x1 = getXFromColumn(xx);
+                    var y1 = getYFromRow(yy);
+                    draw_set_alpha(0.5);
+                    draw_rectangle_colour(x1, y1, x1 + tileWidth, y1 + tileHeight, c_red, c_red, c_red, c_red, false);
+                    draw_set_alpha(1);
+                } else {
+                    var x1 = getXFromColumn(xx);
+                    var y1 = getYFromRow(yy);
+                    draw_set_alpha(0.5); 
+                    draw_rectangle_colour(x1, y1, x1 + tileWidth, y1 + tileHeight, c_green, c_green, c_green, c_green, false);
+                    draw_set_alpha(1);
+                }
+            }
         }
     }
 }

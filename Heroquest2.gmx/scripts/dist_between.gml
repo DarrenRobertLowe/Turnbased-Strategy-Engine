@@ -9,11 +9,8 @@ var currentY = ds_map_find_value(current, "y");
 var neighborX = ds_map_find_value(neighbor, "x");
 var neighborY = ds_map_find_value(neighbor, "y");
 
-return abs(currentX - neighborX) + abs(currentY - neighborY);
+var neighborAllowed = ds_map_find_value(neighbor, "no entry") * 1000000; // adds an impossibly high value to the path
 
+// we can add stuff here to increase the difficulty of reaching the node
+return abs(currentX - neighborX) + abs(currentY - neighborY);//+ neighborAllowed;
 
-/*
-var current = argument0;
-var neighbor = argument1;
-return abs(current.x - neighbor.x) + abs(current.y - neighbor.y);
-*/

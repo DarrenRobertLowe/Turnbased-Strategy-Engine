@@ -45,7 +45,7 @@ view_hview = global.options_ResolutionHeight;
 instance_create(0, 0, GUI);
 instance_create(0, 0, SKY_CONTROLLER);
 instance_create(0, 0, FLOOR_DRAWER);
-instance_create(0, 0, CURSOR);
+instance_create(getXFromColumn(0), getYFromRow(0), CURSOR);
 instance_create(CURSOR.x, CURSOR.y, CAMERA);
 
 

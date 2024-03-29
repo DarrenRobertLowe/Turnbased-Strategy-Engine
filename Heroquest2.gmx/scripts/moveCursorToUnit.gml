@@ -8,5 +8,6 @@ if !(is_undefined(unit)) {
     if (instance_exists(unit)) {
         CURSOR.column = unit.column;
         CURSOR.row = unit.row;
+        CAMERA.target = CURSOR;
     }
 }

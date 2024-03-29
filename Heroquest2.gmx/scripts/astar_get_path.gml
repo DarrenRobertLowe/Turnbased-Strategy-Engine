@@ -1,6 +1,6 @@
 /// astar_get_path(start, goal);
 /* 
- * @Returns a ds_list of nodes that are a path
+ * @Returns an array of coords that are a path
  *  or -1 if no path is found.
  */
 
@@ -13,7 +13,7 @@ var openSetList = ds_map_create();  // since GM doesn't support "ds_priority_exi
 
 // Add the start node to the queue with a priority of 0
 ds_priority_add(openSet, start, 0);
-ds_map_add(openSetList, start, true); // note the value here doesn't actually mean anything but GM doesn't have Sets.
+ds_map_add(openSetList, start, true); // note the value "true" here doesn't actually mean anything but GM doesn't have Sets.
 
 
 // Create a ds_map to store the costs of getting from the start node to each node
@@ -52,7 +52,7 @@ while (!ds_priority_empty(openSet)) {
         return fullPathArray;
     }
     
-    
+    // main loop
     var neighbors = get_neighbors(current);
     for (var i = 0; i < array_length_1d(neighbors); i++) {
         var neighbor = neighbors[i];
@@ -61,6 +61,7 @@ while (!ds_priority_empty(openSet)) {
         
         var tentative_gScore = ds_map_find_value(gScore, current) + dist_between(current, neighbor);
         if (!ds_map_exists(gScore, neighbor) || tentative_gScore < ds_map_find_value(gScore, neighbor)) {
+            // note that if the neighbor doesn't exist, ds_map_replace() will create an entry for it.
             ds_map_replace(cameFromMap, neighbor, current);
             ds_map_replace(gScore, neighbor, tentative_gScore);
             ds_map_replace(fScore, neighbor, tentative_gScore + heuristic_cost_estimate(neighbor, goal));
