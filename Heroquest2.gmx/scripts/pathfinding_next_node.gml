@@ -1,10 +1,16 @@
 ///pathfinding_next_node();
+/* gets the next node and sets the
+ * direction to face it.
+ */
+ 
 current_path_node++;
 
-if (current_path_node < array_height_2d(pathNodes)) {
-    pathfinding_targX = pathNodes[current_path_node, 0];
-    pathfinding_targY = pathNodes[current_path_node, 1];
+if (current_path_node < pathLength) {
+    pathfinding_targX = ds_list_find_value(pathNodesX, current_path_node);
+    pathfinding_targY = ds_list_find_value(pathNodesY, current_path_node);
     
     var dir = point_direction(x, y, pathfinding_targX, pathfinding_targY);
     direction = get_direction_value(dir);
+} else {
+    log("current_path_node was out of bounds of pathNodes", true);
 }

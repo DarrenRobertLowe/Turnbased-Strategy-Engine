@@ -8,7 +8,6 @@ var fullPath    = argument0;
 var cameFromMap = argument1;
 var current     = argument2;
 
-
 ds_list_add(fullPath, current);
 next = ds_map_find_value(cameFromMap, current);
 
@@ -16,16 +15,17 @@ if (next != noone) {
     current = next;
     return reconstruct_path(fullPath, cameFromMap, current);
 } else {
-    // reverse the list into an array
-    var newlist = ds_list_create();
+    // reverse the order
+    var tempList = ds_list_create();
+    ds_list_copy(tempList, fullPath);
+    ds_list_clear(fullPath);
     
-    var index = 0;
-    for(var i=ds_list_size(fullPath)-1; i>-1; i--) {
-        var val = ds_list_find_value(fullPath, i);
-        //ds_list_add(newlist, val); // lists are not garbage collected
-        returnArray[index] = ds_list_find_value(fullPath, i);
-        index++;
+    for(var i=ds_list_size(tempList)-1; i>=0; i--) {
+        ds_list_add(fullPath, ds_list_find_value(tempList, i));
     }
     
-    return returnArray;
+    ds_list_destroy(tempList);
+    
+    // return the completed path
+    return fullPath;
 }

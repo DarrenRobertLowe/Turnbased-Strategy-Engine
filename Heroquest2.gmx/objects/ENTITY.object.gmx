@@ -45,6 +45,11 @@ current_path_node = -1;
 pathfinding_targX = -1;
 pathfinding_targY = -1;
 movementPoints    = 0;
+pathNodesX = ds_list_create();
+pathNodesY = ds_list_create();
+pathLength = 0;
+fullPathList = ds_list_create();
+myPathNodes = ds_list_create();
 
 // entity defaults
 team            = "neutral"
@@ -193,7 +198,6 @@ if (global.isometricView) {
     animate();
 }
 
-
 // FALLING
 if (FALLING) {
     image_xscale -= delta(.1);
@@ -215,105 +219,49 @@ if (FALLING) {
     // MOVEMENT
     if (MOVING) {
         CAMERA.target = id;
-        get_z();
         CURSOR.MODE = MODES.waiting;
+        get_z();
         getCellFromCoordsPrecise(x, y);  // allows drawing of the sprite while in motion
         
         var finishedPath = false;
-        show_debug_message("movementPoints : " + string(movementPoints));
         
         // FINISHED MOVING
-        if (movementPoints &lt; 0) {
-            finishedPath  = true;
-            movedThisTurn = true;
-            //current_path_node = array_height_2d(pathNodes);
-            wait(global.delay_short);
-        }
-        
-        var spd = delta(global.movementSpeed);
-        
-        if (!finishedPath) {//((current_path_node &lt; array_height_2d(pathNodes)) and (movementPoints &gt;= 0)) {
-            show_debug_message("current_path_node: " +string(current_path_node) + "/" +string(array_height_2d(pathNodes)-1));
-            // move towards the node
-            walk_towards_point(pathfinding_targX, pathfinding_targY, spd);
-            
-            update_sprite();
-            // check if we should clamp to the grid cell yet
-            /*
-            var dx = (pathfinding_targX - x);
-            var dy = (pathfinding_targY - y);
-            var dist = sqrt(dx*dx + dy*dy);
-           
-            
-            if (dist &lt;= spd) {
-                // if within 'spd' distance, clamp to target point
-                x = pathfinding_targX;
-                y = pathfinding_targY;
-            } */ /*else {
-            
-                // otherwise, move towards target point
-                x += (spd * dx / dist);
-                y += (spd * dy / dist);
-            }
-            */
-            
-            // if node reached
-            if ((x == pathfinding_targX) and (y == pathfinding_targY)) {
-                pathfinding_next_node();
-                if (current_path_node == array_height_2d(pathNodes)) then finishedPath = true; 
-                movementPoints--;       // used by AI
-            }
-        } else {
-            // clamp to goal
-            //x = pathNodes[array_height_2d(pathNodes)-1, 0];
-            //y = pathNodes[array_height_2d(pathNodes)-1, 1];
-            var node = current_path_node-1;
-            if (node &lt; 0) then node = 0;
-            
-            if (array_height_2d(pathNodes) &gt;= (node-1)) {
-                x = pathNodes[node, 0];    // because AI will stop before the actual goal
-                y = pathNodes[node, 1];    // because AI will stop before the actual goal
-            }
-            
-            // finish path
+        if ( (movementPoints &lt; 0) 
+        or ( current_path_node == pathLength) ) {
             finishedPath = true;
-            pathNodes = array_create(0); // clear the array
         }
         
-        
-        // Player controlled movement.
-        if (finishedPath) {
-            if !(object_is_ancestor(object_index, NPC)) {
-                //update_direction();
-                column = targetColumn;
-                row = targetRow;
-                CURSOR.MODE = MODES.free;               // return control to the cursor
-                MOVING = false;
-                updateGrid(id, sourceColumn, sourceRow, targetColumn, targetRow);   // empty old coords and add id to new position.
-            }
-        }
-        
-        
-        // NPC movement
-        // NOTE: This corresponds to moving a single cell
-        // along the path, not the actual end of moving.
-        // This is because the enemy just walks towards the
-        // target, rather than choosing a square they can
-        // actually reach. This should probably be changed.
-        /*
-        if (object_is_ancestor(object_index, NPC)) {
-            if (path_position &gt;= 1) {
-               //update_direction();
-                getCellFromCoords(x,y);
-                distanceToNextCell = 0;
+        // NOT FINISHED MOVING
+        if (!finishedPath) {
+            // move towards the node
+            walk_towards_point(pathfinding_targX, pathfinding_targY, delta(global.movementSpeed));
+            update_sprite();
+            
+            // on each node reached
+            if ((x == pathfinding_targX) and (y == pathfinding_targY)) {
+                show_debug_message("arrived at a node, moving to the next");
+                pathfinding_next_node();
                 movementPoints--;
             }
-        }*/
+        }
+        
+        
+        // END
+        if (finishedPath) {
+            MOVING = false;
+            
+            if !(object_is_ancestor(object_index, NPC)) {
+                column = targetColumn;
+                row = targetRow;
+                CURSOR.MODE = MODES.free;                                           // return control to the cursor
+                MOVING = false;
+                updateGrid(id, sourceColumn, sourceRow, targetColumn, targetRow);   // empty old coords and add id to new position.
+            } else {
+                updateGrid(id, sourceColumn, sourceRow, column, row);               // empty old coords and add id to new position.
+            }
+        }
     }
 }
-
-// prevent occupation of mulitple grid cells that can happen on rare occasions
-//snap_to_grid(column, row);
 </string>
           </argument>
         </arguments>

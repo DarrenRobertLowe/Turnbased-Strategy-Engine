@@ -18,7 +18,6 @@ if (ds_list_size(listOfCells) > 0) {
         startColumn     = column;
         startRow        = row;
         goto_square(targetColumn, targetRow);
-        //path_end();                                 // stop the path immediately
     }
 } else {
     // if there are no targets then consider us as having moved

@@ -1,7 +1,7 @@
 /// astar_get_path(start, goal);
 /* 
- * @Returns an array of coords that are a path
- *  or -1 if no path is found.
+ * @Returns a list of nodes from global.NODE_GRID that 
+ *  are a path, or an empty list if a path can't be found.
  */
 
 var start = argument0;
@@ -37,9 +37,9 @@ while (!ds_priority_empty(openSet)) {
     // finished?
     if (current == goal) {
         show_debug_message("goal found at " + string(current));
-        fullPath = ds_list_create();
-        fullPathArray = reconstruct_path(fullPath, cameFromMap, current);
-        ds_list_destroy(fullPath);  // garbage collection is blind to data structures
+        
+        ds_list_clear(fullPathList);
+        fullPathList = reconstruct_path(fullPathList, cameFromMap, current);
         
         // clean up
         ds_priority_destroy(openSet);
@@ -49,7 +49,7 @@ while (!ds_priority_empty(openSet)) {
         ds_map_destroy(cameFromMap);
         
         // exit on success!
-        return fullPathArray;
+        return fullPathList;
     }
     
     // main loop
@@ -84,6 +84,4 @@ ds_map_destroy(fScore);
 ds_map_destroy(cameFromMap);
 
 // exit on failure
-return -1;
-
-
+return myPathNodes;
