@@ -48,8 +48,10 @@ movementPoints    = 0;
 pathNodesX = ds_list_create();
 pathNodesY = ds_list_create();
 pathLength = 0;
-fullPathList = ds_list_create();
-myPathNodes = ds_list_create();
+fullPathList    = ds_list_create();
+myPathNodes     = ds_list_create();
+//pathLengthList  = ds_list_create();  // holds the length of each path
+pathLengthQueue = ds_priority_create();
 
 // entity defaults
 team            = "neutral"

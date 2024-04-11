@@ -1,4 +1,4 @@
-/// sortTargetsAdjacentCellsByClosest(listOfTargets, remove unreachable?, include diagonals);
+/// sortTargetsAdjacentCellsByClosest_NEW(listOfTargets, remove unreachable?, include diagonals);
 /* adds potential targets to the pathfindingIgnoreList and
  * checks for routes to their exact cell, taking objects that
  * block the path into consideration.
@@ -23,6 +23,11 @@ var pathLength = -1;
 var pathfindingOffset = global.pathfindingOffset;
 
 var start = ds_grid_get(global.NODE_GRID, column, row);
+
+
+/// 
+ds_priority_clear(pathLengthQueue); // just do this for now
+
 
 
 // add our potential targets to the pathfindingIgnoreList so
@@ -53,21 +58,8 @@ if (removeUnreachable) {
             ds_list_delete(listOfTargets, i);
             i = -1; // go back to start of listOfTargets 
         }
-        
-        
-        
-        //targetX = getXFromColumn(unit.column);
-        //targetY = getYFromRow(unit.row);
-        
-        /*
-        if !(mp_grid_path(global.pathGrid, myPath, x+pathfindingOffset, y+pathfindingOffset, targetX +pathfindingOffset, targetY +pathfindingOffset, false)) {
-            ds_list_delete(listOfTargets, i);
-            i = -1; // go back to start of listOfTargets
-        }
-        */
     }
 }
-
 
 
 // Recalc the pathgrid to include all targets as obstacles now as
@@ -79,59 +71,23 @@ reset_pathfindingIgnoreList(pathfindingIgnoreList);
 gridpath_add_collisions(global.pathGrid, OBSTACLE, pathfindingIgnoreList, true);
 
 
-
-
 // now take the list of remaining targets and add all their adjacent 
 // cells, checking each one for a valid path. Each valid path gets
 // added to a list called listOfCells.
-for(var i=0; i<ds_list_size(listOfTargets); i++)
-{
+for(var i=0; i<ds_list_size(listOfTargets); i++) {
     unit = ds_list_find_value(listOfTargets, i);
     
-    // right of target
-    var goal = ds_grid_get(global.NODE_GRID, unit.column + 1, unit.row);
-    //targetX = getXFromColumn(unit.column + 1);
-    //targetY = getYFromRow(unit.row);
+    // east of target
+    pathfinding_AI_addpath(column, row, unit.column+1, unit.row); // automatically fills pathLengthQueue;
     
-    //if (mp_grid_path(global.pathGrid, myPath, x+pathfindingOffset, y+pathfindingOffset, targetX +pathfindingOffset, targetY +pathfindingOffset, false))
-    if (ds_list_size( astar_get_path(start, goal) ) > 0) {
-        var val = string(unit.column+1) +":" +string(unit.row);
-        ds_list_add(listOfCells, val);
-    }
-    
-    // left of target
-    var goal = ds_grid_get(global.NODE_GRID, unit.column -1, unit.row);
-    //targetX = getXFromColumn(unit.column - 1);
-    //targetY = getYFromRow(unit.row);
-    
-    
-    //if (mp_grid_path(global.pathGrid, myPath, x+pathfindingOffset, y+pathfindingOffset, targetX +pathfindingOffset, targetY +pathfindingOffset, false))
-    if (ds_list_size( astar_get_path(start, goal) ) > 0) {
-        var val = string(unit.column-1) +":" +string(unit.row);
-        ds_list_add(listOfCells, val);
-    }
+    // west of target
+    pathfinding_AI_addpath(column, row, unit.column-1, unit.row); // automatically fills pathLengthQueue;
     
     // south of target
-    var goal = ds_grid_get(global.NODE_GRID, unit.column, unit.row +1);
-    //targetX = getXFromColumn(unit.column);
-    //targetY = getYFromRow(unit.row+1);
-    
-    //if (mp_grid_path(global.pathGrid, myPath, x+pathfindingOffset, y+pathfindingOffset, targetX +pathfindingOffset, targetY +pathfindingOffset, false))
-    if (ds_list_size( astar_get_path(start, goal) ) > 0) {
-        var val = string(unit.column) +":" +string(unit.row+1);
-        ds_list_add(listOfCells, val);
-    }
+    pathfinding_AI_addpath(column, row, unit.column, unit.row+1); // automatically fills pathLengthQueue;
     
     // north of target
-    var goal = ds_grid_get(global.NODE_GRID, unit.column, unit.row -1);
-    //targetX = getXFromColumn(unit.column);
-    //targetY = getYFromRow(unit.row-1);
-    
-    //if (mp_grid_path(global.pathGrid, myPath, x+pathfindingOffset, y+pathfindingOffset, targetX +pathfindingOffset, targetY +pathfindingOffset, false))
-    if (ds_list_size( astar_get_path(start, goal) ) > 0) {
-        var val = string(unit.column) +":" +string(unit.row-1);
-        ds_list_add(listOfCells, val);
-    }
+    pathfinding_AI_addpath(column, row, unit.column, unit.row-1); // automatically fills pathLengthQueue;
 }
 
 
@@ -142,6 +98,9 @@ for(var i=0; i<ds_list_size(listOfTargets); i++)
 //   so that astar_get_path() creates a map of the cost of each path, then we
 //   just look up the shortest one, rather than recalculating each path every
 //   time.
+
+
+//return pathLengthQueue;
 
 /*
 var cell = -1;
@@ -191,4 +150,3 @@ for (var i=0; i<ds_list_size(listOfCells); i++)
 
 //var myPath = ds_priority_find_min(pathLengthQueue);
 
-return pathLengthQueue;//listOfCells;

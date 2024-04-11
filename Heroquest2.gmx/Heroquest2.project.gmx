@@ -269,8 +269,10 @@
       <script>scripts\heuristic_cost_estimate.gml</script>
       <script>scripts\reconstruct_path.gml</script>
       <script>scripts\destroy_nodes.gml</script>
-      <script>scripts\pathfinding_next_node.gml</script>
       <script>scripts\walk_towards_point.gml</script>
+      <script>scripts\pathfinding_next_node.gml</script>
+      <script>scripts\sortTargetsAdjacentCellsByClosest_NEW.gml</script>
+      <script>scripts\pathfinding_AI_addpath.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">

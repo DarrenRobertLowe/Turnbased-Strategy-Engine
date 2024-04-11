@@ -461,7 +461,7 @@ var condition = 0;
 var tileValue = 0;
 
 
-draw_text_outlined(16, 64, "Cursor: " +string(row)+":" + string(column), c_black, c_white, font_menu_normal);
+draw_text_outlined(16, 64, "Cursor: " +string(column)+":" + string(row), c_black, c_white, font_menu_normal);
 
 // prioritize platforms
 tileValue = ds_grid_get(global.PLATFORM_GRID, column, row);

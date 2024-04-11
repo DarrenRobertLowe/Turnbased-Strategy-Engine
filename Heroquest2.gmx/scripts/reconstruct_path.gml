@@ -1,4 +1,4 @@
-/// reconstruct_path(fullPath, cameFromMap, current);
+/// reconstruct_path(fullPath, cameFromMap, gScores, current, gScore);
 /*  
  *  @Returns a ds_list of each node in the path (recursively)
  */
@@ -6,14 +6,19 @@
  
 var fullPath    = argument0;
 var cameFromMap = argument1;
-var current     = argument2;
+var gScores     = argument2;
+var current     = argument3;
+var gScore      = argument4; // holds the length of the path
+
+
 
 ds_list_add(fullPath, current);
 next = ds_map_find_value(cameFromMap, current);
 
 if (next != noone) {
+    gScore += ds_map_find_value(gScores, current);  // add to the path length
     current = next;
-    return reconstruct_path(fullPath, cameFromMap, current);
+    return reconstruct_path(fullPath, cameFromMap, gScores, current, gScore);
 } else {
     // reverse the order
     var tempList = ds_list_create();
@@ -25,6 +30,12 @@ if (next != noone) {
     }
     
     ds_list_destroy(tempList);
+    
+    
+    // RETURN
+    // we need to return the length of each path too for AI
+    //ds_list_insert(pathLengthList, 0, ds_map_find_value(gScores, current));
+    ds_priority_add(pathLengthQueue, fullPath, gScore);
     
     // return the completed path
     return fullPath;

@@ -21,12 +21,12 @@ for (var c=0; c<ds_grid_width(global.GRID); c++) {
         ds_map_add(node, "south", noone);
         ds_map_add(node, "west", noone);
         ds_map_add(node, "east", noone);
+        ds_map_add(node, "column", c);
+        ds_map_add(node, "row", r);
         ds_map_add(node, "x", getXFromColumn(c));
         ds_map_add(node, "y", getYFromRow(r));
         ds_map_add(node, "no entry", false);
         /*ds_map_add(node, "no exit", false);
-        ds_map_add(node, "column", c);
-        ds_map_add(node, "row", r);
         ds_map_add(node, "north access", true);
         ds_map_add(node, "south access", true);
         ds_map_add(node, "west access", true);
