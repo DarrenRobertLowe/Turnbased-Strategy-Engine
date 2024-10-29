@@ -136,13 +136,22 @@ if (MODE == MODES.free) {
                 selected = targetHero;
                 ds_list_clear(dataMenu);
                 ds_list_clear(displayMenu);
-                ds_list_copy(dataMenu, selected.actions);       // we use a dataMenu so we can remove actions
+                ds_list_copy(dataMenu, selected.actions);       // we use a temp list "dataMenu" so we can remove actions
                 ds_list_copy(displayMenu, dataMenu);            // displayMenu is what the player actually sees
                 
                 // get actions from the weapon
                 var weapon = selected.weapon;
                 
-                // Add Attack and abilities
+                
+                // Add ATTACK option if possible
+                with (selected) {
+                    listOfTargets = getValidTargets(weapon.range, weapon.diagonal, listOfTargets);
+                    if (ds_list_size(listOfTargets) &gt; 0) {
+                        ds_list_insert(CURSOR.displayMenu, 1, "ATTACK");
+                    }
+                }
+                
+                // Add weapon specific abilities
                 var weaponActions = selected.weapon.actions;
                 
                 for(var i=0; i&lt;ds_list_size(weaponActions); i++) {
@@ -240,7 +249,8 @@ if (MODE == MODES.moving) {
     myPath  = selected.myPath;
     
     if (pathShown == false) {
-        show_movement_range();
+        //show_movement_range();
+        show_movement_range_new();
         pathShown = true;
     }
     

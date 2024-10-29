@@ -273,6 +273,8 @@
       <script>scripts\pathfinding_next_node.gml</script>
       <script>scripts\sortTargetsAdjacentCellsByClosest_NEW.gml</script>
       <script>scripts\pathfinding_AI_addpath.gml</script>
+      <script>scripts\pathfinding_block_node.gml</script>
+      <script>scripts\show_movement_range_new.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">

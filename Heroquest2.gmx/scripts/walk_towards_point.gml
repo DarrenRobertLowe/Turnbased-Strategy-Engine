@@ -3,10 +3,12 @@
 
 var pathfinding_targX = argument0;
 var pathfinding_targY = argument1;
+var tCol = getColumnFromX(pathfinding_targX);
+var tRow = getRowFromY(pathfinding_targY);
 var spd = argument2;
 
-show_debug_message("current xy: " +string(x) +"   " +string(y));
-show_debug_message("target xy: "+ string(pathfinding_targX) + "    " +string(pathfinding_targY));
+show_debug_message("current xy: " +string(column) +"   " +string(row));
+show_debug_message("target xy: "+ string(tCol) + "    " +string(tRow) + "     entry allowed?: "+ (string(!ds_map_find_value(ds_grid_get(global.NODE_GRID, tCol, tRow), "no entry")) ));
 
 switch (direction) {
     case 0:     // east

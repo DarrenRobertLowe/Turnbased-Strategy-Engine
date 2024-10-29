@@ -13,7 +13,8 @@ ignoreList = gridpath_ignore_fire(ignoreList);
 
 with(objectIndex) {
     if ((ds_list_find_index(ignoreList, id)) < 0) { // if we're not on the ignoreList
-        mp_grid_add_cell(pathGrid, column, row);
+        //mp_grid_add_cell(pathGrid, column, row);
+        pathfinding_block_node(column, row);
     }
 }
 

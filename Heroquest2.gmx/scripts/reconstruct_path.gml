@@ -8,7 +8,7 @@ var fullPath    = argument0;
 var cameFromMap = argument1;
 var gScores     = argument2;
 var current     = argument3;
-var gScore      = argument4; // holds the length of the path
+ gScore      = argument4; // holds the length of the path
 
 
 
@@ -20,6 +20,8 @@ if (next != noone) {
     current = next;
     return reconstruct_path(fullPath, cameFromMap, gScores, current, gScore);
 } else {
+    gScore += ds_map_find_value(gScores, current);  // add to the path length
+    
     // reverse the order
     var tempList = ds_list_create();
     ds_list_copy(tempList, fullPath);
@@ -34,7 +36,6 @@ if (next != noone) {
     
     // RETURN
     // we need to return the length of each path too for AI
-    //ds_list_insert(pathLengthList, 0, ds_map_find_value(gScores, current));
     ds_priority_add(pathLengthQueue, fullPath, gScore);
     
     // return the completed path

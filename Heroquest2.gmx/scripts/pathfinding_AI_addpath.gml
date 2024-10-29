@@ -14,7 +14,13 @@ and validCell(startCol, startRow)) {
     show_debug_message("pathfinding_AI_addpath() : goal is ["+string(targetCol)+","+string(targetRow)+"] is "+string(goal));
     
     if ( (start > 0) and (goal > 0) ) {
-        astar_get_path(start, goal);
+        gScore = 0;
+        var newPath = astar_get_path(start, goal);
+        
+        if (ds_list_size(newPath) > 0) {
+            ds_priority_add(pathLengthQueue, newPath, gScore);
+            show_debug_message("added a new path to [" +string(targetCol) +":" + string(targetRow) +"] with gScore " + string(gScore));
+        }
     } else {
         show_debug_message("pathfinding_AI_addpath() no path from : " +string(startCol) + " : " +string(startRow) +"   to   " +string(targetCol) + " : " +string(targetRow) );
     }

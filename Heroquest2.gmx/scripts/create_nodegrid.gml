@@ -41,8 +41,6 @@ for (var c=0; c<ds_grid_width(global.GRID); c++) {
         // no floor?
         if (ds_grid_get(global.FLOOR_GRID, c, r) == 0) {
             ds_map_replace(node, "no entry", true);
-            ds_map_destroy(node);
-            continue;
             show_debug_message(string(id) + " says: Found an NO FLOOR at "+ string(c) + " : " + string(r) + "  : "+ string(val));
         }
         

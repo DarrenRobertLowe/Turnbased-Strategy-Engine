@@ -8,7 +8,8 @@ for (var column=0; column<width; column++) {
     for (var row=0; row<height; row++) {
         if (ds_grid_get(global.FLOOR_GRID, column, row) < 1) {
             sout("add floor " + string(column) + ":" + string(row) +" to block path");
-            mp_grid_add_cell(pathGrid, column, row);
+            //mp_grid_add_cell(pathGrid, column, row);
+            pathfinding_block_node(column, row);
         }
     }
 }

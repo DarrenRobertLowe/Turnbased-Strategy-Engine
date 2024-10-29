@@ -12,7 +12,7 @@
 var start = argument0;
 var goal  = argument1;
 
-show_debug_message("astar_get_path() trying to find path from node: " +string(start) + " to " +string(goal));
+show_debug_message("astar_get_path() trying to find path from node: " +string(ds_map_find_value(start, "column")) +":" + string(ds_map_find_value(start, "row")) + "    to " +string(ds_map_find_value(goal, "column")) + ":" +string(ds_map_find_value(goal, "row")) );
 
 // Create a ds_priority queue
 var openSet = ds_priority_create();
@@ -49,7 +49,7 @@ while (!ds_priority_empty(openSet)) {
         
         ds_list_clear(fullPathList);
         fullPathList = reconstruct_path(fullPathList, cameFromMap, gScores, current, 0);
-
+        
         // clean up
         ds_priority_destroy(openSet);
         ds_map_destroy(openSetList);
@@ -66,7 +66,10 @@ while (!ds_priority_empty(openSet)) {
     for (var i = 0; i < array_length_1d(neighbors); i++) {
         var neighbor = neighbors[i];
         
-        if (neighbor == noone) then continue;
+        //if (neighbor == noone) then continue;
+        if (neighbor < 1) then continue;
+        if (ds_map_find_value(neighbor, "no entry") == true) then continue;
+        
         
         var tentative_gScore = ds_map_find_value(gScores, current) + dist_between(current, neighbor);
         if (!ds_map_exists(gScores, neighbor) || tentative_gScore < ds_map_find_value(gScores, neighbor)) {
@@ -93,4 +96,5 @@ ds_map_destroy(fScore);
 ds_map_destroy(cameFromMap);
 
 // exit on failure
+ds_list_clear(myPathNodes);
 return myPathNodes;

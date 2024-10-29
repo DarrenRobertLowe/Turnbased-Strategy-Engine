@@ -1,6 +1,6 @@
 ///getValidTargets(range, diagonal?);
 /** Returns a list of valid targets that
- * could be attacked (if not blocked somehow)
+ * could be attacked (if not blocked by a wall, etc)
  */
  
 var unit;

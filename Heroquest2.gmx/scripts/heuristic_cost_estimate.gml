@@ -12,8 +12,3 @@ var goalY = ds_map_find_value(goal, "y");
 return abs(nodeX - goalX) + abs(nodeY - goalY);
 
 
-/*
-var node = argument0;
-var goal = argument1;
-return abs(node.x - goal.x) + abs(node.y - goal.y);
-*/

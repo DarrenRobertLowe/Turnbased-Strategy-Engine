@@ -52,7 +52,7 @@ passives        = ds_list_create();     // Effects that the player doesn't activ
 animation   = "punch";
 attackType  = "Melee";  // Melee, Ranged, Magic
 
-ds_list_add(actions,    "ATTACK");
+//ds_list_add(actions,    "ATTACK");
 
 // we might want the following, 0 would remove as option
 // bash     = 1;

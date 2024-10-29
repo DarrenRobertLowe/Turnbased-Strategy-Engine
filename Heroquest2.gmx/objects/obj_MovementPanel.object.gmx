@@ -64,7 +64,7 @@ event_inherited();
 
 
 if (CURSOR.MODE != MODES.moving) {
-    ds_grid_set(movementGrid,column,row,-1);
+    ds_grid_set(movementGrid, column, row, -1);
     instance_destroy();
 }
 

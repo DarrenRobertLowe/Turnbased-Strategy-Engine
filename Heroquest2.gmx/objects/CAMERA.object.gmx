@@ -108,7 +108,7 @@ else {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// draw the grid
+            <string>/// DEBUG draw the grid
 
 if (global.isometricView == false)
 {
@@ -122,11 +122,11 @@ if (global.isometricView == false)
     var yMax = (offsetY + (gridHeight * tileHeight));
     
     
-    for(var xx = 0; xx&lt;=gridWidth; xx++) {
+    for(var xx = 0; xx&lt;gridWidth; xx++) {
         var xxx = (offsetX + (xx * tileWidth));
         draw_line(xxx, yMin, xxx, yMax);
         
-        for(var yy = 0; yy&lt;=gridHeight; yy++) {
+        for(var yy = 0; yy&lt;gridHeight; yy++) {
             var yyy = (offsetY + (yy * tileHeight));
             draw_line(xMin, yyy, xMax, yyy);
             
@@ -139,11 +139,13 @@ if (global.isometricView == false)
                     draw_rectangle_colour(x1, y1, x1 + tileWidth, y1 + tileHeight, c_red, c_red, c_red, c_red, false);
                     draw_set_alpha(1);
                 } else {
+                    /*
                     var x1 = getXFromColumn(xx);
                     var y1 = getYFromRow(yy);
                     draw_set_alpha(0.5); 
                     draw_rectangle_colour(x1, y1, x1 + tileWidth, y1 + tileHeight, c_green, c_green, c_green, c_green, false);
                     draw_set_alpha(1);
+                    */
                 }
             }
         }

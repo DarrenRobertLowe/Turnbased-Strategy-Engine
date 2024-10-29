@@ -33,6 +33,7 @@ if (attackAnim == "") {
                     // Create a list of all valid targets
                     if (listOfTargetsFilled == false) {
                         getEnemies();
+                        other.target = ds_list_find_value(other.listOfTargets, 0); // select the first target
                     }
                     
                     
